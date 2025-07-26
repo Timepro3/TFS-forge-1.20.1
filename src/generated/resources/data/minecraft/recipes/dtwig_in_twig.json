@@ -1,0 +1,13 @@
+{
+  "type": "create:haunting",
+  "ingredients": [
+    {
+      "item": "tfs:twig"
+    }
+  ],
+  "results": [
+    {
+      "item": "tfs:distorted_twig"
+    }
+  ]
+}

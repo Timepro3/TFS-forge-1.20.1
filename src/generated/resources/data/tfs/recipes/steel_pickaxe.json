@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "S": {
+      "item": "tfs:steel_ingot"
+    },
+    "T": {
+      "tag": "forge:stick"
+    }
+  },
+  "pattern": [
+    "SSS",
+    " T ",
+    " T "
+  ],
+  "result": {
+    "item": "tfs:steel_pickaxe"
+  },
+  "show_notification": true
+}

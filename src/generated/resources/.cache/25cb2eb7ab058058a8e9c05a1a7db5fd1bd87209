@@ -1,0 +1,12 @@
+// 1.20.1	2025-06-01T15:46:18.3464864	Tags for minecraft:block mod id tfs
+c71a1cfdedf341add35fe26cc60cd16233ce4864 data/minecraft/tags/blocks/mineable/pickaxe.json
+f34aa829ecca9b892c5fb53779648bc060b45e6b data/minecraft/tags/blocks/mineable/shovel.json
+d6ec95dcf497c2d9a1b3aa96ed0a0f97d22ca149 data/minecraft/tags/blocks/needs_iron_tool.json
+0aa41680ebb126d921fb7144a50256c9186bf60f data/minecraft/tags/blocks/needs_stone_tool.json
+32c4c4c31a34fdb025630535070ad035e5a5da4e data/tfs/tags/blocks/age_3.json
+d772e288e7520c6974ec3238c6aa3ecd2b8e686b data/tfs/tags/blocks/gravel.json
+b2ce8c64cb55ad42c14c97221e3b3a405a7bae6a data/tfs/tags/blocks/need_1.json
+fa78725871a0ded510a6e030fa49b9beccd69e34 data/tfs/tags/blocks/need_2.json
+a249c46329a41538f49a564e1f14338aaf1be5a0 data/tfs/tags/blocks/need_3.json
+ff67584762ed3913b86a17960b1f16dda6e4e390 data/tfs/tags/blocks/plants_hoe.json
+a1c2e5618501a4fd7a4ed845b1a39e29bf93f473 data/tfs/tags/blocks/remove.json

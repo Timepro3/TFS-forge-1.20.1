@@ -1,0 +1,13 @@
+{
+  "type": "create:pressing",
+  "ingredients": [
+    {
+      "item": "tfs:bronze_ingot"
+    }
+  ],
+  "results": [
+    {
+      "item": "tfs:bronze_sheet"
+    }
+  ]
+}

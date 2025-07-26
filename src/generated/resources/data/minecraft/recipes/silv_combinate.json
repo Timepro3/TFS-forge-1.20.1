@@ -1,0 +1,66 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "tfs:sleeve"
+  },
+  "loops": 1,
+  "results": [
+    {
+      "item": "tfs:cartridge_silver"
+    }
+  ],
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "tfs:cartridge_silver_n"
+        },
+        [
+          {
+            "item": "tfs:silver_nugget"
+          }
+        ]
+      ],
+      "results": [
+        {
+          "item": "tfs:cartridge_silver_n"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item":"tfs:cartridge_silver_n"
+        },
+        [
+          {
+            "item": "minecraft:gunpowder"
+          }
+        ]
+      ],
+      "results": [
+        {
+          "item": "tfs:cartridge_silver_n"
+        }
+      ]
+    },
+    {
+      "type": "create:pressing",
+      "ingredients": [
+        {
+          "item":"tfs:cartridge_silver_n"
+        }
+      ],
+      "results": [
+        {
+          "item": "tfs:cartridge_silver_n"
+        }
+      ]
+    }
+  ],
+  "transitionalItem": {
+    "item": "tfs:cartridge_silver_n"
+  }
+}

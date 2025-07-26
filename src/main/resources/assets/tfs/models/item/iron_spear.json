@@ -1,0 +1,18 @@
+{
+  "parent": "minecraft:item/handheld",
+  "loader": "forge:separate_transforms",
+  "base": {
+    "parent": "tfs:item/iron_spear_3d"
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "tfs:item/iron_spear_2d"
+    },
+    "ground": {
+      "parent": "tfs:item/iron_spear_2d"
+    },
+    "fixed": {
+      "parent": "tfs:item/iron_spear_2d"
+    }
+  }
+}

@@ -1,0 +1,217 @@
+{
+  "type": "minecraft:simple_random_selector",
+  "config": {
+    "features": [
+      {
+        "feature": {
+          "type": "minecraft:ore",
+          "config": {
+            "discard_chance_on_air_exposure": 1.0,
+            "size": 12,
+            "targets": [
+              {
+                "state": {
+                  "Name": "tfs:sand_coal"
+                },
+                "target": {
+                  "predicate_type": "minecraft:tag_match",
+                  "tag": "minecraft:sand"
+                }
+              },
+              {
+                "state": {
+                  "Name": "tfs:gravel_coal"
+                },
+                "target": {
+                  "predicate_type": "minecraft:tag_match",
+                  "tag": "tfs:gravel"
+                }
+              }
+            ]
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "minecraft:ore",
+          "config": {
+            "discard_chance_on_air_exposure": 1.0,
+            "size": 12,
+            "targets": [
+              {
+                "state": {
+                  "Name": "tfs:sand_cuprite"
+                },
+                "target": {
+                  "predicate_type": "minecraft:tag_match",
+                  "tag": "minecraft:sand"
+                }
+              },
+              {
+                "state": {
+                  "Name": "tfs:gravel_cuprite"
+                },
+                "target": {
+                  "predicate_type": "minecraft:tag_match",
+                  "tag": "tfs:gravel"
+                }
+              }
+            ]
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "minecraft:ore",
+          "config": {
+            "discard_chance_on_air_exposure": 1.0,
+            "size": 12,
+            "targets": [
+              {
+                "state": {
+                  "Name": "tfs:sand_limonite"
+                },
+                "target": {
+                  "predicate_type": "minecraft:tag_match",
+                  "tag": "minecraft:sand"
+                }
+              },
+              {
+                "state": {
+                  "Name": "tfs:gravel_limonite"
+                },
+                "target": {
+                  "predicate_type": "minecraft:tag_match",
+                  "tag": "tfs:gravel"
+                }
+              }
+            ]
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "minecraft:ore",
+          "config": {
+            "discard_chance_on_air_exposure": 1.0,
+            "size": 12,
+            "targets": [
+              {
+                "state": {
+                  "Name": "tfs:sand_tin"
+                },
+                "target": {
+                  "predicate_type": "minecraft:tag_match",
+                  "tag": "minecraft:sand"
+                }
+              },
+              {
+                "state": {
+                  "Name": "tfs:gravel_tin"
+                },
+                "target": {
+                  "predicate_type": "minecraft:tag_match",
+                  "tag": "tfs:gravel"
+                }
+              }
+            ]
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "minecraft:ore",
+          "config": {
+            "discard_chance_on_air_exposure": 1.0,
+            "size": 12,
+            "targets": [
+              {
+                "state": {
+                  "Name": "tfs:sand_zinc"
+                },
+                "target": {
+                  "predicate_type": "minecraft:tag_match",
+                  "tag": "minecraft:sand"
+                }
+              },
+              {
+                "state": {
+                  "Name": "tfs:gravel_zinc"
+                },
+                "target": {
+                  "predicate_type": "minecraft:tag_match",
+                  "tag": "tfs:gravel"
+                }
+              }
+            ]
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "minecraft:ore",
+          "config": {
+            "discard_chance_on_air_exposure": 1.0,
+            "size": 12,
+            "targets": [
+              {
+                "state": {
+                  "Name": "tfs:sand_gold"
+                },
+                "target": {
+                  "predicate_type": "minecraft:tag_match",
+                  "tag": "minecraft:sand"
+                }
+              },
+              {
+                "state": {
+                  "Name": "tfs:gravel_gold"
+                },
+                "target": {
+                  "predicate_type": "minecraft:tag_match",
+                  "tag": "tfs:gravel"
+                }
+              }
+            ]
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "minecraft:ore",
+          "config": {
+            "discard_chance_on_air_exposure": 1.0,
+            "size": 12,
+            "targets": [
+              {
+                "state": {
+                  "Name": "tfs:sand_silver"
+                },
+                "target": {
+                  "predicate_type": "minecraft:tag_match",
+                  "tag": "minecraft:sand"
+                }
+              },
+              {
+                "state": {
+                  "Name": "tfs:gravel_silver"
+                },
+                "target": {
+                  "predicate_type": "minecraft:tag_match",
+                  "tag": "tfs:gravel"
+                }
+              }
+            ]
+          }
+        },
+        "placement": []
+      }
+    ]
+  }
+}

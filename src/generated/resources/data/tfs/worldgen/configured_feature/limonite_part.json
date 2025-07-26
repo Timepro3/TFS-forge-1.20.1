@@ -1,0 +1,84 @@
+{
+  "type": "minecraft:random_patch",
+  "config": {
+    "feature": {
+      "feature": {
+        "type": "minecraft:simple_block",
+        "config": {
+          "to_place": {
+            "type": "minecraft:weighted_state_provider",
+            "entries": [
+              {
+                "data": {
+                  "Name": "tfs:poor_limonite_object",
+                  "Properties": {
+                    "facing": "east",
+                    "hanging": "false",
+                    "waterlogged": "false"
+                  }
+                },
+                "weight": 1
+              },
+              {
+                "data": {
+                  "Name": "tfs:poor_limonite_object",
+                  "Properties": {
+                    "facing": "west",
+                    "hanging": "false",
+                    "waterlogged": "false"
+                  }
+                },
+                "weight": 1
+              },
+              {
+                "data": {
+                  "Name": "tfs:poor_limonite_object",
+                  "Properties": {
+                    "facing": "north",
+                    "hanging": "false",
+                    "waterlogged": "false"
+                  }
+                },
+                "weight": 1
+              },
+              {
+                "data": {
+                  "Name": "tfs:poor_limonite_object",
+                  "Properties": {
+                    "facing": "south",
+                    "hanging": "false",
+                    "waterlogged": "false"
+                  }
+                },
+                "weight": 1
+              }
+            ]
+          }
+        }
+      },
+      "placement": [
+        {
+          "type": "minecraft:block_predicate_filter",
+          "predicate": {
+            "type": "minecraft:all_of",
+            "predicates": [
+              {
+                "type": "minecraft:replaceable"
+              },
+              {
+                "type": "minecraft:matching_blocks",
+                "blocks": [
+                  "minecraft:air",
+                  "minecraft:water"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "tries": 30,
+    "xz_spread": 6,
+    "y_spread": 2
+  }
+}

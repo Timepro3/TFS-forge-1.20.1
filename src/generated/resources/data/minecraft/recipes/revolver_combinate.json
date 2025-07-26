@@ -1,0 +1,87 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "minecraft:stick"
+  },
+  "loops": 5,
+  "results": [
+    {
+      "chance": 120.0,
+      "item": "tfs:revolver"
+    },
+    {
+      "chance": 8.0,
+      "item": "tfs:steel_ingot"
+    },
+    {
+      "chance": 5.0,
+      "item": "create:zinc_ingot"
+    },
+    {
+      "chance": 3.0,
+      "item": "minecraft:stick"
+    },
+    {
+      "item": "forge:nuggets/iron"
+    }
+  ],
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "tfs:revolver_n"
+        },
+        [
+          {
+            "item": "tfs:steel_ingot"
+          }
+        ]
+      ],
+      "results": [
+        {
+          "item": "tfs:revolver_n"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "tfs:revolver_n"
+        },
+        [
+          {
+            "item": "tfs:zinc_sheet"
+          }
+        ]
+      ],
+      "results": [
+        {
+          "item": "tfs:revolver_n"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "tfs:revolver_n"
+        },
+        [
+          {
+            "tag": "forge:nuggets/iron"
+          }
+        ]
+      ],
+      "results": [
+        {
+          "item": "tfs:revolver_n"
+        }
+      ]
+    }
+  ],
+  "transitionalItem": {
+    "item": "tfs:revolver_n"
+  }
+}

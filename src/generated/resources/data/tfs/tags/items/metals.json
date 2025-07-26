@@ -1,0 +1,17 @@
+{
+  "values": [
+    "minecraft:coal",
+    "minecraft:charcoal",
+    "tfs:ingot_form",
+    "#tfs:metal_copper",
+    "#tfs:metal_iron",
+    "#tfs:metal_tin",
+    "#tfs:metal_zinc",
+    "#tfs:metal_gold",
+    "#tfs:metal_silver",
+    "#tfs:metal_bronze",
+    "#tfs:metal_brass",
+    "#tfs:metal_steel",
+    "#tfs:metal_cast_iron"
+  ]
+}

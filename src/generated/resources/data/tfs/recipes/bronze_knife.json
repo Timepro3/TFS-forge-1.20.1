@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "S": {
+      "item": "tfs:bronze_ingot"
+    },
+    "T": {
+      "tag": "forge:stick"
+    }
+  },
+  "pattern": [
+    " S",
+    "T "
+  ],
+  "result": {
+    "item": "tfs:bronze_knife"
+  },
+  "show_notification": true
+}

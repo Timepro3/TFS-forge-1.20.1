@@ -1,0 +1,26 @@
+{
+  "values": [
+    "tfs:sand_diamond",
+    "tfs:gravel_diamond",
+    "tfs:sand_emerald",
+    "tfs:gravel_emerald",
+    "tfs:sand_lazuli",
+    "tfs:gravel_lazuli",
+    "tfs:sand_cinnabar",
+    "tfs:gravel_cinnabar",
+    "tfs:sand_coal",
+    "tfs:gravel_coal",
+    "tfs:sand_cuprite",
+    "tfs:gravel_cuprite",
+    "tfs:sand_limonite",
+    "tfs:gravel_limonite",
+    "tfs:sand_tin",
+    "tfs:gravel_tin",
+    "tfs:sand_zinc",
+    "tfs:gravel_zinc",
+    "tfs:sand_gold",
+    "tfs:gravel_gold",
+    "tfs:sand_silver",
+    "tfs:gravel_silver"
+  ]
+}

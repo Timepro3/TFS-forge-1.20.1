@@ -1,0 +1,17 @@
+{
+  "values": [
+    "tfs:tin_block",
+    "tfs:silver_block",
+    "tfs:bronze_block",
+    "tfs:steel_block",
+    "tfs:cast_iron_block",
+    "tfs:unknown_metal_block",
+    "tfs:poor_stone_limonite_ore",
+    "tfs:poor_deep_limonite_ore",
+    "tfs:stone_limonite_ore",
+    "tfs:deep_limonite_ore",
+    "tfs:rich_limonite_ore",
+    "tfs:stone_lazuli_ore",
+    "tfs:deep_lazuli_ore"
+  ]
+}

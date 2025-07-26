@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "S": {
+      "item": "tfs:steel_chestplate"
+    },
+    "T": {
+      "item": "tfs:diamond_dust"
+    }
+  },
+  "pattern": [
+    "TTT",
+    "TST",
+    "TTT"
+  ],
+  "result": {
+    "item": "minecraft:diamond_chestplate"
+  },
+  "show_notification": true
+}

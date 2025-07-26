@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_raw_ingot_form": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "tfs:raw_ingot_form"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "tfs:ingot_form_from_smelting_raw_ingot_form"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_raw_ingot_form",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "tfs:ingot_form_from_smelting_raw_ingot_form"
+    ]
+  },
+  "sends_telemetry_event": false
+}

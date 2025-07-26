@@ -1,0 +1,56 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "tfs:bronze_sheet"
+  },
+  "loops": 1,
+  "results": [
+    {
+      "item": "tfs:sleeve"
+    }
+  ],
+  "sequence": [
+    {
+      "type": "create:pressing",
+      "ingredients": [
+        {
+          "item": "tfs:sleeve_n"
+        }
+      ],
+      "results": [
+        {
+          "item": "tfs:sleeve_n"
+        }
+      ]
+    },
+    {
+      "type": "create:pressing",
+      "ingredients": [
+        {
+          "item": "tfs:sleeve_n"
+        }
+      ],
+      "results": [
+        {
+          "item": "tfs:sleeve_n"
+        }
+      ]
+    },
+    {
+      "type": "create:pressing",
+      "ingredients": [
+        {
+          "item": "tfs:sleeve_n"
+        }
+      ],
+      "results": [
+        {
+          "item": "tfs:sleeve_n"
+        }
+      ]
+    }
+  ],
+  "transitionalItem": {
+    "item": "tfs:sleeve_n"
+  }
+}

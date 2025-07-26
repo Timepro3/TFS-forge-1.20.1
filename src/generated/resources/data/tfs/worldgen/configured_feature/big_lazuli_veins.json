@@ -1,0 +1,117 @@
+{
+  "type": "minecraft:simple_random_selector",
+  "config": {
+    "features": [
+      {
+        "feature": {
+          "type": "minecraft:random_patch",
+          "config": {
+            "feature": {
+              "feature": {
+                "type": "minecraft:simple_block",
+                "config": {
+                  "to_place": {
+                    "type": "minecraft:weighted_state_provider",
+                    "entries": [
+                      {
+                        "data": {
+                          "Name": "tfs:stone_lazuli_ore"
+                        },
+                        "weight": 10
+                      },
+                      {
+                        "data": {
+                          "Name": "tfs:stone_lazuli_ore"
+                        },
+                        "weight": 5
+                      },
+                      {
+                        "data": {
+                          "Name": "tfs:stone_lazuli_ore"
+                        },
+                        "weight": 1
+                      }
+                    ]
+                  }
+                }
+              },
+              "placement": [
+                {
+                  "type": "minecraft:block_predicate_filter",
+                  "predicate": {
+                    "type": "minecraft:all_of",
+                    "predicates": [
+                      {
+                        "type": "minecraft:matching_block_tag",
+                        "tag": "minecraft:stone_ore_replaceables"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "tries": 2500,
+            "xz_spread": 25,
+            "y_spread": 15
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "minecraft:random_patch",
+          "config": {
+            "feature": {
+              "feature": {
+                "type": "minecraft:simple_block",
+                "config": {
+                  "to_place": {
+                    "type": "minecraft:weighted_state_provider",
+                    "entries": [
+                      {
+                        "data": {
+                          "Name": "tfs:deep_lazuli_ore"
+                        },
+                        "weight": 10
+                      },
+                      {
+                        "data": {
+                          "Name": "tfs:deep_lazuli_ore"
+                        },
+                        "weight": 5
+                      },
+                      {
+                        "data": {
+                          "Name": "tfs:deep_lazuli_ore"
+                        },
+                        "weight": 1
+                      }
+                    ]
+                  }
+                }
+              },
+              "placement": [
+                {
+                  "type": "minecraft:block_predicate_filter",
+                  "predicate": {
+                    "type": "minecraft:all_of",
+                    "predicates": [
+                      {
+                        "type": "minecraft:matching_block_tag",
+                        "tag": "minecraft:deepslate_ore_replaceables"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "tries": 2500,
+            "xz_spread": 25,
+            "y_spread": 15
+          }
+        },
+        "placement": []
+      }
+    ]
+  }
+}

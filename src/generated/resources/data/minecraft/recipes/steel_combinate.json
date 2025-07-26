@@ -1,0 +1,66 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "tfs:sleeve"
+  },
+  "loops": 1,
+  "results": [
+    {
+      "item": "tfs:cartridge_steel"
+    }
+  ],
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "tfs:cartridge_steel_n"
+        },
+        [
+          {
+            "item": "tfs:steel_nugget"
+          }
+        ]
+      ],
+      "results": [
+        {
+          "item": "tfs:cartridge_steel_n"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "tfs:cartridge_steel_n"
+        },
+        [
+          {
+            "item": "minecraft:gunpowder"
+          }
+        ]
+      ],
+      "results": [
+        {
+          "item": "tfs:cartridge_steel_n"
+        }
+      ]
+    },
+    {
+      "type": "create:pressing",
+      "ingredients": [
+        {
+          "item": "tfs:cartridge_steel_n"
+        }
+      ],
+      "results": [
+        {
+          "item": "tfs:cartridge_steel_n"
+        }
+      ]
+    }
+  ],
+  "transitionalItem": {
+    "item": "tfs:cartridge_steel_n"
+  }
+}

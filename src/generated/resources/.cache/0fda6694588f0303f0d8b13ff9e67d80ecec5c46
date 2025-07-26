@@ -1,0 +1,23 @@
+// 1.20.1	2025-04-26T14:12:53.9547516	Tags for minecraft:item mod id tfs
+1ad920aa65e2706dabb6265f3b12546ab33e8936 data/forge/tags/items/stick.json
+1cc66f1d3d3d253be8f1dc850d3b15071fff7c2a data/forge/tags/items/string.json
+9700d363f4eec8ccee0321d970e59643a4527f2b data/minecraft/tags/items/trimmable_armor.json
+33fc450b84417eaeaecb82bd4c7908e15186efa0 data/tfs/tags/items/bullet.json
+cc2d3b04440f3d7edcc5af58ac080b343a858def data/tfs/tags/items/forms.json
+6fddab157ef3dddc15eb309902bf7ef179fc0a0c data/tfs/tags/items/knife.json
+70adf5cba8c4aa7f37ec45c018bf3807e88c8759 data/tfs/tags/items/metals.json
+578aac419ec43295edae8904f7e92a4941cac8ce data/tfs/tags/items/metal_100.json
+b459a025cd61837f81b7cd75b49d07afa32d4ad7 data/tfs/tags/items/metal_15.json
+a65cf21a3bc8293519a6d787cc348f8442f3812b data/tfs/tags/items/metal_20.json
+98cdd66b7e114aaf7f04d67b711bb307cfa507da data/tfs/tags/items/metal_35.json
+5a7bffd1d604bc6ea8b35714ef02b95773240f90 data/tfs/tags/items/metal_brass.json
+5652fe476ac19912725b8ebc8e8aef6f86701a16 data/tfs/tags/items/metal_bronze.json
+6b33bc85d56989e8887bb56a5ee4971d6a219c38 data/tfs/tags/items/metal_cast_iron.json
+fad3674cf5b6b5e8bf89e8837780d810865c49fa data/tfs/tags/items/metal_copper.json
+e874c6300b0f9b6a86515aba8691733fc5509ed2 data/tfs/tags/items/metal_gold.json
+f1b1981aa9afe6123bf8e2948eb76af0949b9d28 data/tfs/tags/items/metal_iron.json
+5982496bd66131d5dbfcab79760df2d8f567c811 data/tfs/tags/items/metal_silver.json
+acd46ae8a9fb2be46477cd44ea79fdd537100148 data/tfs/tags/items/metal_steel.json
+912bb52abc40a43a7fd43ad5c18f603f5de968d7 data/tfs/tags/items/metal_tin.json
+6f4c23338a3ad6d42b4df3d365604261a82392dc data/tfs/tags/items/metal_zinc.json
+d56ed4738c725aae546f3a29c16aab4d40c34635 data/tfs/tags/items/silver.json

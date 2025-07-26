@@ -1,0 +1,14 @@
+{
+  "values": [
+    "minecraft:copper_ingot",
+    "minecraft:iron_ingot",
+    "tfs:tin_ingot",
+    "create:zinc_ingot",
+    "minecraft:gold_ingot",
+    "tfs:silver_ingot",
+    "tfs:bronze_ingot",
+    "create:brass_ingot",
+    "tfs:steel_ingot",
+    "tfs:cast_iron_ingot"
+  ]
+}

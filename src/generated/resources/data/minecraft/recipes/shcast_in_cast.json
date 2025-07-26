@@ -1,0 +1,13 @@
+{
+  "type": "create:pressing",
+  "ingredients": [
+    {
+      "item": "tfs:cast_iron_ingot"
+    }
+  ],
+  "results": [
+    {
+      "item": "tfs:cast_iron_sheet"
+    }
+  ]
+}

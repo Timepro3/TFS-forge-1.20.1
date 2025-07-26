@@ -1,0 +1,15 @@
+{
+  "values": [
+    "#minecraft:mineable/hoe",
+    "#minecraft:flowers",
+    "minecraft:grass",
+    "minecraft:tall_grass",
+    "minecraft:fern",
+    "minecraft:large_fern",
+    "minecraft:seagrass",
+    "minecraft:tall_seagrass",
+    "minecraft:kelp",
+    "minecraft:vine",
+    "minecraft:glow_lichen"
+  ]
+}

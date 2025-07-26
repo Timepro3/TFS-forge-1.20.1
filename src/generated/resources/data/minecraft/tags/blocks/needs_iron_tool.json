@@ -1,0 +1,25 @@
+{
+  "values": [
+    "tfs:stone_diamond_ore",
+    "tfs:deep_diamond_ore",
+    "tfs:stone_emerald_ore",
+    "tfs:deep_emerald_ore",
+    "tfs:stone_cinnabar_ore",
+    "tfs:deep_cinnabar_ore",
+    "tfs:poor_stone_zinc_ore",
+    "tfs:poor_deep_zinc_ore",
+    "tfs:stone_zinc_ore",
+    "tfs:deep_zinc_ore",
+    "tfs:rich_zinc_ore",
+    "tfs:poor_stone_silver_ore",
+    "tfs:poor_deep_silver_ore",
+    "tfs:stone_silver_ore",
+    "tfs:deep_silver_ore",
+    "tfs:rich_silver_ore",
+    "tfs:poor_stone_gold_ore",
+    "tfs:poor_deep_gold_ore",
+    "tfs:stone_gold_ore",
+    "tfs:deep_gold_ore",
+    "tfs:rich_gold_ore"
+  ]
+}

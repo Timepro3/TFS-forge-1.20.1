@@ -1,0 +1,14 @@
+{
+  "type": "tfs:removing_from_mold",
+  "mold_type": "ingot",
+  "ingredients": [
+    {
+      "fluid": "create:honey",
+      "amount": 100
+    }
+  ],
+  "output": {
+    "item": "minecraft:stone",
+    "count": 1
+  }
+}

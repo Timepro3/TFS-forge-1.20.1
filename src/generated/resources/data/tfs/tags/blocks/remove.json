@@ -1,0 +1,24 @@
+{
+  "values": [
+    "#minecraft:mineable/hoe",
+    "#minecraft:mineable/axe",
+    "#minecraft:mineable/shovel",
+    "minecraft:stone",
+    "minecraft:deepslate",
+    "minecraft:water",
+    "minecraft:water_cauldron",
+    "minecraft:lava",
+    "minecraft:lava_cauldron",
+    "minecraft:andesite",
+    "minecraft:diorite",
+    "minecraft:granite",
+    "minecraft:tuff",
+    "create:limestone",
+    "create:scoria",
+    "create:crimsite",
+    "minecraft:smooth_basalt",
+    "minecraft:calcite",
+    "minecraft:amethyst_block",
+    "minecraft:budding_amethyst"
+  ]
+}

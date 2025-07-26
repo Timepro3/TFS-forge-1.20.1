@@ -1,0 +1,12 @@
+{
+  "type": "tfs:foundry",
+  "ingredients": [
+    {
+      "item": "minecraft:ice"
+    }
+  ],
+  "output": {
+    "fluid": "minecraft:water",
+    "amount": 1000
+  }
+}

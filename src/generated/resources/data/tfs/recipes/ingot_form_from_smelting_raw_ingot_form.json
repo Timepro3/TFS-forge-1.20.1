@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.25,
+  "group": "ingot_form",
+  "ingredient": {
+    "item": "tfs:raw_ingot_form"
+  },
+  "result": "tfs:ingot_form"
+}

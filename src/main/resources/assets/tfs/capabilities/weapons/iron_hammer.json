@@ -1,0 +1,23 @@
+{
+  "collider": {
+    "number": 3,
+    "size": [
+      0.4,
+      0.4,
+      0.7
+    ],
+    "center": [
+      0.0,
+      0.0,
+      -0.35
+    ]
+  },
+  "attributes": {
+    "two_hand": {
+      "impact": 6.0,
+      "max_strikes": 6,
+      "armor_negation": 50.0
+    }
+  },
+  "type": "epicfight:greatsword"
+}

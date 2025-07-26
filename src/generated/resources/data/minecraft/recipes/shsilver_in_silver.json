@@ -1,0 +1,13 @@
+{
+  "type": "create:pressing",
+  "ingredients": [
+    {
+      "item": "tfs:silver_ingot"
+    }
+  ],
+  "results": [
+    {
+      "item": "tfs:silver_sheet"
+    }
+  ]
+}

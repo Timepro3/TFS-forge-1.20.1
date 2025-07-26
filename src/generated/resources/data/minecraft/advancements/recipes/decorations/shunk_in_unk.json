@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:shunk_in_unk"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_unk": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "tfs:unknown_metal_ingot"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_unk",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:shunk_in_unk"
+    ]
+  },
+  "sends_telemetry_event": false
+}

@@ -1,0 +1,19 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "tfs:item/ingot_form"
+  },
+  "overrides": [
+    {"predicate": {"custom_model_data": 1}, "model": "tfs:item/unknown_metal_ingot_form"},
+    {"predicate": {"custom_model_data": 2}, "model": "tfs:item/copper_ingot_form"},
+    {"predicate": {"custom_model_data": 3}, "model": "tfs:item/iron_ingot_form"},
+    {"predicate": {"custom_model_data": 4}, "model": "tfs:item/tin_ingot_form"},
+    {"predicate": {"custom_model_data": 5}, "model": "tfs:item/zinc_ingot_form"},
+    {"predicate": {"custom_model_data": 6}, "model": "tfs:item/gold_ingot_form"},
+    {"predicate": {"custom_model_data": 7}, "model": "tfs:item/silver_ingot_form"},
+    {"predicate": {"custom_model_data": 8}, "model": "tfs:item/bronze_ingot_form"},
+    {"predicate": {"custom_model_data": 9}, "model": "tfs:item/brass_ingot_form"},
+    {"predicate": {"custom_model_data": 10}, "model": "tfs:item/steel_ingot_form"},
+    {"predicate": {"custom_model_data": 11}, "model": "tfs:item/cast_iron_ingot_form"}
+  ]
+}

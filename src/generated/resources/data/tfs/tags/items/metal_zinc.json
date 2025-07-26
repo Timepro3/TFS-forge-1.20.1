@@ -1,0 +1,8 @@
+{
+  "values": [
+    "tfs:poor_zinc",
+    "tfs:zinc",
+    "tfs:rich_zinc",
+    "create:zinc_ingot"
+  ]
+}

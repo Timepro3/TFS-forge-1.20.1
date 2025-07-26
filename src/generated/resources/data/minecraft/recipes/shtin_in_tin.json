@@ -1,0 +1,13 @@
+{
+  "type": "create:pressing",
+  "ingredients": [
+    {
+      "item": "tfs:tin_ingot"
+    }
+  ],
+  "results": [
+    {
+      "item": "tfs:tin_sheet"
+    }
+  ]
+}

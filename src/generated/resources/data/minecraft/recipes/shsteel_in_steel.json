@@ -1,0 +1,13 @@
+{
+  "type": "create:pressing",
+  "ingredients": [
+    {
+      "item": "tfs:steel_ingot"
+    }
+  ],
+  "results": [
+    {
+      "item": "tfs:steel_sheet"
+    }
+  ]
+}

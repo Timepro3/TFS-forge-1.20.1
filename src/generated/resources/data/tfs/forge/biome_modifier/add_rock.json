@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#tfs:ower",
+  "features": "tfs:rock_placed",
+  "step": "vegetal_decoration"
+}

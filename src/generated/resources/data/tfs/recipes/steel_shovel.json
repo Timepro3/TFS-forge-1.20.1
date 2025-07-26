@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "S": {
+      "item": "tfs:steel_ingot"
+    },
+    "T": {
+      "tag": "forge:stick"
+    }
+  },
+  "pattern": [
+    "S",
+    "T",
+    "T"
+  ],
+  "result": {
+    "item": "tfs:steel_shovel"
+  },
+  "show_notification": true
+}

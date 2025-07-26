@@ -1,0 +1,127 @@
+{
+  "type": "minecraft:simple_random_selector",
+  "config": {
+    "features": [
+      {
+        "feature": {
+          "type": "minecraft:ore",
+          "config": {
+            "discard_chance_on_air_exposure": 1.0,
+            "size": 12,
+            "targets": [
+              {
+                "state": {
+                  "Name": "tfs:sand_diamond"
+                },
+                "target": {
+                  "predicate_type": "minecraft:tag_match",
+                  "tag": "minecraft:sand"
+                }
+              },
+              {
+                "state": {
+                  "Name": "tfs:gravel_diamond"
+                },
+                "target": {
+                  "predicate_type": "minecraft:tag_match",
+                  "tag": "tfs:gravel"
+                }
+              }
+            ]
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "minecraft:ore",
+          "config": {
+            "discard_chance_on_air_exposure": 1.0,
+            "size": 12,
+            "targets": [
+              {
+                "state": {
+                  "Name": "tfs:sand_emerald"
+                },
+                "target": {
+                  "predicate_type": "minecraft:tag_match",
+                  "tag": "minecraft:sand"
+                }
+              },
+              {
+                "state": {
+                  "Name": "tfs:gravel_emerald"
+                },
+                "target": {
+                  "predicate_type": "minecraft:tag_match",
+                  "tag": "tfs:gravel"
+                }
+              }
+            ]
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "minecraft:ore",
+          "config": {
+            "discard_chance_on_air_exposure": 1.0,
+            "size": 12,
+            "targets": [
+              {
+                "state": {
+                  "Name": "tfs:sand_lazuli"
+                },
+                "target": {
+                  "predicate_type": "minecraft:tag_match",
+                  "tag": "minecraft:sand"
+                }
+              },
+              {
+                "state": {
+                  "Name": "tfs:gravel_lazuli"
+                },
+                "target": {
+                  "predicate_type": "minecraft:tag_match",
+                  "tag": "tfs:gravel"
+                }
+              }
+            ]
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "minecraft:ore",
+          "config": {
+            "discard_chance_on_air_exposure": 1.0,
+            "size": 12,
+            "targets": [
+              {
+                "state": {
+                  "Name": "tfs:sand_cinnabar"
+                },
+                "target": {
+                  "predicate_type": "minecraft:tag_match",
+                  "tag": "minecraft:sand"
+                }
+              },
+              {
+                "state": {
+                  "Name": "tfs:gravel_cinnabar"
+                },
+                "target": {
+                  "predicate_type": "minecraft:tag_match",
+                  "tag": "tfs:gravel"
+                }
+              }
+            ]
+          }
+        },
+        "placement": []
+      }
+    ]
+  }
+}

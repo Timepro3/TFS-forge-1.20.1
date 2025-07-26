@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "S": {
+      "item": "tfs:gold_knife"
+    },
+    "T": {
+      "tag": "forge:stick"
+    },
+    "U": {
+      "tag": "forge:string"
+    }
+  },
+  "pattern": [
+    "US",
+    "T "
+  ],
+  "result": {
+    "item": "tfs:gold_spear"
+  },
+  "show_notification": true
+}

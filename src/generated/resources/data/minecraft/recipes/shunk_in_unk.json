@@ -1,0 +1,13 @@
+{
+  "type": "create:pressing",
+  "ingredients": [
+    {
+      "item": "tfs:unknown_metal_ingot"
+    }
+  ],
+  "results": [
+    {
+      "item": "tfs:unknown_metal_sheet"
+    }
+  ]
+}
