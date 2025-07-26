@@ -16,7 +16,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class FoundryMenu extends AbstractContainerMenu {
     public FoundryBlockEntity blockEntity;
-    private static Inventory inventory;
+    private static Inventory inventoryy;
     private static int containerId;
     private static FriendlyByteBuf extraDat;
     private final Level level;
@@ -31,7 +31,7 @@ public class FoundryMenu extends AbstractContainerMenu {
         super(TFSMenuTypes.FOUNDRY_MENU.get(), pContainerId);
         checkContainerSize(inv, 2);
         containerId = pContainerId;
-        inventory = inv;
+        inventoryy = inv;
         blockEntity = entity;
         this.level = inv.player.level();
         this.data = data;
