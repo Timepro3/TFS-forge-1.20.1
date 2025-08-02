@@ -261,5 +261,11 @@
   "effect.tfs.black_plague": "Black plague",
   "effect.tfs.pink_plague": "Pink plague",
 
+  "item.tfs.bucket_of_iron": "Bucket of iron",
+
+  "fluid_type.tfs.iron_type": "Iron",
+
+  "gui.tfs.mb": "mB",
+
   "creativetab.tfs_tab": "TFS"
 }

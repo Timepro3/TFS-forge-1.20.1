@@ -10,9 +10,10 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 
+
 public class TFSCreativeModTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =
-          DeferredRegister.create(Registries.CREATIVE_MODE_TAB, tfs.MOD_ID);
+            DeferredRegister.create(Registries.CREATIVE_MODE_TAB, tfs.MOD_ID);
 
     public static RegistryObject<CreativeModeTab> TFS_TAB = CREATIVE_MODE_TABS.register("tfs_tab",
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(TFSItems.BLUEBERRY.get()))
@@ -147,17 +148,8 @@ public class TFSCreativeModTabs {
 
                         pOutput.accept(TFSItems.RAW_INGOT_FORM.get());
                         pOutput.accept(TFSItems.INGOT_FORM.get());
-                        pOutput.accept(TFSItems.COPPER_INGOT_FORM.get());
-                        pOutput.accept(TFSItems.IRON_INGOT_FORM.get());
-                        pOutput.accept(TFSItems.TIN_INGOT_FORM.get());
-                        pOutput.accept(TFSItems.ZINC_INGOT_FORM.get());
-                        pOutput.accept(TFSItems.GOLD_INGOT_FORM.get());
-                        pOutput.accept(TFSItems.SILVER_INGOT_FORM.get());
-                        pOutput.accept(TFSItems.BRONZE_INGOT_FORM.get());
-                        pOutput.accept(TFSItems.BRASS_INGOT_FORM.get());
-                        pOutput.accept(TFSItems.STEEL_INGOT_FORM.get());
-                        pOutput.accept(TFSItems.CAST_IRON_INGOT_FORM.get());
-                        pOutput.accept(TFSItems.UNKNOWN_METAL_INGOT_FORM.get());
+
+                        pOutput.accept(TFSItems.BUCKET_OF_IRON.get());
 
                         pOutput.accept(TFSItems.RAW_DIAMOND.get());
                         pOutput.accept(TFSItems.RAW_EMERALD.get());

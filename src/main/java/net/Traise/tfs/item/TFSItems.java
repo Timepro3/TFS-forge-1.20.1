@@ -3,15 +3,20 @@ package net.Traise.tfs.item;
 import com.simibubi.create.AllFluids;
 import net.Traise.tfs.block.TFSBlocks;
 import net.Traise.tfs.entity.ModEntities;
+import net.Traise.tfs.fluid.TFSFluids;
 import net.Traise.tfs.item.custom.*;
 import net.Traise.tfs.tfs;
 import net.Traise.tfs.util.MoldType;
 import net.minecraft.world.item.*;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import org.apache.logging.log4j.core.jmx.Server;
+
+import static net.minecraft.world.item.Items.BUCKET;
 
 public class TFSItems {
     public static final DeferredRegister<Item> ITEMS =
@@ -21,6 +26,10 @@ public class TFSItems {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> OLD_TIN = ITEMS.register( "old_tin",
             () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> BUCKET_OF_IRON = ITEMS.register("bucket_of_iron",
+            () -> new BucketItem(TFSFluids.SOURCE_IRON,
+                    new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
 
     public static final RegistryObject<Item> ROCK = ITEMS.register( "rock",
             () -> new TFSItemNameBlockItem(1, TFSBlocks.ROCK_OBJECT.get(), new Item.Properties()));
@@ -91,8 +100,10 @@ public class TFSItems {
 
     public static final RegistryObject<Item> RAW_INGOT_FORM = ITEMS.register( "raw_ingot_form",
             () -> new TFSItemTexts(-1, new Item.Properties()));
+
     public static final RegistryObject<Item> INGOT_FORM = ITEMS.register( "ingot_form",
             () -> new TFSFormItem(-1, MoldType.INGOT, new Item.Properties()));
+
     public static final RegistryObject<Item> COPPER_INGOT_FORM = ITEMS.register( "copper_ingot_form",
             () -> new TFSOldFormItem(35, new Item.Properties()));
     public static final RegistryObject<Item> IRON_INGOT_FORM = ITEMS.register( "iron_ingot_form",

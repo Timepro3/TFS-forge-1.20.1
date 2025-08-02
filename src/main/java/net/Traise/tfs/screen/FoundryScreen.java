@@ -13,6 +13,8 @@ public class FoundryScreen extends AbstractContainerScreen<FoundryMenu> {
     private static final ResourceLocation TEXTURE =
             new ResourceLocation(tfs.MOD_ID, "textures/gui/foundry_gui.png");
 
+    private static final Component mb = Component.translatable("gui.tfs.mb");
+
     public FoundryScreen(FoundryMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
         super(pMenu, pPlayerInventory, pTitle);
     }
@@ -38,15 +40,25 @@ public class FoundryScreen extends AbstractContainerScreen<FoundryMenu> {
     }
 
     private void renderProgressArrow(GuiGraphics guiGraphics, int x, int y) {
-        guiGraphics.blit(TEXTURE, x + 92, y + 103 - menu.fullness(), 176, 0, 40,  menu.fullness());
+        for (int i = 0; i < 3; i++) {
+            guiGraphics.blit(TEXTURE, x + 30, y + 77 - menu.progress(i) + (i * 18), 216, 16 - menu.progress(i), 3,  menu.progress(i));
+        }
+
+        if (menu.burned()) {
+            guiGraphics.blit(TEXTURE, x + 161, y + 60, 219, 0, 7, 7);
+        }
+
+        guiGraphics.blit(TEXTURE, x + 70, y + 103 - menu.fullness(), 176, 0, 40,  menu.fullness());
     }
 
     @Override
     protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
-        guiGraphics.drawString(this.font, Component.literal(menu.getAlloyName() + ":" + menu.getAlloyCount() + "мб"), 3, 4, -12829636, false);
+        guiGraphics.drawString(this.font, Component.literal( "Количество: " + menu.getAlloyCount() + "/10000" + mb.getString()), 5, -13, -12829636, false);
+        guiGraphics.drawString(this.font, Component.literal("Содержит: " + menu.getAlloyName()), 5, -5, -12829636, false);
+
         for (int i = 0; i < menu.getSize(); i++) {
             if (menu.hawFluid(i)) {
-                guiGraphics.drawString(this.font, Component.literal(menu.getFluidStackInSlot(i) + ":" + menu.getFluidAmount(i) + "мб"), 3, 12 + (8 * i), -12829636, false);
+                guiGraphics.drawString(this.font, Component.literal(menu.getFluidStackInSlot(i) + ":" + menu.getFluidAmount(i) + mb.getString() + " (§5" + menu.getPercent(i) + "%§0)"), 5, 3 + (8 * i), -12829636, false);
             }
         }
     }

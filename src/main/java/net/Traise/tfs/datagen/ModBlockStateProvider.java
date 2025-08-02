@@ -26,7 +26,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         blockWithItem(TFSBlocks.POOR_STONE_CUPRITE_ORE);
         blockWithItem(TFSBlocks.STONE_CUPRITE_ORE);
-        blockWithItem(TFSBlocks.RICH_CUPRITE_ORE); //замени
+        blockWithItem(TFSBlocks.RICH_CUPRITE_ORE);
         blockWithItem(TFSBlocks.POOR_DEEP_CUPRITE_ORE);
         blockWithItem(TFSBlocks.DEEP_CUPRITE_ORE);
         blockWithItem(TFSBlocks.POOR_STONE_LIMONITE_ORE);

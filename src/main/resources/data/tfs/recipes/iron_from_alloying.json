@@ -1,0 +1,17 @@
+{
+  "type": "tfs:alloying",
+  "ingredients": [
+    {
+      "fluid": "minecraft:water",
+      "amount": 5000
+    },
+    {
+      "fluid": "minecraft:lava",
+      "amount": 5000
+    }
+  ],
+  "output": {
+    "fluid": "tfs:iron",
+    "amount": 1
+  }
+}

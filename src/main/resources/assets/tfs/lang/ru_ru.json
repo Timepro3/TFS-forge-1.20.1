@@ -263,5 +263,9 @@
   "effect.tfs.black_plague": "Чёрная зараза",
   "effect.tfs.pink_plague": "Розовая зараза",
 
+  "item.tfs.iron_water_bucket": "Ведро с расплавленным железом",
+
+  "gui.tfs.mb": "мб",
+
   "creativetab.tfs_tab": "TFS"
 }

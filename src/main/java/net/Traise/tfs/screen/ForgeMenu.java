@@ -36,9 +36,7 @@ public class ForgeMenu extends AbstractContainerMenu {
             this.addSlot(new SlotItemHandler(iItemHandler, 0, 79, 11));
             this.addSlot(new SlotItemHandler(iItemHandler, 1, 97, 11));
             this.addSlot(new SlotItemHandler(iItemHandler, 2, 115, 11));
-            this.addSlot(new SlotItemHandler(iItemHandler, 3, 149, 53) {
-            });
-
+            this.addSlot(new SlotItemHandler(iItemHandler, 3, 149, 53));
         });
 
         addDataSlots(data);
@@ -127,7 +125,7 @@ public class ForgeMenu extends AbstractContainerMenu {
     private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
 
     // THIS YOU HAVE TO DEFINE!
-    private static final int TE_INVENTORY_SLOT_COUNT = 3;  // must be the number of slots you have!
+    private static final int TE_INVENTORY_SLOT_COUNT = 5;  // must be the number of slots you have!
     @Override
     public @NotNull ItemStack quickMoveStack(@NotNull Player playerIn, int pIndex) {
         Slot sourceSlot = slots.get(pIndex);

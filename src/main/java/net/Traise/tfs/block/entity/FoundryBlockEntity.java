@@ -6,14 +6,13 @@ import net.Traise.tfs.recipe.FoundryRecipe;
 import net.Traise.tfs.screen.FoundryMenu;
 import net.Traise.tfs.util.AddMth;
 import net.Traise.tfs.util.FluidContainer;
+import net.Traise.tfs.util.FluidSlot;
 import net.Traise.tfs.util.FluidStorageHandler;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
@@ -21,6 +20,9 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
@@ -34,6 +36,8 @@ import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 public class FoundryBlockEntity extends BlockEntity implements MenuProvider {
@@ -42,6 +46,10 @@ public class FoundryBlockEntity extends BlockEntity implements MenuProvider {
     private static final int ItemSize = 4;
     private static final int OutPutSlot = 3;
     private int Id;
+    private int[] SlotProgress = new int[ItemSize];
+    private int MaxProgress = 100;
+    private List<ItemStack> ingredient = new ArrayList<>(ItemSize);
+
     private final ItemStackHandler itemHandler = new ItemStackHandler(ItemSize) { @Override public int getSlotLimit(int slot) {return 1;} };
     private FluidStorageHandler fluidHandler = new FluidStorageHandler(Size, Capacity);
 
@@ -74,18 +82,27 @@ public class FoundryBlockEntity extends BlockEntity implements MenuProvider {
                 return 2;
             }
         };
+
+        for (int i = 0; i < ItemSize; i++) {
+            ingredient.add(ItemStack.EMPTY);
+        }
     }
 //level.setBlock(BlockPos.containing(pos.getX(), pos.getY() + 1, pos.getZ()), Blocks.DIAMOND_BLOCK.defaultBlockState(), 3);
 
+    private boolean form = false;
     public void tick(ServerLevel level, BlockPos pos, BlockState state) {
         FoundryMenu.tickUpdate(this, this.Id);
         addAndRemoveFluidSlots();
         сompact();
+        hasBurned(level, pos);
         setChanged(level, pos, state);
+
         for (int i = 0; i <= ItemSize - 2; i++) {
             if (hasMelting(i)) {
-                melting(i);
-            }
+                if (progressFinished(i)) {
+                    melting(i);
+                }
+            } else SlotProgress[i] = 0;
         }
 
         if (hasFusion()) {
@@ -130,6 +147,10 @@ public class FoundryBlockEntity extends BlockEntity implements MenuProvider {
         Optional<FoundryRecipe> recipe = getCurrentRecipe(index);
         int count;
         if (this.itemHandler.getStackInSlot(index).getItem() instanceof TFSFormItem formItem) {
+            SlotProgress[index] = 0;
+            ingredient.set(index, this.itemHandler.getStackInSlot(index));
+            form = true;
+
             formItem.myTick(this.itemHandler.getStackInSlot(index), this.level, true);
             if (!(formItem.sumAllFluidSlot() > 0)) {
                 return false;
@@ -141,9 +162,28 @@ public class FoundryBlockEntity extends BlockEntity implements MenuProvider {
                 return false;
             }
             count = recipe.get().getResultFluid(getLevel().registryAccess()).getAmount();
+
+            form = false;
+
+            if (!recipe.get().getIngredient().get(0).test(ingredient.get(index))) {
+                SlotProgress[index] = 0;
+                ingredient.set(index, this.itemHandler.getStackInSlot(index));
+            }
         }
 
-        return canInsertAmountIntoOutputSlot(count);
+        return canInsertAmountIntoOutputSlot(count) && burned;
+    }
+
+    private boolean progressFinished(int Index) {
+        if (!form) {
+            if (SlotProgress[Index] >= MaxProgress) {
+                SlotProgress[Index] = 0;
+                return true;
+            } else {
+                SlotProgress[Index] += 1;
+                return false;
+            }
+        } else return true;
     }
 
     private void fusion() {
@@ -210,6 +250,13 @@ public class FoundryBlockEntity extends BlockEntity implements MenuProvider {
         return name;
     }
 
+    boolean burned = false;
+    private void hasBurned(Level pLevel, BlockPos pPose) {
+        if (pLevel.getBlockState(BlockPos.containing(pPose.getX(), pPose.getY() - 1, pPose.getZ())).getBlock() == Blocks.CAMPFIRE) {
+            burned = true;
+        } else burned = false;
+    }
+
     private SimpleContainer getInputContainer() {
         SimpleContainer container = new SimpleContainer(3);
         for (int i = 0; i < Math.min(this.itemHandler.getSlots(), 3); i++) {
@@ -220,6 +267,10 @@ public class FoundryBlockEntity extends BlockEntity implements MenuProvider {
 
     private boolean canInsertAmountIntoOutputSlot(int count) {
         return sumAllFluidSlots() + count <= this.fluidHandler.getCapacity();
+    }
+
+    public boolean isBurned() {
+        return burned;
     }
 
     private int freeFluidSlot(Fluid fluid) {
@@ -299,7 +350,13 @@ public class FoundryBlockEntity extends BlockEntity implements MenuProvider {
         return !this.fluidHandler.getFluidInSlot(Index).isEmpty();
     }
 
+    public int getSlotProgress(int i) {
+        return SlotProgress[i];
+    }
 
+    public int getMaxProgress() {
+        return MaxProgress;
+    }
 
     @Override
     public void onLoad() {

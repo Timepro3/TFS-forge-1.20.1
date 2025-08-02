@@ -4,6 +4,7 @@ import net.Traise.tfs.entity.renderer.SilverBulletRenderer;
 import net.Traise.tfs.entity.renderer.SteelBulletRenderer;
 import net.Traise.tfs.entity.skins.alise.AliseRenderer;
 import net.Traise.tfs.entity.skins.tatar.TatarRenderer;
+import net.Traise.tfs.fluid.TFSFluidTypes;
 import net.Traise.tfs.fluid.TFSFluids;
 import net.Traise.tfs.item.TFSItems;
 import net.Traise.tfs.potion.ModMobEffect;
@@ -12,6 +13,8 @@ import net.Traise.tfs.screen.*;
 import net.Traise.tfs.worldgen.biome.ModTerrablender;
 import net.Traise.tfs.worldgen.biome.surface.ModSurfaceRules;
 import net.Traise.tfs.entity.renderer.*;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.simple.SimpleChannel;
 import com.mojang.logging.LogUtils;
@@ -60,7 +63,9 @@ public class tfs {
 
         TFSItems.register(modEventBus);
         TFSBlocks.register(modEventBus);
+
         TFSFluids.register(modEventBus);
+        TFSFluidTypes.register(modEventBus);
 
         TFSBlockEntity.register(modEventBus);
 

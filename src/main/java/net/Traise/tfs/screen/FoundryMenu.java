@@ -3,8 +3,6 @@ package net.Traise.tfs.screen;
 import net.Traise.tfs.block.TFSBlocks;
 import net.Traise.tfs.block.entity.FoundryBlockEntity;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.*;
@@ -40,10 +38,10 @@ public class FoundryMenu extends AbstractContainerMenu {
         addPlayerHotbar(inv);
 
         this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(iItemHandler -> {
-            this.addSlot(new SlotItemHandler(iItemHandler, 0, 12, 43));
-            this.addSlot(new SlotItemHandler(iItemHandler, 1, 34, 43));
-            this.addSlot(new SlotItemHandler(iItemHandler, 2, 56, 43));
-            this.addSlot(new SlotItemHandler(iItemHandler, 3, 152, 61));
+            this.addSlot(new SlotItemHandler(iItemHandler, 0, 34, 43));
+            this.addSlot(new SlotItemHandler(iItemHandler, 1, 34, 61));
+            this.addSlot(new SlotItemHandler(iItemHandler, 2, 34, 79));
+            this.addSlot(new SlotItemHandler(iItemHandler, 3, 130, 61));
 
         });
 
@@ -65,6 +63,12 @@ public class FoundryMenu extends AbstractContainerMenu {
     public int getFluidAmount(int Index) {
         return entity.getFluidAmount(Index);
     }
+    
+    public float getPercent(int Index) {
+        int T = (entity.getFluidAmount(Index) * 10000) / entity.sumAllFluidSlots();
+
+        return (float) T / 100;
+    }
 
     public boolean hawFluid(int Index) {
         return entity.hawFluid(Index);
@@ -80,6 +84,20 @@ public class FoundryMenu extends AbstractContainerMenu {
 
     public int getAlloyCount() {
         return entity.sumAllFluidSlots();
+    }
+
+    public boolean burned() {
+        return entity.isBurned();
+    }
+
+    public int progress(int i) {
+        int progress = entity.getSlotProgress(i);
+        int maxProgress = entity.getMaxProgress();
+        int progressArrowSize = 16; // This is the height in pixels of your arrow
+        int T = 0;
+        if (progress > 0 && progress < maxProgress) {T = 1;}
+
+        return maxProgress != 0 && progress != 0 ? (progress * progressArrowSize / maxProgress) + T : 0;
     }
 
     public int fullness() {

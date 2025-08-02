@@ -5,6 +5,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.simibubi.create.AllRecipeTypes;
 import net.Traise.tfs.tfs;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
