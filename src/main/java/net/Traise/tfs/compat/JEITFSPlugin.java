@@ -10,7 +10,9 @@ import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.Traise.tfs.block.TFSBlocks;
+import net.Traise.tfs.item.TFSItems;
 import net.Traise.tfs.recipe.FoundryRecipe;
+import net.Traise.tfs.recipe.RemovingFromMoldRecipe;
 import net.Traise.tfs.screen.FoundryScreen;
 import net.Traise.tfs.tfs;
 import net.minecraft.client.Minecraft;
@@ -31,7 +33,9 @@ public class JEITFSPlugin implements IModPlugin {
     @Override
     public void registerCategories(IRecipeCategoryRegistration registration) {
        registration.addRecipeCategories(new FoundryCategory(registration.getJeiHelpers().getGuiHelper()));
+       registration.addRecipeCategories(new RemovingFromMoldCategory(registration.getJeiHelpers().getGuiHelper()));
     }
+
 
     @Override
     public void registerRecipes(IRecipeRegistration registration) {
@@ -39,11 +43,15 @@ public class JEITFSPlugin implements IModPlugin {
 
         List<FoundryRecipe> meltingRecipes = recipeManager.getAllRecipesFor(FoundryRecipe.Type.INSTANCE);
         registration.addRecipes(FoundryCategory.FOUNDRY_TYPE, meltingRecipes);
+
+        List<RemovingFromMoldRecipe> removingFromMoldRecipes = recipeManager.getAllRecipesFor(RemovingFromMoldRecipe.Type.INSTANCE);
+        registration.addRecipes(RemovingFromMoldCategory.REMOVING_FROM_MOLD_TYPE, removingFromMoldRecipes);
     }
 
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
         registration.addRecipeCatalyst(new ItemStack(TFSBlocks.FOUNDRY.get()), FoundryCategory.FOUNDRY_TYPE);
+        registration.addRecipeCatalyst(new ItemStack(TFSItems.INGOT_FORM.get()), RemovingFromMoldCategory.REMOVING_FROM_MOLD_TYPE);
     }
 
     /* @Override

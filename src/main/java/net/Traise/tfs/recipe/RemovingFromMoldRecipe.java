@@ -65,6 +65,10 @@ public class RemovingFromMoldRecipe implements Recipe<FluidContainer> {
         return inputFluids;
     }
 
+    public MoldType getMoldType() {
+        return moldType;
+    }
+
     @Override
     public ResourceLocation getId() {
         return id;

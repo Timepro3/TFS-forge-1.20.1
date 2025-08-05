@@ -77,17 +77,17 @@ public class tfs {
 
         TFSRecipes.register(modEventBus);
 
-        modEventBus.addListener(this::commonSetup);
+        //modEventBus.addListener(this::commonSetup);
 
         MinecraftForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);
     }
 
-    private void commonSetup(final FMLCommonSetupEvent event) {
-        event.enqueueWork(() -> {
-            SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MOD_ID, ModSurfaceRules.makeRules());
-        });
-    }
+   // private void commonSetup(final FMLCommonSetupEvent event) {
+    //    event.enqueueWork(() -> {
+    //        SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MOD_ID, ModSurfaceRules.makeRules());
+     //   });
+    //}
 
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {

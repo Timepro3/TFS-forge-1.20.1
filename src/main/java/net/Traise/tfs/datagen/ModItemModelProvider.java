@@ -44,6 +44,17 @@ public class ModItemModelProvider extends ItemModelProvider {
             simpleItem(TFSItems.RAW_TIN);
 
             simpleItem(TFSItems.BUCKET_OF_IRON);
+            simpleItem(TFSItems.BUCKET_OF_COPPER);
+            simpleItem(TFSItems.BUCKET_OF_ZINC);
+            simpleItem(TFSItems.BUCKET_OF_TIN);
+            simpleItem(TFSItems.BUCKET_OF_GOLD);
+            simpleItem(TFSItems.BUCKET_OF_SILVER);
+            simpleItem(TFSItems.BUCKET_OF_BRONZE);
+            simpleItem(TFSItems.BUCKET_OF_BRASS);
+            simpleItem(TFSItems.BUCKET_OF_STEEL);
+            simpleItem(TFSItems.BUCKET_OF_CAST_IRON);
+            simpleItem(TFSItems.BUCKET_OF_CARBON);
+            simpleItem(TFSItems.BUCKET_OF_UNKNOWN_METAL);
 
             simpleItem(TFSItems.GRASS_CUT);
             simpleItem(TFSItems.GRASS_ROPE);

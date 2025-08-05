@@ -172,6 +172,19 @@
   "item.tfs.cartridge_steel_n": "Недоделанный стальной патрон",
   "item.tfs.cartridge_silver_n": "Недоделанный серебряный патрон",
 
+  "item.tfs.bucket_of_iron": "Ведро с железом",
+  "item.tfs.bucket_of_copper": "Ведро с медью",
+  "item.tfs.bucket_of_zinc": "Ведро с цинком",
+  "item.tfs.bucket_of_tin": "Ведро с оловом",
+  "item.tfs.bucket_of_gold": "Ведро с золотом",
+  "item.tfs.bucket_of_silver": "Ведро с серебром",
+  "item.tfs.bucket_of_bronze": "Ведро с бронзой",
+  "item.tfs.bucket_of_brass": "Ведро с латунью",
+  "item.tfs.bucket_of_steel": "Ведро со сталью",
+  "item.tfs.bucket_of_cast_iron": "Ведро с чугуном",
+  "item.tfs.bucket_of_carbon": "Ведро с карбоном",
+  "item.tfs.bucket_of_unknown_metal": "Ведро с неизвестным металлом",
+
   "block.tfs.tin_block": "Оловянный блок",
   "block.tfs.silver_block": "Серебрянный блок",
   "block.tfs.bronze_block": "Бронзовый блок",
@@ -264,6 +277,22 @@
   "effect.tfs.pink_plague": "Розовая зараза",
 
   "item.tfs.iron_water_bucket": "Ведро с расплавленным железом",
+
+  "fluid_type.tfs.iron_type": "Железо",
+  "fluid_type.tfs.copper_type": "Медь",
+  "fluid_type.tfs.zinc_type": "Цинк",
+  "fluid_type.tfs.tin_type": "Олово",
+  "fluid_type.tfs.gold_type": "Золото",
+  "fluid_type.tfs.silver_type": "Серебро",
+  "fluid_type.tfs.bronze_type": "Бронза",
+  "fluid_type.tfs.brass_type": "Латунь",
+  "fluid_type.tfs.steel_type": "Сталь",
+  "fluid_type.tfs.cast_iron_type": "Чугун",
+  "fluid_type.tfs.carbon_type": "Карбон",
+  "fluid_type.tfs.unknown_metal_type": "Неизвестный метал",
+
+  "gui.tfs.foundry": "Плавка",
+  "gui.tfs.removing_from_mold": "Вынимание из формы",
 
   "gui.tfs.mb": "мб",
 

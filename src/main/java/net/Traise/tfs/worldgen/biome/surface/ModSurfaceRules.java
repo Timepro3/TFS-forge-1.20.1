@@ -18,18 +18,6 @@ public class ModSurfaceRules {
         SurfaceRules.RuleSource grassSurface = SurfaceRules.sequence(SurfaceRules.ifTrue(isAtOrAboveWaterLevel, GRASS_BLOCK), DIRT);
 
         return SurfaceRules.sequence(
-                SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.isBiome(ModBiomes.DIAMOND_DEPOSIT), SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, AIR))),
-                SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.isBiome(ModBiomes.EMERALD_DEPOSIT), SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, AIR))),
-                SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.isBiome(ModBiomes.CINNABAR_DEPOSIT), SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, AIR))),
-                SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.isBiome(ModBiomes.LAZULI_DEPOSIT), SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, AIR))),
-                SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.isBiome(ModBiomes.COAL_DEPOSIT), SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, AIR))),
-                SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.isBiome(ModBiomes.CUPRITE_DEPOSIT), SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, AIR))),
-                SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.isBiome(ModBiomes.LIMONITE_DEPOSIT), SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, AIR))),
-                SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.isBiome(ModBiomes.TIN_DEPOSIT), SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, AIR))),
-                SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.isBiome(ModBiomes.ZINC_DEPOSIT), SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, AIR))),
-                SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.isBiome(ModBiomes.GOLD_DEPOSIT), SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, AIR))),
-                SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.isBiome(ModBiomes.SILVER_DEPOSIT), SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, AIR))),
-
                 // Default to a grass and dirt surface
                 SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, grassSurface)
         );

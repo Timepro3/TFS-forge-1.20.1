@@ -48,7 +48,7 @@ public class FoundryCategory implements IRecipeCategory<FoundryRecipe> {
 
     @Override
     public Component getTitle() {
-        return Component.translatable("block.tfs.foundry");
+        return Component.translatable("gui.tfs.foundry");
     }
 
     @Override

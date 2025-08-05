@@ -170,6 +170,19 @@
   "item.tfs.cartridge_steel_n": "Unfinished cartridge steel",
   "item.tfs.cartridge_silver_n": "Unfinished cartridge silver",
 
+  "item.tfs.bucket_of_iron": "Bucket of iron",
+  "item.tfs.bucket_of_copper": "Bucket of copper",
+  "item.tfs.bucket_of_zinc": "Bucket of zinc",
+  "item.tfs.bucket_of_tin": "Bucket of tin",
+  "item.tfs.bucket_of_gold": "Bucket of gold",
+  "item.tfs.bucket_of_silver": "Bucket of silver",
+  "item.tfs.bucket_of_bronze": "Bucket of bronze",
+  "item.tfs.bucket_of_brass": "Bucket of brass",
+  "item.tfs.bucket_of_steel": "Bucket of steel",
+  "item.tfs.bucket_of_cast_iron": "Bucket of cast iron",
+  "item.tfs.bucket_of_carbon": "Bucket of carbon",
+  "item.tfs.bucket_of_unknown_metal": "Bucket of unknown metal",
+
   "block.tfs.tin_block": "Block of Tin",
   "block.tfs.silver_block": "Block of Silver",
   "block.tfs.bronze_block": "Block of Bronze",
@@ -261,9 +274,21 @@
   "effect.tfs.black_plague": "Black plague",
   "effect.tfs.pink_plague": "Pink plague",
 
-  "item.tfs.bucket_of_iron": "Bucket of iron",
-
   "fluid_type.tfs.iron_type": "Iron",
+  "fluid_type.tfs.copper_type": "Copper",
+  "fluid_type.tfs.zinc_type": "Zinc",
+  "fluid_type.tfs.tin_type": "Tin",
+  "fluid_type.tfs.gold_type": "Gold",
+  "fluid_type.tfs.silver_type": "Silver",
+  "fluid_type.tfs.bronze_type": "Bronze",
+  "fluid_type.tfs.brass_type": "Brass",
+  "fluid_type.tfs.steel_type": "Steel",
+  "fluid_type.tfs.cast_iron_type": "Cast iron",
+  "fluid_type.tfs.carbon_type": "Carbon",
+  "fluid_type.tfs.unknown_metal_type": "Unknown metal",
+
+  "gui.tfs.foundry": "Melting",
+  "gui.tfs.removing_from_mold": "Removing from mold",
 
   "gui.tfs.mb": "mB",
 

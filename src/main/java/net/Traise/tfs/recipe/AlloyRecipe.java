@@ -47,9 +47,6 @@ public class AlloyRecipe implements Recipe<FluidContainer> {
     }
 
     public boolean matches(FluidContainer pContainer, Level pLevel) {
-        if(pLevel.isClientSide()) {
-            return false;
-        }
         int T = 0;
 
         for (int i = 0; i < inputFluids.size(); i++) {

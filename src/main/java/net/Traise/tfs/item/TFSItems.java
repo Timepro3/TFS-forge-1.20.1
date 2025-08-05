@@ -30,6 +30,39 @@ public class TFSItems {
     public static final RegistryObject<Item> BUCKET_OF_IRON = ITEMS.register("bucket_of_iron",
             () -> new BucketItem(TFSFluids.SOURCE_IRON,
                     new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
+    public static final RegistryObject<Item> BUCKET_OF_COPPER = ITEMS.register("bucket_of_copper",
+            () -> new BucketItem(TFSFluids.SOURCE_COPPER,
+                    new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
+    public static final RegistryObject<Item> BUCKET_OF_ZINC = ITEMS.register("bucket_of_zinc",
+            () -> new BucketItem(TFSFluids.SOURCE_ZINC,
+                    new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
+    public static final RegistryObject<Item> BUCKET_OF_TIN = ITEMS.register("bucket_of_tin",
+            () -> new BucketItem(TFSFluids.SOURCE_TIN,
+                    new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
+    public static final RegistryObject<Item> BUCKET_OF_GOLD = ITEMS.register("bucket_of_gold",
+            () -> new BucketItem(TFSFluids.SOURCE_GOLD,
+                    new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
+    public static final RegistryObject<Item> BUCKET_OF_SILVER = ITEMS.register("bucket_of_silver",
+            () -> new BucketItem(TFSFluids.SOURCE_SILVER,
+                    new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
+    public static final RegistryObject<Item> BUCKET_OF_BRONZE = ITEMS.register("bucket_of_bronze",
+            () -> new BucketItem(TFSFluids.SOURCE_BRONZE,
+                    new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
+    public static final RegistryObject<Item> BUCKET_OF_BRASS = ITEMS.register("bucket_of_brass",
+            () -> new BucketItem(TFSFluids.SOURCE_BRASS,
+                    new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
+    public static final RegistryObject<Item> BUCKET_OF_STEEL = ITEMS.register("bucket_of_steel",
+            () -> new BucketItem(TFSFluids.SOURCE_STEEL,
+                    new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
+    public static final RegistryObject<Item> BUCKET_OF_CAST_IRON = ITEMS.register("bucket_of_cast_iron",
+            () -> new BucketItem(TFSFluids.SOURCE_CAST_IRON,
+                    new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
+    public static final RegistryObject<Item> BUCKET_OF_CARBON = ITEMS.register("bucket_of_carbon",
+            () -> new BucketItem(TFSFluids.SOURCE_CARBON,
+                    new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
+    public static final RegistryObject<Item> BUCKET_OF_UNKNOWN_METAL = ITEMS.register("bucket_of_unknown_metal",
+            () -> new BucketItem(TFSFluids.SOURCE_UNKNOWN_METAL,
+                    new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
 
     public static final RegistryObject<Item> ROCK = ITEMS.register( "rock",
             () -> new TFSItemNameBlockItem(1, TFSBlocks.ROCK_OBJECT.get(), new Item.Properties()));

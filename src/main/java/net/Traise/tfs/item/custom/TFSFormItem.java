@@ -39,8 +39,6 @@ import java.util.Optional;
 public class TFSFormItem extends TFSItemTexts implements IForgeBlockEntity {
     private int Size = 30;
     private int Capacity = 100;
-    private Level level;
-    private MinecraftServer server;
     private final MoldType moldType;
     private FluidStorageHandler fluidHandler = new FluidStorageHandler(this.Size, this.Capacity);
 
@@ -52,30 +50,25 @@ public class TFSFormItem extends TFSItemTexts implements IForgeBlockEntity {
     }
 
     public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {
-        if (pEntity instanceof Player player) {
-            setServer(player);
-        }
-        myTick(pStack, pLevel, false);
+        myTick(pStack);
     }
 
-    public void myTick(ItemStack pStack, Level pLevel, boolean block) {
+    public void myTick(ItemStack pStack) {
         loadFromNBT(pStack);
         сompact(pStack);
         setTexture(pStack);
-        setLevel(pLevel, pStack, block);
 
     }
 
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
         ItemStack itemstack = pPlayer.getItemInHand(pUsedHand);
         loadFromNBT(itemstack);
-        loadLevelFromNBT(itemstack);
         if (sumAllFluidSlot() >= this.Capacity) {
-            Optional<RemovingFromMoldRecipe> recipe = getCurrentRecipe2(level, itemstack, this.fluidHandler);
+            Optional<RemovingFromMoldRecipe> recipe = getCurrentRecipe2(pLevel, itemstack, this.fluidHandler);
             ItemStack item;
 
             if (recipe.isPresent()) {
-                item = recipe.get().getResultItem(this.level.registryAccess());
+                item = recipe.get().getResultItem(pLevel.registryAccess());
             } else {
                 item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(tfs.MOD_ID + ":unknown_metal_" + moldType.getName())).getDefaultInstance();
             }
@@ -85,13 +78,6 @@ public class TFSFormItem extends TFSItemTexts implements IForgeBlockEntity {
             TFSFormItem newItem = (TFSFormItem) itemstack.getItem();
             ItemStack newItemStack = new ItemStack(newItem);
 
-            if (this.level != null) {
-                ResourceLocation dimensionId = this.level.dimension().location();
-                newItemStack.getOrCreateTag().putString("Level", dimensionId.toString());
-            } else {
-                ResourceLocation dimensionId = pLevel.dimension().location();
-                newItemStack.getOrCreateTag().putString("Level", dimensionId.toString());
-            }
             FluidStorageHandler newFluidStorage = this.fluidHandler;
             for (int i = 0; i < Size; i++) {
                 FluidStack newFluid = new FluidStack(Fluids.EMPTY, 0);
@@ -106,21 +92,6 @@ public class TFSFormItem extends TFSItemTexts implements IForgeBlockEntity {
         }
 
         return InteractionResultHolder.fail(itemstack);
-    }
-
-    private void setServer(Player player) {
-        if (this.server == null) {
-            this.server = player.getServer();
-        }
-    }
-
-    private void setLevel(Level level, ItemStack pStack, boolean block) {
-        if (this.server != null && !block) {
-            loadLevelFromNBT(pStack);
-        } else {
-            this.level = level;
-            saveLevelToNBT(pStack);
-        }
     }
 
     public int getRealSize(ItemStack itemStack) {
@@ -148,13 +119,8 @@ public class TFSFormItem extends TFSItemTexts implements IForgeBlockEntity {
             T += fluidStorage.getAmount(i);
         }
 
-        ResourceLocation dimensionId = new ResourceLocation(itemstack.getOrCreateTag().getString("Level"));
-        Level le = server.getLevel(ResourceKey.create(Registries.DIMENSION, dimensionId));
-
         if (T > 0) {
             list.add(Component.literal("§7Содержит: " + getAlloyName(level, itemstack) + ": " + U + "/" + fluidStorage.getCapacity() + "мб"));
-        } else if (le == null) {
-            list.add(Component.literal("§7Новая и пустая"));
         } else {
             list.add(Component.literal("§7Пустая"));
         }
@@ -178,18 +144,7 @@ public class TFSFormItem extends TFSItemTexts implements IForgeBlockEntity {
             inventory.setFluidInSlot(i, fluidStorage.getFluidInSlot(i));
         }
 
-        if (this.level == null) {
-            ResourceLocation dimensionId = new ResourceLocation(itemstack.getOrCreateTag().getString("Level"));
-            Level le = server.getLevel(ResourceKey.create(Registries.DIMENSION, dimensionId));
-            if (this.server != null && le != null) {
-
-                return le.getRecipeManager().getRecipeFor(AlloyRecipe.Type.INSTANCE, inventory, le);
-            }
-
-            return pLevel.getRecipeManager().getRecipeFor(AlloyRecipe.Type.INSTANCE, inventory, pLevel);
-        }
-
-        return this.level.getRecipeManager().getRecipeFor(AlloyRecipe.Type.INSTANCE, inventory, this.level);
+        return pLevel.getRecipeManager().getRecipeFor(AlloyRecipe.Type.INSTANCE, inventory, pLevel);
     }
 
     private Optional<RemovingFromMoldRecipe> getCurrentRecipe2(Level pLevel, ItemStack itemstack, FluidStorageHandler fluidStorage) {
@@ -202,7 +157,7 @@ public class TFSFormItem extends TFSItemTexts implements IForgeBlockEntity {
         }
         inventory.setMoldType(this.moldType);
 
-        return this.level.getRecipeManager().getRecipeFor(RemovingFromMoldRecipe.Type.INSTANCE, inventory, this.level);
+        return pLevel.getRecipeManager().getRecipeFor(RemovingFromMoldRecipe.Type.INSTANCE, inventory, pLevel);
     }
 
     public String getAlloyName(Level level, ItemStack itemstack) {
@@ -271,24 +226,9 @@ public class TFSFormItem extends TFSItemTexts implements IForgeBlockEntity {
 
     }
 
-    // Загружаем состояние из NBT
     public void loadFromNBT(ItemStack itemstack) {
         this.fluidHandler = FluidStorageHandler.deserializeNBT(itemstack.getOrCreateTag().getCompound("FluidStorage"), this.Size, this.Capacity);
     }
-
-    public void saveLevelToNBT(ItemStack itemstack) {
-        ResourceLocation dimensionId = this.level.dimension().location();
-        itemstack.getOrCreateTag().putString("Level", dimensionId.toString());
-
-    }
-
-    public void loadLevelFromNBT(ItemStack itemstack) {
-        ResourceLocation dimensionId = new ResourceLocation(itemstack.getOrCreateTag().getString("Level"));
-        ResourceKey<Level> dimKey = ResourceKey.create(Registries.DIMENSION, dimensionId);
-        this.level = server.getLevel(dimKey);
-
-    }
-
 
     @Override
     public CompoundTag getPersistentData() {

@@ -28,6 +28,61 @@ public class TFSFluidTypes {
                     new Vector3f(224f / 255f, 56f / 255f, 208f / 255f),
                     FluidType.Properties.create().lightLevel(2).density(8).viscosity(1)));
 
+    public static final RegistryObject<FluidType> COPPER_TYPE = FLUID_TYPES.register("copper_type",
+            () -> new BaseFluidType(METAL_STILL_RL, METAL_FLOWING_RL, IRON_OVERLAY_RL, 0xffff6700,
+                    new Vector3f(224f / 255f, 56f / 255f, 208f / 255f),
+                    FluidType.Properties.create().lightLevel(2).density(8).viscosity(1)));
+
+    public static final RegistryObject<FluidType> ZINC_TYPE = FLUID_TYPES.register("zinc_type",
+            () -> new BaseFluidType(METAL_STILL_RL, METAL_FLOWING_RL, IRON_OVERLAY_RL, 0xff78b796,
+                    new Vector3f(224f / 255f, 56f / 255f, 208f / 255f),
+                    FluidType.Properties.create().lightLevel(2).density(8).viscosity(1)));
+
+    public static final RegistryObject<FluidType> TIN_TYPE = FLUID_TYPES.register("tin_type",
+            () -> new BaseFluidType(METAL_STILL_RL, METAL_FLOWING_RL, IRON_OVERLAY_RL, 0xffc6f5ff,
+                    new Vector3f(224f / 255f, 56f / 255f, 208f / 255f),
+                    FluidType.Properties.create().lightLevel(2).density(8).viscosity(1)));
+
+    public static final RegistryObject<FluidType> GOLD_TYPE = FLUID_TYPES.register("gold_type",
+            () -> new BaseFluidType(METAL_STILL_RL, METAL_FLOWING_RL, IRON_OVERLAY_RL, 0xffffe026,
+                    new Vector3f(224f / 255f, 56f / 255f, 208f / 255f),
+                    FluidType.Properties.create().lightLevel(2).density(8).viscosity(1)));
+
+    public static final RegistryObject<FluidType> SILVER_TYPE = FLUID_TYPES.register("silver_type",
+            () -> new BaseFluidType(METAL_STILL_RL, METAL_FLOWING_RL, IRON_OVERLAY_RL, 0xfff8e2ff,
+                    new Vector3f(224f / 255f, 56f / 255f, 208f / 255f),
+                    FluidType.Properties.create().lightLevel(2).density(8).viscosity(1)));
+
+    public static final RegistryObject<FluidType> BRONZE_TYPE = FLUID_TYPES.register("bronze_type",
+            () -> new BaseFluidType(METAL_STILL_RL, METAL_FLOWING_RL, IRON_OVERLAY_RL, 0xffc5860e,
+                    new Vector3f(224f / 255f, 56f / 255f, 208f / 255f),
+                    FluidType.Properties.create().lightLevel(2).density(8).viscosity(1)));
+
+    public static final RegistryObject<FluidType> BRASS_TYPE = FLUID_TYPES.register("brass_type",
+            () -> new BaseFluidType(METAL_STILL_RL, METAL_FLOWING_RL, IRON_OVERLAY_RL, 0xffffbb00,
+                    new Vector3f(224f / 255f, 56f / 255f, 208f / 255f),
+                    FluidType.Properties.create().lightLevel(2).density(8).viscosity(1)));
+
+    public static final RegistryObject<FluidType> STEEL_TYPE = FLUID_TYPES.register("steel_type",
+            () -> new BaseFluidType(METAL_STILL_RL, METAL_FLOWING_RL, IRON_OVERLAY_RL, 0xff9f9f9f,
+                    new Vector3f(224f / 255f, 56f / 255f, 208f / 255f),
+                    FluidType.Properties.create().lightLevel(2).density(8).viscosity(1)));
+
+    public static final RegistryObject<FluidType> CAST_IRON_TYPE = FLUID_TYPES.register("cast_iron_type",
+            () -> new BaseFluidType(METAL_STILL_RL, METAL_FLOWING_RL, IRON_OVERLAY_RL, 0xffd7b386,
+                    new Vector3f(224f / 255f, 56f / 255f, 208f / 255f),
+                    FluidType.Properties.create().lightLevel(2).density(8).viscosity(1)));
+
+    public static final RegistryObject<FluidType> CARBON_TYPE = FLUID_TYPES.register("carbon_type",
+            () -> new BaseFluidType(METAL_STILL_RL, METAL_FLOWING_RL, IRON_OVERLAY_RL, 0xff111111,
+                    new Vector3f(224f / 255f, 56f / 255f, 208f / 255f),
+                    FluidType.Properties.create().lightLevel(2).density(8).viscosity(1)));
+
+    public static final RegistryObject<FluidType> UNKNOWN_METAL_TYPE = FLUID_TYPES.register("unknown_metal_type",
+            () -> new BaseFluidType(METAL_STILL_RL, METAL_FLOWING_RL, IRON_OVERLAY_RL, 0xff443932,
+                    new Vector3f(224f / 255f, 56f / 255f, 208f / 255f),
+                    FluidType.Properties.create().lightLevel(2).density(8).viscosity(1)));
+
     public static void register(IEventBus eventBus) {
         FLUID_TYPES.register(eventBus);
     }

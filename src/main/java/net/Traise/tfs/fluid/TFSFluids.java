@@ -34,10 +34,120 @@ public class TFSFluids extends AllFluids{
     public static final RegistryObject<FlowingFluid> FLOWING_IRON = FLUIDS.register("flowing_iron",
             () -> new ForgeFlowingFluid.Flowing(TFSFluids.IRON_PROPERTIES));
 
+    public static final RegistryObject<FlowingFluid> SOURCE_COPPER = FLUIDS.register("copper",
+            () -> new ForgeFlowingFluid.Source(TFSFluids.COPPER_PROPERTIES));
+    public static final RegistryObject<FlowingFluid> FLOWING_COPPER = FLUIDS.register("flowing_copper",
+            () -> new ForgeFlowingFluid.Flowing(TFSFluids.COPPER_PROPERTIES));
+
+    public static final RegistryObject<FlowingFluid> SOURCE_ZINC = FLUIDS.register("zinc",
+            () -> new ForgeFlowingFluid.Source(TFSFluids.ZINC_PROPERTIES));
+    public static final RegistryObject<FlowingFluid> FLOWING_ZINC = FLUIDS.register("flowing_zinc",
+            () -> new ForgeFlowingFluid.Flowing(TFSFluids.ZINC_PROPERTIES));
+
+    public static final RegistryObject<FlowingFluid> SOURCE_TIN = FLUIDS.register("tin",
+            () -> new ForgeFlowingFluid.Source(TFSFluids.TIN_PROPERTIES));
+    public static final RegistryObject<FlowingFluid> FLOWING_TIN = FLUIDS.register("flowing_tin",
+            () -> new ForgeFlowingFluid.Flowing(TFSFluids.TIN_PROPERTIES));
+
+    public static final RegistryObject<FlowingFluid> SOURCE_GOLD = FLUIDS.register("gold",
+            () -> new ForgeFlowingFluid.Source(TFSFluids.GOLD_PROPERTIES));
+    public static final RegistryObject<FlowingFluid> FLOWING_GOLD = FLUIDS.register("flowing_gold",
+            () -> new ForgeFlowingFluid.Flowing(TFSFluids.GOLD_PROPERTIES));
+
+    public static final RegistryObject<FlowingFluid> SOURCE_SILVER = FLUIDS.register("silver",
+            () -> new ForgeFlowingFluid.Source(TFSFluids.SILVER_PROPERTIES));
+    public static final RegistryObject<FlowingFluid> FLOWING_SILVER = FLUIDS.register("flowing_silver",
+            () -> new ForgeFlowingFluid.Flowing(TFSFluids.SILVER_PROPERTIES));
+
+    public static final RegistryObject<FlowingFluid> SOURCE_BRONZE = FLUIDS.register("bronze",
+            () -> new ForgeFlowingFluid.Source(TFSFluids.BRONZE_PROPERTIES));
+    public static final RegistryObject<FlowingFluid> FLOWING_BRONZE = FLUIDS.register("flowing_bronze",
+            () -> new ForgeFlowingFluid.Flowing(TFSFluids.BRONZE_PROPERTIES));
+
+    public static final RegistryObject<FlowingFluid> SOURCE_BRASS = FLUIDS.register("brass",
+            () -> new ForgeFlowingFluid.Source(TFSFluids.BRASS_PROPERTIES));
+    public static final RegistryObject<FlowingFluid> FLOWING_BRASS = FLUIDS.register("flowing_brass",
+            () -> new ForgeFlowingFluid.Flowing(TFSFluids.BRASS_PROPERTIES));
+
+    public static final RegistryObject<FlowingFluid> SOURCE_STEEL = FLUIDS.register("steel",
+            () -> new ForgeFlowingFluid.Source(TFSFluids.STEEL_PROPERTIES));
+    public static final RegistryObject<FlowingFluid> FLOWING_STEEL = FLUIDS.register("flowing_steel",
+            () -> new ForgeFlowingFluid.Flowing(TFSFluids.STEEL_PROPERTIES));
+
+    public static final RegistryObject<FlowingFluid> SOURCE_CAST_IRON = FLUIDS.register("cast_iron",
+            () -> new ForgeFlowingFluid.Source(TFSFluids.CAST_IRON_PROPERTIES));
+    public static final RegistryObject<FlowingFluid> FLOWING_CAST_IRON = FLUIDS.register("flowing_cast_iron",
+            () -> new ForgeFlowingFluid.Flowing(TFSFluids.CAST_IRON_PROPERTIES));
+
+    public static final RegistryObject<FlowingFluid> SOURCE_CARBON = FLUIDS.register("carbon",
+            () -> new ForgeFlowingFluid.Source(TFSFluids.CARBON_PROPERTIES));
+    public static final RegistryObject<FlowingFluid> FLOWING_CARBON = FLUIDS.register("flowing_carbon",
+            () -> new ForgeFlowingFluid.Flowing(TFSFluids.CARBON_PROPERTIES));
+
+    public static final RegistryObject<FlowingFluid> SOURCE_UNKNOWN_METAL = FLUIDS.register("unknown_metal",
+            () -> new ForgeFlowingFluid.Source(TFSFluids.UNKNOWN_METAL_PROPERTIES));
+    public static final RegistryObject<FlowingFluid> FLOWING_UNKNOWN_METAL = FLUIDS.register("flowing_unknown_metal",
+            () -> new ForgeFlowingFluid.Flowing(TFSFluids.UNKNOWN_METAL_PROPERTIES));
+
     public static final ForgeFlowingFluid.Properties IRON_PROPERTIES = new ForgeFlowingFluid.Properties(
             TFSFluidTypes.IRON_TYPE, SOURCE_IRON, FLOWING_IRON)
             .slopeFindDistance(2).levelDecreasePerBlock(2).block(TFSBlocks.FLUID_IRON_BLOCK)
             .bucket(TFSItems.BUCKET_OF_IRON);
+
+    public static final ForgeFlowingFluid.Properties COPPER_PROPERTIES = new ForgeFlowingFluid.Properties(
+            TFSFluidTypes.COPPER_TYPE, SOURCE_COPPER, FLOWING_COPPER)
+            .slopeFindDistance(2).levelDecreasePerBlock(2).block(TFSBlocks.FLUID_COPPER_BLOCK)
+            .bucket(TFSItems.BUCKET_OF_COPPER);
+
+    public static final ForgeFlowingFluid.Properties ZINC_PROPERTIES = new ForgeFlowingFluid.Properties(
+            TFSFluidTypes.ZINC_TYPE, SOURCE_ZINC, FLOWING_ZINC)
+            .slopeFindDistance(2).levelDecreasePerBlock(2).block(TFSBlocks.FLUID_ZINC_BLOCK)
+            .bucket(TFSItems.BUCKET_OF_ZINC);
+
+    public static final ForgeFlowingFluid.Properties TIN_PROPERTIES = new ForgeFlowingFluid.Properties(
+            TFSFluidTypes.TIN_TYPE, SOURCE_TIN, FLOWING_TIN)
+            .slopeFindDistance(2).levelDecreasePerBlock(2).block(TFSBlocks.FLUID_TIN_BLOCK)
+            .bucket(TFSItems.BUCKET_OF_TIN);
+
+    public static final ForgeFlowingFluid.Properties GOLD_PROPERTIES = new ForgeFlowingFluid.Properties(
+            TFSFluidTypes.GOLD_TYPE, SOURCE_GOLD, FLOWING_GOLD)
+            .slopeFindDistance(2).levelDecreasePerBlock(2).block(TFSBlocks.FLUID_GOLD_BLOCK)
+            .bucket(TFSItems.BUCKET_OF_GOLD);
+
+    public static final ForgeFlowingFluid.Properties SILVER_PROPERTIES = new ForgeFlowingFluid.Properties(
+            TFSFluidTypes.SILVER_TYPE, SOURCE_SILVER, FLOWING_SILVER)
+            .slopeFindDistance(2).levelDecreasePerBlock(2).block(TFSBlocks.FLUID_SILVER_BLOCK)
+            .bucket(TFSItems.BUCKET_OF_SILVER);
+
+    public static final ForgeFlowingFluid.Properties BRONZE_PROPERTIES = new ForgeFlowingFluid.Properties(
+            TFSFluidTypes.BRONZE_TYPE, SOURCE_BRONZE, FLOWING_BRONZE)
+            .slopeFindDistance(2).levelDecreasePerBlock(2).block(TFSBlocks.FLUID_BRONZE_BLOCK)
+            .bucket(TFSItems.BUCKET_OF_BRONZE);
+
+    public static final ForgeFlowingFluid.Properties BRASS_PROPERTIES = new ForgeFlowingFluid.Properties(
+            TFSFluidTypes.BRASS_TYPE, SOURCE_BRASS, FLOWING_BRASS)
+            .slopeFindDistance(2).levelDecreasePerBlock(2).block(TFSBlocks.FLUID_BRASS_BLOCK)
+            .bucket(TFSItems.BUCKET_OF_BRASS);
+
+    public static final ForgeFlowingFluid.Properties STEEL_PROPERTIES = new ForgeFlowingFluid.Properties(
+            TFSFluidTypes.STEEL_TYPE, SOURCE_STEEL, FLOWING_STEEL)
+            .slopeFindDistance(2).levelDecreasePerBlock(2).block(TFSBlocks.FLUID_STEEL_BLOCK)
+            .bucket(TFSItems.BUCKET_OF_STEEL);
+
+    public static final ForgeFlowingFluid.Properties CAST_IRON_PROPERTIES = new ForgeFlowingFluid.Properties(
+            TFSFluidTypes.CAST_IRON_TYPE, SOURCE_CAST_IRON, FLOWING_CAST_IRON)
+            .slopeFindDistance(2).levelDecreasePerBlock(2).block(TFSBlocks.FLUID_CAST_IRON_BLOCK)
+            .bucket(TFSItems.BUCKET_OF_CAST_IRON);
+
+    public static final ForgeFlowingFluid.Properties CARBON_PROPERTIES = new ForgeFlowingFluid.Properties(
+            TFSFluidTypes.CARBON_TYPE, SOURCE_CARBON, FLOWING_CARBON)
+            .slopeFindDistance(2).levelDecreasePerBlock(2).block(TFSBlocks.FLUID_CARBON_BLOCK)
+            .bucket(TFSItems.BUCKET_OF_CARBON);
+
+    public static final ForgeFlowingFluid.Properties UNKNOWN_METAL_PROPERTIES = new ForgeFlowingFluid.Properties(
+            TFSFluidTypes.UNKNOWN_METAL_TYPE, SOURCE_UNKNOWN_METAL, FLOWING_UNKNOWN_METAL)
+            .slopeFindDistance(2).levelDecreasePerBlock(2).block(TFSBlocks.FLUID_UNKNOWN_METAL_BLOCK)
+            .bucket(TFSItems.BUCKET_OF_UNKNOWN_METAL);
 
     public static void register(IEventBus eventBus) {
         FLUIDS.register(eventBus);
