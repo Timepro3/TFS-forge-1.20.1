@@ -1,0 +1,17 @@
+{
+  "type": "tfs:alloying",
+  "ingredients": [
+    {
+      "amount": 9000,
+      "fluid": "tfs:copper"
+    },
+    {
+      "amount": 1000,
+      "fluid": "tfs:tin"
+    }
+  ],
+  "output": {
+    "amount": 1,
+    "fluid": "tfs:bronze"
+  }
+}

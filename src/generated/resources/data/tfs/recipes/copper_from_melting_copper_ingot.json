@@ -1,0 +1,12 @@
+{
+  "type": "tfs:foundry",
+  "ingredients": [
+    {
+      "item": "minecraft:copper_ingot"
+    }
+  ],
+  "output": {
+    "amount": 100,
+    "fluid": "tfs:copper"
+  }
+}

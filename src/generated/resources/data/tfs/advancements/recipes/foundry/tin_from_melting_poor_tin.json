@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_poor_tin": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "tfs:poor_tin"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "tfs:tin_from_melting_poor_tin"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_poor_tin",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "tfs:tin_from_melting_poor_tin"
+    ]
+  },
+  "sends_telemetry_event": false
+}

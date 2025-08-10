@@ -3,9 +3,17 @@ package net.Traise.tfs.datagen;
 import com.simibubi.create.AllItems;
 import com.simibubi.create.AllTags;
 import net.Traise.tfs.block.TFSBlocks;
+import net.Traise.tfs.datagen.recipe.AlloyRecipeBuilder;
 import net.Traise.tfs.datagen.recipe.CreateRecipe;
+import net.Traise.tfs.datagen.recipe.FoundryRecipeBuilder;
+import net.Traise.tfs.datagen.recipe.RemovingFromMoldRecipeBuilder;
+import net.Traise.tfs.fluid.TFSFluids;
 import net.Traise.tfs.item.TFSItems;
 import net.Traise.tfs.tfs;
+import net.Traise.tfs.util.ModTags;
+import net.Traise.tfs.util.MoldType;
+import net.minecraft.client.Minecraft;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.network.chat.Component;
@@ -17,7 +25,9 @@ import net.minecraft.world.item.crafting.AbstractCookingRecipe;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.List;
@@ -32,6 +42,10 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     public ModRecipeProvider(PackOutput pOutput) {
         super(pOutput);
 
+    }
+
+    protected static String getFluidName(Fluid pItemLike) {
+        return BuiltInRegistries.FLUID.getKey(pItemLike).getPath();
     }
 
     protected static void oreSmelting(Consumer<FinishedRecipe> pFinishedRecipeConsumer, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult, float pExperience, int pCookingTIme, String pGroup) {
@@ -53,6 +67,20 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                     .group(pGroup).unlockedBy(getHasName(itemlike), has(itemlike))
                     .save(pFinishedRecipeConsumer, tfs.MOD_ID + ":" + getItemName(pResult) + pRecipeName + "_" + getItemName(itemlike));
         }
+    }
+
+    protected static void foundry(Consumer<FinishedRecipe> pFinishedRecipeConsumer, Fluid pFluid, int Amount, ItemLike pItem) {
+        FoundryRecipeBuilder.foundry(pFluid, Amount)
+                .requires(pItem)
+                .unlockedBy(getHasName(pItem), has(pItem))
+                .save(pFinishedRecipeConsumer, tfs.MOD_ID + ":" + getFluidName(pFluid) + "_from_melting_" + getItemName(pItem));
+    }
+
+    protected static void mold(Consumer<FinishedRecipe> pFinishedRecipeConsumer, MoldType moldType, Item item, Fluid fluid) {
+        RemovingFromMoldRecipeBuilder.mold(moldType, item)
+                .requires(fluid)
+                .unlockedBy(getHasName(item), has(item))
+                .save(pFinishedRecipeConsumer, tfs.MOD_ID + ":" + getItemName(item) + "_from_molding_" + getFluidName(fluid));
     }
 
     @Override
@@ -683,7 +711,81 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                     .save(pWriter, "" + lit.getString() + "_spear_in_knife");
         }
 
+        for (int i = 0; i < 11; i++) {
+            foundry(pWriter, ForgeRegistries.FLUIDS.getValue(new ResourceLocation
+                    (tfs.MOD_ID, material(i).getString())), 100,
+                    ForgeRegistries.ITEMS.getValue(new ResourceLocation
+                            (place(i).getString() + material(i).getString() + "_ingot")));
+
+            foundry(pWriter, ForgeRegistries.FLUIDS.getValue(new ResourceLocation
+                            (tfs.MOD_ID, material(i).getString())), 900,
+                    ForgeRegistries.ITEMS.getValue(new ResourceLocation
+                            (place(i).getString() + material(i).getString() + "_block")));
+
+            mold(pWriter, MoldType.INGOT,
+                    ForgeRegistries.ITEMS.getValue(new ResourceLocation
+                            (place(i).getString() + material(i).getString() + "_ingot")),
+                    ForgeRegistries.FLUIDS.getValue(new ResourceLocation
+                            (tfs.MOD_ID, material(i).getString())));
+
+            if (i < 6) {
+                Component c = material(i);
+                if (i == 0) {
+                    c = Component.literal("limonite");
+                } else if (i == 1) {
+                    c = Component.literal("cuprite");
+                }
+
+                foundry(pWriter, ForgeRegistries.FLUIDS.getValue(new ResourceLocation
+                                (tfs.MOD_ID, material(i).getString())), 15,
+                        ForgeRegistries.ITEMS.getValue(new ResourceLocation
+                                (tfs.MOD_ID, "poor_" + c.getString())));
+
+                foundry(pWriter, ForgeRegistries.FLUIDS.getValue(new ResourceLocation
+                                (tfs.MOD_ID, material(i).getString())), 20,
+                        ForgeRegistries.ITEMS.getValue(new ResourceLocation
+                                (tfs.MOD_ID, c.getString())));
+
+                foundry(pWriter, ForgeRegistries.FLUIDS.getValue(new ResourceLocation
+                                (tfs.MOD_ID, material(i).getString())), 35,
+                        ForgeRegistries.ITEMS.getValue(new ResourceLocation
+                                (tfs.MOD_ID, "rich_" + c.getString())));
+            }
+        }
+
         {
+            FoundryRecipeBuilder.foundry(TFSFluids.CARBON.get(), 40)
+                    .requires(ItemTags.COALS)
+                    .unlockedBy(getHasName(Items.COAL), has(Items.COAL))
+                    .save(pWriter, "carbon_from_melting_coals");
+
+            AlloyRecipeBuilder.alloy(TFSFluids.BRONZE.get())
+                    .requires(TFSFluids.COPPER.get(), 90f)
+                    .requires(TFSFluids.TIN.get(), 10f)
+                    .unlockedBy(getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                    .save(pWriter, "bronze_from_alloying_copper_tin");
+
+            AlloyRecipeBuilder.alloy(TFSFluids.BRASS.get())
+                    .requires(TFSFluids.COPPER.get(), 70f)
+                    .requires(TFSFluids.ZINC.get(), 30f)
+                    .unlockedBy(getHasName(Items.COPPER_INGOT), has(Items.COPPER_INGOT))
+                    .save(pWriter, "brass_from_alloying_copper_zinc");
+
+            AlloyRecipeBuilder.alloy(TFSFluids.STEEL.get())
+                    .requires(TFSFluids.IRON.get(), 95f)
+                    .requires(TFSFluids.CARBON.get(), 5f)
+                    .unlockedBy(getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
+                    .save(pWriter, "steel_from_alloying_iron_carbon");
+
+            AlloyRecipeBuilder.alloy(TFSFluids.CAST_IRON.get())
+                    .requires(TFSFluids.IRON.get(), 89f)
+                    .requires(TFSFluids.CARBON.get(), 11f)
+                    .unlockedBy(getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
+                    .save(pWriter, "cast_iron_from_alloying_iron_carbon");
+        }
+
+        {
+
             oreSmelting(pWriter, INGOT_FORM, RecipeCategory.MISC, TFSItems.INGOT_FORM.get(), 0.25f, 200, "ingot_form");
 
             CreateRecipe.SandPaperPolishing(Ingredient.of(TFSItems.RAW_DIAMOND.get()), RecipeCategory.DECORATIONS, Items.DIAMOND).unlockedBy("has_raw_diamond", has(TFSItems.RAW_DIAMOND.get())).save(pWriter, "diamond_in_raw_diamond");
@@ -714,5 +816,36 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             CreateRecipe.SandPaperPolishing(Ingredient.of(TFSItems.SLEEVE.get()), RecipeCategory.TOOLS, TFSItems.CARTRIDGE_SILVER.get()).unlockedBy("has_casilv", has(TFSItems.SLEEVE.get())).save(pWriter, "silv_combinate");
             CreateRecipe.SandPaperPolishing(Ingredient.of(TFSItems.SLEEVE.get()), RecipeCategory.TOOLS, TFSItems.CARTRIDGE_STEEL.get()).unlockedBy("has_casteel", has(TFSItems.SLEEVE.get())).save(pWriter, "steel_combinate");
         }
+    }
+
+    private Component material(int index) {
+        return switch (index) {
+            case 0 -> Component.literal("iron");
+            case 1 -> Component.literal("copper");
+            case 2 -> Component.literal("tin");
+            case 3 -> Component.literal("zinc");
+            case 4 -> Component.literal("gold");
+            case 5 -> Component.literal("silver");
+            case 6 -> Component.literal("bronze");
+            case 7 -> Component.literal("brass");
+            case 8 -> Component.literal("steel");
+            case 9 -> Component.literal("cast_iron");
+            case 10 -> Component.literal("unknown_metal");
+            default -> Component.literal("iron");
+        };
+    }
+
+    private Component place(int index) {
+        return switch (index) {
+            case 2 -> Component.literal("tfs:");
+            case 3 -> Component.literal("create:");
+            case 5 -> Component.literal("tfs:");
+            case 6 -> Component.literal("tfs:");
+            case 7 -> Component.literal("create:");
+            case 8 -> Component.literal("tfs:");
+            case 9 -> Component.literal("tfs:");
+            case 10 -> Component.literal("tfs:");
+            default -> Component.literal("minecraft:");
+        };
     }
 }

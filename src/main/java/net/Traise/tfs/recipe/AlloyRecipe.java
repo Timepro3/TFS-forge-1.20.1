@@ -13,6 +13,7 @@ import net.minecraft.core.RegistryAccess;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.TagParser;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.world.SimpleContainer;
@@ -49,17 +50,28 @@ public class AlloyRecipe implements Recipe<FluidContainer> {
     public boolean matches(FluidContainer pContainer, Level pLevel) {
         int T = 0;
 
+        int R = 1;
+        int Amount = pContainer.getSumAllFluid();
+
+        for (int slot = 0; slot < pContainer.getContainerSize(); slot++) {
+            if (pContainer.getFluidInSlot(slot).getFluid() == output.getFluid()) {
+                R = 2;
+                Amount = Amount - pContainer.getFluidInSlot(slot).getAmount();
+            }
+        }
+
         for (int i = 0; i < inputFluids.size(); i++) {
             boolean FluidSame = true;
 
             for (int slot = 0; slot < pContainer.getContainerSize(); slot++) {
                 if (inputFluids.get(i).getFluid().isSame(pContainer.getFluidInSlot(slot).getFluid())) {
-                    FluidStack fluidStack = new FluidStack(pContainer.getFluidInSlot(slot).getFluid(), (int)(((double) pContainer.getFluidInSlot(slot).getAmount() / pContainer.getSumAllFluid()) * 10000));
-                    if (fluidStack.getAmount() >= inputFluids.get(i).getAmount() - 300 && fluidStack.getAmount() <= inputFluids.get(i).getAmount() + 300 ) {
+                    FluidStack fluidStack = new FluidStack(pContainer.getFluidInSlot(slot).getFluid(), (int) (((double) pContainer.getFluidInSlot(slot).getAmount() / Amount) * 10000));
+
+                    if (fluidStack.getAmount() >= inputFluids.get(i).getAmount() - 300 && fluidStack.getAmount() <= inputFluids.get(i).getAmount() + 300) {
                         FluidSame = false;
                         T += 1;
+                        break;
                     }
-
                 }
             }
 
@@ -67,8 +79,7 @@ public class AlloyRecipe implements Recipe<FluidContainer> {
                 return false;
             }
         }
-
-        return T == pContainer.getContainerSize() - 1;
+        return T == pContainer.getContainerSize() - R;
     }
 
     @Override

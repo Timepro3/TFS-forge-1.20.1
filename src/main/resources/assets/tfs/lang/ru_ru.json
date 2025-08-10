@@ -289,9 +289,10 @@
   "fluid_type.tfs.steel_type": "Сталь",
   "fluid_type.tfs.cast_iron_type": "Чугун",
   "fluid_type.tfs.carbon_type": "Карбон",
-  "fluid_type.tfs.unknown_metal_type": "Неизвестный метал",
+  "fluid_type.tfs.unknown_metal_type": "Неизвестно",
 
   "gui.tfs.foundry": "Плавка",
+  "gui.tfs.alloy": "Легирование",
   "gui.tfs.removing_from_mold": "Вынимание из формы",
 
   "gui.tfs.mb": "мб",

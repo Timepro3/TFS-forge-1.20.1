@@ -8,12 +8,21 @@ import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.item.CreativeModeTab;
 
 public class FoundryScreen extends AbstractContainerScreen<FoundryMenu> {
-    private static final ResourceLocation TEXTURE =
-            new ResourceLocation(tfs.MOD_ID, "textures/gui/foundry_gui.png");
-
+    private static final ResourceLocation TEXTURE = new ResourceLocation(tfs.MOD_ID, "textures/gui/foundry_gui.png");
     private static final Component mb = Component.translatable("gui.tfs.mb");
+
+    private boolean scrolling = false;
+
+    private int startSlot = 0;
+    private int countSlot = menu.getSize();
+    private int maxCountSlot = 5;
+
+    private int minSlider = 83;
+    private int maxSlider = 116;
+    private int sliderPosition = 83;  // Initial position of the slider
 
     public FoundryScreen(FoundryMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
         super(pMenu, pPlayerInventory, pTitle);
@@ -37,6 +46,8 @@ public class FoundryScreen extends AbstractContainerScreen<FoundryMenu> {
         guiGraphics.blit(TEXTURE, x, y, 0, 0, 176, 202);
 
         renderProgressArrow(guiGraphics, x, y);
+
+        guiGraphics.blit(TEXTURE, x + 160, sliderPosition, 176, 32, 12, 15);
     }
 
     private void renderProgressArrow(GuiGraphics guiGraphics, int x, int y) {
@@ -53,14 +64,23 @@ public class FoundryScreen extends AbstractContainerScreen<FoundryMenu> {
 
     @Override
     protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
-        guiGraphics.drawString(this.font, Component.literal( "Количество: " + menu.getAlloyCount() + "/10000" + mb.getString()), 5, -13, -12829636, false);
+        countSlot = menu.getSize();
+        guiGraphics.drawString(this.font, Component.literal("Количество: " + menu.getAlloyCount() + "/10000" + mb.getString()), 5, -13, -12829636, false);
         guiGraphics.drawString(this.font, Component.literal("Содержит: " + menu.getAlloyName()), 5, -5, -12829636, false);
+        int T = 0;
+        if (startSlot < 0) {
+            startSlot = 0;
+        }
 
-        for (int i = 0; i < menu.getSize(); i++) {
+        for (int i = startSlot; i < menu.getSize() && i < startSlot + 4; i++) {
             if (menu.hawFluid(i)) {
-                guiGraphics.drawString(this.font, Component.literal(menu.getFluidStackInSlot(i) + ":" + menu.getFluidAmount(i) + mb.getString() + " (§5" + menu.getPercent(i) + "%§0)"), 5, 3 + (8 * i), -12829636, false);
+                // Show only if the position isn't out of range based on slider value
+                guiGraphics.drawString(this.font, Component.literal(menu.getFluidStackInSlot(i) + ":" + menu.getFluidAmount(i) + mb.getString() + " (§5" + menu.getPercent(i) + "%§0)"), 5, 3 + (8 * T), -12829636, false);
+                T += 1;
+
             }
         }
+
     }
 
     @Override
@@ -69,4 +89,65 @@ public class FoundryScreen extends AbstractContainerScreen<FoundryMenu> {
         super.render(guiGraphics, mouseX, mouseY, delta);
         renderTooltip(guiGraphics, mouseX, mouseY);
     }
+
+    public boolean mouseScrolled(double pMouseX, double pMouseY, double pDelta) {
+        if (countSlot > maxCountSlot) {
+            sliderPosition -= (int) pDelta * 1;
+            startSlot = sliderPosition - minSlider;
+
+            if (sliderPosition > maxSlider) {
+                sliderPosition = maxSlider;
+            } else if (sliderPosition < minSlider) {
+                sliderPosition = minSlider;
+            }
+        }
+
+        return super.mouseScrolled(pMouseX, pMouseY, pDelta);
+    }
+
+    private boolean insideScrollbar(double mouseX, double mouseY) {
+        return mouseX >= 392 && mouseX <= 403 && mouseY <= 129 && mouseY >= 83;
+    }
+
+    @Override
+    public boolean mouseClicked(double pMouseX, double pMouseY, int pButton) {
+        if (pButton == 0) {
+            if (this.insideScrollbar(pMouseX, pMouseY)) {
+                this.scrolling = true;
+                return true;
+            } else {
+                this.scrolling = false;
+            }
+        }
+
+        return super.mouseClicked(pMouseX, pMouseY, pButton);
+    }
+
+    @Override
+    public boolean mouseDragged(double mouseX, double mouseY, int button, double deltaX, double deltaY) {
+        System.out.println("mouseX: " + (int)mouseX + " : mouseY: " + (int)mouseY);
+        if (countSlot > maxCountSlot) {
+            if (button == 0) { // Adjust for the slider's size
+                if (this.scrolling) {
+                    sliderPosition = (int) mouseY - 6;
+
+                    if (sliderPosition > maxSlider) {
+                        sliderPosition = maxSlider;
+                    } else if (sliderPosition < minSlider) {
+                        sliderPosition = minSlider;
+                    }
+
+                    startSlot = fullness(sliderPosition - minSlider, 31, countSlot - maxCountSlot);
+
+                }
+            }
+        }
+        // You might need additional logic here to prevent overshooting or snapping to certain values
+        return super.mouseDragged(mouseX, mouseY, button, deltaX, deltaY);
+    }
+
+    public int fullness(int progress, int maxProgress, int progressArrowSize) {
+        return maxProgress != 0 && progress != 0 ? progress * progressArrowSize / maxProgress: 0;
+    }
 }
+

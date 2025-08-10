@@ -1,0 +1,12 @@
+{
+  "type": "tfs:foundry",
+  "ingredients": [
+    {
+      "item": "tfs:rich_limonite"
+    }
+  ],
+  "output": {
+    "amount": 35,
+    "fluid": "tfs:iron"
+  }
+}

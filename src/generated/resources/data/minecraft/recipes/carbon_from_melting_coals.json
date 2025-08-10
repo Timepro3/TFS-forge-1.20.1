@@ -1,0 +1,12 @@
+{
+  "type": "tfs:foundry",
+  "ingredients": [
+    {
+      "tag": "minecraft:coals"
+    }
+  ],
+  "output": {
+    "amount": 40,
+    "fluid": "tfs:carbon"
+  }
+}

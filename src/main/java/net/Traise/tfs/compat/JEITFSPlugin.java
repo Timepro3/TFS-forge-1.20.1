@@ -11,6 +11,7 @@ import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.Traise.tfs.block.TFSBlocks;
 import net.Traise.tfs.item.TFSItems;
+import net.Traise.tfs.recipe.AlloyRecipe;
 import net.Traise.tfs.recipe.FoundryRecipe;
 import net.Traise.tfs.recipe.RemovingFromMoldRecipe;
 import net.Traise.tfs.screen.FoundryScreen;
@@ -34,6 +35,7 @@ public class JEITFSPlugin implements IModPlugin {
     public void registerCategories(IRecipeCategoryRegistration registration) {
        registration.addRecipeCategories(new FoundryCategory(registration.getJeiHelpers().getGuiHelper()));
        registration.addRecipeCategories(new RemovingFromMoldCategory(registration.getJeiHelpers().getGuiHelper()));
+       registration.addRecipeCategories(new AlloyCategory(registration.getJeiHelpers().getGuiHelper()));
     }
 
 
@@ -46,12 +48,17 @@ public class JEITFSPlugin implements IModPlugin {
 
         List<RemovingFromMoldRecipe> removingFromMoldRecipes = recipeManager.getAllRecipesFor(RemovingFromMoldRecipe.Type.INSTANCE);
         registration.addRecipes(RemovingFromMoldCategory.REMOVING_FROM_MOLD_TYPE, removingFromMoldRecipes);
+
+        List<AlloyRecipe> alloyRecipes = recipeManager.getAllRecipesFor(AlloyRecipe.Type.INSTANCE);
+        registration.addRecipes(AlloyCategory.ALLOY_TYPE, alloyRecipes);
     }
 
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
         registration.addRecipeCatalyst(new ItemStack(TFSBlocks.FOUNDRY.get()), FoundryCategory.FOUNDRY_TYPE);
         registration.addRecipeCatalyst(new ItemStack(TFSItems.INGOT_FORM.get()), RemovingFromMoldCategory.REMOVING_FROM_MOLD_TYPE);
+        registration.addRecipeCatalyst(new ItemStack(TFSBlocks.FOUNDRY.get()), AlloyCategory.ALLOY_TYPE);
+        registration.addRecipeCatalyst(new ItemStack(TFSItems.INGOT_FORM.get()), AlloyCategory.ALLOY_TYPE);
     }
 
     /* @Override

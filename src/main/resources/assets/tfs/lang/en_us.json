@@ -285,9 +285,10 @@
   "fluid_type.tfs.steel_type": "Steel",
   "fluid_type.tfs.cast_iron_type": "Cast iron",
   "fluid_type.tfs.carbon_type": "Carbon",
-  "fluid_type.tfs.unknown_metal_type": "Unknown metal",
+  "fluid_type.tfs.unknown_metal_type": "Unknown",
 
   "gui.tfs.foundry": "Melting",
+  "gui.tfs.alloy": "Alloying",
   "gui.tfs.removing_from_mold": "Removing from mold",
 
   "gui.tfs.mb": "mB",

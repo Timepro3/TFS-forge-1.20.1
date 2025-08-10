@@ -1,0 +1,12 @@
+{
+  "type": "tfs:foundry",
+  "ingredients": [
+    {
+      "item": "minecraft:iron_block"
+    }
+  ],
+  "output": {
+    "amount": 900,
+    "fluid": "tfs:iron"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "type": "tfs:removing_from_mold",
+  "ingredients": [
+    {
+      "amount": 100,
+      "fluid": "tfs:unknown_metal"
+    }
+  ],
+  "mold_type": "ingot",
+  "output": {
+    "item": "tfs:unknown_metal_ingot"
+  }
+}

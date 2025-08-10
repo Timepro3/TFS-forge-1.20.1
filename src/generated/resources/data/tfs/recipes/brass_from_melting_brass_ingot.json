@@ -1,0 +1,12 @@
+{
+  "type": "tfs:foundry",
+  "ingredients": [
+    {
+      "item": "create:brass_ingot"
+    }
+  ],
+  "output": {
+    "amount": 100,
+    "fluid": "tfs:brass"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "tfs:foundry",
+  "ingredients": [
+    {
+      "item": "tfs:cast_iron_block"
+    }
+  ],
+  "output": {
+    "amount": 900,
+    "fluid": "tfs:cast_iron"
+  }
+}

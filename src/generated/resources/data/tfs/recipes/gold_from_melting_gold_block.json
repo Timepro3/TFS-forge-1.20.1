@@ -1,0 +1,12 @@
+{
+  "type": "tfs:foundry",
+  "ingredients": [
+    {
+      "item": "minecraft:gold_block"
+    }
+  ],
+  "output": {
+    "amount": 900,
+    "fluid": "tfs:gold"
+  }
+}

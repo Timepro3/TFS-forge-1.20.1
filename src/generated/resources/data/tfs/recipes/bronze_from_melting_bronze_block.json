@@ -1,0 +1,12 @@
+{
+  "type": "tfs:foundry",
+  "ingredients": [
+    {
+      "item": "tfs:bronze_block"
+    }
+  ],
+  "output": {
+    "amount": 900,
+    "fluid": "tfs:bronze"
+  }
+}

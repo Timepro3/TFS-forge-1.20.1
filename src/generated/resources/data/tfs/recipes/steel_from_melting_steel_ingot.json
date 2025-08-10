@@ -1,0 +1,12 @@
+{
+  "type": "tfs:foundry",
+  "ingredients": [
+    {
+      "item": "tfs:steel_ingot"
+    }
+  ],
+  "output": {
+    "amount": 100,
+    "fluid": "tfs:steel"
+  }
+}

@@ -230,29 +230,29 @@ public class TFSBlocks {
            () -> new TFSOrePlaced(BlockBehaviour.Properties.copy(Blocks.SAND).noOcclusion().sound(SoundType.STONE)));
 
    public static final RegistryObject<LiquidBlock> FLUID_IRON_BLOCK = BLOCKS.register("fluid_iron_block",
-           () -> new TFSBurningFluids(TFSFluids.SOURCE_IRON, BlockBehaviour.Properties.copy(Blocks.LAVA).noLootTable().liquid()));
+           () -> new TFSBurningFluids(TFSFluids.IRON, BlockBehaviour.Properties.copy(Blocks.LAVA).noLootTable().liquid()));
    public static final RegistryObject<LiquidBlock> FLUID_COPPER_BLOCK = BLOCKS.register("fluid_copper_block",
-           () -> new TFSBurningFluids(TFSFluids.SOURCE_COPPER, BlockBehaviour.Properties.copy(Blocks.LAVA).noLootTable().liquid()));
+           () -> new TFSBurningFluids(TFSFluids.COPPER, BlockBehaviour.Properties.copy(Blocks.LAVA).noLootTable().liquid()));
    public static final RegistryObject<LiquidBlock> FLUID_ZINC_BLOCK = BLOCKS.register("fluid_zinc_block",
-           () -> new TFSBurningFluids(TFSFluids.SOURCE_ZINC, BlockBehaviour.Properties.copy(Blocks.LAVA).noLootTable().liquid()));
+           () -> new TFSBurningFluids(TFSFluids.ZINC, BlockBehaviour.Properties.copy(Blocks.LAVA).noLootTable().liquid()));
    public static final RegistryObject<LiquidBlock> FLUID_TIN_BLOCK = BLOCKS.register("fluid_tin_block",
-           () -> new TFSBurningFluids(TFSFluids.SOURCE_TIN, BlockBehaviour.Properties.copy(Blocks.LAVA).noLootTable().liquid()));
+           () -> new TFSBurningFluids(TFSFluids.TIN, BlockBehaviour.Properties.copy(Blocks.LAVA).noLootTable().liquid()));
    public static final RegistryObject<LiquidBlock> FLUID_GOLD_BLOCK = BLOCKS.register("fluid_gold_block",
-           () -> new TFSBurningFluids(TFSFluids.SOURCE_GOLD, BlockBehaviour.Properties.copy(Blocks.LAVA).noLootTable().liquid()));
+           () -> new TFSBurningFluids(TFSFluids.GOLD, BlockBehaviour.Properties.copy(Blocks.LAVA).noLootTable().liquid()));
    public static final RegistryObject<LiquidBlock> FLUID_SILVER_BLOCK = BLOCKS.register("fluid_silver_block",
-           () -> new TFSBurningFluids(TFSFluids.SOURCE_SILVER, BlockBehaviour.Properties.copy(Blocks.LAVA).noLootTable().liquid()));
+           () -> new TFSBurningFluids(TFSFluids.SILVER, BlockBehaviour.Properties.copy(Blocks.LAVA).noLootTable().liquid()));
    public static final RegistryObject<LiquidBlock> FLUID_BRONZE_BLOCK = BLOCKS.register("fluid_bronze_block",
-           () -> new TFSBurningFluids(TFSFluids.SOURCE_BRONZE, BlockBehaviour.Properties.copy(Blocks.LAVA).noLootTable().liquid()));
+           () -> new TFSBurningFluids(TFSFluids.BRONZE, BlockBehaviour.Properties.copy(Blocks.LAVA).noLootTable().liquid()));
    public static final RegistryObject<LiquidBlock> FLUID_BRASS_BLOCK = BLOCKS.register("fluid_brass_block",
-           () -> new TFSBurningFluids(TFSFluids.SOURCE_BRASS, BlockBehaviour.Properties.copy(Blocks.LAVA).noLootTable().liquid()));
+           () -> new TFSBurningFluids(TFSFluids.BRASS, BlockBehaviour.Properties.copy(Blocks.LAVA).noLootTable().liquid()));
    public static final RegistryObject<LiquidBlock> FLUID_STEEL_BLOCK = BLOCKS.register("fluid_steel_block",
-           () -> new TFSBurningFluids(TFSFluids.SOURCE_STEEL, BlockBehaviour.Properties.copy(Blocks.LAVA).noLootTable().liquid()));
+           () -> new TFSBurningFluids(TFSFluids.STEEL, BlockBehaviour.Properties.copy(Blocks.LAVA).noLootTable().liquid()));
    public static final RegistryObject<LiquidBlock> FLUID_CAST_IRON_BLOCK = BLOCKS.register("fluid_cast_iron_block",
-           () -> new TFSBurningFluids(TFSFluids.SOURCE_CAST_IRON, BlockBehaviour.Properties.copy(Blocks.LAVA).noLootTable().liquid()));
+           () -> new TFSBurningFluids(TFSFluids.CAST_IRON, BlockBehaviour.Properties.copy(Blocks.LAVA).noLootTable().liquid()));
    public static final RegistryObject<LiquidBlock> FLUID_CARBON_BLOCK = BLOCKS.register("fluid_carbon_block",
-           () -> new TFSBurningFluids(TFSFluids.SOURCE_CARBON, BlockBehaviour.Properties.copy(Blocks.LAVA).noLootTable().liquid()));
+           () -> new TFSBurningFluids(TFSFluids.CARBON, BlockBehaviour.Properties.copy(Blocks.LAVA).noLootTable().liquid()));
    public static final RegistryObject<LiquidBlock> FLUID_UNKNOWN_METAL_BLOCK = BLOCKS.register("fluid_unknown_metal_block",
-           () -> new TFSBurningFluids(TFSFluids.SOURCE_UNKNOWN_METAL, BlockBehaviour.Properties.copy(Blocks.LAVA).noLootTable().liquid()));
+           () -> new TFSBurningFluids(TFSFluids.UNKNOWN_METAL, BlockBehaviour.Properties.copy(Blocks.LAVA).noLootTable().liquid()));
 
    private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
       RegistryObject<T> toReturn = BLOCKS.register(name, block);

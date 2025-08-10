@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_limonite": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "tfs:limonite"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "tfs:iron_from_melting_limonite"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_limonite",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "tfs:iron_from_melting_limonite"
+    ]
+  },
+  "sends_telemetry_event": false
+}

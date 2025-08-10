@@ -1,0 +1,13 @@
+{
+  "type": "tfs:removing_from_mold",
+  "ingredients": [
+    {
+      "amount": 100,
+      "fluid": "tfs:copper"
+    }
+  ],
+  "mold_type": "ingot",
+  "output": {
+    "item": "minecraft:copper_ingot"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "tfs:alloying",
+  "ingredients": [
+    {
+      "amount": 9500,
+      "fluid": "tfs:iron"
+    },
+    {
+      "amount": 500,
+      "fluid": "tfs:carbon"
+    }
+  ],
+  "output": {
+    "amount": 1,
+    "fluid": "tfs:steel"
+  }
+}

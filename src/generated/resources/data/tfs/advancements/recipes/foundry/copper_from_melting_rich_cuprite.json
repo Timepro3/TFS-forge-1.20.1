@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_rich_cuprite": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "tfs:rich_cuprite"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "tfs:copper_from_melting_rich_cuprite"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_rich_cuprite",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "tfs:copper_from_melting_rich_cuprite"
+    ]
+  },
+  "sends_telemetry_event": false
+}

@@ -1,0 +1,12 @@
+{
+  "type": "tfs:foundry",
+  "ingredients": [
+    {
+      "item": "tfs:poor_zinc"
+    }
+  ],
+  "output": {
+    "amount": 15,
+    "fluid": "tfs:zinc"
+  }
+}

@@ -1,5 +1,6 @@
 package net.Traise.tfs.item.custom;
 
+import net.Traise.tfs.fluid.TFSFluids;
 import net.Traise.tfs.recipe.AlloyRecipe;
 import net.Traise.tfs.recipe.RemovingFromMoldRecipe;
 import net.Traise.tfs.tfs;

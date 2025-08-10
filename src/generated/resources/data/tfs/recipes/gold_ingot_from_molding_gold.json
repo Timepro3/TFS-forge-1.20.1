@@ -1,0 +1,13 @@
+{
+  "type": "tfs:removing_from_mold",
+  "ingredients": [
+    {
+      "amount": 100,
+      "fluid": "tfs:gold"
+    }
+  ],
+  "mold_type": "ingot",
+  "output": {
+    "item": "minecraft:gold_ingot"
+  }
+}

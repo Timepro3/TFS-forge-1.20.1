@@ -1,0 +1,12 @@
+{
+  "type": "tfs:foundry",
+  "ingredients": [
+    {
+      "item": "tfs:rich_cuprite"
+    }
+  ],
+  "output": {
+    "amount": 35,
+    "fluid": "tfs:copper"
+  }
+}

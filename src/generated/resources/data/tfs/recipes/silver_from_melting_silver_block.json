@@ -1,0 +1,12 @@
+{
+  "type": "tfs:foundry",
+  "ingredients": [
+    {
+      "item": "tfs:silver_block"
+    }
+  ],
+  "output": {
+    "amount": 900,
+    "fluid": "tfs:silver"
+  }
+}

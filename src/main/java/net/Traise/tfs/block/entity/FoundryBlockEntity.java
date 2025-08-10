@@ -1,5 +1,6 @@
 package net.Traise.tfs.block.entity;
 
+import net.Traise.tfs.fluid.TFSFluids;
 import net.Traise.tfs.item.custom.TFSFormItem;
 import net.Traise.tfs.recipe.AlloyRecipe;
 import net.Traise.tfs.recipe.FoundryRecipe;
@@ -37,6 +38,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -95,7 +97,7 @@ public class FoundryBlockEntity extends BlockEntity implements MenuProvider {
         addAndRemoveFluidSlots();
         сompact();
         hasBurned(level, pos);
-        setChanged(level, pos, state);
+        sort();
 
         for (int i = 0; i <= ItemSize - 2; i++) {
             if (hasMelting(i)) {
@@ -108,6 +110,8 @@ public class FoundryBlockEntity extends BlockEntity implements MenuProvider {
         if (hasFusion()) {
             fusion();
         }
+
+        setChanged(level, pos, state);
     }
 
     private void melting(int index) {
@@ -231,12 +235,11 @@ public class FoundryBlockEntity extends BlockEntity implements MenuProvider {
         for(int i = 0; i < this.fluidHandler.getSize(); i++) {
             inventory.setFluidInSlot(i, this.fluidHandler.getFluidInSlot(i));
         }
-
         return this.level.getRecipeManager().getRecipeFor(AlloyRecipe.Type.INSTANCE, inventory, level);
     }
 
     public String getAlloyName() {
-        String name = "Неизвестный метал";
+        String name = new FluidStack(TFSFluids.UNKNOWN_METAL.get(), 1).getDisplayName().getString();
         Optional<AlloyRecipe> recipe = getCurrentRecipe2();
 
         if (this.Size < 2) {
@@ -356,6 +359,18 @@ public class FoundryBlockEntity extends BlockEntity implements MenuProvider {
 
     public int getMaxProgress() {
         return MaxProgress;
+    }
+
+    public void sort() {
+        for (int i = 1; i < this.fluidHandler.getSize(); i++) {
+            if (this.fluidHandler.getFluidInSlot(i).getAmount() > this.fluidHandler.getFluidInSlot(i - 1).getAmount()) {
+            FluidStack fluidStack = this.fluidHandler.getFluidInSlot(i - 1);
+
+                this.fluidHandler.setFluidInSlot(i - 1, this.fluidHandler.getFluidInSlot(i));
+                this.fluidHandler.setFluidInSlot(i, fluidStack);
+            }
+
+        }
     }
 
     @Override

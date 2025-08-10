@@ -1,0 +1,12 @@
+{
+  "type": "tfs:foundry",
+  "ingredients": [
+    {
+      "item": "tfs:gold"
+    }
+  ],
+  "output": {
+    "amount": 20,
+    "fluid": "tfs:gold"
+  }
+}
