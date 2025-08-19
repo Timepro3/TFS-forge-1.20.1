@@ -91,62 +91,62 @@ public class TFSFluids{
 
     public static final ForgeFlowingFluid.Properties IRON_PROPERTIES = new ForgeFlowingFluid.Properties(
             TFSFluidTypes.IRON_TYPE, IRON, FLOWING_IRON)
-            .slopeFindDistance(2).levelDecreasePerBlock(2).block(TFSBlocks.FLUID_IRON_BLOCK)
+            .slopeFindDistance(2).levelDecreasePerBlock(1).tickRate(35).block(TFSBlocks.FLUID_IRON_BLOCK)
             .bucket(TFSItems.BUCKET_OF_IRON);
 
     public static final ForgeFlowingFluid.Properties COPPER_PROPERTIES = new ForgeFlowingFluid.Properties(
             TFSFluidTypes.COPPER_TYPE, COPPER, FLOWING_COPPER)
-            .slopeFindDistance(2).levelDecreasePerBlock(2).block(TFSBlocks.FLUID_COPPER_BLOCK)
+            .slopeFindDistance(2).levelDecreasePerBlock(2).tickRate(40).block(TFSBlocks.FLUID_COPPER_BLOCK)
             .bucket(TFSItems.BUCKET_OF_COPPER);
 
     public static final ForgeFlowingFluid.Properties ZINC_PROPERTIES = new ForgeFlowingFluid.Properties(
             TFSFluidTypes.ZINC_TYPE, ZINC, FLOWING_ZINC)
-            .slopeFindDistance(2).levelDecreasePerBlock(2).block(TFSBlocks.FLUID_ZINC_BLOCK)
+            .slopeFindDistance(2).levelDecreasePerBlock(2).tickRate(30).block(TFSBlocks.FLUID_ZINC_BLOCK)
             .bucket(TFSItems.BUCKET_OF_ZINC);
 
     public static final ForgeFlowingFluid.Properties TIN_PROPERTIES = new ForgeFlowingFluid.Properties(
             TFSFluidTypes.TIN_TYPE, TIN, FLOWING_TIN)
-            .slopeFindDistance(2).levelDecreasePerBlock(2).block(TFSBlocks.FLUID_TIN_BLOCK)
+            .slopeFindDistance(2).levelDecreasePerBlock(2).tickRate(35).block(TFSBlocks.FLUID_TIN_BLOCK)
             .bucket(TFSItems.BUCKET_OF_TIN);
 
     public static final ForgeFlowingFluid.Properties GOLD_PROPERTIES = new ForgeFlowingFluid.Properties(
             TFSFluidTypes.GOLD_TYPE, GOLD, FLOWING_GOLD)
-            .slopeFindDistance(2).levelDecreasePerBlock(2).block(TFSBlocks.FLUID_GOLD_BLOCK)
+            .slopeFindDistance(2).levelDecreasePerBlock(3).tickRate(85).block(TFSBlocks.FLUID_GOLD_BLOCK)
             .bucket(TFSItems.BUCKET_OF_GOLD);
 
     public static final ForgeFlowingFluid.Properties SILVER_PROPERTIES = new ForgeFlowingFluid.Properties(
             TFSFluidTypes.SILVER_TYPE, SILVER, FLOWING_SILVER)
-            .slopeFindDistance(2).levelDecreasePerBlock(2).block(TFSBlocks.FLUID_SILVER_BLOCK)
+            .slopeFindDistance(2).levelDecreasePerBlock(2).tickRate(45).block(TFSBlocks.FLUID_SILVER_BLOCK)
             .bucket(TFSItems.BUCKET_OF_SILVER);
 
     public static final ForgeFlowingFluid.Properties BRONZE_PROPERTIES = new ForgeFlowingFluid.Properties(
             TFSFluidTypes.BRONZE_TYPE, BRONZE, FLOWING_BRONZE)
-            .slopeFindDistance(2).levelDecreasePerBlock(2).block(TFSBlocks.FLUID_BRONZE_BLOCK)
+            .slopeFindDistance(2).levelDecreasePerBlock(2).tickRate(45).block(TFSBlocks.FLUID_BRONZE_BLOCK)
             .bucket(TFSItems.BUCKET_OF_BRONZE);
 
     public static final ForgeFlowingFluid.Properties BRASS_PROPERTIES = new ForgeFlowingFluid.Properties(
             TFSFluidTypes.BRASS_TYPE, BRASS, FLOWING_BRASS)
-            .slopeFindDistance(2).levelDecreasePerBlock(2).block(TFSBlocks.FLUID_BRASS_BLOCK)
+            .slopeFindDistance(2).levelDecreasePerBlock(2).tickRate(43).block(TFSBlocks.FLUID_BRASS_BLOCK)
             .bucket(TFSItems.BUCKET_OF_BRASS);
 
     public static final ForgeFlowingFluid.Properties STEEL_PROPERTIES = new ForgeFlowingFluid.Properties(
             TFSFluidTypes.STEEL_TYPE, STEEL, FLOWING_STEEL)
-            .slopeFindDistance(2).levelDecreasePerBlock(2).block(TFSBlocks.FLUID_STEEL_BLOCK)
+            .slopeFindDistance(2).levelDecreasePerBlock(2).tickRate(37).block(TFSBlocks.FLUID_STEEL_BLOCK)
             .bucket(TFSItems.BUCKET_OF_STEEL);
 
     public static final ForgeFlowingFluid.Properties CAST_IRON_PROPERTIES = new ForgeFlowingFluid.Properties(
             TFSFluidTypes.CAST_IRON_TYPE, CAST_IRON, FLOWING_CAST_IRON)
-            .slopeFindDistance(2).levelDecreasePerBlock(2).block(TFSBlocks.FLUID_CAST_IRON_BLOCK)
+            .slopeFindDistance(2).levelDecreasePerBlock(2).tickRate(35).block(TFSBlocks.FLUID_CAST_IRON_BLOCK)
             .bucket(TFSItems.BUCKET_OF_CAST_IRON);
 
     public static final ForgeFlowingFluid.Properties CARBON_PROPERTIES = new ForgeFlowingFluid.Properties(
             TFSFluidTypes.CARBON_TYPE, CARBON, FLOWING_CARBON)
-            .slopeFindDistance(2).levelDecreasePerBlock(2).block(TFSBlocks.FLUID_CARBON_BLOCK)
+            .slopeFindDistance(2).levelDecreasePerBlock(1).tickRate(1).block(TFSBlocks.FLUID_CARBON_BLOCK)
             .bucket(TFSItems.BUCKET_OF_CARBON);
 
     public static final ForgeFlowingFluid.Properties UNKNOWN_METAL_PROPERTIES = new ForgeFlowingFluid.Properties(
             TFSFluidTypes.UNKNOWN_METAL_TYPE, UNKNOWN_METAL, FLOWING_UNKNOWN_METAL)
-            .slopeFindDistance(2).levelDecreasePerBlock(2).block(TFSBlocks.FLUID_UNKNOWN_METAL_BLOCK)
+            .slopeFindDistance(2).levelDecreasePerBlock(1).tickRate(5).block(TFSBlocks.FLUID_UNKNOWN_METAL_BLOCK)
             .bucket(TFSItems.BUCKET_OF_UNKNOWN_METAL);
 
     public static void register(IEventBus eventBus) {

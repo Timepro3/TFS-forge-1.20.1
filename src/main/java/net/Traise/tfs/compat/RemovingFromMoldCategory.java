@@ -61,7 +61,7 @@ public class RemovingFromMoldCategory implements IRecipeCategory<RemovingFromMol
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, RemovingFromMoldRecipe recipe, IFocusGroup focuses) {
-        FluidStack fluidStack = recipe.getInputFluids().get(0);
+        FluidStack fluidStack = recipe.getInputFluids().get(0).getFluidStack();
         builder.addSlot(RecipeIngredientRole.INPUT, 9, 29).addFluidStack(fluidStack.getFluid(), fluidStack.getAmount()).addTooltipCallback(CreateRecipeCategory.addFluidTooltip(fluidStack.getAmount()));
         builder.addSlot(RecipeIngredientRole.OUTPUT, 73, 29).addItemStack(recipe.getResultItem(null));
 

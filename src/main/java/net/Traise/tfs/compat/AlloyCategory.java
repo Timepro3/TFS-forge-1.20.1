@@ -70,7 +70,7 @@ public class AlloyCategory implements IRecipeCategory<AlloyRecipe> {
             } else r = 0;
         }
 
-        FluidStack resultFluid = recipe.getResultFluid(null);
+        FluidStack resultFluid = recipe.getResultFluid(null).getFluidStack();
 
         builder.addSlot(RecipeIngredientRole.OUTPUT, 149, 31)
                 .addFluidStack(resultFluid.getFluid(), 1000);
@@ -83,7 +83,7 @@ public class AlloyCategory implements IRecipeCategory<AlloyRecipe> {
         int Y = getY(recipe.getInputFluids().size()) - 1;
         int r = 0;
         for (int i = 0; i < recipe.getInputFluids().size(); i++) {
-            FluidStack fluidStack = recipe.getInputFluids().get(i);
+            FluidStack fluidStack = recipe.getInputFluids().get(i).getFluidStack();
 
             guiGraphics.drawString(minecraft.font, Component.literal(((fluidStack.getAmount() - 300) / 100) + "-" + ((fluidStack.getAmount() + 300) / 100) + "%"), 23 + 60 * r,  (int) (Y + 5 + 19 * Math.ceil(((float)(i + 1) / 2) - 1)), -12829636, false);
             guiGraphics.blit(TEXTURE, 4 + 60 * r, (int) (Y + 19 * Math.ceil(((float)(i + 1) / 2) - 1)), 148, 30, 18, 18);

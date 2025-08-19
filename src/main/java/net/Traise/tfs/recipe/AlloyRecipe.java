@@ -5,9 +5,9 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import net.Traise.tfs.fluid.util.TFSFluidStack;
 import net.Traise.tfs.tfs;
 import net.Traise.tfs.util.FluidContainer;
-import net.Traise.tfs.util.FluidRequirement;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.nbt.CompoundTag;
@@ -25,7 +25,6 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
 
@@ -37,11 +36,11 @@ import java.util.Objects;
 import static net.minecraft.util.datafix.fixes.BlockEntitySignTextStrictJsonFix.GSON;
 
 public class AlloyRecipe implements Recipe<FluidContainer> {
-    private final NonNullList<FluidStack> inputFluids; // Входные предметы
-    private final FluidStack output; // Выходная жидкость
+    private final NonNullList<TFSFluidStack> inputFluids; // Входные предметы
+    private final TFSFluidStack output; // Выходная жидкость
     private final ResourceLocation id;
 
-    public AlloyRecipe(NonNullList<FluidStack> inputFluids, FluidStack output, ResourceLocation id) {
+    public AlloyRecipe(NonNullList<TFSFluidStack> inputFluids, TFSFluidStack output, ResourceLocation id) {
         this.inputFluids = inputFluids;
         this.output = output;
         this.id = id;
@@ -51,7 +50,7 @@ public class AlloyRecipe implements Recipe<FluidContainer> {
         int T = 0;
 
         int R = 1;
-        int Amount = pContainer.getSumAllFluid();
+        double Amount = pContainer.getSumAllFluid();
 
         for (int slot = 0; slot < pContainer.getContainerSize(); slot++) {
             if (pContainer.getFluidInSlot(slot).getFluid() == output.getFluid()) {
@@ -65,7 +64,7 @@ public class AlloyRecipe implements Recipe<FluidContainer> {
 
             for (int slot = 0; slot < pContainer.getContainerSize(); slot++) {
                 if (inputFluids.get(i).getFluid().isSame(pContainer.getFluidInSlot(slot).getFluid())) {
-                    FluidStack fluidStack = new FluidStack(pContainer.getFluidInSlot(slot).getFluid(), (int) (((double) pContainer.getFluidInSlot(slot).getAmount() / Amount) * 10000));
+                    TFSFluidStack fluidStack = new TFSFluidStack(pContainer.getFluidInSlot(slot).getFluid(), (int) (((double) pContainer.getFluidInSlot(slot).getAmount() / Amount) * 10000));
 
                     if (fluidStack.getAmount() >= inputFluids.get(i).getAmount() - 300 && fluidStack.getAmount() <= inputFluids.get(i).getAmount() + 300) {
                         FluidSame = false;
@@ -97,11 +96,11 @@ public class AlloyRecipe implements Recipe<FluidContainer> {
         return ItemStack.EMPTY;
     }
 
-    public FluidStack getResultFluid(RegistryAccess pRegistryAccess) {
+    public TFSFluidStack getResultFluid(RegistryAccess pRegistryAccess) {
         return output.copy();
     }
 
-    public NonNullList<FluidStack> getInputFluids() {
+    public NonNullList<TFSFluidStack> getInputFluids() {
         return inputFluids;
     }
 
@@ -144,37 +143,37 @@ public class AlloyRecipe implements Recipe<FluidContainer> {
         @Override
         public AlloyRecipe fromJson(ResourceLocation pRecipeId, JsonObject pSerializedRecipe) {
             JsonArray ingredientsArray = GsonHelper.getAsJsonArray(pSerializedRecipe, "ingredients");
-            NonNullList<FluidStack> inputs = NonNullList.create();
+            NonNullList<TFSFluidStack> inputs = NonNullList.create();
 
             for (int i = 0; i < ingredientsArray.size(); i++) {
                 JsonObject ingredientObj = ingredientsArray.get(i).getAsJsonObject();
-                FluidStack inputFluid = getFluidStack(ingredientObj);
+                TFSFluidStack inputFluid = getFluidStack(ingredientObj);
                 inputs.add(inputFluid);
             }
 
             JsonObject outputObj = GsonHelper.getAsJsonObject(pSerializedRecipe, "output");
-            FluidStack output = getFluidStack(outputObj);
+            TFSFluidStack output = getFluidStack(outputObj);
 
             return new AlloyRecipe(inputs, output, pRecipeId);
         }
 
-        public static FluidStack getFluidStack(JsonObject json) {
+        public static TFSFluidStack getFluidStack(JsonObject json) {
             String fluidName = GsonHelper.getAsString(json, "fluid");
             int amount = GsonHelper.getAsInt(json, "amount", 1000); // по умолчанию 1000 мб
 
             Fluid fluid = getFluid(fluidName, false); // или true в зависимости от логики
-            return new FluidStack(fluid, amount);
+            return new TFSFluidStack(fluid, amount);
         }
 
         @Override
         public @Nullable AlloyRecipe fromNetwork(ResourceLocation pRecipeId, FriendlyByteBuf pBuffer) {
             int size = pBuffer.readInt();
-            NonNullList<FluidStack> inputs = NonNullList.withSize(size, null);
+            NonNullList<TFSFluidStack> inputs = NonNullList.withSize(size, null);
 
             for (int i = 0; i < size; i++) {
-                inputs.set(i, pBuffer.readFluidStack());
+                inputs.set(i, TFSFluidStack.readFromPacket(pBuffer));
             }
-            FluidStack output = pBuffer.readFluidStack();
+            TFSFluidStack output = TFSFluidStack.readFromPacket(pBuffer);
 
             return new AlloyRecipe(inputs, output, pRecipeId);
         }
@@ -182,10 +181,10 @@ public class AlloyRecipe implements Recipe<FluidContainer> {
         @Override
         public void toNetwork(FriendlyByteBuf pBuffer, AlloyRecipe pRecipe) {
             pBuffer.writeInt(pRecipe.getInputFluids().size());
-            for (FluidStack fs : pRecipe.getInputFluids()) {
-                pBuffer.writeFluidStack(fs);
+            for (TFSFluidStack fs : pRecipe.getInputFluids()) {
+                pBuffer.writeFluidStack(fs.getFluidStack());
             }
-            pBuffer.writeFluidStack(pRecipe.getResultFluid(null));
+            pBuffer.writeFluidStack(pRecipe.getResultFluid(null).getFluidStack());
         }
     }
 }

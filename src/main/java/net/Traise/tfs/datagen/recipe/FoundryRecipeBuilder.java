@@ -32,17 +32,28 @@ public class FoundryRecipeBuilder extends CraftingRecipeBuilder implements Recip
     private FluidStack result;
     private final List<Ingredient> ingredients = Lists.newArrayList();
     private final Advancement.Builder advancement = Advancement.Builder.recipeAdvancement();
+    private final double heat;
 
-    public FoundryRecipeBuilder(FluidStack pResult) {
+
+    public FoundryRecipeBuilder(FluidStack pResult, double pHeat) {
         this.result = pResult;
+        this.heat = pHeat;
     }
 
-    public static FoundryRecipeBuilder foundry(FluidStack pResult) {
-        return new FoundryRecipeBuilder(pResult);
+    public static FoundryRecipeBuilder foundry(FluidStack pResult, double pHeat) {
+        return new FoundryRecipeBuilder(pResult, pHeat);
+    }
+
+    public static FoundryRecipeBuilder foundry(Fluid pFluid, int Amount, double pHeat) {
+        return foundry(new FluidStack(pFluid, Amount), pHeat);
     }
 
     public static FoundryRecipeBuilder foundry(Fluid pFluid, int Amount) {
-        return foundry(new FluidStack(pFluid, Amount));
+        return foundry(pFluid, Amount, 0);
+    }
+
+    public static FoundryRecipeBuilder foundry(FluidStack pResult) {
+        return new FoundryRecipeBuilder(pResult, 0);
     }
 
     public FoundryRecipeBuilder requires(TagKey<Item> pTag) {
@@ -51,8 +62,6 @@ public class FoundryRecipeBuilder extends CraftingRecipeBuilder implements Recip
 
     public FoundryRecipeBuilder requires(ItemLike pItem) {
         this.requires(Ingredient.of(pItem));
-
-
         return this;
     }
 
@@ -85,7 +94,7 @@ public class FoundryRecipeBuilder extends CraftingRecipeBuilder implements Recip
     public void save(Consumer<FinishedRecipe> pFinishedRecipeConsumer, ResourceLocation pRecipeId) {
         this.ensureValid(pRecipeId);
         this.advancement.parent(ROOT_RECIPE_ADVANCEMENT).addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(pRecipeId)).rewards(AdvancementRewards.Builder.recipe(pRecipeId)).requirements(RequirementsStrategy.OR);
-        pFinishedRecipeConsumer.accept(new FoundryRecipeBuilder.Result(pRecipeId, CraftingBookCategory.MISC, this.result, this.ingredients, this.advancement, pRecipeId.withPrefix("recipes/foundry/")));
+        pFinishedRecipeConsumer.accept(new FoundryRecipeBuilder.Result(pRecipeId, CraftingBookCategory.MISC, this.heat, this.result, this.ingredients, this.advancement, pRecipeId.withPrefix("recipes/foundry/")));
     }
 
     private void ensureValid(ResourceLocation pId) {
@@ -96,14 +105,16 @@ public class FoundryRecipeBuilder extends CraftingRecipeBuilder implements Recip
 
     public static class Result extends CraftingRecipeBuilder.CraftingResult {
         private final ResourceLocation id;
+        private final double heat;
         private final FluidStack result;
         private final List<Ingredient> ingredients;
         private final Advancement.Builder advancement;
         private final ResourceLocation advancementId;
 
-        public Result(ResourceLocation pId, CraftingBookCategory category, FluidStack pResult, List<Ingredient> pIngredients, Advancement.Builder pAdvancement, ResourceLocation pAdvancementId) {
+        public Result(ResourceLocation pId, CraftingBookCategory category, double pHeat, FluidStack pResult, List<Ingredient> pIngredients, Advancement.Builder pAdvancement, ResourceLocation pAdvancementId) {
             super(category);
             this.id = pId;
+            this.heat = pHeat;
             this.result = pResult;
             this.ingredients = pIngredients;
             this.advancement = pAdvancement;
@@ -113,6 +124,8 @@ public class FoundryRecipeBuilder extends CraftingRecipeBuilder implements Recip
         public void serializeRecipeData(JsonObject pJson) {
             JsonArray jsonarray = new JsonArray();
 
+            pJson.addProperty("heat", this.heat);
+
             for(Ingredient ingredient : this.ingredients) {
                 jsonarray.add(ingredient.toJson());
             }
@@ -120,7 +133,7 @@ public class FoundryRecipeBuilder extends CraftingRecipeBuilder implements Recip
             pJson.add("ingredients", jsonarray);
 
             JsonObject jsonobject = new JsonObject();
-           jsonobject.addProperty("fluid", BuiltInRegistries.FLUID.getKey(this.result.getFluid()).toString());
+            jsonobject.addProperty("fluid", BuiltInRegistries.FLUID.getKey(this.result.getFluid()).toString());
             jsonobject.addProperty("amount", this.result.getAmount());
 
 

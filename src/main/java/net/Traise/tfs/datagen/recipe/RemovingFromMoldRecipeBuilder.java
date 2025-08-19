@@ -82,26 +82,25 @@ public class RemovingFromMoldRecipeBuilder extends CraftingRecipeBuilder impleme
 
     public static class Result extends CraftingRecipeBuilder.CraftingResult {
         private final ResourceLocation id;
+        private final MoldType moldType;
         private final ItemStack result;
         private final List<FluidStack> ingredients;
-        private final MoldType moldType;
         private final Advancement.Builder advancement;
         private final ResourceLocation advancementId;
 
         public Result(ResourceLocation pId, CraftingBookCategory category, MoldType pMoldType, ItemStack pResult, List<FluidStack> pIngredients, Advancement.Builder pAdvancement, ResourceLocation pAdvancementId) {
             super(category);
             this.id = pId;
+            this.moldType = pMoldType;
             this.result = pResult;
             this.ingredients = pIngredients;
-            this.moldType = pMoldType;
             this.advancement = pAdvancement;
             this.advancementId = pAdvancementId;
         }
 
         public void serializeRecipeData(JsonObject pJson) {
-            pJson.addProperty("mold_type", this.moldType.getName());
-
             JsonArray jsonarray = new JsonArray();
+            pJson.addProperty("mold_type", this.moldType.getName());
 
             for(int i = 0; i < ingredients.size(); i++) {
                 JsonObject jsonobject = new JsonObject();

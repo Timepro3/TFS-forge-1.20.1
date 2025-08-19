@@ -3,6 +3,7 @@ package net.Traise.tfs.recipe;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
+import net.Traise.tfs.fluid.util.TFSFluidStack;
 import net.Traise.tfs.util.MoldType;
 import net.Traise.tfs.tfs;
 import net.Traise.tfs.util.FluidContainer;
@@ -19,7 +20,6 @@ import net.minecraft.world.item.crafting.ShapedRecipe;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
 
@@ -27,11 +27,11 @@ import java.util.Objects;
 
 public class RemovingFromMoldRecipe implements Recipe<FluidContainer> {
     private final MoldType moldType;
-    private final NonNullList<FluidStack> inputFluids; // Входные предметы
+    private final NonNullList<TFSFluidStack> inputFluids; // Входные предметы
     private final ItemStack output; // Выходная жидкость
     private final ResourceLocation id;
 
-    public RemovingFromMoldRecipe(MoldType moldType, NonNullList<FluidStack> inputFluids, ItemStack output, ResourceLocation id) {
+    public RemovingFromMoldRecipe(MoldType moldType, NonNullList<TFSFluidStack> inputFluids, ItemStack output, ResourceLocation id) {
         this.moldType = moldType;
         this.inputFluids = inputFluids;
         this.output = output;
@@ -39,10 +39,6 @@ public class RemovingFromMoldRecipe implements Recipe<FluidContainer> {
     }
 
     public boolean matches(FluidContainer pContainer, Level pLevel) {
-        if(pLevel.isClientSide()) {
-            return false;
-        }
-
         return pContainer.getMoldType() == moldType && pContainer.getFluidInSlot(0).isFluidEqual(inputFluids.get(0));
     }
 
@@ -61,7 +57,7 @@ public class RemovingFromMoldRecipe implements Recipe<FluidContainer> {
         return output.copy();
     }
 
-    public NonNullList<FluidStack> getInputFluids() {
+    public NonNullList<TFSFluidStack> getInputFluids() {
         return inputFluids;
     }
 
@@ -110,11 +106,11 @@ public class RemovingFromMoldRecipe implements Recipe<FluidContainer> {
             MoldType pMoldType = MoldType.getMoldTypeInName(GsonHelper.getAsString(pSerializedRecipe, "mold_type"));
 
             JsonArray ingredientsArray = GsonHelper.getAsJsonArray(pSerializedRecipe, "ingredients");
-            NonNullList<FluidStack> inputs = NonNullList.create();
+            NonNullList<TFSFluidStack> inputs = NonNullList.create();
 
             for (int i = 0; i < ingredientsArray.size(); i++) {
                 JsonObject ingredientObj = ingredientsArray.get(i).getAsJsonObject();
-                FluidStack inputFluid = getFluidStack(ingredientObj);
+                TFSFluidStack inputFluid = getFluidStack(ingredientObj);
                 inputs.add(inputFluid);
             }
 
@@ -123,12 +119,12 @@ public class RemovingFromMoldRecipe implements Recipe<FluidContainer> {
             return new RemovingFromMoldRecipe(pMoldType, inputs, output, pRecipeId);
         }
 
-        public static FluidStack getFluidStack(JsonObject json) {
+        public static TFSFluidStack getFluidStack(JsonObject json) {
             String fluidName = GsonHelper.getAsString(json, "fluid");
             int amount = GsonHelper.getAsInt(json, "amount", 1000); // по умолчанию 1000 мб
 
             Fluid fluid = getFluid(fluidName, false); // или true в зависимости от логики
-            return new FluidStack(fluid, amount);
+            return new TFSFluidStack(fluid, amount);
         }
 
         @Override
@@ -136,10 +132,10 @@ public class RemovingFromMoldRecipe implements Recipe<FluidContainer> {
             int size = pBuffer.readInt();
             MoldType pMoldType = pBuffer.readEnum(MoldType.class);
 
-            NonNullList<FluidStack> inputs = NonNullList.withSize(size, null);
+            NonNullList<TFSFluidStack> inputs = NonNullList.withSize(size, null);
 
             for (int i = 0; i < size; i++) {
-                inputs.set(i, pBuffer.readFluidStack());
+                inputs.set(i, TFSFluidStack.readFromPacket(pBuffer));
             }
             ItemStack output = pBuffer.readItem();
 
@@ -150,8 +146,8 @@ public class RemovingFromMoldRecipe implements Recipe<FluidContainer> {
         @Override
         public void toNetwork(FriendlyByteBuf pBuffer, RemovingFromMoldRecipe pRecipe) {
             pBuffer.writeInt(pRecipe.getInputFluids().size());
-            for (FluidStack fs : pRecipe.getInputFluids()) {
-                pBuffer.writeFluidStack(fs);
+            for (TFSFluidStack fs : pRecipe.getInputFluids()) {
+                pBuffer.writeFluidStack(fs.getFluidStack());
             }
             pBuffer.writeItemStack(pRecipe.getResultItem(null), false);
         }

@@ -141,6 +141,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         {simpleItem(TFSItems.BLUEBERRY);
         simpleItem(TFSItems.BLU);
+            simpleItem(TFSItems.BLUE);
         withExistingParent(TFSItems.ALISE_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
         withExistingParent(TFSItems.TATAR_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
 

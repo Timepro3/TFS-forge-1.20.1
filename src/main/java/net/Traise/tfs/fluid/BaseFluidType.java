@@ -86,7 +86,7 @@ public class BaseFluidType extends FluidType {
             @Override
             public @NotNull Vector3f modifyFogColor(Camera camera, float partialTick, ClientLevel level,
                                                     int renderDistance, float darkenWorldAmount, Vector3f fluidFogColor) {
-                return fogColor;
+                return fluidFogColor;
             }
 
             @Override

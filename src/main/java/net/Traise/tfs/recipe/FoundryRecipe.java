@@ -6,6 +6,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.simibubi.create.AllRecipeTypes;
+import net.Traise.tfs.fluid.util.TFSFluidStack;
 import net.Traise.tfs.tfs;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
@@ -20,7 +21,6 @@ import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
 
@@ -29,11 +29,13 @@ import java.util.Objects;
 import static net.minecraft.util.datafix.fixes.BlockEntitySignTextStrictJsonFix.GSON;
 
 public class FoundryRecipe implements Recipe<SimpleContainer> {
+    private final double heat;
     private final NonNullList<Ingredient> inputItems; // Входные предметы
-    private final FluidStack output; // Выходная жидкость
+    private final TFSFluidStack output; // Выходная жидкость
     private final ResourceLocation id;
 
-    public FoundryRecipe(NonNullList<Ingredient> inputItems, FluidStack output, ResourceLocation id) {
+    public FoundryRecipe(double pHeat, NonNullList<Ingredient> inputItems, TFSFluidStack output, ResourceLocation id) {
+        this.heat = pHeat;
         this.inputItems = inputItems;
         this.output = output;
         this.id = id;
@@ -69,7 +71,11 @@ public class FoundryRecipe implements Recipe<SimpleContainer> {
         return ItemStack.EMPTY;
     }
 
-    public FluidStack getResultFluid(RegistryAccess pRegistryAccess) {
+    public double getHeat() {
+        return heat;
+    }
+
+    public TFSFluidStack getResultFluid(RegistryAccess pRegistryAccess) {
         return output.copy();
     }
 
@@ -96,7 +102,7 @@ public class FoundryRecipe implements Recipe<SimpleContainer> {
         return Type.INSTANCE;
     }
 
-    public static FluidStack getFluidStack(JsonObject json, boolean readNBT, boolean disallowsAirInRecipe)
+    public static TFSFluidStack getFluidStack(JsonObject json, boolean readNBT, boolean disallowsAirInRecipe)
     {
         String fluidName = GsonHelper.getAsString(json, "fluid");
         Fluid fluid = getFluid(fluidName, disallowsAirInRecipe);
@@ -112,12 +118,12 @@ public class FoundryRecipe implements Recipe<SimpleContainer> {
 
             tmp.put("tag", nbt);
             tmp.putString("id", fluidName);
-            tmp.putInt("Amount", GsonHelper.getAsInt(json, "amount", 1));
+            tmp.putDouble("Amount", GsonHelper.getAsDouble(json, "amount", 1));
 
-            return FluidStack.loadFluidStackFromNBT(tmp);
+            return TFSFluidStack.loadFluidStackFromNBT(tmp);
         }
 
-        return new FluidStack(fluid, GsonHelper.getAsInt(json, "amount", 1));
+        return new TFSFluidStack(fluid, GsonHelper.getAsInt(json, "amount", 1));
     }
 
     public static Fluid getFluid(String fluidName, boolean disallowsAirInRecipe)
@@ -147,7 +153,7 @@ public class FoundryRecipe implements Recipe<SimpleContainer> {
         }
     }
 
-    public static FluidStack fluidStackFromJson(JsonObject pStackObject) {
+    public static TFSFluidStack fluidStackFromJson(JsonObject pStackObject) {
         return getFluidStack(pStackObject, true, true);
     }
 
@@ -162,7 +168,9 @@ public class FoundryRecipe implements Recipe<SimpleContainer> {
 
         @Override
         public FoundryRecipe fromJson(ResourceLocation pRecipeId, JsonObject pSerializedRecipe) {
-            FluidStack output = fluidStackFromJson(GsonHelper.getAsJsonObject(pSerializedRecipe, "output"));
+            double pHeat = GsonHelper.convertToDouble(pSerializedRecipe, "heat");
+
+            TFSFluidStack output = fluidStackFromJson(GsonHelper.getAsJsonObject(pSerializedRecipe, "output"));
 
             JsonArray ingredients = GsonHelper.getAsJsonArray(pSerializedRecipe, "ingredients");
             NonNullList<Ingredient> inputs = NonNullList.withSize(1, Ingredient.EMPTY);
@@ -171,19 +179,21 @@ public class FoundryRecipe implements Recipe<SimpleContainer> {
                 inputs.set(i, Ingredient.fromJson(ingredients.get(i)));
             }
 
-            return new FoundryRecipe(inputs, output, pRecipeId);
+            return new FoundryRecipe(pHeat, inputs, output, pRecipeId);
         }
 
         @Override
         public @Nullable FoundryRecipe fromNetwork(ResourceLocation pRecipeId, FriendlyByteBuf pBuffer) {
+            double pHeat = pBuffer.readDouble();
+
             NonNullList<Ingredient> inputs = NonNullList.withSize(pBuffer.readInt(), Ingredient.EMPTY);
 
             for(int i = 0; i < inputs.size(); i++) {
                 inputs.set(i, Ingredient.fromNetwork(pBuffer));
             }
 
-            FluidStack output = pBuffer.readFluidStack();
-            return new FoundryRecipe(inputs, output, pRecipeId);
+            TFSFluidStack output = TFSFluidStack.readFromPacket(pBuffer);
+            return new FoundryRecipe(pHeat, inputs, output, pRecipeId);
         }
 
         @Override

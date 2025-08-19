@@ -58,7 +58,7 @@ public class TFSItems {
             () -> new BucketItem(TFSFluids.CAST_IRON,
                     new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
     public static final RegistryObject<Item> BUCKET_OF_CARBON = ITEMS.register("bucket_of_carbon",
-            () -> new BucketItem(TFSFluids.CARBON,
+            () -> new BucketItem(TFSFluids.FLOWING_CARBON,
                     new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
     public static final RegistryObject<Item> BUCKET_OF_UNKNOWN_METAL = ITEMS.register("bucket_of_unknown_metal",
             () -> new BucketItem(TFSFluids.UNKNOWN_METAL,
@@ -229,7 +229,9 @@ public class TFSItems {
     public static final RegistryObject<Item> BLUEBERRY = ITEMS.register( "blueberry",
             () -> new Item(new Item.Properties().food(TFSFood.BLUEBERRY)));
     public static final RegistryObject<Item> BLU = ITEMS.register( "blu",
-            () -> new TFSSickleItem(Tiers.IRON, new Item.Properties()));
+            () -> new testItem(new Item.Properties()));
+    public static final RegistryObject<Item> BLUE = ITEMS.register( "blue",
+            () -> new TFSSavingLoadItem(new Item.Properties()));
     public static final RegistryObject<Item> ALISE_SPAWN_EGG = ITEMS.register("alise_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntities.ALISE, -1, -1, new Item.Properties()));
     public static final RegistryObject<Item> TATAR_SPAWN_EGG = ITEMS.register("tatar_spawn_egg",
@@ -279,27 +281,27 @@ public class TFSItems {
     public static final RegistryObject<Item> ROCK_KNIFE = ITEMS.register( "rock_knife",
             () -> new TFSKnifeItem(TFSToolTiers.ROCK, new Item.Properties()));
     public static final RegistryObject<Item> ROCK_SPEAR = ITEMS.register("rock_spear",
-            () ->new TFSSpearItem(TFSToolTiers.ROCK, new Item.Properties(), "rock"));
+            () -> new TFSSpearItem(TFSToolTiers.ROCK, new Item.Properties(), "rock"));
     public static final RegistryObject<Item> IRON_SPEAR = ITEMS.register("iron_spear",
-            () ->new TFSSpearItem(Tiers.IRON, new Item.Properties(), "iron"));
+            () -> new TFSSpearItem(Tiers.IRON, new Item.Properties(), "iron"));
     public static final RegistryObject<Item> IRON_KNIFE = ITEMS.register("iron_knife",
-            () ->new TFSKnifeItem(Tiers.IRON, new Item.Properties()));
+            () -> new TFSKnifeItem(Tiers.IRON, new Item.Properties()));
     public static final RegistryObject<Item> IRON_HAMMER = ITEMS.register("iron_hammer",
-            () ->new TFSHammerItem(Tiers.IRON, new Item.Properties()));
+            () -> new TFSHammerItem(Tiers.IRON, new Item.Properties()));
     public static final RegistryObject<Item> IRON_SPADE = ITEMS.register("iron_spade",
-            () ->new TFSSpadeItem(Tiers.IRON, new Item.Properties()));
+            () -> new TFSSpadeItem(Tiers.IRON, new Item.Properties()));
     public static final RegistryObject<Item> IRON_SICKLE = ITEMS.register("iron_sickle",
-            () ->new TFSSickleItem(Tiers.IRON, new Item.Properties()));
+            () -> new TFSSickleItem(Tiers.IRON, new Item.Properties()));
     public static final RegistryObject<Item> GOLD_SPEAR = ITEMS.register("gold_spear",
-            () ->new TFSSpearItem(Tiers.GOLD, new Item.Properties(), "gold"));
+            () -> new TFSSpearItem(Tiers.GOLD, new Item.Properties(), "gold"));
     public static final RegistryObject<Item> GOLD_KNIFE = ITEMS.register("gold_knife",
-            () ->new TFSKnifeItem(Tiers.GOLD, new Item.Properties()));
+            () -> new TFSKnifeItem(Tiers.GOLD, new Item.Properties()));
     public static final RegistryObject<Item> GOLD_HAMMER = ITEMS.register("gold_hammer",
-            () ->new TFSHammerItem(Tiers.GOLD, new Item.Properties()));
+            () -> new TFSHammerItem(Tiers.GOLD, new Item.Properties()));
     public static final RegistryObject<Item> GOLD_SPADE = ITEMS.register("gold_spade",
-            () ->new TFSSpadeItem(Tiers.GOLD, new Item.Properties()));
+            () -> new TFSSpadeItem(Tiers.GOLD, new Item.Properties()));
     public static final RegistryObject<Item> GOLD_SICKLE = ITEMS.register("gold_sickle",
-            () ->new TFSSickleItem(Tiers.GOLD, new Item.Properties()));
+            () -> new TFSSickleItem(Tiers.GOLD, new Item.Properties()));
     public static final RegistryObject<Item> SILVER_SWORD = ITEMS.register( "silver_sword",
             () -> new SwordItem(TFSToolTiers.SILVER,3, -2.4F, new Item.Properties()));
     public static final RegistryObject<Item> SILVER_SHOVEL = ITEMS.register( "silver_shovel",
@@ -311,15 +313,15 @@ public class TFSItems {
     public static final RegistryObject<Item> SILVER_HOE = ITEMS.register( "silver_hoe",
             () -> new HoeItem(TFSToolTiers.SILVER,3, -3f, new Item.Properties()));
     public static final RegistryObject<Item> SILVER_SPEAR = ITEMS.register("silver_spear",
-            () ->new TFSSpearItem(TFSToolTiers.SILVER, new Item.Properties(), "silver"));
+            () -> new TFSSpearItem(TFSToolTiers.SILVER, new Item.Properties(), "silver"));
     public static final RegistryObject<Item> SILVER_KNIFE = ITEMS.register("silver_knife",
-            () ->new TFSKnifeItem(TFSToolTiers.SILVER, new Item.Properties()));
+            () -> new TFSKnifeItem(TFSToolTiers.SILVER, new Item.Properties()));
     public static final RegistryObject<Item> SILVER_HAMMER = ITEMS.register("silver_hammer",
-            () ->new TFSHammerItem(TFSToolTiers.SILVER, new Item.Properties()));
+            () -> new TFSHammerItem(TFSToolTiers.SILVER, new Item.Properties()));
     public static final RegistryObject<Item> SILVER_SPADE = ITEMS.register("silver_spade",
-            () ->new TFSSpadeItem(TFSToolTiers.SILVER, new Item.Properties()));
+            () -> new TFSSpadeItem(TFSToolTiers.SILVER, new Item.Properties()));
     public static final RegistryObject<Item> SILVER_SICKLE = ITEMS.register("silver_sickle",
-            () ->new TFSSickleItem(TFSToolTiers.SILVER, new Item.Properties()));
+            () -> new TFSSickleItem(TFSToolTiers.SILVER, new Item.Properties()));
     public static final RegistryObject<Item> BRONZE_SWORD = ITEMS.register( "bronze_sword",
             () -> new SwordItem(TFSToolTiers.BRONZE,3, -2.4F, new Item.Properties()));
     public static final RegistryObject<Item> BRONZE_SHOVEL = ITEMS.register( "bronze_shovel",
@@ -331,15 +333,15 @@ public class TFSItems {
     public static final RegistryObject<Item> BRONZE_HOE = ITEMS.register( "bronze_hoe",
             () -> new HoeItem(TFSToolTiers.BRONZE,3, -3f, new Item.Properties()));
     public static final RegistryObject<Item> BRONZE_SPEAR = ITEMS.register("bronze_spear",
-            () ->new TFSSpearItem(TFSToolTiers.BRONZE, new Item.Properties(), "bronze"));
+            () -> new TFSSpearItem(TFSToolTiers.BRONZE, new Item.Properties(), "bronze"));
     public static final RegistryObject<Item> BRONZE_KNIFE = ITEMS.register("bronze_knife",
-            () ->new TFSKnifeItem(TFSToolTiers.BRONZE, new Item.Properties()));
+            () -> new TFSKnifeItem(TFSToolTiers.BRONZE, new Item.Properties()));
     public static final RegistryObject<Item> BRONZE_HAMMER = ITEMS.register("bronze_hammer",
-            () ->new TFSHammerItem(TFSToolTiers.BRONZE, new Item.Properties()));
+            () -> new TFSHammerItem(TFSToolTiers.BRONZE, new Item.Properties()));
     public static final RegistryObject<Item> BRONZE_SPADE = ITEMS.register("bronze_spade",
-            () ->new TFSSpadeItem(TFSToolTiers.BRONZE, new Item.Properties()));
+            () -> new TFSSpadeItem(TFSToolTiers.BRONZE, new Item.Properties()));
     public static final RegistryObject<Item> BRONZE_SICKLE = ITEMS.register("bronze_sickle",
-            () ->new TFSSickleItem(TFSToolTiers.BRONZE, new Item.Properties()));
+            () -> new TFSSickleItem(TFSToolTiers.BRONZE, new Item.Properties()));
     public static final RegistryObject<Item> STEEL_SWORD = ITEMS.register( "steel_sword",
             () -> new SwordItem(TFSToolTiers.STEEL,3, -2.4F, new Item.Properties()));
     public static final RegistryObject<Item> STEEL_SHOVEL = ITEMS.register( "steel_shovel",
@@ -351,38 +353,38 @@ public class TFSItems {
     public static final RegistryObject<Item> STEEL_HOE = ITEMS.register( "steel_hoe",
             () -> new HoeItem(TFSToolTiers.STEEL,3, -3f, new Item.Properties()));
     public static final RegistryObject<Item> STEEL_SPEAR = ITEMS.register("steel_spear",
-            () ->new TFSSpearItem(TFSToolTiers.STEEL, new Item.Properties(), "steel"));
+            () -> new TFSSpearItem(TFSToolTiers.STEEL, new Item.Properties(), "steel"));
     public static final RegistryObject<Item> STEEL_KNIFE = ITEMS.register("steel_knife",
-            () ->new TFSKnifeItem(TFSToolTiers.STEEL, new Item.Properties()));
+            () -> new TFSKnifeItem(TFSToolTiers.STEEL, new Item.Properties()));
     public static final RegistryObject<Item> STEEL_HAMMER = ITEMS.register("steel_hammer",
-            () ->new TFSHammerItem(TFSToolTiers.STEEL, new Item.Properties()));
+            () -> new TFSHammerItem(TFSToolTiers.STEEL, new Item.Properties()));
     public static final RegistryObject<Item> STEEL_SPADE = ITEMS.register("steel_spade",
-            () ->new TFSSpadeItem(TFSToolTiers.STEEL, new Item.Properties()));
+            () -> new TFSSpadeItem(TFSToolTiers.STEEL, new Item.Properties()));
     public static final RegistryObject<Item> STEEL_SICKLE = ITEMS.register("steel_sickle",
-            () ->new TFSSickleItem(TFSToolTiers.STEEL, new Item.Properties()));
+            () -> new TFSSickleItem(TFSToolTiers.STEEL, new Item.Properties()));
     public static final RegistryObject<Item> DIAMOND_SPEAR = ITEMS.register("diamond_spear",
-            () ->new TFSSpearItem(Tiers.DIAMOND, new Item.Properties(), "diamond"));
+            () -> new TFSSpearItem(Tiers.DIAMOND, new Item.Properties(), "diamond"));
     public static final RegistryObject<Item> DIAMOND_KNIFE = ITEMS.register("diamond_knife",
-            () ->new TFSKnifeItem(Tiers.DIAMOND, new Item.Properties()));
+            () -> new TFSKnifeItem(Tiers.DIAMOND, new Item.Properties()));
     public static final RegistryObject<Item> DIAMOND_HAMMER = ITEMS.register("diamond_hammer",
-            () ->new TFSHammerItem(Tiers.DIAMOND, new Item.Properties()));
+            () -> new TFSHammerItem(Tiers.DIAMOND, new Item.Properties()));
     public static final RegistryObject<Item> DIAMOND_SPADE = ITEMS.register("diamond_spade",
-            () ->new TFSSpadeItem(Tiers.DIAMOND, new Item.Properties()));
+            () -> new TFSSpadeItem(Tiers.DIAMOND, new Item.Properties()));
     public static final RegistryObject<Item> DIAMOND_SICKLE = ITEMS.register("diamond_sickle",
-            () ->new TFSSickleItem(Tiers.DIAMOND, new Item.Properties()));
+            () -> new TFSSickleItem(Tiers.DIAMOND, new Item.Properties()));
     public static final RegistryObject<Item> NETHERITE_SPEAR = ITEMS.register("netherite_spear",
-            () ->new TFSSpearItem(Tiers.NETHERITE, new Item.Properties().fireResistant(), "netherite"));
+            () -> new TFSSpearItem(Tiers.NETHERITE, new Item.Properties().fireResistant(), "netherite"));
     public static final RegistryObject<Item> NETHERITE_KNIFE = ITEMS.register("netherite_knife",
-            () ->new TFSKnifeItem(Tiers.NETHERITE, new Item.Properties().fireResistant()));
+            () -> new TFSKnifeItem(Tiers.NETHERITE, new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> NETHERITE_HAMMER = ITEMS.register("netherite_hammer",
-            () ->new TFSHammerItem(Tiers.NETHERITE, new Item.Properties().fireResistant()));
+            () -> new TFSHammerItem(Tiers.NETHERITE, new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> NETHERITE_SPADE = ITEMS.register("netherite_spade",
-            () ->new TFSSpadeItem(Tiers.NETHERITE, new Item.Properties().fireResistant()));
+            () -> new TFSSpadeItem(Tiers.NETHERITE, new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> NETHERITE_SICKLE = ITEMS.register("netherite_sickle",
-            () ->new TFSSickleItem(Tiers.NETHERITE, new Item.Properties().fireResistant()));
+            () -> new TFSSickleItem(Tiers.NETHERITE, new Item.Properties().fireResistant()));
 
     public static final RegistryObject<Item> REVOLVER = ITEMS.register("revolver",
-            () ->new TFSRevolverItem(33, new Item.Properties().stacksTo(1)));
+            () -> new TFSRevolverItem(33, new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> SLEEVE = ITEMS.register( "sleeve",
             () -> new TFSItemTexts(30, new Item.Properties()));
     public static final RegistryObject<Item> CARTRIDGE_STEEL = ITEMS.register( "cartridge_steel",
@@ -391,7 +393,7 @@ public class TFSItems {
             () -> new TFSItemTexts(32, new Item.Properties()));
 
     public static final RegistryObject<Item> REVOLVER_N = ITEMS.register("revolver_n",
-            () ->new Item(new Item.Properties().stacksTo(1)));
+            () -> new Item(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> SLEEVE_N = ITEMS.register( "sleeve_n",
             () -> new Item(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> CARTRIDGE_STEEL_N = ITEMS.register( "cartridge_steel_n",

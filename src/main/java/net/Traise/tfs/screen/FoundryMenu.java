@@ -60,12 +60,12 @@ public class FoundryMenu extends AbstractContainerMenu {
         return entity.getSize();
     }
 
-    public int getFluidAmount(int Index) {
+    public double getFluidAmount(int Index) {
         return entity.getFluidAmount(Index);
     }
     
     public float getPercent(int Index) {
-        int T = (entity.getFluidAmount(Index) * 10000) / entity.sumAllFluidSlots();
+        double T = (entity.getFluidAmount(Index) * 10000) / entity.sumAllFluidSlots();
 
         return (float) T / 100;
     }
@@ -101,7 +101,7 @@ public class FoundryMenu extends AbstractContainerMenu {
     }
 
     public int fullness() {
-        int progress = this.data.get(1);
+        int progress = (int) entity.sumAllFluidSlots();
         int maxProgress = this.data.get(0);
         int progressArrowSize = 29; // This is the height in pixels of your arrow
         int T = 0;

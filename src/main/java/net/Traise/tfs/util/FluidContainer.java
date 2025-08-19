@@ -1,13 +1,15 @@
 package net.Traise.tfs.util;
 
+import net.Traise.tfs.fluid.util.DoubleFluidStorageHandler;
+import net.Traise.tfs.fluid.util.TFSFluidStack;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.fluids.FluidStack;
+
 
 public class FluidContainer extends SimpleContainer {
-    private final FluidStorageHandler fluids;
+    private final DoubleFluidStorageHandler fluids;
 
-    public FluidContainer(FluidStorageHandler fluids) {
+    public FluidContainer(DoubleFluidStorageHandler fluids) {
         super(fluids.getSize());
         this.fluids = fluids;
         // Можно дополнительно заполнить ItemStacks или оставить так
@@ -16,14 +18,14 @@ public class FluidContainer extends SimpleContainer {
         }
     }
 
-    public FluidStack getFluidInSlot(int slot) {
+    public TFSFluidStack getFluidInSlot(int slot) {
         if (slot >= 0 && slot < fluids.getSize()) {
             return fluids.getFluidInSlot(slot);
         }
-        return FluidStack.EMPTY;
+        return TFSFluidStack.EMPTY;
     }
 
-    public void setFluidInSlot(int slot, FluidStack stack) {
+    public void setFluidInSlot(int slot, TFSFluidStack stack) {
         fluids.setFluidInSlot(slot, stack);
     }
 

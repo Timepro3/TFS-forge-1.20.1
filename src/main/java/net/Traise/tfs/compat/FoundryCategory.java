@@ -66,7 +66,7 @@ public class FoundryCategory implements IRecipeCategory<FoundryRecipe> {
         builder.addSlot(RecipeIngredientRole.INPUT, 9, 19).addIngredients(recipe.getInputItem());
 
         // Проверка результата жидкости
-        FluidStack resultFluid = recipe.getResultFluid(null);
+        FluidStack resultFluid = recipe.getResultFluid(null).getFluidStack();
 
         builder.addSlot(RecipeIngredientRole.OUTPUT, 117, 19)
                 .addFluidStack(resultFluid.getFluid(), resultFluid.getAmount()).addTooltipCallback(CreateRecipeCategory.addFluidTooltip(resultFluid.getAmount()));

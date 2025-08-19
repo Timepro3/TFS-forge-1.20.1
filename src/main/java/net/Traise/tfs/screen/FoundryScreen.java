@@ -75,7 +75,7 @@ public class FoundryScreen extends AbstractContainerScreen<FoundryMenu> {
         for (int i = startSlot; i < menu.getSize() && i < startSlot + 4; i++) {
             if (menu.hawFluid(i)) {
                 // Show only if the position isn't out of range based on slider value
-                guiGraphics.drawString(this.font, Component.literal(menu.getFluidStackInSlot(i) + ":" + menu.getFluidAmount(i) + mb.getString() + " (§5" + menu.getPercent(i) + "%§0)"), 5, 3 + (8 * T), -12829636, false);
+                guiGraphics.drawString(this.font, Component.literal(menu.getFluidStackInSlot(i) + ":" + String.format("%.2f", menu.getFluidAmount(i)) + mb.getString() + " (§5" + String.format("%.2f", menu.getPercent(i)) + "%§0)"), 5, 3 + (8 * T), -12829636, false);
                 T += 1;
 
             }
@@ -93,13 +93,14 @@ public class FoundryScreen extends AbstractContainerScreen<FoundryMenu> {
     public boolean mouseScrolled(double pMouseX, double pMouseY, double pDelta) {
         if (countSlot > maxCountSlot) {
             sliderPosition -= (int) pDelta * 1;
-            startSlot = sliderPosition - minSlider;
 
             if (sliderPosition > maxSlider) {
                 sliderPosition = maxSlider;
             } else if (sliderPosition < minSlider) {
                 sliderPosition = minSlider;
             }
+            startSlot = fullness(sliderPosition - minSlider, 31, countSlot - maxCountSlot);
+
         }
 
         return super.mouseScrolled(pMouseX, pMouseY, pDelta);
@@ -125,7 +126,6 @@ public class FoundryScreen extends AbstractContainerScreen<FoundryMenu> {
 
     @Override
     public boolean mouseDragged(double mouseX, double mouseY, int button, double deltaX, double deltaY) {
-        System.out.println("mouseX: " + (int)mouseX + " : mouseY: " + (int)mouseY);
         if (countSlot > maxCountSlot) {
             if (button == 0) { // Adjust for the slider's size
                 if (this.scrolling) {
