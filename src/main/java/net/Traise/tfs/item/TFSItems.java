@@ -229,7 +229,7 @@ public class TFSItems {
     public static final RegistryObject<Item> BLUEBERRY = ITEMS.register( "blueberry",
             () -> new Item(new Item.Properties().food(TFSFood.BLUEBERRY)));
     public static final RegistryObject<Item> BLU = ITEMS.register( "blu",
-            () -> new testItem(new Item.Properties()));
+            () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> BLUE = ITEMS.register( "blue",
             () -> new TFSSavingLoadItem(new Item.Properties()));
     public static final RegistryObject<Item> ALISE_SPAWN_EGG = ITEMS.register("alise_spawn_egg",

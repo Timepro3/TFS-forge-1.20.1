@@ -168,7 +168,7 @@ public class FoundryRecipe implements Recipe<SimpleContainer> {
 
         @Override
         public FoundryRecipe fromJson(ResourceLocation pRecipeId, JsonObject pSerializedRecipe) {
-            double pHeat = GsonHelper.convertToDouble(pSerializedRecipe, "heat");
+            double pHeat = GsonHelper.getAsDouble(pSerializedRecipe, "heat");
 
             TFSFluidStack output = fluidStackFromJson(GsonHelper.getAsJsonObject(pSerializedRecipe, "output"));
 

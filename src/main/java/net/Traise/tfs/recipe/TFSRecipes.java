@@ -20,6 +20,9 @@ public class TFSRecipes {
     public static final RegistryObject<RecipeSerializer<RemovingFromMoldRecipe>> REMOVING_FROM_MOLD_SERIALIZER =
             SERIALIZERS.register("removing_from_mold", () -> RemovingFromMoldRecipe.Serializer.INSTANCE);
 
+    public static final RegistryObject<RecipeSerializer<CuttingRecipe>> CUTTING_SERIALIZER =
+            SERIALIZERS.register("cutting", () -> CuttingRecipe.Serializer.INSTANCE);
+
     public static void register(IEventBus eventBus) {
         SERIALIZERS.register(eventBus);
     }

@@ -39,6 +39,8 @@ public class ModTags {
         public static final TagKey<Item> BULLET = tag("bullet");
         public static final TagKey<Item> SILVER = tag("silver");
 
+        public static final TagKey<Item> ROCK = tag("rock");
+
         public static final TagKey<Item> METAL_COPPER = tag("metal_copper");
         public static final TagKey<Item> METAL_IRON = tag("metal_iron");
         public static final TagKey<Item> METAL_TIN = tag("metal_tin");

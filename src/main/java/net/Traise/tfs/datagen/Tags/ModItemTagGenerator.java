@@ -112,6 +112,9 @@ public class ModItemTagGenerator extends ItemTagsProvider {
             this.tag(ModTags.Items.BULLET)
                     .add(TFSItems.CARTRIDGE_STEEL.get(), TFSItems.CARTRIDGE_SILVER.get());
 
+            this.tag(ModTags.Items.ROCK)
+                    .add(TFSItems.ROCK.get());
+
             this.tag(ModTags.Items.SILVER)
                     .add(TFSItems.SILVER_SWORD.get(), TFSItems.SILVER_HAMMER.get(), TFSItems.SILVER_SPADE.get(),
                             TFSItems.SILVER_SHOVEL.get(), TFSItems.SILVER_PICKAXE.get(), TFSItems.SILVER_AXE.get(),

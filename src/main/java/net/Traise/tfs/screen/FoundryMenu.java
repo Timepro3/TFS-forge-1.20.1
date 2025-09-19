@@ -86,8 +86,20 @@ public class FoundryMenu extends AbstractContainerMenu {
         return entity.sumAllFluidSlots();
     }
 
-    public boolean burned() {
-        return entity.isBurned();
+    public boolean burned(int index) {
+        return entity.isBurned(index);
+    }
+
+    public boolean r(int index) {
+        return entity.r(index);
+    }
+
+    public int heat() {
+        double progress = entity.getHeat();
+        double maxProgress = 4;
+        int progressArrowSize = 24; // This is the height in pixels of your arrow
+
+        return maxProgress != 0 && progress != 0 ? (int) Math.round(progress * progressArrowSize / maxProgress) : 0;
     }
 
     public int progress(int i) {

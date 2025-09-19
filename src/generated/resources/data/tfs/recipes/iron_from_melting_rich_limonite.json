@@ -1,6 +1,6 @@
 {
   "type": "tfs:foundry",
-  "heat": 0.0,
+  "heat": 3.0,
   "ingredients": [
     {
       "item": "tfs:rich_limonite"

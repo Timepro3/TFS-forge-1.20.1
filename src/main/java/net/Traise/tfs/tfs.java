@@ -134,6 +134,7 @@ public class tfs {
             EntityRenderers.register(ModEntities.ALISE.get(), AliseRenderer::new);
             EntityRenderers.register(ModEntities.TATAR.get(), TatarRenderer::new);
 
+            MenuScreens.register(TFSMenuTypes.CUTTING_MENU.get(), CuttingScreen::new);
             MenuScreens.register(TFSMenuTypes.FORGE_MENU.get(), ForgeScreen::new);
             MenuScreens.register(TFSMenuTypes.FOUNDRY_MENU.get(), FoundryScreen::new);
             MenuScreens.register(TFSMenuTypes.REVOLVER_MENU.get(), RevolverScreen::new);

@@ -76,5 +76,8 @@ public class FoundryCategory implements IRecipeCategory<FoundryRecipe> {
     @Override
     public void draw(FoundryRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
         IRecipeCategory.super.draw(recipe, recipeSlotsView, guiGraphics, mouseX, mouseY);
+
+        guiGraphics.blit(TEXTURE, 107, 10, 142, 32 - (int) Math.round(recipe.getHeat() * 8), 4, 4);
+
     }
 }

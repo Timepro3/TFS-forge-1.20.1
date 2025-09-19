@@ -26,7 +26,8 @@ public class TFSMenuTypes {
     public static final RegistryObject<MenuType<FoundryMenu>> FOUNDRY_MENU =
             registerMenuType("foundry_menu", FoundryMenu::new);
 
-
+    public static final RegistryObject<MenuType<CuttingMenu>> CUTTING_MENU =
+            registerMenuType("cutting_menu", CuttingMenu::new);
 
     private static <T extends AbstractContainerMenu>RegistryObject<MenuType<T>> registerMenuType(String name, IContainerFactory<T> factory) {
         return MENUS.register(name, () -> IForgeMenuType.create(factory));

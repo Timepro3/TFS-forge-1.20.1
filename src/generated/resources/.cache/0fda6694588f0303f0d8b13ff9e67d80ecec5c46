@@ -1,4 +1,4 @@
-// 1.20.1	2025-04-26T14:12:53.9547516	Tags for minecraft:item mod id tfs
+// 1.20.1	2025-09-16T19:52:06.5183159	Tags for minecraft:item mod id tfs
 1ad920aa65e2706dabb6265f3b12546ab33e8936 data/forge/tags/items/stick.json
 1cc66f1d3d3d253be8f1dc850d3b15071fff7c2a data/forge/tags/items/string.json
 9700d363f4eec8ccee0321d970e59643a4527f2b data/minecraft/tags/items/trimmable_armor.json
@@ -20,4 +20,5 @@ f1b1981aa9afe6123bf8e2948eb76af0949b9d28 data/tfs/tags/items/metal_iron.json
 acd46ae8a9fb2be46477cd44ea79fdd537100148 data/tfs/tags/items/metal_steel.json
 912bb52abc40a43a7fd43ad5c18f603f5de968d7 data/tfs/tags/items/metal_tin.json
 6f4c23338a3ad6d42b4df3d365604261a82392dc data/tfs/tags/items/metal_zinc.json
+12137b4f0b53466ff6306d76d4b4bfa8166b5700 data/tfs/tags/items/rock.json
 d56ed4738c725aae546f3a29c16aab4d40c34635 data/tfs/tags/items/silver.json

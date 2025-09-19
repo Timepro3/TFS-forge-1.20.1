@@ -3,10 +3,7 @@ package net.Traise.tfs.datagen;
 import com.simibubi.create.AllItems;
 import com.simibubi.create.AllTags;
 import net.Traise.tfs.block.TFSBlocks;
-import net.Traise.tfs.datagen.recipe.AlloyRecipeBuilder;
-import net.Traise.tfs.datagen.recipe.CreateRecipe;
-import net.Traise.tfs.datagen.recipe.FoundryRecipeBuilder;
-import net.Traise.tfs.datagen.recipe.RemovingFromMoldRecipeBuilder;
+import net.Traise.tfs.datagen.recipe.*;
 import net.Traise.tfs.fluid.TFSFluids;
 import net.Traise.tfs.item.TFSItems;
 import net.Traise.tfs.tfs;
@@ -69,8 +66,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         }
     }
 
-    protected static void foundry(Consumer<FinishedRecipe> pFinishedRecipeConsumer, Fluid pFluid, int Amount, ItemLike pItem) {
-        FoundryRecipeBuilder.foundry(pFluid, Amount)
+    protected static void foundry(Consumer<FinishedRecipe> pFinishedRecipeConsumer, Fluid pFluid, int Amount, double pHeat, ItemLike pItem) {
+        FoundryRecipeBuilder.foundry(pFluid, Amount, pHeat)
                 .requires(pItem)
                 .unlockedBy(getHasName(pItem), has(pItem))
                 .save(pFinishedRecipeConsumer, tfs.MOD_ID + ":" + getFluidName(pFluid) + "_from_melting_" + getItemName(pItem));
@@ -713,12 +710,12 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         for (int i = 0; i < 11; i++) {
             foundry(pWriter, ForgeRegistries.FLUIDS.getValue(new ResourceLocation
-                    (tfs.MOD_ID, material(i).getString())), 100,
+                    (tfs.MOD_ID, material(i).getString())), 100, heat(i),
                     ForgeRegistries.ITEMS.getValue(new ResourceLocation
                             (place(i).getString() + material(i).getString() + "_ingot")));
 
             foundry(pWriter, ForgeRegistries.FLUIDS.getValue(new ResourceLocation
-                            (tfs.MOD_ID, material(i).getString())), 900,
+                            (tfs.MOD_ID, material(i).getString())), 900, heat(i),
                     ForgeRegistries.ITEMS.getValue(new ResourceLocation
                             (place(i).getString() + material(i).getString() + "_block")));
 
@@ -737,17 +734,17 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 }
 
                 foundry(pWriter, ForgeRegistries.FLUIDS.getValue(new ResourceLocation
-                                (tfs.MOD_ID, material(i).getString())), 15,
+                                (tfs.MOD_ID, material(i).getString())), 15, heat(i),
                         ForgeRegistries.ITEMS.getValue(new ResourceLocation
                                 (tfs.MOD_ID, "poor_" + c.getString())));
 
                 foundry(pWriter, ForgeRegistries.FLUIDS.getValue(new ResourceLocation
-                                (tfs.MOD_ID, material(i).getString())), 20,
+                                (tfs.MOD_ID, material(i).getString())), 20, heat(i),
                         ForgeRegistries.ITEMS.getValue(new ResourceLocation
                                 (tfs.MOD_ID, c.getString())));
 
                 foundry(pWriter, ForgeRegistries.FLUIDS.getValue(new ResourceLocation
-                                (tfs.MOD_ID, material(i).getString())), 35,
+                                (tfs.MOD_ID, material(i).getString())), 35, heat(i),
                         ForgeRegistries.ITEMS.getValue(new ResourceLocation
                                 (tfs.MOD_ID, "rich_" + c.getString())));
             }
@@ -816,6 +813,63 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             CreateRecipe.SandPaperPolishing(Ingredient.of(TFSItems.SLEEVE.get()), RecipeCategory.TOOLS, TFSItems.CARTRIDGE_SILVER.get()).unlockedBy("has_casilv", has(TFSItems.SLEEVE.get())).save(pWriter, "silv_combinate");
             CreateRecipe.SandPaperPolishing(Ingredient.of(TFSItems.SLEEVE.get()), RecipeCategory.TOOLS, TFSItems.CARTRIDGE_STEEL.get()).unlockedBy("has_casteel", has(TFSItems.SLEEVE.get())).save(pWriter, "steel_combinate");
         }
+
+        CuttingRecipeBuilder.cutting(TFSItems.PIK_ROCK_PICK.get(), 1, TFSItems.ROCK.get(), 2)
+                .pattern(" XXX ")
+                .pattern("X   X")
+                .unlockedBy(getHasName(TFSItems.ROCK.get()), has(TFSItems.ROCK.get()))
+                .save(pWriter, tfs.MOD_ID + ":" + "rock_cutting_pik_rock_pick");
+
+        CuttingRecipeBuilder.cutting(TFSItems.PIK_ROCK_PICK.get(), 2, TFSItems.ROCK.get(), 2)
+                .pattern(" XXX ")
+                .pattern("X   X")
+                .pattern("     ")
+                .pattern(" XXX ")
+                .pattern("X   X")
+                .unlockedBy(getHasName(TFSItems.ROCK.get()), has(TFSItems.ROCK.get()))
+                .save(pWriter, tfs.MOD_ID + ":" + "rock_cutting_two_pik_rock_pick");
+
+        CuttingRecipeBuilder.cutting(TFSItems.PIK_ROCK_AXE.get(), 1, TFSItems.ROCK.get(), 2)
+                .pattern(" X   ")
+                .pattern("XXXX ")
+                .pattern("XXXXX")
+                .pattern("XXXX ")
+                .pattern(" X   ")
+                .unlockedBy(getHasName(TFSItems.ROCK.get()), has(TFSItems.ROCK.get()))
+                .save(pWriter, tfs.MOD_ID + ":" + "rock_cutting_pik_rock_axe");
+
+        CuttingRecipeBuilder.cutting(TFSItems.PIK_ROCK_SPEAR.get(), 1, TFSItems.ROCK.get(), 2)
+                .pattern("XXX  ")
+                .pattern("XXXX ")
+                .pattern("XXXXX")
+                .pattern(" XXX ")
+                .pattern("  X  ")
+                .unlockedBy(getHasName(TFSItems.ROCK.get()), has(TFSItems.ROCK.get()))
+                .save(pWriter, tfs.MOD_ID + ":" + "rock_cutting_pik_rock_spear");
+
+        CuttingRecipeBuilder.cutting(TFSItems.PIK_ROCK_HOE.get(), 1, TFSItems.ROCK.get(), 2)
+                .pattern("XXXXX")
+                .pattern("   XX")
+                .unlockedBy(getHasName(TFSItems.ROCK.get()), has(TFSItems.ROCK.get()))
+                .save(pWriter, tfs.MOD_ID + ":" + "rock_cutting_pik_rock_hoe");
+
+        CuttingRecipeBuilder.cutting(TFSItems.PIK_ROCK_HOE.get(), 2, TFSItems.ROCK.get(), 2)
+                .pattern("XXXXX")
+                .pattern("   XX")
+                .pattern("     ")
+                .pattern("XXXXX")
+                .pattern("   XX")
+                .unlockedBy(getHasName(TFSItems.ROCK.get()), has(TFSItems.ROCK.get()))
+                .save(pWriter, tfs.MOD_ID + ":" + "rock_cutting_two_pik_rock_hoe");
+
+        CuttingRecipeBuilder.cutting(TFSItems.PIK_ROCK_SHOVEL.get(), 1, TFSItems.ROCK.get(), 2)
+                .pattern("XXX")
+                .pattern("XXX")
+                .pattern("XXX")
+                .pattern("XXX")
+                .pattern(" X ")
+                .unlockedBy(getHasName(TFSItems.ROCK.get()), has(TFSItems.ROCK.get()))
+                .save(pWriter, tfs.MOD_ID + ":" + "rock_cutting_pik_rock_shovel");
     }
 
     private Component material(int index) {
@@ -846,6 +900,23 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             case 9 -> Component.literal("tfs:");
             case 10 -> Component.literal("tfs:");
             default -> Component.literal("minecraft:");
+        };
+    }
+
+    private double heat(int index) {
+        return switch (index) {
+            case 0 -> 3.0f;
+            case 1 -> 2.0f;
+            case 2 -> 1.0f;
+            case 3 -> 1.0f;
+            case 4 -> 2.0f;
+            case 5 -> 2.0f;
+            case 6 -> 2.0f;
+            case 7 -> 2.0f;
+            case 8 -> 3.0f;
+            case 9 -> 3.0f;
+            case 10 -> 2.0f;
+            default -> 0.0f;
         };
     }
 }
