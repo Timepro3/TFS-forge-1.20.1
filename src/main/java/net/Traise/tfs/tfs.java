@@ -10,6 +10,7 @@ import net.Traise.tfs.item.TFSItems;
 import net.Traise.tfs.potion.ModMobEffect;
 import net.Traise.tfs.recipe.TFSRecipes;
 import net.Traise.tfs.screen.*;
+import net.Traise.tfs.util.TFSAttributes;
 import net.Traise.tfs.worldgen.biome.ModTerrablender;
 import net.Traise.tfs.worldgen.biome.surface.ModSurfaceRules;
 import net.Traise.tfs.entity.renderer.*;
@@ -51,10 +52,12 @@ import static org.antlr.runtime.debug.DebugEventListener.PROTOCOL_VERSION;
 
 @Mod(tfs.MOD_ID)
 public class tfs {
+    public static tfs instance;
     public static final String MOD_ID = "tfs";
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public tfs(FMLJavaModLoadingContext context) {
+        instance = this;
 
         IEventBus modEventBus = context.getModEventBus();
 
@@ -76,6 +79,7 @@ public class tfs {
         ModTerrablender.registerBiomes();
 
         TFSRecipes.register(modEventBus);
+        TFSAttributes.register(modEventBus);
 
         //modEventBus.addListener(this::commonSetup);
 
@@ -118,6 +122,7 @@ public class tfs {
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
+            EntityRenderers.register(ModEntities.SPEAR.get(), SpearRenderer::new);
             EntityRenderers.register(ModEntities.WOOD_SPEAR.get(), WoodSpearRenderer::new);
             EntityRenderers.register(ModEntities.ROCK_SPEAR.get(), RockSpearRenderer::new);
             EntityRenderers.register(ModEntities.IRON_SPEAR.get(), IronSpearRenderer::new);
@@ -135,7 +140,6 @@ public class tfs {
             EntityRenderers.register(ModEntities.TATAR.get(), TatarRenderer::new);
 
             MenuScreens.register(TFSMenuTypes.CUTTING_MENU.get(), CuttingScreen::new);
-            MenuScreens.register(TFSMenuTypes.FORGE_MENU.get(), ForgeScreen::new);
             MenuScreens.register(TFSMenuTypes.FOUNDRY_MENU.get(), FoundryScreen::new);
             MenuScreens.register(TFSMenuTypes.REVOLVER_MENU.get(), RevolverScreen::new);
         }

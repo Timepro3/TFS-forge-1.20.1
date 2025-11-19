@@ -1,4 +1,4 @@
-// 1.20.1	2025-07-30T13:37:27.9865746	Loot Tables
+// 1.20.1	2025-10-18T22:36:03.6719637	Loot Tables
 c57dd39851cfc878422ee1ecbb4ccdbf924d957e data/tfs/loot_tables/blocks/bronze_block.json
 5b39d74dd7b57dc9e0e5dcd98cf54307a437319c data/tfs/loot_tables/blocks/cast_iron_block.json
 47eb5c290131f8d395b9b56d3ac9d0312e8fd028 data/tfs/loot_tables/blocks/cinnabar_fragment_object.json
@@ -15,7 +15,6 @@ da851d2a5685fef34424614e0d9ea1d6f175187f data/tfs/loot_tables/blocks/deep_limoni
 8f13ddbddf7ad640e9924cc8d5acebb859993fdd data/tfs/loot_tables/blocks/deep_zinc_ore.json
 686a110591f3aeb975a3069c430b30c350b84e7b data/tfs/loot_tables/blocks/diamond_fragment_object.json
 5deba5e1fd4cf8f389bdf306b330479a7e06db97 data/tfs/loot_tables/blocks/emerald_fragment_object.json
-8495097211b259423fedc449407f0e6085bac970 data/tfs/loot_tables/blocks/forge.json
 f16021d481b500a9f25930e59f3ee07995e3682e data/tfs/loot_tables/blocks/foundry.json
 e8522fc95b6c158142477b46be1799d90d06bc1f data/tfs/loot_tables/blocks/gravel_cinnabar.json
 4a3dc8a03ccd1a927f64982045537730cb899364 data/tfs/loot_tables/blocks/gravel_coal.json

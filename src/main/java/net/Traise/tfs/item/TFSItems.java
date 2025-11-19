@@ -1,6 +1,5 @@
 package net.Traise.tfs.item;
 
-import com.simibubi.create.AllFluids;
 import net.Traise.tfs.block.TFSBlocks;
 import net.Traise.tfs.entity.ModEntities;
 import net.Traise.tfs.fluid.TFSFluids;
@@ -8,15 +7,11 @@ import net.Traise.tfs.item.custom.*;
 import net.Traise.tfs.tfs;
 import net.Traise.tfs.util.MoldType;
 import net.minecraft.world.item.*;
-import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-import org.apache.logging.log4j.core.jmx.Server;
-
-import static net.minecraft.world.item.Items.BUCKET;
 
 public class TFSItems {
     public static final DeferredRegister<Item> ITEMS =
@@ -138,7 +133,7 @@ public class TFSItems {
             () -> new TFSFormItem(-1, MoldType.INGOT, new Item.Properties()));
 
     public static final RegistryObject<Item> COPPER_INGOT_FORM = ITEMS.register( "copper_ingot_form",
-            () -> new TFSOldFormItem(35, new Item.Properties()));
+            () -> new TFSItemTexts(35, new Item.Properties()));
     public static final RegistryObject<Item> IRON_INGOT_FORM = ITEMS.register( "iron_ingot_form",
             () -> new TFSItemTexts(35, new Item.Properties()));
     public static final RegistryObject<Item> TIN_INGOT_FORM = ITEMS.register( "tin_ingot_form",
@@ -229,13 +224,41 @@ public class TFSItems {
     public static final RegistryObject<Item> BLUEBERRY = ITEMS.register( "blueberry",
             () -> new Item(new Item.Properties().food(TFSFood.BLUEBERRY)));
     public static final RegistryObject<Item> BLU = ITEMS.register( "blu",
-            () -> new Item(new Item.Properties()));
+            () -> new TFSBaseItem(TFSBaseItem.TFSToolTypes.HAMMER, new Item.Properties()));
     public static final RegistryObject<Item> BLUE = ITEMS.register( "blue",
-            () -> new TFSSavingLoadItem(new Item.Properties()));
+            () -> new Item( new Item.Properties()));
     public static final RegistryObject<Item> ALISE_SPAWN_EGG = ITEMS.register("alise_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntities.ALISE, -1, -1, new Item.Properties()));
     public static final RegistryObject<Item> TATAR_SPAWN_EGG = ITEMS.register("tatar_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntities.TATAR, -1, -1, new Item.Properties()));
+
+    public static final RegistryObject<Item> SWORD = ITEMS.register( "sword",
+            () -> new TFSBaseItem(TFSBaseItem.TFSToolTypes.SWORD, new Item.Properties()));
+    public static final RegistryObject<Item> AXE = ITEMS.register( "axe",
+            () -> new TFSBaseItem(TFSBaseItem.TFSToolTypes.AXE, new Item.Properties()));
+    public static final RegistryObject<Item> HOE = ITEMS.register( "hoe",
+            () -> new TFSBaseItem(TFSBaseItem.TFSToolTypes.HOE, new Item.Properties()));
+    public static final RegistryObject<Item> PICKAXE = ITEMS.register( "pickaxe",
+            () -> new TFSBaseItem(TFSBaseItem.TFSToolTypes.PICKAXE, new Item.Properties()));
+    public static final RegistryObject<Item> SHOVEL = ITEMS.register( "shovel",
+            () -> new TFSBaseItem(TFSBaseItem.TFSToolTypes.SHOVEL, new Item.Properties()));
+    public static final RegistryObject<Item> KNIFE = ITEMS.register( "knife",
+            () -> new TFSBaseItem(TFSBaseItem.TFSToolTypes.KNIFE, new Item.Properties()));
+    public static final RegistryObject<Item> SPEAR = ITEMS.register( "spear",
+            () -> new TFSBaseItem(TFSBaseItem.TFSToolTypes.SPEAR, new Item.Properties()));
+    public static final RegistryObject<Item> HAMMER = ITEMS.register( "hammer",
+            () -> new TFSBaseItem(TFSBaseItem.TFSToolTypes.HAMMER, new Item.Properties()));
+    public static final RegistryObject<Item> SPADE = ITEMS.register( "spade",
+            () -> new TFSBaseItem(TFSBaseItem.TFSToolTypes.SPADE, new Item.Properties()));
+    public static final RegistryObject<Item> SICKLE = ITEMS.register( "sickle",
+            () -> new TFSBaseItem(TFSBaseItem.TFSToolTypes.SICKLE, new Item.Properties()));
+    public static final RegistryObject<Item> TROWEL = ITEMS.register( "trowel",
+            () -> new TFSBaseItem(TFSBaseItem.TFSToolTypes.TROWEL, new Item.Properties()));
+    public static final RegistryObject<Item> GEOLOGICAL_HAMMER = ITEMS.register( "geological_hammer",
+            () -> new TFSBaseItem(TFSBaseItem.TFSToolTypes.GEOLOGICAL_HAMMER, new Item.Properties()));
+    public static final RegistryObject<Item> BUILDER_WAND = ITEMS.register( "builder_wand",
+            () -> new TFSBaseItem(TFSBaseItem.TFSToolTypes.BUILDER_WAND, new Item.Properties()));
+
 
     public static final RegistryObject<Item> SILVER_HELMET = ITEMS.register("silver_helmet",
             () -> new ArmorItem(TFSArmorMaterials.SILVER, ArmorItem.Type.HELMET, new Item.Properties()));

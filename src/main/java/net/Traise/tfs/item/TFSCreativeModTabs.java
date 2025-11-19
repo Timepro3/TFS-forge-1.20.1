@@ -101,6 +101,20 @@ public class TFSCreativeModTabs {
                         pOutput.accept(TFSItems.BLU.get());
                         pOutput.accept(TFSItems.TIN_SWORD.get());
 
+                        pOutput.accept(TFSItems.SWORD.get());
+                        pOutput.accept(TFSItems.AXE.get());
+                        pOutput.accept(TFSItems.HOE.get());
+                        pOutput.accept(TFSItems.PICKAXE.get());
+                        pOutput.accept(TFSItems.SHOVEL.get());
+                        pOutput.accept(TFSItems.KNIFE.get());
+                        pOutput.accept(TFSItems.SPEAR.get());
+                        pOutput.accept(TFSItems.HAMMER.get());
+                        pOutput.accept(TFSItems.SPADE.get());
+                        pOutput.accept(TFSItems.SICKLE.get());
+                        pOutput.accept(TFSItems.TROWEL.get());
+                        pOutput.accept(TFSItems.GEOLOGICAL_HAMMER.get());
+                        pOutput.accept(TFSItems.BUILDER_WAND.get());
+
                         pOutput.accept(TFSItems.GRASS_CUT.get());
                         pOutput.accept(TFSItems.GRASS_ROPE.get());
                         pOutput.accept(TFSItems.ROCK.get());
@@ -149,19 +163,6 @@ public class TFSCreativeModTabs {
                         pOutput.accept(TFSItems.RAW_INGOT_FORM.get());
                         pOutput.accept(TFSItems.INGOT_FORM.get());
 
-                        pOutput.accept(TFSItems.BUCKET_OF_IRON.get());
-                        pOutput.accept(TFSItems.BUCKET_OF_COPPER.get());
-                        pOutput.accept(TFSItems.BUCKET_OF_ZINC.get());
-                        pOutput.accept(TFSItems.BUCKET_OF_TIN.get());
-                        pOutput.accept(TFSItems.BUCKET_OF_GOLD.get());
-                        pOutput.accept(TFSItems.BUCKET_OF_SILVER.get());
-                        pOutput.accept(TFSItems.BUCKET_OF_BRONZE.get());
-                        pOutput.accept(TFSItems.BUCKET_OF_BRASS.get());
-                        pOutput.accept(TFSItems.BUCKET_OF_STEEL.get());
-                        pOutput.accept(TFSItems.BUCKET_OF_CAST_IRON.get());
-                        pOutput.accept(TFSItems.BUCKET_OF_CARBON.get());
-                        pOutput.accept(TFSItems.BUCKET_OF_UNKNOWN_METAL.get());
-
                         pOutput.accept(TFSItems.RAW_DIAMOND.get());
                         pOutput.accept(TFSItems.RAW_EMERALD.get());
                         pOutput.accept(TFSItems.CINNABAR.get());
@@ -185,7 +186,6 @@ public class TFSCreativeModTabs {
                         pOutput.accept(TFSItems.GOLD.get());
                         pOutput.accept(TFSItems.POOR_GOLD.get());
 
-                        pOutput.accept(TFSBlocks.FORGE.get());
                         pOutput.accept(TFSBlocks.FOUNDRY.get());
 
                         pOutput.accept(TFSBlocks.TIN_BLOCK.get());

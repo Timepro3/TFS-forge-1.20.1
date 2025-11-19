@@ -1,0 +1,26 @@
+{
+  "loader": "forge:separate_transforms",
+  "gui_light": "front",
+  "base": {
+    "parent": "tfs:item/spear_3d"
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "tfs:item/spear_item"
+    },
+    "fixed": {
+      "parent": "tfs:item/spear_item"
+    },
+    "ground": {
+      "parent": "tfs:item/spear_item"
+    }
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "throwing": 1
+      },
+      "model": "tfs:item/spear_throwing"
+    }
+  ]
+}

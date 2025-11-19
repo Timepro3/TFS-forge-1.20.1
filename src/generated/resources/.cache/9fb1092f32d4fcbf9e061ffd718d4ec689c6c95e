@@ -1,4 +1,4 @@
-// 1.20.1	2025-09-19T20:50:52.9976913	Recipes
+// 1.20.1	2025-10-18T22:36:03.6729704	Recipes
 cd98c5fd16bbbfaf9347d1ea8409f75b84e4d9dc data/minecraft/advancements/recipes/alloying/brass_from_alloying_copper_zinc.json
 1d9359ccaeae3635747d305e12648150e7500174 data/minecraft/advancements/recipes/alloying/bronze_from_alloying_copper_tin.json
 26196fc9836467d13ec775e912b09fe250e6348d data/minecraft/advancements/recipes/alloying/cast_iron_from_alloying_iron_carbon.json
@@ -235,7 +235,7 @@ f8b32cd3245d1bf0550431b0460b708bef75d0b0 data/tfs/advancements/recipes/misc/bron
 f39e98f7aeba6f42764f54ea807af37a46c96a5b data/tfs/advancements/recipes/misc/bronze_sword.json
 bf90589f5320c1d36f2e60f02cea81daa31b4431 data/tfs/advancements/recipes/misc/cast_iron_block.json
 a4e03420f8f95d55084f44a190aa4ce0eaa9a029 data/tfs/advancements/recipes/misc/cudgel.json
-b044a83776c486862d999f2485eba7c455d8974f data/tfs/advancements/recipes/misc/forge.json
+a715591ee2b63f958cda92806898d2def77190dd data/tfs/advancements/recipes/misc/foundry.json
 4642a42002463f9777431794ccb032f84742d9be data/tfs/advancements/recipes/misc/gold_hammer.json
 43a467575dbd6753e34c7282777e151c1ee5b60b data/tfs/advancements/recipes/misc/gold_knife.json
 6f574ae3a938082294bc2797e2ead904b1d9fd7a data/tfs/advancements/recipes/misc/gold_sickle.json
@@ -331,7 +331,7 @@ f4152c92250894801eef068d03120361db541b18 data/tfs/recipes/copper_from_melting_co
 4562619b2e6348501a2ddf402a9f76602d9eee39 data/tfs/recipes/copper_from_melting_rich_cuprite.json
 e07cc317879155daa3d289bb6ea937a2a2af2967 data/tfs/recipes/copper_ingot_from_molding_copper.json
 47e0c7c232bdb2e682228f700e6a350dcd0b1028 data/tfs/recipes/cudgel.json
-f38c51afe660a72dca9d7e79a41f4859b3d5d4ca data/tfs/recipes/forge.json
+dca074f1cad5d5d1510f03e44af32e3bbe703046 data/tfs/recipes/foundry.json
 5281f745837352630b12e56c9d1d0f0254b2f4eb data/tfs/recipes/gold_from_melting_gold.json
 320e9fa837c44b29ccb58f724fabe42960f58397 data/tfs/recipes/gold_from_melting_gold_block.json
 e5304001eb923dd4c8544b6df2e6615f1309f0d8 data/tfs/recipes/gold_from_melting_gold_ingot.json

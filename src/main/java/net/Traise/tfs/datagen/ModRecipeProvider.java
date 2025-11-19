@@ -139,7 +139,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                     .unlockedBy(getHasName(Items.CLAY_BALL), has(Items.CLAY_BALL))
                     .save(pWriter);
 
-            ShapedRecipeBuilder.shaped(RecipeCategory.MISC, TFSBlocks.FORGE.get())
+            ShapedRecipeBuilder.shaped(RecipeCategory.MISC, TFSBlocks.FOUNDRY.get())
                     .pattern("SSS")
                     .pattern("SFS")
                     .pattern("SSS")

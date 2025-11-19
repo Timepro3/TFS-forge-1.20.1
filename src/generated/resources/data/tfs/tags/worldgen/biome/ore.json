@@ -1,0 +1,48 @@
+{
+  "values": [
+    {
+      "id": "tfs:diamond_deposit",
+      "required": false
+    },
+    {
+      "id": "tfs:emerald_deposit",
+      "required": false
+    },
+    {
+      "id": "tfs:lazuli_deposit",
+      "required": false
+    },
+    {
+      "id": "tfs:cinnabar_deposit",
+      "required": false
+    },
+    {
+      "id": "tfs:coal_deposit",
+      "required": false
+    },
+    {
+      "id": "tfs:cuprite_deposit",
+      "required": false
+    },
+    {
+      "id": "tfs:limonite_deposit",
+      "required": false
+    },
+    {
+      "id": "tfs:tin_deposit",
+      "required": false
+    },
+    {
+      "id": "tfs:zinc_deposit",
+      "required": false
+    },
+    {
+      "id": "tfs:gold_deposit",
+      "required": false
+    },
+    {
+      "id": "tfs:silver_deposit",
+      "required": false
+    }
+  ]
+}

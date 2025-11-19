@@ -17,9 +17,6 @@ public class TFSMenuTypes {
     public static final DeferredRegister<MenuType<?>> MENUS =
             DeferredRegister.create(ForgeRegistries.MENU_TYPES, tfs.MOD_ID);
 
-    public static final RegistryObject<MenuType<ForgeMenu>> FORGE_MENU =
-            registerMenuType("forge_menu", ForgeMenu::new);
-
     public static final RegistryObject<MenuType<RevolverMenu>> REVOLVER_MENU =
             registerMenuType("revolver_menu", RevolverMenu::new);
 

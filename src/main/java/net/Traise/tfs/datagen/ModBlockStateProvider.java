@@ -88,11 +88,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         blockWithItem(TFSBlocks.MIMIC);
 
-        simpleBlockWithItem(TFSBlocks.FORGE.get(),
-                new ModelFile.UncheckedModelFile(modLoc("block/forges")));
-
         simpleBlockWithItem(TFSBlocks.FOUNDRY.get(),
-                new ModelFile.UncheckedModelFile(modLoc("block/forges")));
+                new ModelFile.UncheckedModelFile(modLoc("block/foundry")));
 
         horizontalBlock(TFSBlocks.ROCK_OBJECT.get(),
                 new ModelFile.UncheckedModelFile(modLoc("block/rock_object")), 0);

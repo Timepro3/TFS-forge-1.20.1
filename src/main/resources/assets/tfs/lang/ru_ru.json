@@ -296,7 +296,23 @@
   "gui.tfs.removing_from_mold": "Вынимание из формы",
   "gui.tfs.cutting": "Вырезание",
 
+  "gui.tfs.with": " содержащая ",
   "gui.tfs.mb": "мб",
+
+  "gui.tfs.place": "место",
+  "gui.tfs.x_line": "Линия по координате X",
+  "gui.tfs.y_line": "Линия по координате Y",
+  "gui.tfs.z_line": "Линия по координате Z",
+
+  "geological.tfs.warm": "Тепло",
+  "geological.tfs.cold": "Холодно",
+  "geological.tfs.colder": "Холоднее",
+  "geological.tfs.warmer": "Теплее",
+  "geological.tfs.heat": "Горячо",
+  "geological.tfs.ore_recorded": "Руда записана",
+  "geological.tfs.no_ore_found": "Руда не найдена",
+  "geological.tfs.ore_found": "Руда найдена",
+  "geological.tfs.ore_not_recorded": "Руда не записана, нажмите SHIFT",
 
   "creativetab.tfs_tab": "TFS"
 }

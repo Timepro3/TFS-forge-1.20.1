@@ -1,5 +1,7 @@
 {
   "values": [
+    "#tfs:tfs_needs_iron_tool",
+    "#tfs:tfs_needs_steel_tool",
     "tfs:stone_diamond_ore",
     "tfs:deep_diamond_ore",
     "tfs:stone_emerald_ore",

@@ -1,0 +1,9 @@
+{
+  "remove": [
+    "#tfs:tfs_needs_copper_tool",
+    "#tfs:tfs_needs_bronze_tool"
+  ],
+  "values": [
+    "#minecraft:needs_stone_tool"
+  ]
+}

@@ -36,7 +36,7 @@ public class DoubleFluidStorageHandler {
         return slots.get(index).getAmount();
     }
 
-    public void setAmount(int index, int amount) {
+    public void setAmount(int index, double amount) {
         if (index < 0 || index >= slots.size()) throw new IndexOutOfBoundsException();
         slots.get(index).setAmount(amount);
     }

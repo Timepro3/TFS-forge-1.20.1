@@ -2,6 +2,7 @@ package net.Traise.tfs.datagen;
 
 import net.Traise.tfs.item.TFSItems;
 import net.Traise.tfs.tfs;
+import net.Traise.tfs.util.ICustomItemModel;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -14,6 +15,7 @@ import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.LinkedHashMap;
@@ -39,6 +41,14 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
+        for(RegistryObject<Item> itemObject : TFSItems.ITEMS.getEntries()) {
+            Item item = itemObject.get();
+            String name = ForgeRegistries.ITEMS.getKey(item).getPath();
+
+            if(item instanceof ICustomItemModel)
+                ((ICustomItemModel) item).generateCustomItemModel(this, name);
+        }
+
         {
             simpleItem(TFSItems.OLD_TIN);
             simpleItem(TFSItems.RAW_TIN);

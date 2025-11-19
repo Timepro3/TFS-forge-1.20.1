@@ -1,8 +1,9 @@
-// 1.20.1	2025-08-15T22:37:55.8061537	Item Models: tfs
+// 1.20.1	2025-11-07T18:59:26.702473	Item Models: tfs
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/tfs/models/item/alise_spawn_egg.json
 161c948981edfeec6f98aee2edf69287d35d2ad6 assets/tfs/models/item/andesite_alloy_nugget.json
 5644888e173f3191bc9c4f3f6ea18636a166d2e8 assets/tfs/models/item/andesite_alloy_sheet.json
-1ba4306ea7c4d1beb8044a1ec5d5527daf2f31f8 assets/tfs/models/item/blu.json
+a4e74dd41d7ffb53b98bcf3e225f3023ccb4db59 assets/tfs/models/item/axe.json
+c20ffc81727757f66e0da36f63409f7f517af928 assets/tfs/models/item/blu.json
 e2be4d71361525fb695f1a6dbc963bfcd237441d assets/tfs/models/item/blue.json
 791252f16f06b8f7b8c620558f6b27119c8fd52a assets/tfs/models/item/blueberry.json
 b4400887b474e742a5efad5ccfaf61464d0dd614 assets/tfs/models/item/brass_ingot_form.json
@@ -75,6 +76,7 @@ a986c7ebbc99e34bf46f2b560ce7eacf1bb63091 assets/tfs/models/item/bucket_of_iron.j
 cfcf65d870f300d551e405f132a53cf74b305de6 assets/tfs/models/item/bucket_of_tin.json
 e73b50817f99532eacc9e7ef9eb738337c955717 assets/tfs/models/item/bucket_of_unknown_metal.json
 4394e4dd2e0db7a5e49ab8ca251e43fc0f3be8f7 assets/tfs/models/item/bucket_of_zinc.json
+9de9e5adadaf5ef11ecbd085b3fa10b2cae33c03 assets/tfs/models/item/builder_wand.json
 5b143e634fe8c54c9c641520242637b19c0d7e1c assets/tfs/models/item/cartridge_silver.json
 5ac29fe33f2b7103794aaa4d1074feb283b69f04 assets/tfs/models/item/cartridge_silver_n.json
 a2ace8182b8c849750e0a9234e9ab2c565f97cef assets/tfs/models/item/cartridge_steel.json
@@ -98,6 +100,7 @@ a07a23385e41f6718121033e4c052d52f5e00506 assets/tfs/models/item/diamond_dust.jso
 e8b27e1a84ef61715d7eb73dedc6e8563033894d assets/tfs/models/item/distorted_twig.json
 206ae077c22339ede7b2c96bff6235964e86fd68 assets/tfs/models/item/emerald_dust.json
 0041ad9c411d61075372f0578bb3250a16883cbb assets/tfs/models/item/emerald_fragment.json
+7baaafde9347733dd9e9ba7a1a77c90016d8ce7f assets/tfs/models/item/geological_hammer.json
 9935df04e6e73dda6595fe1fa96ac33c621f4844 assets/tfs/models/item/gold.json
 60a99512edfe51cd23d53d3420fb418837a3d14f assets/tfs/models/item/gold_hammer.json
 782d9ce9980b59060981beaa2fb79edd04cf5755 assets/tfs/models/item/gold_ingot_form.json
@@ -106,11 +109,14 @@ e8b27e1a84ef61715d7eb73dedc6e8563033894d assets/tfs/models/item/distorted_twig.j
 24a63fc97bcfe5fa56fa1f2910e540bb3d38d1a7 assets/tfs/models/item/gold_spade.json
 3bd099d147b102e9c4c63a6713188090dc1ca187 assets/tfs/models/item/grass_cut.json
 f16c987cd481b90740bdfd6a00698b6270aa31c4 assets/tfs/models/item/grass_rope.json
+0697ece99edab82414a9d915411006af673ca946 assets/tfs/models/item/hammer.json
+ca467bae8dc4fda8873e3d75001ea6e4ce70fd77 assets/tfs/models/item/hoe.json
 9163f1213e2a62eb28d748dfec25a60b8ddf6647 assets/tfs/models/item/iron_hammer.json
 e17107976a473d5892393c00de6a892f78bbb043 assets/tfs/models/item/iron_ingot_form.json
 050c182b5822c5970d35d06328b25bda21654f46 assets/tfs/models/item/iron_knife.json
 732112aa70276a656aa619789f80495d70fb9426 assets/tfs/models/item/iron_sickle.json
 0bd2a8e7ca87306c2b06e79d60051603cf69195a assets/tfs/models/item/iron_spade.json
+a5d9338a04594b71ca5a7ec85d88b4d2e4f08cd7 assets/tfs/models/item/knife.json
 d86cbb8a9c890c349a3f23eaf1eb96bcbcf19d2f assets/tfs/models/item/lazuli_dust.json
 bd299d03e7a4189cd489f6ab036d9dc02da23dc5 assets/tfs/models/item/lazuli_fragment.json
 79e0576183fc12ed1a60a3b9a07e3a765d1f2d5e assets/tfs/models/item/limonite.json
@@ -121,6 +127,7 @@ a4cc387ab47684d898010704ebdc632f94b1783d assets/tfs/models/item/netherite_hammer
 973e479920aa6f66a5d6b459b7190560d9338ff5 assets/tfs/models/item/netherite_sickle.json
 d12f6ccd517a3eb6263565e55bd33eaa7b986596 assets/tfs/models/item/netherite_spade.json
 2700c9dff1b83e24c84af64c810e1f112920e140 assets/tfs/models/item/old_tin.json
+3e0e4a739a2de92461860d537b331eaee880a8e7 assets/tfs/models/item/pickaxe.json
 74571baa53038a37603984b1a5cb9d85813ebe22 assets/tfs/models/item/pik_rock_axe.json
 b8510a797b48e3f0e4def120544f4054cbd405e5 assets/tfs/models/item/pik_rock_hoe.json
 3452f14ad7e42bf88cfa3695089510cd396dd308 assets/tfs/models/item/pik_rock_pick.json
@@ -151,6 +158,8 @@ da5198c2983dd483db6d6355778feedb28a4e3e6 assets/tfs/models/item/revolver_n.json
 4041527317d98760936cf421ea748b8457e8f9f9 assets/tfs/models/item/rock_knife.json
 53bf682311bc853350adb2e9efb03eab2618f2eb assets/tfs/models/item/rock_pickaxe.json
 ff0a3774668a68ee2517538e9414e427a826d3f3 assets/tfs/models/item/rock_shovel.json
+4b489d7e7edb45b55c166564d1db4f7f9b2b04f4 assets/tfs/models/item/shovel.json
+07d9e66b30e911122f70c7bc5ed5db749b53264d assets/tfs/models/item/sickle.json
 0bd3e5064607fb24560d5d84558d4463aaec4230 assets/tfs/models/item/silver.json
 897c94f73e295e518c62b03a58dd901c17dd1617 assets/tfs/models/item/silver_axe.json
 83c4cb361e5231f3d945cded1aa4430258d11e92 assets/tfs/models/item/silver_boots.json
@@ -211,6 +220,7 @@ c7b55938c2d2204186f437636477f586a0e31a46 assets/tfs/models/item/silver_spade.jso
 3b272d26d4ce67d16a9ac14ca2fa8b2329c73866 assets/tfs/models/item/silver_sword.json
 f242420914953ec6d1624dc6519f08588c9fe5f3 assets/tfs/models/item/sleeve.json
 dbc7c05c6f7cfcc3fa36a2373f003450194b97ca assets/tfs/models/item/sleeve_n.json
+323f12b9183e77b1a539c7f8c610a6ef7c7ae971 assets/tfs/models/item/spade.json
 ead1823fecbdd0b6fc9b50af4e44ed5184f5b6a5 assets/tfs/models/item/steel_axe.json
 6e1cc50b73e7e24adf4b964301e9005624ad973a assets/tfs/models/item/steel_boots.json
 1ea8380b1e7c0c7f6b36caf8ea2296e56636d0d5 assets/tfs/models/item/steel_boots_amethyst_trim.json
@@ -268,6 +278,7 @@ b5a3aad031252843e70437d74e08960e49a82f16 assets/tfs/models/item/steel_shovel.jso
 774d314d8b1d67583c195390d264d0fe10cefd9e assets/tfs/models/item/steel_sickle.json
 a219116ff6f7b126f0ea01f9d0f02ce153d97328 assets/tfs/models/item/steel_spade.json
 af60eafa48d519e681d615d7563bc614cd194607 assets/tfs/models/item/steel_sword.json
+d234bce3a2bf43691c951615cc6648371357f09c assets/tfs/models/item/sword.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/tfs/models/item/tatar_spawn_egg.json
 56d9f43d9bb2e17ff2a8b07a389291c3dd98d4f3 assets/tfs/models/item/tin.json
 a16be4b99c309d9dafeeb88c6e1dec71c57fc094 assets/tfs/models/item/tin_ingot.json
@@ -275,6 +286,7 @@ a16be4b99c309d9dafeeb88c6e1dec71c57fc094 assets/tfs/models/item/tin_ingot.json
 d83572e4a6745e11386e6e64fd2ded52ec0ec697 assets/tfs/models/item/tin_nugget.json
 b8282ed81be707e60f46c13d4bd35f85c0130d9d assets/tfs/models/item/tin_sheet.json
 43bd71beb20155dc8002d6e8a1239edaf0c410fc assets/tfs/models/item/tin_sword.json
+1445ec2f9a1705c1c7240d84d306059916acdb7e assets/tfs/models/item/trowel.json
 fe984c9ada274f52a3d99b18444367f5c45fbc2e assets/tfs/models/item/twig.json
 35839a2acf50c65139bc942864aa12070d424e79 assets/tfs/models/item/unknown_metal_ingot.json
 75429625b0c7b5e972ec32a42a15522eac82f7b3 assets/tfs/models/item/unknown_metal_ingot_form.json

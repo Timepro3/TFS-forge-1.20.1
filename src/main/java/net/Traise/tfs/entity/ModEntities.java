@@ -15,6 +15,10 @@ public class ModEntities {
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES =
             DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, tfs.MOD_ID);
 
+    public static final RegistryObject<EntityType<ThrownSpear>> SPEAR =
+            ENTITY_TYPES.register("spear", () -> EntityType.Builder.<ThrownSpear>of(ThrownSpear::new, MobCategory.MISC)
+                    .sized(0.5f, 0.5f).build("spear"));
+
     public static final RegistryObject<EntityType<ThrownWoodSpear>> WOOD_SPEAR =
             ENTITY_TYPES.register("wood_spear", () -> EntityType.Builder.<ThrownWoodSpear>of(ThrownWoodSpear::new, MobCategory.MISC)
                     .sized(0.5f, 0.5f).build("wood_spear"));

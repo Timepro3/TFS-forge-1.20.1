@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "F": {
+      "item": "minecraft:furnace"
+    },
+    "S": {
+      "item": "minecraft:clay_ball"
+    }
+  },
+  "pattern": [
+    "SSS",
+    "SFS",
+    "SSS"
+  ],
+  "result": {
+    "item": "tfs:foundry"
+  },
+  "show_notification": true
+}

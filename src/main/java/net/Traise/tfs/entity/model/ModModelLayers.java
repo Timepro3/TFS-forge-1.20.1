@@ -5,6 +5,9 @@ import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.resources.ResourceLocation;
 
 public class ModModelLayers {
+    public static final ModelLayerLocation SPEAR_LAYER = new ModelLayerLocation(
+            new ResourceLocation(tfs.MOD_ID, "spear_layer"), "main");
+
     public static final ModelLayerLocation WOOD_SPEAR_LAYER = new ModelLayerLocation(
             new ResourceLocation(tfs.MOD_ID, "wood_spear_layer"), "main");
 

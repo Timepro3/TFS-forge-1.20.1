@@ -18,6 +18,10 @@ public class FluidContainer extends SimpleContainer {
         }
     }
 
+    public FluidContainer(int Size, double Capability) {
+        this(new DoubleFluidStorageHandler(Size, Capability));
+    }
+
     public TFSFluidStack getFluidInSlot(int slot) {
         if (slot >= 0 && slot < fluids.getSize()) {
             return fluids.getFluidInSlot(slot);
@@ -55,6 +59,10 @@ public class FluidContainer extends SimpleContainer {
     @Override
     public boolean isEmpty() {
         return fluids.isEmpty();
+    }
+
+    public FluidContainer copy() {
+        return new FluidContainer(this.getContainerSize(), this.fluids.getCapacity());
     }
 
 }

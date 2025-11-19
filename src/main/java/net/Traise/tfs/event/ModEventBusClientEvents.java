@@ -14,6 +14,7 @@ import net.minecraftforge.fml.common.Mod;
 public class ModEventBusClientEvents {
     @SubscribeEvent
     public static void registerLayer(EntityRenderersEvent.RegisterLayerDefinitions event) {
+        event.registerLayerDefinition(ModModelLayers.SPEAR_LAYER, SpearModel::createBodyLayer);
         event.registerLayerDefinition(ModModelLayers.ROCK_SPEAR_LAYER, RockSpearModel::createBodyLayer);
         event.registerLayerDefinition(ModModelLayers.WOOD_SPEAR_LAYER, WoodSpearModel::createBodyLayer);
         event.registerLayerDefinition(ModModelLayers.IRON_SPEAR_LAYER, IronSpearModel::createBodyLayer);

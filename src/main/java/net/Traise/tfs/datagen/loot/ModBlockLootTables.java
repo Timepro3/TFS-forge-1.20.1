@@ -30,7 +30,6 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(TFSBlocks.STEEL_BLOCK.get());
         this.dropSelf(TFSBlocks.CAST_IRON_BLOCK.get());
         this.dropSelf(TFSBlocks.UNKNOWN_METAL_BLOCK.get());
-        this.dropSelf(TFSBlocks.FORGE.get());
         this.dropSelf(TFSBlocks.FOUNDRY.get());
 
         this.add(TFSBlocks.MIMIC.get(),

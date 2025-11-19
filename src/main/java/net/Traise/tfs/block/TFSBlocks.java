@@ -199,8 +199,6 @@ public class TFSBlocks {
            () -> new TFSRock(BlockBehaviour.Properties.copy(Blocks.SAND).noOcclusion().sound(SoundType.STONE).pushReaction(PushReaction.DESTROY).strength(0.1f, 0.1f)));
    public static final RegistryObject<Block> TWIG_BLOCK = registerBlock("twig_block",
            () -> new TFStwig(BlockBehaviour.Properties.copy(Blocks.SAND).noOcclusion().sound(SoundType.WOOD).pushReaction(PushReaction.DESTROY).strength(0.1f, 0.1f)));
-   public static final RegistryObject<Block> FORGE = registerBlock("forge",
-           () -> new TFSForge(BlockBehaviour.Properties.copy(Blocks.STONE).noOcclusion()));
    public static final RegistryObject<Block> FOUNDRY = registerBlock("foundry",
            () -> new TFSFoundry(BlockBehaviour.Properties.copy(Blocks.STONE).noOcclusion()));
    public static final RegistryObject<Block> MIMIC = registerBlock("mimic",

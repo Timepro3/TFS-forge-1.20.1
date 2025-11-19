@@ -1,5 +1,6 @@
 package net.Traise.tfs.datagen.Tags;
 
+import com.simibubi.create.AllTags;
 import com.simibubi.create.content.decoration.palettes.AllPaletteStoneTypes;
 import net.Traise.tfs.block.TFSBlocks;
 import net.Traise.tfs.tfs;
@@ -50,10 +51,16 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                         Blocks.VINE,
                         Blocks.GLOW_LICHEN);}
 
+        this.tag(ModTags.Blocks.MINEABLE_WITH_MULTI_TOOL)
+                .addTags(BlockTags.MINEABLE_WITH_AXE,
+                        BlockTags.MINEABLE_WITH_SHOVEL,
+                        BlockTags.MINEABLE_WITH_PICKAXE);
+
         this.tag(ModTags.Blocks.REMOVE)
                 .addTags(BlockTags.MINEABLE_WITH_HOE,
                         BlockTags.MINEABLE_WITH_AXE,
-                        BlockTags.MINEABLE_WITH_SHOVEL)
+                        BlockTags.MINEABLE_WITH_SHOVEL,
+                        BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(Blocks.STONE,
                         Blocks.DEEPSLATE,
                         Blocks.WATER,
@@ -73,6 +80,36 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                         Blocks.BUDDING_AMETHYST);
 
         this.tag(ModTags.Blocks.GRAVEL).add(Blocks.GRAVEL);
+
+        {
+            this.tag(BlockTags.NEEDS_STONE_TOOL)
+                    .addTags(ModTags.Blocks.TFS_NEEDS_STONE_TOOL, ModTags.Blocks.TFS_NEEDS_COPPER_TOOL, ModTags.Blocks.TFS_NEEDS_BRONZE_TOOL);
+
+            this.tag(BlockTags.NEEDS_IRON_TOOL)
+                    .addTags(ModTags.Blocks.TFS_NEEDS_IRON_TOOL, ModTags.Blocks.TFS_NEEDS_STEEL_TOOL);
+
+            this.tag(BlockTags.NEEDS_DIAMOND_TOOL)
+                    .addTags(ModTags.Blocks.TFS_NEEDS_DIAMOND_TOOL, ModTags.Blocks.TFS_NEEDS_NETHERITE_TOOL);
+
+            this.tag(ModTags.Blocks.TFS_NEEDS_STONE_TOOL)
+                    .addTags(BlockTags.NEEDS_STONE_TOOL)
+                    .remove(ModTags.Blocks.TFS_NEEDS_COPPER_TOOL, ModTags.Blocks.TFS_NEEDS_BRONZE_TOOL);
+
+            this.tag(ModTags.Blocks.TFS_NEEDS_COPPER_TOOL);
+
+            this.tag(ModTags.Blocks.TFS_NEEDS_BRONZE_TOOL);
+
+            this.tag(ModTags.Blocks.TFS_NEEDS_IRON_TOOL)
+                    .addTags(BlockTags.NEEDS_IRON_TOOL)
+                    .remove(ModTags.Blocks.TFS_NEEDS_STEEL_TOOL);
+
+            this.tag(ModTags.Blocks.TFS_NEEDS_STEEL_TOOL);
+
+            this.tag(ModTags.Blocks.TFS_NEEDS_DIAMOND_TOOL)
+                    .addTags(BlockTags.NEEDS_DIAMOND_TOOL);
+
+            this.tag(ModTags.Blocks.TFS_NEEDS_NETHERITE_TOOL);
+        }
 
         {this.tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(TFSBlocks.TIN_BLOCK.get(),
@@ -119,7 +156,6 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                         TFSBlocks.DEEP_CINNABAR_ORE.get(),
                         TFSBlocks.STONE_LAZULI_ORE.get(),
                         TFSBlocks.DEEP_LAZULI_ORE.get(),
-                        TFSBlocks.FORGE.get(),
                         TFSBlocks.FOUNDRY.get(),
                         TFSBlocks.DIAMOND_FRAGMENT_OBJECT.get(),
                         TFSBlocks.EMERALD_FRAGMENT_OBJECT.get(),

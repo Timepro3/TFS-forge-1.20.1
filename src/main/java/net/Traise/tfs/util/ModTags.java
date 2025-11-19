@@ -22,10 +22,20 @@ public class ModTags {
         public static final TagKey<Block> AGE_3 = tag("age_3");
         public static final TagKey<Block> PLANTS_HOE = tag("plants_hoe");
 
+        public static final TagKey<Block> MINEABLE_WITH_MULTI_TOOL = tag("mineable/multi_tool");
+
         public static final TagKey<Block> STONE = tag("stone");
         public static final TagKey<Block> GRAVEL = tag("gravel");
 
         public static final TagKey<Block> REMOVE = tag("remove");
+
+        public static final TagKey<Block> TFS_NEEDS_STONE_TOOL = tag("tfs_needs_stone_tool");
+        public static final TagKey<Block> TFS_NEEDS_COPPER_TOOL = tag("tfs_needs_copper_tool");
+        public static final TagKey<Block> TFS_NEEDS_BRONZE_TOOL = tag("tfs_needs_bronze_tool");
+        public static final TagKey<Block> TFS_NEEDS_IRON_TOOL = tag("tfs_needs_iron_tool");
+        public static final TagKey<Block> TFS_NEEDS_STEEL_TOOL = tag("tfs_needs_steel_tool");
+        public static final TagKey<Block> TFS_NEEDS_DIAMOND_TOOL = tag("tfs_needs_diamond_tool");
+        public static final TagKey<Block> TFS_NEEDS_NETHERITE_TOOL = tag("tfs_needs_netherite_tool");
 
         private static TagKey<Block> tag(String name) {
             return BlockTags.create(new ResourceLocation(tfs.MOD_ID, name));
@@ -72,6 +82,8 @@ public class ModTags {
 
     public static class Biomes {
         public static final TagKey<Biome> OWER = tag("ower");
+
+        public static final TagKey<Biome> ORE = tag("ore");
 
         private static TagKey<Biome> tag(String name) {
             return TagKey.create(Registries.BIOME, new ResourceLocation(tfs.MOD_ID, name));

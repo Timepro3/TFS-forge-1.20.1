@@ -1,4 +1,4 @@
-// 1.20.1	2025-06-01T15:46:18.3464864	Block States: tfs
+// 1.20.1	2025-10-18T22:36:03.6729704	Block States: tfs
 1f786b8997f9a2392acd445b1aefbf471bfc8b8b assets/tfs/blockstates/bronze_block.json
 a8eb7d39a6f8bd6fa45e0368f1c424b44027e587 assets/tfs/blockstates/cast_iron_block.json
 f5952d9e59a49f5fba0bbcb0b5226f2da88711fd assets/tfs/blockstates/cinnabar_fragment_object.json
@@ -15,8 +15,7 @@ d715f8438f0b61f9587bb21bb29da5c56d3361c3 assets/tfs/blockstates/deep_tin_ore.jso
 21933ba69ad0aea42b4c52793239917f09fd68bb assets/tfs/blockstates/deep_zinc_ore.json
 242cc8a0c81837f298671440edb118ea6f36c04a assets/tfs/blockstates/diamond_fragment_object.json
 acc854482f6d1ae5c0fa29077c2bed1b5c257161 assets/tfs/blockstates/emerald_fragment_object.json
-37a41546b9df7900ec316fde3392649cddbac0fc assets/tfs/blockstates/forge.json
-37a41546b9df7900ec316fde3392649cddbac0fc assets/tfs/blockstates/foundry.json
+de30b22d90fb76615b5af22e6940df43150da26a assets/tfs/blockstates/foundry.json
 5d9e6ce026ae69bc03c81fc09621bf12b5f26915 assets/tfs/blockstates/gravel_cinnabar.json
 83ac1b91bb9123aade331b3a13f4219b25aa063d assets/tfs/blockstates/gravel_coal.json
 9d2de2185abebaa81857d5e1dae576cd4016e74d assets/tfs/blockstates/gravel_cuprite.json
@@ -160,8 +159,7 @@ fd31d33e956393d7ea6f9da5e7b8225b8420ed4b assets/tfs/models/item/deep_lazuli_ore.
 0ea2c4c02cc8b993b1da4d38d907f6f4c71b4ccd assets/tfs/models/item/deep_silver_ore.json
 71ca2dc8767fa897820425b67115fe44d520829b assets/tfs/models/item/deep_tin_ore.json
 33f798916620ea6e8f52ab3d97f63731a5798e32 assets/tfs/models/item/deep_zinc_ore.json
-56ffff94ba800f691a660fa5a24da3309ccabff2 assets/tfs/models/item/forge.json
-56ffff94ba800f691a660fa5a24da3309ccabff2 assets/tfs/models/item/foundry.json
+25e39669a1949b27905ff1f973255925bde12944 assets/tfs/models/item/foundry.json
 52cecc042775352986f6f965c86f71e2262224b0 assets/tfs/models/item/gravel_cinnabar.json
 aa00c1c786da561bb33d6b5bbf5e7c5807a4b714 assets/tfs/models/item/gravel_coal.json
 d32a2c9657e7346390cde1af9ff587b98ddcb41b assets/tfs/models/item/gravel_cuprite.json

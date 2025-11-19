@@ -34,7 +34,7 @@ public class TFStwig extends HorizontalDirectionalBlock implements SimpleWaterlo
 
     public TFStwig(Properties pProperties) {
         super(pProperties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(HANGING, Boolean.valueOf(false)).setValue(WATERLOGGED, Boolean.valueOf(false)));
+        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.SOUTH).setValue(HANGING, Boolean.valueOf(false)).setValue(WATERLOGGED, Boolean.valueOf(false)));
     }
 
     public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
@@ -86,20 +86,19 @@ public class TFStwig extends HorizontalDirectionalBlock implements SimpleWaterlo
     }
 
     public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
-        Direction direction = getConnectedDirection(pState).getOpposite();
-        return Block.canSupportCenter(pLevel, pPos.relative(direction), direction.getOpposite());
-    }
-
-    protected static Direction getConnectedDirection(BlockState pState) {
-        return pState.getValue(HANGING) ? Direction.DOWN : Direction.UP;
+        return Block.canSupportCenter(pLevel, pPos.relative(Direction.DOWN), Direction.DOWN.getOpposite());
     }
 
     public BlockState updateShape(BlockState pState, Direction pDirection, BlockState pNeighborState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pNeighborPos) {
-        if (pState.getValue(WATERLOGGED)) {
-            pLevel.scheduleTick(pCurrentPos, Fluids.WATER, Fluids.WATER.getTickDelay(pLevel));
-        }
+        if (pDirection == Direction.DOWN && !pState.canSurvive(pLevel, pCurrentPos)) {
+            return Blocks.AIR.defaultBlockState();
+        } else {
+            if (pState.getValue(WATERLOGGED)) {
+                pLevel.scheduleTick(pCurrentPos, Fluids.WATER, Fluids.WATER.getTickDelay(pLevel));
+            }
 
-        return getConnectedDirection(pState).getOpposite() == pDirection && !pState.canSurvive(pLevel, pCurrentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(pState, pDirection, pNeighborState, pLevel, pCurrentPos, pNeighborPos);
+            return pDirection == Direction.UP && pNeighborState.is(this) ? Blocks.BIG_DRIPLEAF_STEM.withPropertiesOf(pState) : super.updateShape(pState, pDirection, pNeighborState, pLevel, pCurrentPos, pNeighborPos);
+        }
     }
 
     public FluidState getFluidState(BlockState pState) {

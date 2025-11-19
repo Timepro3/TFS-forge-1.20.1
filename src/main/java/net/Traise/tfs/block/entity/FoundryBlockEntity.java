@@ -1,6 +1,5 @@
 package net.Traise.tfs.block.entity;
 
-import com.simibubi.create.AllBlocks;
 import com.simibubi.create.content.processing.burner.BlazeBurnerBlock;
 import net.Traise.tfs.fluid.TFSFluids;
 import net.Traise.tfs.fluid.util.DoubleFluidStorageHandler;
@@ -9,7 +8,6 @@ import net.Traise.tfs.item.custom.TFSFormItem;
 import net.Traise.tfs.recipe.AlloyRecipe;
 import net.Traise.tfs.recipe.FoundryRecipe;
 import net.Traise.tfs.screen.FoundryMenu;
-import net.Traise.tfs.util.AddMth;
 import net.Traise.tfs.util.FluidContainer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -25,7 +23,6 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CampfireBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -129,39 +126,20 @@ public class FoundryBlockEntity extends BlockEntity implements MenuProvider {
             this.AllAmount += (int) result.getAmount();
 
         } else {
+            ItemStack itemStack = this.itemHandler.getStackInSlot(index);
 
-            formItem.myTick(this.itemHandler.getStackInSlot(index));
-            for (int i = 0; i < formItem.getFluidHandler(this.itemHandler.getStackInSlot(index)).getSize(); i++) {
-                double count = (formItem.getFluidHandler(this.itemHandler.getStackInSlot(index)).getFluidInSlot(i).getAmount() / formItem.sumAllFluidSlot());
+            for (int i = 0; i < formItem.loadSize(itemStack); i++) {
+                this.fluidHandler.fill(freeFluidSlot(formItem.loadFluidHandler(itemStack).getFluidInSlot(i).getFluid()), new TFSFluidStack(formItem.loadFluidHandler(itemStack).getFluidInSlot(i).getFluid(), formItem.loadFluidHandler(itemStack).getFluidInSlot(i).getAmount() / formItem.loadAmount(itemStack)), false);
 
-                if (count > formItem.getFluidHandler(this.itemHandler.getStackInSlot(index)).getFluidInSlot(i).getAmount()) {
-                    count = formItem.getFluidHandler(this.itemHandler.getStackInSlot(index)).getFluidInSlot(i).getAmount();
-                }
-
-                TFSFluidStack fluidStack = new TFSFluidStack(formItem.getFluidHandler(this.itemHandler.getStackInSlot(index)).getFluidInSlot(i).getFluid(), count * correctCount);
-
-                this.fluidHandler.fill(freeFluidSlot(formItem.getFluidHandler(this.itemHandler.getStackInSlot(index)).getFluidInSlot(i).getFluid()), fluidStack, false);
-                formItem.myTick(this.itemHandler.getStackInSlot(index));
-                formItem.drain(i, count, this.itemHandler.getStackInSlot(index));
-                formItem.myTick(this.itemHandler.getStackInSlot(index));
-
-                ingredient.set(index, this.itemHandler.getStackInSlot(index));
+                formItem.drain(i, formItem.loadFluidHandler(itemStack).getFluidInSlot(i).getAmount() / formItem.loadAmount(itemStack), itemStack);
             }
 
-            /*ItemStack f = this.itemHandler.getStackInSlot(index);
-            formItem.myTick(this.itemHandler.getStackInSlot(index));
-            for (int i = 0; i < formItem.getFluidHandler(f).getSize(); i++) {
-                formItem.myTick(this.itemHandler.getStackInSlot(index));
-                TFSFluidStack fluidStack = new TFSFluidStack(formItem.getFluidHandler(f).getFluidInSlot(i), formItem.getFluidHandler(f).getAmount(i) / formItem.AllAmount);
-                formItem.getFluidHandler(f).setAmount(i, (formItem.getFluidHandler(f).getAmount(i) / formItem.AllAmount) * (formItem.AllAmount - 1));
-                this.fluidHandler.fill(freeFluidSlot(formItem.getFluidHandler(this.itemHandler.getStackInSlot(index)).getFluidInSlot(i).getFluid()), fluidStack, false);
-            }
-
-            formItem.AllAmount -= 1;
-            formItem.myTick(this.itemHandler.getStackInSlot(index));
+            formItem.myTick(itemStack);
             this.AllAmount += 1;
-
-            ingredient.set(index, this.itemHandler.getStackInSlot(index));*/
+            formItem.saveAmount(itemStack, formItem.loadAmount(itemStack) - 1);
+            if (formItem.loadAmount(itemStack) == 0) {
+                formItem.removeAmount(itemStack);
+            }
         }
 
     }
@@ -176,7 +154,7 @@ public class FoundryBlockEntity extends BlockEntity implements MenuProvider {
             form = true;
 
             formItem.myTick(this.itemHandler.getStackInSlot(index));
-            if (!(formItem.getRealSize(this.itemHandler.getStackInSlot(index)) > 0 && !formItem.getFluidHandler(this.itemHandler.getStackInSlot(index)).getFluidInSlot(0).isEmpty())) {
+            if (!(formItem.loadSize(this.itemHandler.getStackInSlot(index)) > 0 && !formItem.loadFluidHandler(this.itemHandler.getStackInSlot(index)).getFluidInSlot(0).isEmpty())) {
                 return false;
             }
 
@@ -230,40 +208,23 @@ public class FoundryBlockEntity extends BlockEntity implements MenuProvider {
 
         TFSFormItem formItem = (TFSFormItem) this.itemHandler.getStackInSlot(OutPutSlot).getItem();
         formItem.myTick(this.itemHandler.getStackInSlot(OutPutSlot));
-        return Size > 0 && !this.fluidHandler.getFluidInSlot(0).isEmpty() && formItem.sumAllFluidSlot() + 1 <= formItem.getCapacity();
+        return Size > 0 && !this.fluidHandler.getFluidInSlot(0).isEmpty() && formItem.sumAllFluidSlot(this.itemHandler.getStackInSlot(OutPutSlot)) + 1 <= TFSFormItem.Capacity;
     }
 
     private void allDrain() {
-        for (int i = 0; i < Size; i++) {
-            if (this.fluidHandler.getFluidInSlot(i).isEmpty()) {
-                break;
+        ItemStack itemStack = this.itemHandler.getStackInSlot(OutPutSlot);
+
+        if (itemStack.getItem() instanceof TFSFormItem formItem) {
+
+            for (int i = 0; i < Size; i++) {
+                formItem.neededFill(this.fluidHandler.getFluidInSlot(i).getFluid(), this.fluidHandler.getFluidInSlot(i).getAmount() / AllAmount, itemStack);
+                this.fluidHandler.drain(i, this.fluidHandler.getFluidInSlot(i).getAmount() / AllAmount, false);
             }
-            double count = (this.fluidHandler.getFluidInSlot(i).getAmount() / sumAllFluidSlots());
 
-            if (count > this.fluidHandler.getFluidInSlot(i).getAmount()) {
-                count = this.fluidHandler.getFluidInSlot(i).getAmount();
-            }
-
-            TFSFormItem formItem = (TFSFormItem) this.itemHandler.getStackInSlot(OutPutSlot).getItem();
-            formItem.myTick(this.itemHandler.getStackInSlot(OutPutSlot));
-            formItem.neededFill(this.fluidHandler.getFluidInSlot(i).getFluid(), count * correctCount, this.itemHandler.getStackInSlot(OutPutSlot));
-
-            this.fluidHandler.drain(i, count, false);
+            formItem.myTick(itemStack);
+            this.AllAmount -= 1;
+            formItem.saveAmount(itemStack, formItem.loadAmount(itemStack) + 1);
         }
-        /*TFSFormItem formItem = (TFSFormItem) this.itemHandler.getStackInSlot(OutPutSlot).getItem();
-
-        for (int i = 0; i < Size; i++) {
-            if (this.fluidHandler.getFluidInSlot(i).isEmpty()) {
-                break;
-            }
-            formItem.myTick(this.itemHandler.getStackInSlot(OutPutSlot));
-            F
-            formItem.neededFill(this.fluidHandler.getFluidInSlot(i).getFluid(), , this.itemHandler.getStackInSlot(OutPutSlot));
-
-
-
-        }*/
-
     }
 
     private void remove() {
@@ -283,9 +244,9 @@ public class FoundryBlockEntity extends BlockEntity implements MenuProvider {
     }
 
     private Optional<AlloyRecipe> getCurrentRecipe2() {
-        FluidContainer inventory = new FluidContainer(this.fluidHandler);
+        FluidContainer inventory = new FluidContainer(this.fluidHandler).copy();
         for(int i = 0; i < this.fluidHandler.getSize(); i++) {
-            inventory.setFluidInSlot(i, this.fluidHandler.getFluidInSlot(i));
+            inventory.setFluidInSlot(i, new TFSFluidStack(this.fluidHandler.getFluidInSlot(i).getFluid(), this.fluidHandler.getFluidInSlot(i).getAmount() * 100));
         }
         return this.level.getRecipeManager().getRecipeFor(AlloyRecipe.Type.INSTANCE, inventory, level);
     }

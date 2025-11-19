@@ -3,6 +3,7 @@
     "#minecraft:mineable/hoe",
     "#minecraft:mineable/axe",
     "#minecraft:mineable/shovel",
+    "#minecraft:mineable/pickaxe",
     "minecraft:stone",
     "minecraft:deepslate",
     "minecraft:water",

@@ -1,5 +1,8 @@
 {
   "values": [
+    "#tfs:tfs_needs_stone_tool",
+    "#tfs:tfs_needs_copper_tool",
+    "#tfs:tfs_needs_bronze_tool",
     "tfs:tin_block",
     "tfs:silver_block",
     "tfs:bronze_block",
