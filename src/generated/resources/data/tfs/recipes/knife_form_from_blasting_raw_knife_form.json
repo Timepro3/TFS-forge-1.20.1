@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.25,
+  "group": "knife_form",
+  "ingredient": {
+    "item": "tfs:raw_knife_form"
+  },
+  "result": "tfs:knife_form"
+}

@@ -1,0 +1,18 @@
+{
+  "type": "tfs:cutting",
+  "input": {
+    "count": 2,
+    "item": "tfs:rock"
+  },
+  "output": {
+    "count": 2,
+    "item": "tfs:knife_part"
+  },
+  "pattern": [
+    "X   X",
+    "XX XX",
+    "XX XX",
+    "XX XX",
+    "XX XX"
+  ]
+}

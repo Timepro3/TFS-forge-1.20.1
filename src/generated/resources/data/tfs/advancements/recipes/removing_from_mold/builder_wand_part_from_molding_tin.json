@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_builder_wand_part": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "tfs:builder_wand_part"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "tfs:builder_wand_part_from_molding_tin"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_builder_wand_part",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "tfs:builder_wand_part_from_molding_tin"
+    ]
+  },
+  "sends_telemetry_event": false
+}

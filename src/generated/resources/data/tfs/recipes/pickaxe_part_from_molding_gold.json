@@ -1,0 +1,14 @@
+{
+  "type": "tfs:removing_from_mold",
+  "ingredients": [
+    {
+      "amount": 100,
+      "fluid": "tfs:gold"
+    }
+  ],
+  "material": "tfs:gold",
+  "mold_type": "pickaxe",
+  "output": {
+    "item": "tfs:pickaxe_part"
+  }
+}

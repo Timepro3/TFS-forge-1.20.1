@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.25,
+  "group": "shovel_form",
+  "ingredient": {
+    "item": "tfs:raw_shovel_form"
+  },
+  "result": "tfs:shovel_form"
+}

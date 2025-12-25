@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.25,
+  "group": "string_form",
+  "ingredient": {
+    "item": "tfs:raw_string_form"
+  },
+  "result": "tfs:string_form"
+}

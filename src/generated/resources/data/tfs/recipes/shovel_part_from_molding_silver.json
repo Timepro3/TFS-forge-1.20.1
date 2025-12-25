@@ -1,0 +1,14 @@
+{
+  "type": "tfs:removing_from_mold",
+  "ingredients": [
+    {
+      "amount": 100,
+      "fluid": "tfs:silver"
+    }
+  ],
+  "material": "tfs:silver",
+  "mold_type": "shovel",
+  "output": {
+    "item": "tfs:shovel_part"
+  }
+}

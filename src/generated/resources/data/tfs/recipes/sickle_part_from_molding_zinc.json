@@ -1,0 +1,14 @@
+{
+  "type": "tfs:removing_from_mold",
+  "ingredients": [
+    {
+      "amount": 900,
+      "fluid": "tfs:zinc"
+    }
+  ],
+  "material": "tfs:zinc",
+  "mold_type": "sickle",
+  "output": {
+    "item": "tfs:sickle_part"
+  }
+}

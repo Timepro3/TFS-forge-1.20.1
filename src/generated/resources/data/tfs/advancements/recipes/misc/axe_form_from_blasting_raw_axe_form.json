@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_raw_axe_form": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "tfs:raw_axe_form"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "tfs:axe_form_from_blasting_raw_axe_form"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_raw_axe_form",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "tfs:axe_form_from_blasting_raw_axe_form"
+    ]
+  },
+  "sends_telemetry_event": false
+}

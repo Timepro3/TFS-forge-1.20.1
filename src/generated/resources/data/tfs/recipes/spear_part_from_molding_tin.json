@@ -1,0 +1,14 @@
+{
+  "type": "tfs:removing_from_mold",
+  "ingredients": [
+    {
+      "amount": 100,
+      "fluid": "tfs:tin"
+    }
+  ],
+  "material": "tfs:tin",
+  "mold_type": "spear",
+  "output": {
+    "item": "tfs:spear_part"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "type": "tfs:removing_from_mold",
+  "ingredients": [
+    {
+      "amount": 900,
+      "fluid": "tfs:silver"
+    }
+  ],
+  "material": "tfs:silver",
+  "mold_type": "spade",
+  "output": {
+    "item": "tfs:spade_part"
+  }
+}

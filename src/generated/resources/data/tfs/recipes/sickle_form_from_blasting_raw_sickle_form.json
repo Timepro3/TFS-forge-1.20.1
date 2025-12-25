@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.25,
+  "group": "sickle_form",
+  "ingredient": {
+    "item": "tfs:raw_sickle_form"
+  },
+  "result": "tfs:sickle_form"
+}

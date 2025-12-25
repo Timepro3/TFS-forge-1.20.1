@@ -1,0 +1,18 @@
+{
+  "type": "tfs:modeling",
+  "input": {
+    "count": 5,
+    "item": "minecraft:clay_ball"
+  },
+  "output": {
+    "count": 1,
+    "item": "tfs:raw_axe_form"
+  },
+  "pattern": [
+    "X XXX",
+    "    X",
+    "     ",
+    "    X",
+    "X XXX"
+  ]
+}

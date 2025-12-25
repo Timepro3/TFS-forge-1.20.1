@@ -1,0 +1,18 @@
+{
+  "values": [
+    "tfs:sword_part",
+    "tfs:axe_part",
+    "tfs:hoe_part",
+    "tfs:pickaxe_part",
+    "tfs:shovel_part",
+    "tfs:knife_part",
+    "tfs:spear_part",
+    "tfs:hammer_part",
+    "tfs:spade_part",
+    "tfs:sickle_part",
+    "tfs:trowel_part",
+    "tfs:geological_hammer_part",
+    "tfs:builder_wand_part",
+    "tfs:paxel_part"
+  ]
+}

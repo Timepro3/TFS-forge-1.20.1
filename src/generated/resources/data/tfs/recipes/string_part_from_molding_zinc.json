@@ -1,0 +1,14 @@
+{
+  "type": "tfs:removing_from_mold",
+  "ingredients": [
+    {
+      "amount": 100,
+      "fluid": "tfs:zinc"
+    }
+  ],
+  "material": "tfs:zinc",
+  "mold_type": "string",
+  "output": {
+    "item": "tfs:string_part"
+  }
+}
