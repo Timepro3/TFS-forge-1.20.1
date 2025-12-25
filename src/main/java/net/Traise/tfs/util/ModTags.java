@@ -67,6 +67,11 @@ public class ModTags {
         public static final TagKey<Item> METAL_35 = tag("metal_35");
         public static final TagKey<Item> METAL_100 = tag("metal_100");
 
+        public static final TagKey<Item> TOOL_PART = tag("tool_part");
+        public static final TagKey<Item> TOOL_HEAD = tag("tool_head");
+        public static final TagKey<Item> TOOL_STICK = tag("tool_stick");
+        public static final TagKey<Item> TOOL_STRING = tag("tool_string");
+
         private static TagKey<Item> tag(String name) {
             return ItemTags.create(new ResourceLocation(tfs.MOD_ID, name));
         }

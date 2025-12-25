@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "tfs:item/knife_form"
+  },
+  "overrides": [
+    {"predicate": {"custom_model_data": 1}, "model": "tfs:item/knife_form_compate"}
+  ]
+}

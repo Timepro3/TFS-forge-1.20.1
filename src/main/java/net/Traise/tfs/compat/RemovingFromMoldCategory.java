@@ -22,6 +22,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.registries.ForgeRegistries;
 
 public class RemovingFromMoldCategory implements IRecipeCategory<RemovingFromMoldRecipe> {
     public static final ResourceLocation UID = new ResourceLocation(tfs.MOD_ID, "removing_from_mold");
@@ -77,10 +78,7 @@ public class RemovingFromMoldCategory implements IRecipeCategory<RemovingFromMol
     }
 
     public Item moldType(MoldType moldType) {
-        if (moldType == MoldType.PICK) {
-            return TFSItems.INGOT_FORM.get();
-        } else {
-            return TFSItems.INGOT_FORM.get();
-        }
+        return ForgeRegistries.ITEMS.getValue(new ResourceLocation
+                ("tfs:" + moldType.getName() + "_form"));
     }
 }

@@ -5,6 +5,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
 import net.Traise.tfs.fluid.util.TFSFluidStack;
 import net.Traise.tfs.tfs;
+import net.Traise.tfs.tools.TFSPartItem;
+import net.Traise.tfs.tools.TFSToolMaterials;
 import net.Traise.tfs.util.BooleanContainer;
 import net.Traise.tfs.util.FluidContainer;
 import net.Traise.tfs.util.MoldType;
@@ -90,38 +92,6 @@ public class CuttingRecipe implements Recipe<BooleanContainer> {
         return true;
     }
 
-    /*public boolean matches(BooleanContainer pContainer, Level pLevel) {
-        if (matches(pContainer, pLevel, false)) {
-            return true;
-        }
-
-        if (matches(pContainer, pLevel, true)) {
-            return true;
-        }
-
-        return false;
-    }
-
-    private boolean matches(BooleanContainer pContainer, Level pLevel, boolean pMirrored) {
-        if (!pMirrored) {
-            for (int i = 0; i < 25; i++) {
-                if (map.get(i) != pContainer.getMap(i)) {
-                    return false;
-                }
-            }
-        } else {
-            for (int Y = 0; Y < MAX_HEIGHT; Y++) {
-                for (int X = 0; X < MAX_WIDTH; X++) {
-                    if (map.get(Y + (X * 5)) != pContainer.getMap(4 - Y + (X * 5))) {
-                        return false;
-                    }
-                }
-            }
-        }
-
-        return true;
-    }*/
-
     public int getHeight() {
         return height;
     }
@@ -150,6 +120,11 @@ public class CuttingRecipe implements Recipe<BooleanContainer> {
 
     @Override
     public ItemStack getResultItem(RegistryAccess pRegistryAccess) {
+        if (output.getItem() instanceof TFSPartItem) {
+            ItemStack it = output.copy();
+            TFSPartItem.setMaterial(TFSToolMaterials.STONE.get(), it);
+            return it;
+        }
         return output.copy();
     }
 

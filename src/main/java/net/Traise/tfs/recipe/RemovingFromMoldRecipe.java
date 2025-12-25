@@ -4,6 +4,11 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
 import net.Traise.tfs.fluid.util.TFSFluidStack;
+import net.Traise.tfs.item.custom.TFSBaseItem;
+import net.Traise.tfs.tools.TFSPartItem;
+import net.Traise.tfs.tools.TFSRegistries;
+import net.Traise.tfs.tools.TFSToolMaterial;
+import net.Traise.tfs.tools.TFSToolMaterials;
 import net.Traise.tfs.util.MoldType;
 import net.Traise.tfs.tfs;
 import net.Traise.tfs.util.FluidContainer;
@@ -29,12 +34,14 @@ public class RemovingFromMoldRecipe implements Recipe<FluidContainer> {
     private final MoldType moldType;
     private final NonNullList<TFSFluidStack> inputFluids; // Входные предметы
     private final ItemStack output; // Выходная жидкость
+    private final TFSToolMaterial material; // Материал
     private final ResourceLocation id;
 
-    public RemovingFromMoldRecipe(MoldType moldType, NonNullList<TFSFluidStack> inputFluids, ItemStack output, ResourceLocation id) {
+    public RemovingFromMoldRecipe(MoldType moldType, NonNullList<TFSFluidStack> inputFluids, ItemStack output, TFSToolMaterial material, ResourceLocation id) {
         this.moldType = moldType;
         this.inputFluids = inputFluids;
         this.output = output;
+        this.material = material;
         this.id = id;
     }
 
@@ -54,6 +61,11 @@ public class RemovingFromMoldRecipe implements Recipe<FluidContainer> {
 
     @Override
     public ItemStack getResultItem(RegistryAccess pRegistryAccess) {
+        if (output.getItem() instanceof TFSPartItem) {
+            ItemStack it = output.copy();
+            TFSPartItem.setMaterial(material, it);
+            return it;
+        }
         return output.copy();
     }
 
@@ -116,7 +128,13 @@ public class RemovingFromMoldRecipe implements Recipe<FluidContainer> {
 
             ItemStack output = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(pSerializedRecipe, "output"));
 
-            return new RemovingFromMoldRecipe(pMoldType, inputs, output, pRecipeId);
+            TFSToolMaterial mater = TFSToolMaterials.NONE.get();
+
+            if (!GsonHelper.getAsString(pSerializedRecipe, "material").isEmpty()) {
+                mater = TFSRegistries.TOOL_MATERIAL.get().getValue(new ResourceLocation(GsonHelper.getAsString(pSerializedRecipe, "material")));
+            }
+
+            return new RemovingFromMoldRecipe(pMoldType, inputs, output, mater, pRecipeId);
         }
 
         public static TFSFluidStack getFluidStack(JsonObject json) {
@@ -139,8 +157,7 @@ public class RemovingFromMoldRecipe implements Recipe<FluidContainer> {
             }
             ItemStack output = pBuffer.readItem();
 
-
-            return new RemovingFromMoldRecipe(pMoldType, inputs, output, pRecipeId);
+            return new RemovingFromMoldRecipe(pMoldType, inputs, output, TFSToolMaterials.NONE.get(), pRecipeId);
         }
 
         @Override

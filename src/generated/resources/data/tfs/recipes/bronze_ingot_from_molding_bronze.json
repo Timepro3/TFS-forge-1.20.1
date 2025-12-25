@@ -6,6 +6,7 @@
       "fluid": "tfs:bronze"
     }
   ],
+  "material": "tfs:none",
   "mold_type": "ingot",
   "output": {
     "item": "tfs:bronze_ingot"

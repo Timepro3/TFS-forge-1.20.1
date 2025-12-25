@@ -6,6 +6,7 @@
       "fluid": "tfs:unknown_metal"
     }
   ],
+  "material": "tfs:none",
   "mold_type": "ingot",
   "output": {
     "item": "tfs:unknown_metal_ingot"

@@ -6,6 +6,7 @@
       "fluid": "tfs:brass"
     }
   ],
+  "material": "tfs:none",
   "mold_type": "ingot",
   "output": {
     "item": "create:brass_ingot"

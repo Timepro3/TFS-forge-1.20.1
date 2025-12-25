@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "tfs:item/builder_wand_form"
+  },
+  "overrides": [
+    {"predicate": {"custom_model_data": 1}, "model": "tfs:item/builder_wand_form_compate"}
+  ]
+}

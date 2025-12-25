@@ -111,6 +111,7 @@ public class TFSCreativeModTabs {
                         pOutput.accept(TFSItems.HAMMER.get());
                         pOutput.accept(TFSItems.SPADE.get());
                         pOutput.accept(TFSItems.SICKLE.get());
+                        pOutput.accept(TFSItems.PAXEL.get());
                         pOutput.accept(TFSItems.TROWEL.get());
                         pOutput.accept(TFSItems.GEOLOGICAL_HAMMER.get());
                         pOutput.accept(TFSItems.BUILDER_WAND.get());
@@ -161,7 +162,40 @@ public class TFSCreativeModTabs {
                         pOutput.accept(TFSItems.LAZULI_DUST.get());
 
                         pOutput.accept(TFSItems.RAW_INGOT_FORM.get());
+                        pOutput.accept(TFSItems.RAW_AXE_FORM.get());
+                        pOutput.accept(TFSItems.RAW_SWORD_FORM.get());
+                        pOutput.accept(TFSItems.RAW_HOE_FORM.get());
+                        pOutput.accept(TFSItems.RAW_PICKAXE_FORM.get());
+                        pOutput.accept(TFSItems.RAW_SHOVEL_FORM.get());
+                        pOutput.accept(TFSItems.RAW_KNIFE_FORM.get());
+                        pOutput.accept(TFSItems.RAW_SPEAR_FORM.get());
+                        pOutput.accept(TFSItems.RAW_HAMMER_FORM.get());
+                        pOutput.accept(TFSItems.RAW_SPADE_FORM.get());
+                        pOutput.accept(TFSItems.RAW_SICKLE_FORM.get());
+                        pOutput.accept(TFSItems.RAW_TROWEL_FORM.get());
+                        pOutput.accept(TFSItems.RAW_GEOLOGICAL_HAMMER_FORM.get());
+                        pOutput.accept(TFSItems.RAW_BUILDER_WAND_FORM.get());
+                        pOutput.accept(TFSItems.RAW_PAXEL_FORM.get());
+                        pOutput.accept(TFSItems.RAW_STICK_FORM.get());
+                        pOutput.accept(TFSItems.RAW_STRING_FORM.get());
+
                         pOutput.accept(TFSItems.INGOT_FORM.get());
+                        pOutput.accept(TFSItems.AXE_FORM.get());
+                        pOutput.accept(TFSItems.SWORD_FORM.get());
+                        pOutput.accept(TFSItems.HOE_FORM.get());
+                        pOutput.accept(TFSItems.PICKAXE_FORM.get());
+                        pOutput.accept(TFSItems.SHOVEL_FORM.get());
+                        pOutput.accept(TFSItems.KNIFE_FORM.get());
+                        pOutput.accept(TFSItems.SPEAR_FORM.get());
+                        pOutput.accept(TFSItems.HAMMER_FORM.get());
+                        pOutput.accept(TFSItems.SPADE_FORM.get());
+                        pOutput.accept(TFSItems.SICKLE_FORM.get());
+                        pOutput.accept(TFSItems.TROWEL_FORM.get());
+                        pOutput.accept(TFSItems.GEOLOGICAL_HAMMER_FORM.get());
+                        pOutput.accept(TFSItems.BUILDER_WAND_FORM.get());
+                        pOutput.accept(TFSItems.PAXEL_FORM.get());
+                        pOutput.accept(TFSItems.STICK_FORM.get());
+                        pOutput.accept(TFSItems.STRING_FORM.get());
 
                         pOutput.accept(TFSItems.RAW_DIAMOND.get());
                         pOutput.accept(TFSItems.RAW_EMERALD.get());

@@ -1,34 +1,20 @@
 package net.Traise.tfs.item.custom;
 
-import com.google.common.base.Stopwatch;
-import com.google.common.base.Suppliers;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
-import com.mojang.datafixers.types.templates.Tag;
-import com.mojang.datafixers.util.Either;
 import com.mojang.datafixers.util.Pair;
-import net.minecraft.tags.BiomeTags;
-import com.simibubi.create.content.equipment.extendoGrip.ExtendoGripItem;
-import com.simibubi.create.foundation.utility.AnimationTickHolder;
 import net.Traise.tfs.datagen.ModItemModelProvider;
-import net.Traise.tfs.entity.projectile.*;
+import net.Traise.tfs.entity.projectile.ThrownSpear;
 import net.Traise.tfs.item.TFSItems;
-import net.Traise.tfs.item.TFSToolTiers;
-import net.Traise.tfs.tfs;
+import net.Traise.tfs.tools.MaterialStorageHandler;
+import net.Traise.tfs.tools.TFSToolMaterial;
+import net.Traise.tfs.tools.TFSToolMaterials;
 import net.Traise.tfs.util.*;
-import net.Traise.tfs.worldgen.biome.ModBiomes;
-import net.minecraft.Util;
 import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.client.renderer.block.model.BlockModel;
 import net.minecraft.core.*;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.commands.LocateCommand;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
@@ -46,49 +32,34 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.village.poi.PoiType;
-import net.minecraft.world.entity.decoration.ItemFrame;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
-import net.minecraft.world.entity.projectile.ProjectileUtil;
 import net.minecraft.world.item.*;
-import net.minecraft.world.item.armortrim.ArmorTrim;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.item.crafting.RepairItemRecipe;
+import net.minecraft.world.item.crafting.ShapedRecipe;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
-import net.minecraft.world.level.GrassColor;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.BiomeSource;
-import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.phys.*;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.client.event.InputEvent;
-import net.minecraftforge.client.model.generators.ModelFile;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.common.ToolAction;
 import net.minecraftforge.common.ToolActions;
-import net.minecraftforge.event.entity.living.LivingEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.items.ItemHandlerHelper;
-import org.jetbrains.annotations.Nullable;
 
-import javax.swing.plaf.basic.BasicComboBoxUI;
 import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
-import java.util.function.Supplier;
 
 import static java.util.Set.of;
 import static net.minecraft.world.item.HoeItem.changeIntoState;
@@ -120,6 +91,11 @@ public class TFSBaseItem extends Item implements Vanishable, ICustomItemModel {
 
     @Override
     public void releaseUsing(ItemStack pStack, Level pLevel, LivingEntity pLivingEntity, int pTimeCharged) {
+        NonNullList<TFSToolMaterial> mat = MaterialStorageHandler.load(pStack);
+        for (int i = 0; i < mat.size(); i++) {
+            mat.get(i).releaseUsing(pStack, pLevel, pLivingEntity, pTimeCharged);
+        }
+
         if (pLivingEntity instanceof Player player) {
             if (this.toolType.equals(TFSToolTypes.SPEAR)) {
                 int i = this.getUseDuration(pStack) - pTimeCharged;
@@ -130,7 +106,7 @@ public class TFSBaseItem extends Item implements Vanishable, ICustomItemModel {
                         });
 
                         ThrownSpear thrownmodspearitem = new ThrownSpear(pLevel, player, pStack);
-                        thrownmodspearitem.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 4 + pStack.getOrCreateTag().getFloat("attackSpeed"), (pStack.getOrCreateTag().getFloat("mineSpeed") / (pStack.getOrCreateTag().getInt("mineLevel") + 1)) - 1 < 0 ? 0 : (pStack.getOrCreateTag().getFloat("mineSpeed") / (pStack.getOrCreateTag().getInt("mineLevel") + 1)) - 1);
+                        thrownmodspearitem.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 4 + (float) MaterialStorageHandler.getAllAttackSpeed(pStack), (MaterialStorageHandler.getAllMineSpeed(pStack) / (MaterialStorageHandler.getMineLevel(pStack) + 1)) - 1 < 0 ? 0 : (float) (MaterialStorageHandler.getAllMineSpeed(pStack) / (MaterialStorageHandler.getMineLevel(pStack) + 1)) - 1);
                         if (player.getAbilities().instabuild) {
                             thrownmodspearitem.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
                         }
@@ -149,9 +125,19 @@ public class TFSBaseItem extends Item implements Vanishable, ICustomItemModel {
     @Override
     public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {
         super.inventoryTick(pStack, pLevel, pEntity, pSlotId, pIsSelected);
+
+        NonNullList<TFSToolMaterial> mat = MaterialStorageHandler.load(pStack);
+        for (int i = 0; i < mat.size(); i++) {
+            mat.get(i).inventoryTick(pStack, pLevel, pEntity, pSlotId, pIsSelected);
+        }
+
         if (pEntity instanceof Player player) {
             if (player.getItemInHand(InteractionHand.OFF_HAND).equals(pStack)) {
-                this.setMaterial(pStack);
+                mat.set(0, TFSToolMaterials.WOOD.get());
+                mat.set(1, TFSToolMaterials.NETHERITE.get());
+                mat.set(2, TFSToolMaterials.LEATHER.get());
+                MaterialStorageHandler.save(pStack, mat);
+
             }
         }
     }
@@ -160,7 +146,13 @@ public class TFSBaseItem extends Item implements Vanishable, ICustomItemModel {
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
         ItemStack itemStack = pPlayer.getItemInHand(pUsedHand);
 
+        NonNullList<TFSToolMaterial> mat = MaterialStorageHandler.load(itemStack);
+        for (int i = 0; i < mat.size(); i++) {
+            mat.get(i).use(pLevel, pPlayer, pUsedHand);
+        }
+
         if (this.toolType.equals(TFSToolTypes.SPEAR)) {
+
             if (itemStack.getDamageValue() >= itemStack.getMaxDamage() - 1) {
                 return InteractionResultHolder.fail(itemStack);
             } else if (EnchantmentHelper.getRiptide(itemStack) > 0 && !pPlayer.isInWaterOrRain()) {
@@ -175,7 +167,7 @@ public class TFSBaseItem extends Item implements Vanishable, ICustomItemModel {
     }
 
     public float getDestroySpeed(ItemStack pStack, BlockState pState) {
-        return pState.is(this.toolType.getBlockTag()) ? (pStack.getOrCreateTag().getFloat("mineSpeed") <= 0 ? 5 : pStack.getOrCreateTag().getFloat("mineSpeed")) : 1.0F;
+        return pState.is(this.toolType.getBlockTag()) ? (float) (MaterialStorageHandler.getAllMineSpeed(pStack) <= 0 ? 5 : MaterialStorageHandler.getAllMineSpeed(pStack)) : 1.0F;
     }
 
     public UseAnim getUseAnimation(ItemStack pStack) {
@@ -188,6 +180,10 @@ public class TFSBaseItem extends Item implements Vanishable, ICustomItemModel {
         pStack.hurtAndBreak(this.toolType.isWeapon() ? 1 : 2, pAttacker, (p_41007_) -> {
             p_41007_.broadcastBreakEvent(EquipmentSlot.MAINHAND);
         });
+        NonNullList<TFSToolMaterial> mat = MaterialStorageHandler.load(pStack);
+        for (int i = 0; i < mat.size(); i++) {
+            mat.get(i).hurtEnemy(pStack, pTarget, pAttacker);
+        }
         return true;
     }
 
@@ -196,6 +192,11 @@ public class TFSBaseItem extends Item implements Vanishable, ICustomItemModel {
             pStack.hurtAndBreak(this.toolType.isWeapon() ? 2 : 1, entity, (p_40992_) -> {
                 p_40992_.broadcastBreakEvent(EquipmentSlot.MAINHAND);
             });
+        }
+
+        NonNullList<TFSToolMaterial> mat = MaterialStorageHandler.load(pStack);
+        for (int i = 0; i < mat.size(); i++) {
+            mat.get(i).mineBlock(pStack, pLevel, pState, pPos, entity);
         }
 
         double x = pPos.getX();
@@ -298,6 +299,11 @@ public class TFSBaseItem extends Item implements Vanishable, ICustomItemModel {
         ItemStack pStack = context.getItemInHand();
         BlockPos blockpos = context.getClickedPos();
         Direction direction = context.getClickedFace();
+
+        NonNullList<TFSToolMaterial> mat = MaterialStorageHandler.load(pStack);
+        for (int i = 0; i < mat.size(); i++) {
+            mat.get(i).useOn(context);
+        }
 
         if (this.toolType.equals(TFSToolTypes.SICKLE)) {
             if (!entity.isShiftKeyDown()) {
@@ -426,7 +432,7 @@ public class TFSBaseItem extends Item implements Vanishable, ICustomItemModel {
                 return InteractionResult.PASS;
             }
         }
-        else if (this.toolType.equals(TFSToolTypes.MULTI_TOOL)) {
+        else if (this.toolType.equals(TFSToolTypes.PAXEL)) {
             Optional<BlockState> optional = Optional.ofNullable(pState.getToolModifiedState(context, ToolActions.AXE_STRIP, false));
             Optional<BlockState> optional1 = optional.isPresent() ?
                     Optional.empty() : Optional.ofNullable(pState.getToolModifiedState(context, ToolActions.AXE_SCRAPE, false));
@@ -524,7 +530,7 @@ public class TFSBaseItem extends Item implements Vanishable, ICustomItemModel {
                 CompoundTag cmp = target.serializeNBT();
                 ItemNBTHelper.setCompound(ourStack, TAG_LAST_STACK, cmp);
 
-                if(pStack.getOrCreateTag().getInt("durability") > 0)
+                if(MaterialStorageHandler.getAllDurability(pStack) > 0)
                     MiscUtil.damageStack(entity, hand, context.getItemInHand(), 1);
             }
 
@@ -536,7 +542,7 @@ public class TFSBaseItem extends Item implements Vanishable, ICustomItemModel {
             }
             Block selectedBlock = pState.getBlock();
 
-            int volume = (int)Math.pow(2, (pStack.getOrCreateTag().getInt("mineLevel") + 2)); // радиус действия
+            int volume = (int)Math.pow(2, (MaterialStorageHandler.getMineLevel(pStack) + 2)); // радиус действия
 
             if (entity.isShiftKeyDown()) {
                 pStack.getOrCreateTag().putInt("BuildMode", pStack.getOrCreateTag().getInt("BuildMode") + 1);
@@ -563,7 +569,7 @@ public class TFSBaseItem extends Item implements Vanishable, ICustomItemModel {
                         Pair<BlockPos, Holder<Biome>> pair = serverLevel.findClosestBiome3d(holder -> {
                             // Проверка, что этого биома в теге
                             return holder.equals(biomeHolder);
-                        }, startPos, (pStack.getOrCreateTag().getInt("mineLevel") + 1) * 250, 32, 64);
+                        }, startPos, (MaterialStorageHandler.getMineLevel(pStack) + 1) * 250, 32, 64);
 
                         if (pair != null) {
                             int currentDist = (int) Math.sqrt(startPos.distSqr(pair.getFirst()));
@@ -580,9 +586,12 @@ public class TFSBaseItem extends Item implements Vanishable, ICustomItemModel {
                         pStack.getOrCreateTag().putBoolean("coordinate", true);
                         pStack.getOrCreateTag().putInt("coordinateX", closestPair.getFirst().getX());
                         pStack.getOrCreateTag().putInt("coordinateZ", closestPair.getFirst().getZ());
+                        pStack.getOrCreateTag().putInt("last_coordinate", 0);
 
                     } else {
                         entity.displayClientMessage(Component.translatable("geological.tfs.no_ore_found"), true);
+                        pStack.getOrCreateTag().putBoolean("coordinate", false);
+                        pStack.getOrCreateTag().putInt("last_coordinate", 0);
                     }
 
                 }
@@ -768,8 +777,8 @@ public class TFSBaseItem extends Item implements Vanishable, ICustomItemModel {
     @Override
     public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlot slot, ItemStack stack) {
         ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
-        builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Tool modifier", (double)stack.getOrCreateTag().getFloat("attackDamage"), AttributeModifier.Operation.ADDITION));
-        builder.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Tool modifier", (double)stack.getOrCreateTag().getFloat("attackSpeed"), AttributeModifier.Operation.ADDITION));
+        builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Tool modifier", (double)MaterialStorageHandler.getAllAttackDamage(stack), AttributeModifier.Operation.ADDITION));
+        builder.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Tool modifier", (double)MaterialStorageHandler.getAllAttackSpeed(stack) - 4, AttributeModifier.Operation.ADDITION));
 
         if (this.toolType.equals(TFSToolTypes.SPEAR)) {
             builder.put(ForgeMod.BLOCK_REACH.get(), new AttributeModifier(BASE_BLOCK_RANGE_UUID, "Tool modifier", 1, AttributeModifier.Operation.ADDITION));
@@ -786,12 +795,12 @@ public class TFSBaseItem extends Item implements Vanishable, ICustomItemModel {
 
     @Override
     public int getMaxDamage(ItemStack stack) {
-        return stack.getOrCreateTag().getInt("durability");
+        return MaterialStorageHandler.getAllDurability(stack);
     }
 
     @Override
     public int getEnchantmentValue(ItemStack stack) {
-        return stack.getOrCreateTag().getInt("enchantmentValue");
+        return MaterialStorageHandler.getAllEnchantmentValue(stack);
     }
 
     @Override
@@ -814,51 +823,16 @@ public class TFSBaseItem extends Item implements Vanishable, ICustomItemModel {
     }
 
     public static int getColor(ItemStack itemStack, int Index) {
-        if (!loadMaterial(itemStack).isEmpty() && loadMaterial(itemStack).size() > Index) {
-            return loadMaterial(itemStack).get(Index).getColor();
+        if (MaterialStorageHandler.getSize(itemStack) > Index) {
+            return MaterialStorageHandler.load(itemStack).get(Index).color;
         } else {
             return -1;
         }
-
-    }
-
-    public void setMaterial(ItemStack itemStack) {
-        NonNullList<Material> mat = loadMaterial(itemStack);
-        mat.replaceAll(ignored -> Material.getRandomMaterial());
-        saveMaterial(itemStack, mat);
-        Update(itemStack);
-    }
-
-    public void Update(ItemStack itemStack) {
-        NonNullList<Material> mat = loadMaterial(itemStack);
-
-        if (!mat.isEmpty()) {
-            itemStack.getOrCreateTag().putInt("mineLevel", mat.get(1).getMineLevel());
-        } else itemStack.getOrCreateTag().putInt("mineLevel", 0);
-        itemStack.getOrCreateTag().putInt("durability", 0);
-        itemStack.getOrCreateTag().putFloat("mineSpeed", this.toolType.getMineSpeed());
-        itemStack.getOrCreateTag().putFloat("attackDamage", this.toolType.getAttackDamage());
-        itemStack.getOrCreateTag().putFloat("attackSpeed", this.toolType.getAttackSpeed());
-        itemStack.getOrCreateTag().putInt("enchantmentValue", 0);
-
-        for (int i = 0; i < mat.size(); i++) {
-            itemStack.getOrCreateTag().putInt("durability", itemStack.getOrCreateTag().getInt("durability") + mat.get(i).getDurability());
-            itemStack.getOrCreateTag().putFloat("mineSpeed", itemStack.getOrCreateTag().getFloat("mineSpeed") + mat.get(i).getMineSpeed());
-            itemStack.getOrCreateTag().putFloat("attackDamage", itemStack.getOrCreateTag().getFloat("attackDamage") + mat.get(i).getAttackDamage());
-            itemStack.getOrCreateTag().putFloat("attackSpeed", itemStack.getOrCreateTag().getFloat("attackSpeed") + mat.get(i).getAttackSpeed());
-            itemStack.getOrCreateTag().putInt("enchantmentValue", itemStack.getOrCreateTag().getInt("enchantmentValue") + mat.get(i).getEnchantmentValue());
-        }
-
-        if (this.toolType.isBigDurability()) {
-            itemStack.getOrCreateTag().putInt("durability", itemStack.getOrCreateTag().getInt("durability") * 3);
-        }
-
-        saveMaterial(itemStack, mat);
     }
 
     @Override
     public boolean isCorrectToolForDrops(ItemStack stack, BlockState state) {
-        int i = stack.getOrCreateTag().getInt("mineLevel");
+        int i = MaterialStorageHandler.getMineLevel(stack);
         if (i < 7 && state.is(ModTags.Blocks.TFS_NEEDS_NETHERITE_TOOL)) {
             return false;
         } else if (i < 6 && state.is(ModTags.Blocks.TFS_NEEDS_DIAMOND_TOOL)) {
@@ -874,25 +848,6 @@ public class TFSBaseItem extends Item implements Vanishable, ICustomItemModel {
         } else {
             return i < 1 && state.is(ModTags.Blocks.TFS_NEEDS_STONE_TOOL) ? false : state.is(this.toolType.getBlockTag());
         }
-    }
-
-    public void saveMaterial(ItemStack itemStack, NonNullList<Material> mat) {
-        CompoundTag tag = new CompoundTag();
-        for (int i = 0; i < mat.size(); i++) {
-            tag.putString("slot_" + i, mat.get(i).getName());
-        }
-        itemStack.getOrCreateTag().put("material", tag);
-    }
-
-    public static NonNullList<Material> loadMaterial(ItemStack itemStack) {
-        CompoundTag tag = (CompoundTag) itemStack.getOrCreateTag().get("material");
-        NonNullList<Material> mat = NonNullList.withSize(3, Material.NONE);
-
-        for (int i = 0; i < (tag != null ? tag.size() : 0); i++) {
-            mat.set(i, Material.getMaterialInName(tag.getString("slot_" + i)));
-        }
-
-        return mat;
     }
 
     @Override
@@ -928,7 +883,7 @@ public class TFSBaseItem extends Item implements Vanishable, ICustomItemModel {
         TROWEL("trowel", ModTags.Blocks.STONE, false, false, -1, -1, -2.9f, ToolActions.DEFAULT_SWORD_ACTIONS),
         GEOLOGICAL_HAMMER("geological_hammer", ModTags.Blocks.STONE, false, false, -1, -1, -2.9f, ToolActions.DEFAULT_SWORD_ACTIONS),
         BUILDER_WAND("builder_wand", ModTags.Blocks.STONE, false, false, -1, -1, -2.9f, ToolActions.DEFAULT_SWORD_ACTIONS),
-        MULTI_TOOL("multi_tool", ModTags.Blocks.MINEABLE_WITH_MULTI_TOOL, false, true, -1, 5.5F, -3.1F,
+        PAXEL("paxel", ModTags.Blocks.MINEABLE_WITH_MULTI_TOOL, false, true, -1, 5.5F, -3.1F,
                 of(ToolActions.AXE_DIG, ToolActions.AXE_STRIP, ToolActions.AXE_SCRAPE, ToolActions.AXE_WAX_OFF, ToolActions.SHOVEL_DIG, ToolActions.SHOVEL_FLATTEN, ToolActions.PICKAXE_DIG));
 
         private final String name;
@@ -971,7 +926,7 @@ public class TFSBaseItem extends Item implements Vanishable, ICustomItemModel {
                 case "hammer" -> TFSToolTypes.HAMMER;
                 case "spade" -> TFSToolTypes.SPADE;
                 case "sickle" -> TFSToolTypes.SICKLE;
-                case "multi_tool" -> TFSToolTypes.MULTI_TOOL;
+                case "paxel" -> TFSToolTypes.PAXEL;
                 default -> TFSToolTypes.NONE;
             };
         }

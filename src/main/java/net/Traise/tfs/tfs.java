@@ -10,6 +10,8 @@ import net.Traise.tfs.item.TFSItems;
 import net.Traise.tfs.potion.ModMobEffect;
 import net.Traise.tfs.recipe.TFSRecipes;
 import net.Traise.tfs.screen.*;
+import net.Traise.tfs.tools.TFSRegistries;
+import net.Traise.tfs.tools.TFSToolMaterials;
 import net.Traise.tfs.util.TFSAttributes;
 import net.Traise.tfs.worldgen.biome.ModTerrablender;
 import net.Traise.tfs.worldgen.biome.surface.ModSurfaceRules;
@@ -81,6 +83,9 @@ public class tfs {
         TFSRecipes.register(modEventBus);
         TFSAttributes.register(modEventBus);
 
+        TFSRegistries.register(modEventBus);
+        TFSToolMaterials.register(modEventBus);
+
         //modEventBus.addListener(this::commonSetup);
 
         MinecraftForge.EVENT_BUS.register(this);
@@ -139,6 +144,7 @@ public class tfs {
             EntityRenderers.register(ModEntities.ALISE.get(), AliseRenderer::new);
             EntityRenderers.register(ModEntities.TATAR.get(), TatarRenderer::new);
 
+            MenuScreens.register(TFSMenuTypes.MODELING_MENU.get(), ModelingScreen::new);
             MenuScreens.register(TFSMenuTypes.CUTTING_MENU.get(), CuttingScreen::new);
             MenuScreens.register(TFSMenuTypes.FOUNDRY_MENU.get(), FoundryScreen::new);
             MenuScreens.register(TFSMenuTypes.REVOLVER_MENU.get(), RevolverScreen::new);

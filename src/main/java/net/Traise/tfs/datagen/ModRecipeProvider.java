@@ -6,7 +6,10 @@ import net.Traise.tfs.block.TFSBlocks;
 import net.Traise.tfs.datagen.recipe.*;
 import net.Traise.tfs.fluid.TFSFluids;
 import net.Traise.tfs.item.TFSItems;
+import net.Traise.tfs.recipe.TFSRecipes;
 import net.Traise.tfs.tfs;
+import net.Traise.tfs.tools.TFSRegistries;
+import net.Traise.tfs.tools.TFSToolMaterial;
 import net.Traise.tfs.util.ModTags;
 import net.Traise.tfs.util.MoldType;
 import net.minecraft.client.Minecraft;
@@ -19,6 +22,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.AbstractCookingRecipe;
+import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
@@ -43,6 +47,10 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     protected static String getFluidName(Fluid pItemLike) {
         return BuiltInRegistries.FLUID.getKey(pItemLike).getPath();
+    }
+
+    protected static void campfireCooking(Consumer<FinishedRecipe> pFinishedRecipeConsumer, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult, float pExperience, int pCookingTIme, String pGroup) {
+        oreCooking(pFinishedRecipeConsumer, RecipeSerializer.CAMPFIRE_COOKING_RECIPE, pIngredients, pCategory, pResult, pExperience, pCookingTIme, pGroup, "_from_campfire");
     }
 
     protected static void oreSmelting(Consumer<FinishedRecipe> pFinishedRecipeConsumer, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult, float pExperience, int pCookingTIme, String pGroup) {
@@ -76,6 +84,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     protected static void mold(Consumer<FinishedRecipe> pFinishedRecipeConsumer, MoldType moldType, Item item, Fluid fluid) {
         RemovingFromMoldRecipeBuilder.mold(moldType, item)
                 .requires(fluid)
+                .unlockedBy(getHasName(item), has(item))
+                .save(pFinishedRecipeConsumer, tfs.MOD_ID + ":" + getItemName(item) + "_from_molding_" + getFluidName(fluid));
+    }
+
+    protected static void moldMat(Consumer<FinishedRecipe> pFinishedRecipeConsumer, MoldType moldType, Item item, Fluid fluid, int FluidAmount, TFSToolMaterial material) {
+        RemovingFromMoldRecipeBuilder.mold(moldType, item, material)
+                .requires(fluid, FluidAmount)
                 .unlockedBy(getHasName(item), has(item))
                 .save(pFinishedRecipeConsumer, tfs.MOD_ID + ":" + getItemName(item) + "_from_molding_" + getFluidName(fluid));
     }
@@ -748,6 +763,72 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         ForgeRegistries.ITEMS.getValue(new ResourceLocation
                                 (tfs.MOD_ID, "rich_" + c.getString())));
             }
+
+            if (i >= 2 && i <= 5) {
+                moldMat(pWriter, MoldType.STRING, TFSItems.STRING_PART.get(),
+                        ForgeRegistries.FLUIDS.getValue(new ResourceLocation(tfs.MOD_ID, material(i).getString())), 100,
+                        TFSRegistries.TOOL_MATERIAL.get().getValue(new ResourceLocation("tfs:" + material(i).getString())));
+
+                moldMat(pWriter, MoldType.AXE, TFSItems.AXE_PART.get(),
+                        ForgeRegistries.FLUIDS.getValue(new ResourceLocation(tfs.MOD_ID, material(i).getString())), 100,
+                        TFSRegistries.TOOL_MATERIAL.get().getValue(new ResourceLocation("tfs:" + material(i).getString())));
+
+                moldMat(pWriter, MoldType.SWORD, TFSItems.SWORD_PART.get(),
+                        ForgeRegistries.FLUIDS.getValue(new ResourceLocation(tfs.MOD_ID, material(i).getString())), 100,
+                        TFSRegistries.TOOL_MATERIAL.get().getValue(new ResourceLocation("tfs:" + material(i).getString())));
+
+                moldMat(pWriter, MoldType.HOE, TFSItems.HOE_PART.get(),
+                        ForgeRegistries.FLUIDS.getValue(new ResourceLocation(tfs.MOD_ID, material(i).getString())), 100,
+                        TFSRegistries.TOOL_MATERIAL.get().getValue(new ResourceLocation("tfs:" + material(i).getString())));
+
+                moldMat(pWriter, MoldType.PICKAXE, TFSItems.PICKAXE_PART.get(),
+                        ForgeRegistries.FLUIDS.getValue(new ResourceLocation(tfs.MOD_ID, material(i).getString())), 100,
+                        TFSRegistries.TOOL_MATERIAL.get().getValue(new ResourceLocation("tfs:" + material(i).getString())));
+
+                moldMat(pWriter, MoldType.SHOVEL, TFSItems.SHOVEL_PART.get(),
+                        ForgeRegistries.FLUIDS.getValue(new ResourceLocation(tfs.MOD_ID, material(i).getString())), 100,
+                        TFSRegistries.TOOL_MATERIAL.get().getValue(new ResourceLocation("tfs:" + material(i).getString())));
+
+                moldMat(pWriter, MoldType.KNIFE, TFSItems.KNIFE_PART.get(),
+                        ForgeRegistries.FLUIDS.getValue(new ResourceLocation(tfs.MOD_ID, material(i).getString())), 100,
+                        TFSRegistries.TOOL_MATERIAL.get().getValue(new ResourceLocation("tfs:" + material(i).getString())));
+
+                moldMat(pWriter, MoldType.SPEAR, TFSItems.SPEAR_PART.get(),
+                        ForgeRegistries.FLUIDS.getValue(new ResourceLocation(tfs.MOD_ID, material(i).getString())), 100,
+                        TFSRegistries.TOOL_MATERIAL.get().getValue(new ResourceLocation("tfs:" + material(i).getString())));
+
+                moldMat(pWriter, MoldType.HAMMER, TFSItems.HAMMER_PART.get(),
+                        ForgeRegistries.FLUIDS.getValue(new ResourceLocation(tfs.MOD_ID, material(i).getString())), 900,
+                        TFSRegistries.TOOL_MATERIAL.get().getValue(new ResourceLocation("tfs:" + material(i).getString())));
+
+                moldMat(pWriter, MoldType.SPADE, TFSItems.SPADE_PART.get(),
+                        ForgeRegistries.FLUIDS.getValue(new ResourceLocation(tfs.MOD_ID, material(i).getString())), 900,
+                        TFSRegistries.TOOL_MATERIAL.get().getValue(new ResourceLocation("tfs:" + material(i).getString())));
+
+                moldMat(pWriter, MoldType.SICKLE, TFSItems.SICKLE_PART.get(),
+                        ForgeRegistries.FLUIDS.getValue(new ResourceLocation(tfs.MOD_ID, material(i).getString())), 900,
+                        TFSRegistries.TOOL_MATERIAL.get().getValue(new ResourceLocation("tfs:" + material(i).getString())));
+
+                moldMat(pWriter, MoldType.TROWEL, TFSItems.TROWEL_PART.get(),
+                        ForgeRegistries.FLUIDS.getValue(new ResourceLocation(tfs.MOD_ID, material(i).getString())), 100,
+                        TFSRegistries.TOOL_MATERIAL.get().getValue(new ResourceLocation("tfs:" + material(i).getString())));
+
+                moldMat(pWriter, MoldType.GEOLOGICAL_HAMMER, TFSItems.GEOLOGICAL_HAMMER_PART.get(),
+                        ForgeRegistries.FLUIDS.getValue(new ResourceLocation(tfs.MOD_ID, material(i).getString())), 100,
+                        TFSRegistries.TOOL_MATERIAL.get().getValue(new ResourceLocation("tfs:" + material(i).getString())));
+
+                moldMat(pWriter, MoldType.BUILDER_WAND, TFSItems.BUILDER_WAND_PART.get(),
+                        ForgeRegistries.FLUIDS.getValue(new ResourceLocation(tfs.MOD_ID, material(i).getString())), 100,
+                        TFSRegistries.TOOL_MATERIAL.get().getValue(new ResourceLocation("tfs:" + material(i).getString())));
+
+                moldMat(pWriter, MoldType.PAXEL, TFSItems.PAXEL_PART.get(),
+                        ForgeRegistries.FLUIDS.getValue(new ResourceLocation(tfs.MOD_ID, material(i).getString())), 900,
+                        TFSRegistries.TOOL_MATERIAL.get().getValue(new ResourceLocation("tfs:" + material(i).getString())));
+
+                moldMat(pWriter, MoldType.STICK, TFSItems.STICK_PART.get(),
+                        ForgeRegistries.FLUIDS.getValue(new ResourceLocation(tfs.MOD_ID, material(i).getString())), 100,
+                        TFSRegistries.TOOL_MATERIAL.get().getValue(new ResourceLocation("tfs:" + material(i).getString())));
+            }
         }
 
         {
@@ -783,7 +864,23 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         {
 
-            oreSmelting(pWriter, INGOT_FORM, RecipeCategory.MISC, TFSItems.INGOT_FORM.get(), 0.25f, 200, "ingot_form");
+            oreBlasting(pWriter, List.of(TFSItems.RAW_INGOT_FORM.get()), RecipeCategory.MISC, TFSItems.INGOT_FORM.get(), 0.25f, 200, "ingot_form");
+            oreBlasting(pWriter, List.of(TFSItems.RAW_AXE_FORM.get()), RecipeCategory.MISC, TFSItems.AXE_FORM.get(), 0.25f, 200, "axe_form");
+            oreBlasting(pWriter, List.of(TFSItems.RAW_SWORD_FORM.get()), RecipeCategory.MISC, TFSItems.SWORD_FORM.get(), 0.25f, 200, "sword_form");
+            oreBlasting(pWriter, List.of(TFSItems.RAW_HOE_FORM.get()), RecipeCategory.MISC, TFSItems.HOE_FORM.get(), 0.25f, 200, "hoe_form");
+            oreBlasting(pWriter, List.of(TFSItems.RAW_PICKAXE_FORM.get()), RecipeCategory.MISC, TFSItems.PICKAXE_FORM.get(), 0.25f, 200, "pickaxe_form");
+            oreBlasting(pWriter, List.of(TFSItems.RAW_SHOVEL_FORM.get()), RecipeCategory.MISC, TFSItems.SHOVEL_FORM.get(), 0.25f, 200, "shovel_form");
+            oreBlasting(pWriter, List.of(TFSItems.RAW_KNIFE_FORM.get()), RecipeCategory.MISC, TFSItems.KNIFE_FORM.get(), 0.25f, 200, "knife_form");
+            oreBlasting(pWriter, List.of(TFSItems.RAW_SPEAR_FORM.get()), RecipeCategory.MISC, TFSItems.SPEAR_FORM.get(), 0.25f, 200, "spear_form");
+            oreBlasting(pWriter, List.of(TFSItems.RAW_HAMMER_FORM.get()), RecipeCategory.MISC, TFSItems.HAMMER_FORM.get(), 0.25f, 200, "hammer_form");
+            oreBlasting(pWriter, List.of(TFSItems.RAW_SPADE_FORM.get()), RecipeCategory.MISC, TFSItems.SPADE_FORM.get(), 0.25f, 200, "spade_form");
+            oreBlasting(pWriter, List.of(TFSItems.RAW_SICKLE_FORM.get()), RecipeCategory.MISC, TFSItems.SICKLE_FORM.get(), 0.25f, 200, "sickle_form");
+            oreBlasting(pWriter, List.of(TFSItems.RAW_TROWEL_FORM.get()), RecipeCategory.MISC, TFSItems.TROWEL_FORM.get(), 0.25f, 200, "trowel_form");
+            oreBlasting(pWriter, List.of(TFSItems.RAW_GEOLOGICAL_HAMMER_FORM.get()), RecipeCategory.MISC, TFSItems.GEOLOGICAL_HAMMER_FORM.get(), 0.25f, 200, "geological_hammer_form");
+            oreBlasting(pWriter, List.of(TFSItems.RAW_BUILDER_WAND_FORM.get()), RecipeCategory.MISC, TFSItems.BUILDER_WAND_FORM.get(), 0.25f, 200, "builder_wand_form");
+            oreBlasting(pWriter, List.of(TFSItems.RAW_PAXEL_FORM.get()), RecipeCategory.MISC, TFSItems.PAXEL_FORM.get(), 0.25f, 200, "paxel_form");
+            oreBlasting(pWriter, List.of(TFSItems.RAW_STICK_FORM.get()), RecipeCategory.MISC, TFSItems.STICK_FORM.get(), 0.25f, 200, "stick_form");
+            oreBlasting(pWriter, List.of(TFSItems.RAW_STRING_FORM.get()), RecipeCategory.MISC, TFSItems.STRING_FORM.get(), 0.25f, 200, "string_form");
 
             CreateRecipe.SandPaperPolishing(Ingredient.of(TFSItems.RAW_DIAMOND.get()), RecipeCategory.DECORATIONS, Items.DIAMOND).unlockedBy("has_raw_diamond", has(TFSItems.RAW_DIAMOND.get())).save(pWriter, "diamond_in_raw_diamond");
             CreateRecipe.SandPaperPolishing(Ingredient.of(TFSItems.RAW_EMERALD.get()), RecipeCategory.DECORATIONS, Items.EMERALD).unlockedBy("has_raw_emerald", has(TFSItems.RAW_EMERALD.get())).save(pWriter, "emerald_in_raw_emerald");
@@ -812,64 +909,286 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             CreateRecipe.SandPaperPolishing(Ingredient.of(TFSItems.BRONZE_SHEET.get()), RecipeCategory.TOOLS, TFSItems.SLEEVE.get()).unlockedBy("has_bronze_she", has(TFSItems.BRONZE_SHEET.get())).save(pWriter, "sleeve_combinate");
             CreateRecipe.SandPaperPolishing(Ingredient.of(TFSItems.SLEEVE.get()), RecipeCategory.TOOLS, TFSItems.CARTRIDGE_SILVER.get()).unlockedBy("has_casilv", has(TFSItems.SLEEVE.get())).save(pWriter, "silv_combinate");
             CreateRecipe.SandPaperPolishing(Ingredient.of(TFSItems.SLEEVE.get()), RecipeCategory.TOOLS, TFSItems.CARTRIDGE_STEEL.get()).unlockedBy("has_casteel", has(TFSItems.SLEEVE.get())).save(pWriter, "steel_combinate");
+
+            SpecialRecipeBuilder.special(TFSRecipes.TOOL_ASSEMBLY_SERIALIZER.get()).save(pWriter, "tool_assembly");
         }
 
-        CuttingRecipeBuilder.cutting(TFSItems.PIK_ROCK_PICK.get(), 1, TFSItems.ROCK.get(), 2)
-                .pattern(" XXX ")
-                .pattern("X   X")
-                .unlockedBy(getHasName(TFSItems.ROCK.get()), has(TFSItems.ROCK.get()))
-                .save(pWriter, tfs.MOD_ID + ":" + "rock_cutting_pik_rock_pick");
+        {
+            CuttingRecipeBuilder.cutting(TFSItems.PICKAXE_PART.get(), 1, TFSItems.ROCK.get(), 2)
+                    .pattern(" XXX ")
+                    .pattern("X   X")
+                    .unlockedBy(getHasName(TFSItems.ROCK.get()), has(TFSItems.ROCK.get()))
+                    .save(pWriter, tfs.MOD_ID + ":" + "rock_cutting_pik_rock_pick");
 
-        CuttingRecipeBuilder.cutting(TFSItems.PIK_ROCK_PICK.get(), 2, TFSItems.ROCK.get(), 2)
-                .pattern(" XXX ")
-                .pattern("X   X")
-                .pattern("     ")
-                .pattern(" XXX ")
-                .pattern("X   X")
-                .unlockedBy(getHasName(TFSItems.ROCK.get()), has(TFSItems.ROCK.get()))
-                .save(pWriter, tfs.MOD_ID + ":" + "rock_cutting_two_pik_rock_pick");
+            CuttingRecipeBuilder.cutting(TFSItems.PICKAXE_PART.get(), 2, TFSItems.ROCK.get(), 2)
+                    .pattern(" XXX ")
+                    .pattern("X   X")
+                    .pattern("     ")
+                    .pattern(" XXX ")
+                    .pattern("X   X")
+                    .unlockedBy(getHasName(TFSItems.ROCK.get()), has(TFSItems.ROCK.get()))
+                    .save(pWriter, tfs.MOD_ID + ":" + "rock_cutting_two_pik_rock_pick");
 
-        CuttingRecipeBuilder.cutting(TFSItems.PIK_ROCK_AXE.get(), 1, TFSItems.ROCK.get(), 2)
-                .pattern(" X   ")
-                .pattern("XXXX ")
-                .pattern("XXXXX")
-                .pattern("XXXX ")
-                .pattern(" X   ")
-                .unlockedBy(getHasName(TFSItems.ROCK.get()), has(TFSItems.ROCK.get()))
-                .save(pWriter, tfs.MOD_ID + ":" + "rock_cutting_pik_rock_axe");
+            CuttingRecipeBuilder.cutting(TFSItems.AXE_PART.get(), 1, TFSItems.ROCK.get(), 2)
+                    .pattern(" X   ")
+                    .pattern("XXXX ")
+                    .pattern("XXXXX")
+                    .pattern("XXXX ")
+                    .pattern(" X   ")
+                    .unlockedBy(getHasName(TFSItems.ROCK.get()), has(TFSItems.ROCK.get()))
+                    .save(pWriter, tfs.MOD_ID + ":" + "rock_cutting_pik_rock_axe");
 
-        CuttingRecipeBuilder.cutting(TFSItems.PIK_ROCK_SPEAR.get(), 1, TFSItems.ROCK.get(), 2)
-                .pattern("XXX  ")
-                .pattern("XXXX ")
-                .pattern("XXXXX")
-                .pattern(" XXX ")
-                .pattern("  X  ")
-                .unlockedBy(getHasName(TFSItems.ROCK.get()), has(TFSItems.ROCK.get()))
-                .save(pWriter, tfs.MOD_ID + ":" + "rock_cutting_pik_rock_spear");
+            CuttingRecipeBuilder.cutting(TFSItems.SPEAR_PART.get(), 1, TFSItems.ROCK.get(), 2)
+                    .pattern("XXX  ")
+                    .pattern("XXXX ")
+                    .pattern("XXXXX")
+                    .pattern(" XXX ")
+                    .pattern("  X  ")
+                    .unlockedBy(getHasName(TFSItems.ROCK.get()), has(TFSItems.ROCK.get()))
+                    .save(pWriter, tfs.MOD_ID + ":" + "rock_cutting_pik_rock_spear");
 
-        CuttingRecipeBuilder.cutting(TFSItems.PIK_ROCK_HOE.get(), 1, TFSItems.ROCK.get(), 2)
-                .pattern("XXXXX")
-                .pattern("   XX")
-                .unlockedBy(getHasName(TFSItems.ROCK.get()), has(TFSItems.ROCK.get()))
-                .save(pWriter, tfs.MOD_ID + ":" + "rock_cutting_pik_rock_hoe");
+            CuttingRecipeBuilder.cutting(TFSItems.HOE_PART.get(), 1, TFSItems.ROCK.get(), 2)
+                    .pattern("XXXXX")
+                    .pattern("   XX")
+                    .unlockedBy(getHasName(TFSItems.ROCK.get()), has(TFSItems.ROCK.get()))
+                    .save(pWriter, tfs.MOD_ID + ":" + "rock_cutting_pik_rock_hoe");
 
-        CuttingRecipeBuilder.cutting(TFSItems.PIK_ROCK_HOE.get(), 2, TFSItems.ROCK.get(), 2)
-                .pattern("XXXXX")
-                .pattern("   XX")
-                .pattern("     ")
-                .pattern("XXXXX")
-                .pattern("   XX")
-                .unlockedBy(getHasName(TFSItems.ROCK.get()), has(TFSItems.ROCK.get()))
-                .save(pWriter, tfs.MOD_ID + ":" + "rock_cutting_two_pik_rock_hoe");
+            CuttingRecipeBuilder.cutting(TFSItems.HOE_PART.get(), 2, TFSItems.ROCK.get(), 2)
+                    .pattern("XXXXX")
+                    .pattern("   XX")
+                    .pattern("     ")
+                    .pattern("XXXXX")
+                    .pattern("   XX")
+                    .unlockedBy(getHasName(TFSItems.ROCK.get()), has(TFSItems.ROCK.get()))
+                    .save(pWriter, tfs.MOD_ID + ":" + "rock_cutting_two_pik_rock_hoe");
 
-        CuttingRecipeBuilder.cutting(TFSItems.PIK_ROCK_SHOVEL.get(), 1, TFSItems.ROCK.get(), 2)
-                .pattern("XXX")
-                .pattern("XXX")
-                .pattern("XXX")
-                .pattern("XXX")
-                .pattern(" X ")
-                .unlockedBy(getHasName(TFSItems.ROCK.get()), has(TFSItems.ROCK.get()))
-                .save(pWriter, tfs.MOD_ID + ":" + "rock_cutting_pik_rock_shovel");
+            CuttingRecipeBuilder.cutting(TFSItems.SHOVEL_PART.get(), 1, TFSItems.ROCK.get(), 2)
+                    .pattern("XXX")
+                    .pattern("XXX")
+                    .pattern("XXX")
+                    .pattern("XXX")
+                    .pattern(" X ")
+                    .unlockedBy(getHasName(TFSItems.ROCK.get()), has(TFSItems.ROCK.get()))
+                    .save(pWriter, tfs.MOD_ID + ":" + "rock_cutting_pik_rock_shovel");
+
+            CuttingRecipeBuilder.cutting(TFSItems.KNIFE_PART.get(), 1, TFSItems.ROCK.get(), 2)
+                    .pattern("X ")
+                    .pattern("XX")
+                    .pattern("XX")
+                    .pattern("XX")
+                    .pattern("XX")
+                    .unlockedBy(getHasName(TFSItems.ROCK.get()), has(TFSItems.ROCK.get()))
+                    .save(pWriter, tfs.MOD_ID + ":" + "rock_cutting_pik_rock_knife");
+
+            CuttingRecipeBuilder.cutting(TFSItems.KNIFE_PART.get(), 2, TFSItems.ROCK.get(), 2)
+                    .pattern("X   X")
+                    .pattern("XX XX")
+                    .pattern("XX XX")
+                    .pattern("XX XX")
+                    .pattern("XX XX")
+                    .unlockedBy(getHasName(TFSItems.ROCK.get()), has(TFSItems.ROCK.get()))
+                    .save(pWriter, tfs.MOD_ID + ":" + "rock_cutting_two_pik_rock_knife");
+
+            CuttingRecipeBuilder.cutting(TFSItems.KNIFE_PART.get(), 2, TFSItems.ROCK.get(), 2)
+                    .pattern("X  X ")
+                    .pattern("XX XX")
+                    .pattern("XX XX")
+                    .pattern("XX XX")
+                    .pattern("XX XX")
+                    .unlockedBy(getHasName(TFSItems.ROCK.get()), has(TFSItems.ROCK.get()))
+                    .save(pWriter, tfs.MOD_ID + ":" + "rock_cutting_2_pik_rock_knife");
+
+            CuttingRecipeBuilder.cutting(TFSItems.KNIFE_PART.get(), 2, TFSItems.ROCK.get(), 2)
+                    .pattern(" X X ")
+                    .pattern("XX XX")
+                    .pattern("XX XX")
+                    .pattern("XX XX")
+                    .pattern("XX XX")
+                    .unlockedBy(getHasName(TFSItems.ROCK.get()), has(TFSItems.ROCK.get()))
+                    .save(pWriter, tfs.MOD_ID + ":" + "rock_cutting_3_pik_rock_knife");
+        } //cutting
+
+        {
+            ModelingRecipeBuilder.modeling(TFSItems.RAW_INGOT_FORM.get(), 1, Items.CLAY_BALL, 5)
+                    .pattern("XXXXX")
+                    .pattern("XX  X")
+                    .pattern("XX  X")
+                    .pattern("XX  X")
+                    .pattern("XXXXX")
+                    .unlockedBy(getHasName(Items.CLAY_BALL), has(Items.CLAY_BALL))
+                    .save(pWriter, tfs.MOD_ID + ":" + "clay_modeling_ingot_form");
+
+            ModelingRecipeBuilder.modeling(TFSItems.RAW_AXE_FORM.get(), 1, Items.CLAY_BALL, 5)
+                    .pattern("X XXX")
+                    .pattern("    X")
+                    .pattern("     ")
+                    .pattern("    X")
+                    .pattern("X XXX")
+                    .unlockedBy(getHasName(Items.CLAY_BALL), has(Items.CLAY_BALL))
+                    .save(pWriter, tfs.MOD_ID + ":" + "clay_modeling_axe_form");
+
+            ModelingRecipeBuilder.modeling(TFSItems.RAW_SWORD_FORM.get(), 1, Items.CLAY_BALL, 5)
+                    .pattern("XXX  ")
+                    .pattern("XX   ")
+                    .pattern("X   X")
+                    .pattern("   XX")
+                    .pattern("X XXX")
+                    .unlockedBy(getHasName(Items.CLAY_BALL), has(Items.CLAY_BALL))
+                    .save(pWriter, tfs.MOD_ID + ":" + "clay_modeling_sword_form");
+
+            ModelingRecipeBuilder.modeling(TFSItems.RAW_HOE_FORM.get(), 1, Items.CLAY_BALL, 5)
+                    .pattern("XXXXX")
+                    .pattern("     ")
+                    .pattern("XXX  ")
+                    .pattern("XXXXX")
+                    .pattern("XXXXX")
+                    .unlockedBy(getHasName(Items.CLAY_BALL), has(Items.CLAY_BALL))
+                    .save(pWriter, tfs.MOD_ID + ":" + "clay_modeling_hoe_form");
+
+            ModelingRecipeBuilder.modeling(TFSItems.RAW_HOE_FORM.get(), 1, Items.CLAY_BALL, 5)
+                    .pattern("XXXXX")
+                    .pattern("XXXXX")
+                    .pattern("     ")
+                    .pattern("XXX  ")
+                    .pattern("XXXXX")
+                    .unlockedBy(getHasName(Items.CLAY_BALL), has(Items.CLAY_BALL))
+                    .save(pWriter, tfs.MOD_ID + ":" + "clay_modeling_hoe1_form");
+
+            ModelingRecipeBuilder.modeling(TFSItems.RAW_PICKAXE_FORM.get(), 1, Items.CLAY_BALL, 5)
+                    .pattern("XXXXX")
+                    .pattern("X   X")
+                    .pattern(" XXX ")
+                    .pattern("XXXXX")
+                    .pattern("XXXXX")
+                    .unlockedBy(getHasName(Items.CLAY_BALL), has(Items.CLAY_BALL))
+                    .save(pWriter, tfs.MOD_ID + ":" + "clay_modeling_pickaxe_form");
+
+            ModelingRecipeBuilder.modeling(TFSItems.RAW_PICKAXE_FORM.get(), 1, Items.CLAY_BALL, 5)
+                    .pattern("XXXXX")
+                    .pattern("XXXXX")
+                    .pattern("X   X")
+                    .pattern(" XXX ")
+                    .pattern("XXXXX")
+                    .unlockedBy(getHasName(Items.CLAY_BALL), has(Items.CLAY_BALL))
+                    .save(pWriter, tfs.MOD_ID + ":" + "clay_modeling_pickaxe1_form");
+
+            ModelingRecipeBuilder.modeling(TFSItems.RAW_SHOVEL_FORM.get(), 1, Items.CLAY_BALL, 5)
+                    .pattern("X   X")
+                    .pattern("X   X")
+                    .pattern("X   X")
+                    .pattern("X   X")
+                    .pattern("XX XX")
+                    .unlockedBy(getHasName(Items.CLAY_BALL), has(Items.CLAY_BALL))
+                    .save(pWriter, tfs.MOD_ID + ":" + "clay_modeling_shovel_form");
+
+            ModelingRecipeBuilder.modeling(TFSItems.RAW_KNIFE_FORM.get(), 1, Items.CLAY_BALL, 5)
+                    .pattern("XX XX")
+                    .pattern("X  XX")
+                    .pattern("X  XX")
+                    .pattern("X  XX")
+                    .pattern("X  XX")
+                    .unlockedBy(getHasName(Items.CLAY_BALL), has(Items.CLAY_BALL))
+                    .save(pWriter, tfs.MOD_ID + ":" + "clay_modeling_knife_form");
+
+            ModelingRecipeBuilder.modeling(TFSItems.RAW_KNIFE_FORM.get(), 1, Items.CLAY_BALL, 5)
+                    .pattern("XXX X")
+                    .pattern("XX  X")
+                    .pattern("XX  X")
+                    .pattern("XX  X")
+                    .pattern("XX  X")
+                    .unlockedBy(getHasName(Items.CLAY_BALL), has(Items.CLAY_BALL))
+                    .save(pWriter, tfs.MOD_ID + ":" + "clay_modeling_knife1_form");
+
+            ModelingRecipeBuilder.modeling(TFSItems.RAW_SPEAR_FORM.get(), 1, Items.CLAY_BALL, 5)
+                    .pattern("XX   ")
+                    .pattern("X    ")
+                    .pattern("     ")
+                    .pattern("X   X")
+                    .pattern("XX XX")
+                    .unlockedBy(getHasName(Items.CLAY_BALL), has(Items.CLAY_BALL))
+                    .save(pWriter, tfs.MOD_ID + ":" + "clay_modeling_spear_form");
+
+            ModelingRecipeBuilder.modeling(TFSItems.RAW_HAMMER_FORM.get(), 1, Items.CLAY_BALL, 5)
+                    .pattern("XXXXX")
+                    .pattern("     ")
+                    .pattern("     ")
+                    .pattern("XX XX")
+                    .pattern("XXXXX")
+                    .unlockedBy(getHasName(Items.CLAY_BALL), has(Items.CLAY_BALL))
+                    .save(pWriter, tfs.MOD_ID + ":" + "clay_modeling_hammer_form");
+
+            ModelingRecipeBuilder.modeling(TFSItems.RAW_SPADE_FORM.get(), 1, Items.CLAY_BALL, 5)
+                    .pattern("X   X")
+                    .pattern("     ")
+                    .pattern("     ")
+                    .pattern("     ")
+                    .pattern("XX XX")
+                    .unlockedBy(getHasName(Items.CLAY_BALL), has(Items.CLAY_BALL))
+                    .save(pWriter, tfs.MOD_ID + ":" + "clay_modeling_spade_form");
+
+            ModelingRecipeBuilder.modeling(TFSItems.RAW_SICKLE_FORM.get(), 1, Items.CLAY_BALL, 5)
+                    .pattern("XXXXX")
+                    .pattern("    X")
+                    .pattern("X    ")
+                    .pattern("XXX  ")
+                    .pattern("XXXXX")
+                    .unlockedBy(getHasName(Items.CLAY_BALL), has(Items.CLAY_BALL))
+                    .save(pWriter, tfs.MOD_ID + ":" + "clay_modeling_sickle_form");
+
+            ModelingRecipeBuilder.modeling(TFSItems.RAW_TROWEL_FORM.get(), 1, Items.CLAY_BALL, 5)
+                    .pattern("XXXX ")
+                    .pattern("XX   ")
+                    .pattern("    X")
+                    .pattern("   XX")
+                    .pattern(" XXXX")
+                    .unlockedBy(getHasName(Items.CLAY_BALL), has(Items.CLAY_BALL))
+                    .save(pWriter, tfs.MOD_ID + ":" + "clay_modeling_trowel_form");
+
+            ModelingRecipeBuilder.modeling(TFSItems.RAW_GEOLOGICAL_HAMMER_FORM.get(), 1, Items.CLAY_BALL, 5)
+                    .pattern("XXX  ")
+                    .pattern("XX   ")
+                    .pattern("X   X")
+                    .pattern("   XX")
+                    .pattern("  XXX")
+                    .unlockedBy(getHasName(Items.CLAY_BALL), has(Items.CLAY_BALL))
+                    .save(pWriter, tfs.MOD_ID + ":" + "clay_modeling_geological_hammer_form");
+
+            ModelingRecipeBuilder.modeling(TFSItems.RAW_BUILDER_WAND_FORM.get(), 1, Items.CLAY_BALL, 5)
+                    .pattern("XX   ")
+                    .pattern("XX   ")
+                    .pattern("X    ")
+                    .pattern("   XX")
+                    .pattern("X XXX")
+                    .unlockedBy(getHasName(Items.CLAY_BALL), has(Items.CLAY_BALL))
+                    .save(pWriter, tfs.MOD_ID + ":" + "clay_modeling_builder_wand_form");
+
+            ModelingRecipeBuilder.modeling(TFSItems.RAW_PAXEL_FORM.get(), 1, Items.CLAY_BALL, 5)
+                    .pattern("XXXXX")
+                    .pattern("XX   ")
+                    .pattern("    X")
+                    .pattern("   XX")
+                    .pattern("XXXXX")
+                    .unlockedBy(getHasName(Items.CLAY_BALL), has(Items.CLAY_BALL))
+                    .save(pWriter, tfs.MOD_ID + ":" + "clay_modeling_paxel_form");
+
+            ModelingRecipeBuilder.modeling(TFSItems.RAW_STICK_FORM.get(), 1, Items.CLAY_BALL, 5)
+                    .pattern("XXXX ")
+                    .pattern("XXX X")
+                    .pattern("XX XX")
+                    .pattern("X XXX")
+                    .pattern(" XXXX")
+                    .unlockedBy(getHasName(Items.CLAY_BALL), has(Items.CLAY_BALL))
+                    .save(pWriter, tfs.MOD_ID + ":" + "clay_modeling_stick_form");
+
+            ModelingRecipeBuilder.modeling(TFSItems.RAW_STRING_FORM.get(), 1, Items.CLAY_BALL, 5)
+                    .pattern("    X")
+                    .pattern("XXXX ")
+                    .pattern("X   X")
+                    .pattern(" XXXX")
+                    .pattern("X    ")
+                    .unlockedBy(getHasName(Items.CLAY_BALL), has(Items.CLAY_BALL))
+                    .save(pWriter, tfs.MOD_ID + ":" + "clay_modeling_string_form");
+        } //modeling
     }
 
     private Component material(int index) {

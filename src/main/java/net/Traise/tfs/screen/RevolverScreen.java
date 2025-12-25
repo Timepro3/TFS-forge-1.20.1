@@ -11,9 +11,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 
-import static com.ibm.icu.text.UTF16.bounds;
-import static net.Traise.tfs.screen.RevolverMenu.guistate;
-
 public class RevolverScreen extends AbstractContainerScreen<RevolverMenu> {
     private final int x, y, z;
     private final Player entity;

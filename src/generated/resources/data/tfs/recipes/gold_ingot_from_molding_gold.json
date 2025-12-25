@@ -6,6 +6,7 @@
       "fluid": "tfs:gold"
     }
   ],
+  "material": "tfs:none",
   "mold_type": "ingot",
   "output": {
     "item": "minecraft:gold_ingot"

@@ -86,6 +86,23 @@ public class ModItemTagGenerator extends ItemTagsProvider {
                         TFSItems.BRONZE_INGOT.get(), AllItems.BRASS_INGOT.get(), TFSItems.STEEL_INGOT.get(),
                         TFSItems.CAST_IRON_INGOT.get());
 
+        this.tag(ModTags.Items.TOOL_PART)
+                .addTags(ModTags.Items.TOOL_HEAD, ModTags.Items.TOOL_STRING, ModTags.Items.TOOL_STICK);
+
+        this.tag(ModTags.Items.TOOL_HEAD).add(TFSItems.SWORD_PART.get(), TFSItems.AXE_PART.get(),
+                TFSItems.HOE_PART.get(), TFSItems.PICKAXE_PART.get(), TFSItems.SHOVEL_PART.get(),
+                TFSItems.KNIFE_PART.get(), TFSItems.SPEAR_PART.get(), TFSItems.HAMMER_PART.get(),
+                TFSItems.SPADE_PART.get(), TFSItems.SICKLE_PART.get(), TFSItems.TROWEL_PART.get(),
+                TFSItems.GEOLOGICAL_HAMMER_PART.get(), TFSItems.BUILDER_WAND_PART.get(),
+                TFSItems.PAXEL_PART.get());
+
+        this.tag(ModTags.Items.TOOL_STICK).add(TFSItems.STICK_PART.get(), Items.STICK, Items.BONE
+                , Items.BLAZE_ROD);
+
+        this.tag(ModTags.Items.TOOL_STRING).add(TFSItems.STRING_PART.get(), Items.STRING, Items.LEATHER
+                , Items.SLIME_BALL, Items.HONEY_BOTTLE, TFSItems.GRASS_ROPE.get());
+
+
         {
             this.tag(ModTags.Items.FORMS)
                     .add(TFSItems.INGOT_FORM.get());

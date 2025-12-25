@@ -4,6 +4,9 @@ import com.google.common.collect.Lists;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import net.Traise.tfs.recipe.TFSRecipes;
+import net.Traise.tfs.tools.TFSRegistries;
+import net.Traise.tfs.tools.TFSToolMaterial;
+import net.Traise.tfs.tools.TFSToolMaterials;
 import net.Traise.tfs.util.MoldType;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRewards;
@@ -30,24 +33,36 @@ import java.util.function.Consumer;
 public class RemovingFromMoldRecipeBuilder extends CraftingRecipeBuilder implements RecipeBuilder {
     private ItemStack result;
     private MoldType moldType;
+    private TFSToolMaterial material;
     private final List<FluidStack> ingredients = Lists.newArrayList();
     private final Advancement.Builder advancement = Advancement.Builder.recipeAdvancement();
 
-    public RemovingFromMoldRecipeBuilder(MoldType pMoldType, ItemStack pResult) {
+    public RemovingFromMoldRecipeBuilder(MoldType pMoldType, ItemStack pResult, TFSToolMaterial material) {
         this.result = pResult;
         this.moldType = pMoldType;
+        this.material = material;
     }
 
-    public static RemovingFromMoldRecipeBuilder mold(MoldType pMoldType, ItemStack pResult) {
-        return new RemovingFromMoldRecipeBuilder(pMoldType, pResult);
+    public static RemovingFromMoldRecipeBuilder mold(MoldType pMoldType, ItemStack pResult, TFSToolMaterial material) {
+        return new RemovingFromMoldRecipeBuilder(pMoldType, pResult, material);
+    }
+
+    public static RemovingFromMoldRecipeBuilder mold(MoldType pMoldType, Item item, TFSToolMaterial material) {
+        return mold(pMoldType, new ItemStack(item), material);
     }
 
     public static RemovingFromMoldRecipeBuilder mold(MoldType pMoldType, Item item) {
-        return mold(pMoldType, new ItemStack(item));
+        return mold(pMoldType, new ItemStack(item), TFSToolMaterials.NONE.get());
     }
 
     public RemovingFromMoldRecipeBuilder requires(Fluid fluid) {
         this.ingredients.add(new FluidStack(fluid, 100));
+
+        return this;
+    }
+
+    public RemovingFromMoldRecipeBuilder requires(Fluid fluid, int pAmount) {
+        this.ingredients.add(new FluidStack(fluid, pAmount));
 
         return this;
     }
@@ -71,7 +86,7 @@ public class RemovingFromMoldRecipeBuilder extends CraftingRecipeBuilder impleme
     public void save(Consumer<FinishedRecipe> pFinishedRecipeConsumer, ResourceLocation pRecipeId) {
         this.ensureValid(pRecipeId);
         this.advancement.parent(ROOT_RECIPE_ADVANCEMENT).addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(pRecipeId)).rewards(AdvancementRewards.Builder.recipe(pRecipeId)).requirements(RequirementsStrategy.OR);
-        pFinishedRecipeConsumer.accept(new RemovingFromMoldRecipeBuilder.Result(pRecipeId, CraftingBookCategory.MISC, this.moldType, this.result, this.ingredients, this.advancement, pRecipeId.withPrefix("recipes/removing_from_mold/")));
+        pFinishedRecipeConsumer.accept(new RemovingFromMoldRecipeBuilder.Result(pRecipeId, CraftingBookCategory.MISC, this.moldType, this.result, this.ingredients, this.material, this.advancement, pRecipeId.withPrefix("recipes/removing_from_mold/")));
     }
 
     private void ensureValid(ResourceLocation pId) {
@@ -85,15 +100,17 @@ public class RemovingFromMoldRecipeBuilder extends CraftingRecipeBuilder impleme
         private final MoldType moldType;
         private final ItemStack result;
         private final List<FluidStack> ingredients;
+        private final TFSToolMaterial material;
         private final Advancement.Builder advancement;
         private final ResourceLocation advancementId;
 
-        public Result(ResourceLocation pId, CraftingBookCategory category, MoldType pMoldType, ItemStack pResult, List<FluidStack> pIngredients, Advancement.Builder pAdvancement, ResourceLocation pAdvancementId) {
+        public Result(ResourceLocation pId, CraftingBookCategory category, MoldType pMoldType, ItemStack pResult, List<FluidStack> pIngredients, TFSToolMaterial material, Advancement.Builder pAdvancement, ResourceLocation pAdvancementId) {
             super(category);
             this.id = pId;
             this.moldType = pMoldType;
             this.result = pResult;
             this.ingredients = pIngredients;
+            this.material = material;
             this.advancement = pAdvancement;
             this.advancementId = pAdvancementId;
         }
@@ -116,6 +133,8 @@ public class RemovingFromMoldRecipeBuilder extends CraftingRecipeBuilder impleme
             jsonobject.addProperty("item", BuiltInRegistries.ITEM.getKey(this.result.getItem()).toString());
 
             pJson.add("output", jsonobject);
+
+            pJson.addProperty("material", TFSRegistries.TOOL_MATERIAL.get().getKey(this.material).toString());
         }
 
         public RecipeSerializer<?> getType() {

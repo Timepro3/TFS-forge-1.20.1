@@ -6,6 +6,7 @@
       "fluid": "tfs:cast_iron"
     }
   ],
+  "material": "tfs:none",
   "mold_type": "ingot",
   "output": {
     "item": "tfs:cast_iron_ingot"

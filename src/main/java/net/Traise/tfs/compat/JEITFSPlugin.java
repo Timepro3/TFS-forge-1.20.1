@@ -11,15 +11,13 @@ import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.Traise.tfs.block.TFSBlocks;
 import net.Traise.tfs.item.TFSItems;
-import net.Traise.tfs.recipe.AlloyRecipe;
-import net.Traise.tfs.recipe.CuttingRecipe;
-import net.Traise.tfs.recipe.FoundryRecipe;
-import net.Traise.tfs.recipe.RemovingFromMoldRecipe;
+import net.Traise.tfs.recipe.*;
 import net.Traise.tfs.screen.FoundryScreen;
 import net.Traise.tfs.tfs;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.level.block.Blocks;
 
@@ -38,6 +36,7 @@ public class JEITFSPlugin implements IModPlugin {
        registration.addRecipeCategories(new RemovingFromMoldCategory(registration.getJeiHelpers().getGuiHelper()));
        registration.addRecipeCategories(new AlloyCategory(registration.getJeiHelpers().getGuiHelper()));
        registration.addRecipeCategories(new CuttingCategory(registration.getJeiHelpers().getGuiHelper()));
+       registration.addRecipeCategories(new ModelingCategory(registration.getJeiHelpers().getGuiHelper()));
     }
 
 
@@ -56,15 +55,17 @@ public class JEITFSPlugin implements IModPlugin {
 
         List<CuttingRecipe> cuttingRecipes = recipeManager.getAllRecipesFor(CuttingRecipe.Type.INSTANCE);
         registration.addRecipes(CuttingCategory.CUTTING_TYPE, cuttingRecipes);
+
+        List<ModelingRecipe> modelingRecipes = recipeManager.getAllRecipesFor(ModelingRecipe.Type.INSTANCE);
+        registration.addRecipes(ModelingCategory.MODELING_TYPE, modelingRecipes);
     }
 
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
         registration.addRecipeCatalyst(new ItemStack(TFSBlocks.FOUNDRY.get()), FoundryCategory.FOUNDRY_TYPE);
-        registration.addRecipeCatalyst(new ItemStack(TFSItems.INGOT_FORM.get()), RemovingFromMoldCategory.REMOVING_FROM_MOLD_TYPE);
         registration.addRecipeCatalyst(new ItemStack(TFSBlocks.FOUNDRY.get()), AlloyCategory.ALLOY_TYPE);
-        registration.addRecipeCatalyst(new ItemStack(TFSItems.INGOT_FORM.get()), AlloyCategory.ALLOY_TYPE);
         registration.addRecipeCatalyst(new ItemStack(TFSItems.ROCK.get()), CuttingCategory.CUTTING_TYPE);
+        registration.addRecipeCatalyst(new ItemStack(Items.CLAY_BALL), ModelingCategory.MODELING_TYPE);
     }
 
     /* @Override

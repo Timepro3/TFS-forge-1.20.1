@@ -208,7 +208,7 @@ public class FoundryBlockEntity extends BlockEntity implements MenuProvider {
 
         TFSFormItem formItem = (TFSFormItem) this.itemHandler.getStackInSlot(OutPutSlot).getItem();
         formItem.myTick(this.itemHandler.getStackInSlot(OutPutSlot));
-        return Size > 0 && !this.fluidHandler.getFluidInSlot(0).isEmpty() && formItem.sumAllFluidSlot(this.itemHandler.getStackInSlot(OutPutSlot)) + 1 <= TFSFormItem.Capacity;
+        return Size > 0 && !this.fluidHandler.getFluidInSlot(0).isEmpty() && formItem.sumAllFluidSlot(this.itemHandler.getStackInSlot(OutPutSlot)) + 1 <= formItem.moldType.getAmount();
     }
 
     private void allDrain() {

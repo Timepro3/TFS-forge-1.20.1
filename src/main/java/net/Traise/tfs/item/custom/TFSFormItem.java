@@ -17,6 +17,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
@@ -28,12 +29,11 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
-public class TFSFormItem extends TFSItemTexts {
-    public final static int Capacity = 100;
+public class TFSFormItem extends Item {
     public final MoldType moldType;
 
-    public TFSFormItem(int number, MoldType pMoldType, Properties pProperties) {
-        super(number, pProperties);
+    public TFSFormItem(MoldType pMoldType, Properties pProperties) {
+        super(pProperties.stacksTo(1));
         moldType = pMoldType;
     }
 
@@ -42,20 +42,22 @@ public class TFSFormItem extends TFSItemTexts {
     }
 
     public void myTick(ItemStack pStack) {
+        saveFormAmount(pStack, moldType.getAmount());
         сompact(pStack);
         setTexture(pStack);
     }
 
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
         ItemStack itemstack = pPlayer.getItemInHand(pUsedHand);
-        if (sumAllFluidSlot(itemstack) >= Capacity) {
+        if (sumAllFluidSlot(itemstack) >= moldType.getAmount()) {
             Optional<RemovingFromMoldRecipe> recipe = getCurrentRecipe2(pLevel, itemstack);
             ItemStack item;
 
             if (recipe.isPresent()) {
                 item = recipe.get().getResultItem(pLevel.registryAccess());
             } else {
-                item = Objects.requireNonNull(ForgeRegistries.ITEMS.getValue(new ResourceLocation(tfs.MOD_ID + ":unknown_metal_" + moldType.getName()))).getDefaultInstance();
+                return InteractionResultHolder.fail(itemstack);
+                //item = Objects.requireNonNull(ForgeRegistries.ITEMS.getValue(new ResourceLocation(tfs.MOD_ID + ":unknown_metal_" + moldType.getName()))).getDefaultInstance();
             }
 
             ItemHandlerHelper.giveItemToPlayer(pPlayer, item);
@@ -72,6 +74,8 @@ public class TFSFormItem extends TFSItemTexts {
 
     public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
         super.appendHoverText(itemstack, level, list, flag);
+
+        saveFormAmount(itemstack, moldType.getAmount());
 
         if (loadAmount(itemstack) > 0) {
             list.add(Component.literal("§7Содержит: " + getAlloyName(level, itemstack) + ": " + loadAmount(itemstack) + "/" + (int) loadFluidHandler(itemstack).getCapacity() + "мб"));
@@ -193,8 +197,16 @@ public class TFSFormItem extends TFSItemTexts {
         return (int) Math.round(loadAmount(itemStack));
     }
 
+    public static void saveFormAmount(ItemStack itemstack, int am) {
+        itemstack.getOrCreateTag().putInt("FormAmount", am);
+    }
+
+    public static int loadFormAmount(ItemStack itemstack) {
+        return itemstack.getOrCreateTag().getInt("FormAmount");
+    }
+
     public static DoubleFluidStorageHandler loadFluidHandler(ItemStack itemstack) {
-        return DoubleFluidStorageHandler.deserializeNBT(itemstack.getOrCreateTag().getCompound("FluidStorage"), loadSize(itemstack), Capacity);
+        return DoubleFluidStorageHandler.deserializeNBT(itemstack.getOrCreateTag().getCompound("FluidStorage"), loadSize(itemstack), itemstack.getOrCreateTag().getInt("FormAmount"));
     }
 
     public void saveFluidHandler(ItemStack itemstack, DoubleFluidStorageHandler fluidHandler) {

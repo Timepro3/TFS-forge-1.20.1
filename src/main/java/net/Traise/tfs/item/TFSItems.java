@@ -5,6 +5,7 @@ import net.Traise.tfs.entity.ModEntities;
 import net.Traise.tfs.fluid.TFSFluids;
 import net.Traise.tfs.item.custom.*;
 import net.Traise.tfs.tfs;
+import net.Traise.tfs.tools.TFSPartItem;
 import net.Traise.tfs.util.MoldType;
 import net.minecraft.world.item.*;
 import net.minecraftforge.common.ForgeSpawnEggItem;
@@ -127,33 +128,75 @@ public class TFSItems {
             () -> new TFSItemNameBlockItem(29, TFSBlocks.POOR_GOLD_OBJECT.get(), new Item.Properties()));
 
     public static final RegistryObject<Item> RAW_INGOT_FORM = ITEMS.register( "raw_ingot_form",
-            () -> new TFSItemTexts(-1, new Item.Properties()));
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> RAW_AXE_FORM = ITEMS.register("raw_axe_form",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> RAW_SWORD_FORM = ITEMS.register("raw_sword_form",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> RAW_HOE_FORM = ITEMS.register("raw_hoe_form",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> RAW_PICKAXE_FORM = ITEMS.register("raw_pickaxe_form",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> RAW_SHOVEL_FORM = ITEMS.register("raw_shovel_form",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> RAW_KNIFE_FORM = ITEMS.register("raw_knife_form",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> RAW_SPEAR_FORM = ITEMS.register("raw_spear_form",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> RAW_HAMMER_FORM = ITEMS.register("raw_hammer_form",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> RAW_SPADE_FORM = ITEMS.register("raw_spade_form",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> RAW_SICKLE_FORM = ITEMS.register("raw_sickle_form",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> RAW_TROWEL_FORM = ITEMS.register("raw_trowel_form",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> RAW_GEOLOGICAL_HAMMER_FORM = ITEMS.register("raw_geological_hammer_form",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> RAW_BUILDER_WAND_FORM = ITEMS.register("raw_builder_wand_form",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> RAW_PAXEL_FORM = ITEMS.register("raw_paxel_form",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> RAW_STICK_FORM = ITEMS.register("raw_stick_form",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> RAW_STRING_FORM = ITEMS.register("raw_string_form",
+            () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> INGOT_FORM = ITEMS.register( "ingot_form",
-            () -> new TFSFormItem(-1, MoldType.INGOT, new Item.Properties()));
+            () -> new TFSFormItem(MoldType.INGOT, new Item.Properties()));
+    public static final RegistryObject<Item> AXE_FORM = ITEMS.register( "axe_form",
+            () -> new TFSFormItem(MoldType.AXE, new Item.Properties()));
+    public static final RegistryObject<Item> SWORD_FORM = ITEMS.register("sword_form",
+            () -> new TFSFormItem(MoldType.SWORD, new Item.Properties()));
+    public static final RegistryObject<Item> HOE_FORM = ITEMS.register("hoe_form",
+            () -> new TFSFormItem(MoldType.HOE, new Item.Properties()));
+    public static final RegistryObject<Item> PICKAXE_FORM = ITEMS.register("pickaxe_form",
+            () -> new TFSFormItem(MoldType.PICKAXE, new Item.Properties()));
+    public static final RegistryObject<Item> SHOVEL_FORM = ITEMS.register("shovel_form",
+            () -> new TFSFormItem(MoldType.SHOVEL, new Item.Properties()));
+    public static final RegistryObject<Item> KNIFE_FORM = ITEMS.register("knife_form",
+            () -> new TFSFormItem(MoldType.KNIFE, new Item.Properties()));
+    public static final RegistryObject<Item> SPEAR_FORM = ITEMS.register("spear_form",
+            () -> new TFSFormItem(MoldType.SPEAR, new Item.Properties()));
+    public static final RegistryObject<Item> HAMMER_FORM = ITEMS.register("hammer_form",
+            () -> new TFSFormItem(MoldType.HAMMER, new Item.Properties()));
+    public static final RegistryObject<Item> SPADE_FORM = ITEMS.register("spade_form",
+            () -> new TFSFormItem(MoldType.SPADE, new Item.Properties()));
+    public static final RegistryObject<Item> SICKLE_FORM = ITEMS.register("sickle_form",
+            () -> new TFSFormItem(MoldType.SICKLE, new Item.Properties()));
+    public static final RegistryObject<Item> TROWEL_FORM = ITEMS.register("trowel_form",
+            () -> new TFSFormItem(MoldType.TROWEL, new Item.Properties()));
+    public static final RegistryObject<Item> GEOLOGICAL_HAMMER_FORM = ITEMS.register("geological_hammer_form",
+            () -> new TFSFormItem(MoldType.GEOLOGICAL_HAMMER, new Item.Properties()));
+    public static final RegistryObject<Item> BUILDER_WAND_FORM = ITEMS.register("builder_wand_form",
+            () -> new TFSFormItem(MoldType.BUILDER_WAND, new Item.Properties()));
+    public static final RegistryObject<Item> PAXEL_FORM = ITEMS.register("paxel_form",
+            () -> new TFSFormItem(MoldType.PAXEL, new Item.Properties()));
+    public static final RegistryObject<Item> STICK_FORM = ITEMS.register("stick_form",
+            () -> new TFSFormItem(MoldType.STICK, new Item.Properties()));
+    public static final RegistryObject<Item> STRING_FORM = ITEMS.register("string_form",
+            () -> new TFSFormItem(MoldType.STRING, new Item.Properties()));
 
-    public static final RegistryObject<Item> COPPER_INGOT_FORM = ITEMS.register( "copper_ingot_form",
-            () -> new TFSItemTexts(35, new Item.Properties()));
-    public static final RegistryObject<Item> IRON_INGOT_FORM = ITEMS.register( "iron_ingot_form",
-            () -> new TFSItemTexts(35, new Item.Properties()));
-    public static final RegistryObject<Item> TIN_INGOT_FORM = ITEMS.register( "tin_ingot_form",
-            () -> new TFSItemTexts(35, new Item.Properties()));
-    public static final RegistryObject<Item> ZINC_INGOT_FORM = ITEMS.register( "zinc_ingot_form",
-            () -> new TFSItemTexts(35, new Item.Properties()));
-    public static final RegistryObject<Item> GOLD_INGOT_FORM = ITEMS.register( "gold_ingot_form",
-            () -> new TFSItemTexts(35, new Item.Properties()));
-    public static final RegistryObject<Item> SILVER_INGOT_FORM = ITEMS.register( "silver_ingot_form",
-            () -> new TFSItemTexts(35, new Item.Properties()));
-    public static final RegistryObject<Item> BRONZE_INGOT_FORM = ITEMS.register( "bronze_ingot_form",
-            () -> new TFSItemTexts(35, new Item.Properties()));
-    public static final RegistryObject<Item> BRASS_INGOT_FORM = ITEMS.register( "brass_ingot_form",
-            () -> new TFSItemTexts(35, new Item.Properties()));
-    public static final RegistryObject<Item> UNKNOWN_METAL_INGOT_FORM = ITEMS.register( "unknown_metal_ingot_form",
-            () -> new TFSItemTexts(35, new Item.Properties()));
-    public static final RegistryObject<Item> STEEL_INGOT_FORM = ITEMS.register( "steel_ingot_form",
-            () -> new TFSItemTexts(35, new Item.Properties()));
-    public static final RegistryObject<Item> CAST_IRON_INGOT_FORM = ITEMS.register( "cast_iron_ingot_form",
-            () -> new TFSItemTexts(35, new Item.Properties()));
     public static final RegistryObject<Item> STEEL_INGOT= ITEMS.register( "steel_ingot",
             () -> new TFSItemTexts(36, new Item.Properties()));
     public static final RegistryObject<Item> CAST_IRON_INGOT= ITEMS.register( "cast_iron_ingot",
@@ -224,7 +267,7 @@ public class TFSItems {
     public static final RegistryObject<Item> BLUEBERRY = ITEMS.register( "blueberry",
             () -> new Item(new Item.Properties().food(TFSFood.BLUEBERRY)));
     public static final RegistryObject<Item> BLU = ITEMS.register( "blu",
-            () -> new TFSBaseItem(TFSBaseItem.TFSToolTypes.HAMMER, new Item.Properties()));
+            () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> BLUE = ITEMS.register( "blue",
             () -> new Item( new Item.Properties()));
     public static final RegistryObject<Item> ALISE_SPAWN_EGG = ITEMS.register("alise_spawn_egg",
@@ -254,11 +297,45 @@ public class TFSItems {
             () -> new TFSBaseItem(TFSBaseItem.TFSToolTypes.SICKLE, new Item.Properties()));
     public static final RegistryObject<Item> TROWEL = ITEMS.register( "trowel",
             () -> new TFSBaseItem(TFSBaseItem.TFSToolTypes.TROWEL, new Item.Properties()));
+    public static final RegistryObject<Item> PAXEL = ITEMS.register( "paxel",
+            () -> new TFSBaseItem(TFSBaseItem.TFSToolTypes.PAXEL, new Item.Properties()));
     public static final RegistryObject<Item> GEOLOGICAL_HAMMER = ITEMS.register( "geological_hammer",
             () -> new TFSBaseItem(TFSBaseItem.TFSToolTypes.GEOLOGICAL_HAMMER, new Item.Properties()));
     public static final RegistryObject<Item> BUILDER_WAND = ITEMS.register( "builder_wand",
             () -> new TFSBaseItem(TFSBaseItem.TFSToolTypes.BUILDER_WAND, new Item.Properties()));
 
+    public static final RegistryObject<Item> STICK_PART = ITEMS.register( "stick_part",
+            () -> new TFSPartItem(new Item.Properties()));
+    public static final RegistryObject<Item> STRING_PART = ITEMS.register( "string_part",
+            () -> new TFSPartItem(new Item.Properties()));
+    public static final RegistryObject<Item> SWORD_PART = ITEMS.register("sword_part",
+            () -> new TFSPartItem(new Item.Properties()));
+    public static final RegistryObject<Item> AXE_PART = ITEMS.register("axe_part",
+            () -> new TFSPartItem(new Item.Properties()));
+    public static final RegistryObject<Item> HOE_PART = ITEMS.register("hoe_part",
+            () -> new TFSPartItem(new Item.Properties()));
+    public static final RegistryObject<Item> PICKAXE_PART = ITEMS.register("pickaxe_part",
+            () -> new TFSPartItem(new Item.Properties()));
+    public static final RegistryObject<Item> SHOVEL_PART = ITEMS.register("shovel_part",
+            () -> new TFSPartItem(new Item.Properties()));
+    public static final RegistryObject<Item> KNIFE_PART = ITEMS.register("knife_part",
+            () -> new TFSPartItem(new Item.Properties()));
+    public static final RegistryObject<Item> SPEAR_PART = ITEMS.register("spear_part",
+            () -> new TFSPartItem(new Item.Properties()));
+    public static final RegistryObject<Item> HAMMER_PART = ITEMS.register("hammer_part",
+            () -> new TFSPartItem(new Item.Properties()));
+    public static final RegistryObject<Item> SPADE_PART = ITEMS.register("spade_part",
+            () -> new TFSPartItem(new Item.Properties()));
+    public static final RegistryObject<Item> SICKLE_PART = ITEMS.register("sickle_part",
+            () -> new TFSPartItem(new Item.Properties()));
+    public static final RegistryObject<Item> TROWEL_PART = ITEMS.register("trowel_part",
+            () -> new TFSPartItem(new Item.Properties()));
+    public static final RegistryObject<Item> GEOLOGICAL_HAMMER_PART = ITEMS.register("geological_hammer_part",
+            () -> new TFSPartItem(new Item.Properties()));
+    public static final RegistryObject<Item> BUILDER_WAND_PART = ITEMS.register("builder_wand_part",
+            () -> new TFSPartItem(new Item.Properties()));
+    public static final RegistryObject<Item> PAXEL_PART = ITEMS.register("paxel_part",
+            () -> new TFSPartItem(new Item.Properties()));
 
     public static final RegistryObject<Item> SILVER_HELMET = ITEMS.register("silver_helmet",
             () -> new ArmorItem(TFSArmorMaterials.SILVER, ArmorItem.Type.HELMET, new Item.Properties()));

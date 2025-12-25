@@ -6,6 +6,7 @@
       "fluid": "tfs:copper"
     }
   ],
+  "material": "tfs:none",
   "mold_type": "ingot",
   "output": {
     "item": "minecraft:copper_ingot"

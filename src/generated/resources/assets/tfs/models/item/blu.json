@@ -1,8 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "tfs:item/blu",
-    "layer1": "tfs:item/tools/hammer_head",
-    "layer2": "tfs:item/tools/hammer_rope"
+    "layer0": "tfs:item/blu"
   }
 }

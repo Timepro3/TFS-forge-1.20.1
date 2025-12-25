@@ -2,6 +2,8 @@ package net.Traise.tfs.recipe;
 
 import net.Traise.tfs.tfs;
 import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.RepairItemRecipe;
+import net.minecraft.world.item.crafting.SimpleCraftingRecipeSerializer;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -22,6 +24,12 @@ public class TFSRecipes {
 
     public static final RegistryObject<RecipeSerializer<CuttingRecipe>> CUTTING_SERIALIZER =
             SERIALIZERS.register("cutting", () -> CuttingRecipe.Serializer.INSTANCE);
+
+    public static final RegistryObject<RecipeSerializer<ModelingRecipe>> MODELING_SERIALIZER =
+            SERIALIZERS.register("modeling", () -> ModelingRecipe.Serializer.INSTANCE);
+
+    public static final RegistryObject<RecipeSerializer<ToolAssemblyRecipe>> TOOL_ASSEMBLY_SERIALIZER =
+            SERIALIZERS.register("crafting_special_toolassembly", () -> new SimpleCraftingRecipeSerializer<>(ToolAssemblyRecipe::new));
 
     public static void register(IEventBus eventBus) {
         SERIALIZERS.register(eventBus);

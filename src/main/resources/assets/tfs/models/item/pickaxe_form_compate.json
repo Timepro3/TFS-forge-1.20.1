@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "tfs:item/pickaxe_form",
+    "layer1": "tfs:item/pickaxe_form_part2"
+  }
+}

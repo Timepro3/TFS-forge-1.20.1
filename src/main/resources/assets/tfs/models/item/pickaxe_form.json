@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "tfs:item/pickaxe_form"
+  },
+  "overrides": [
+    {"predicate": {"custom_model_data": 1}, "model": "tfs:item/pickaxe_form_compate"}
+  ]
+}
