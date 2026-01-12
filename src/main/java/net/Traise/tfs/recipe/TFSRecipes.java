@@ -29,7 +29,7 @@ public class TFSRecipes {
             SERIALIZERS.register("modeling", () -> ModelingRecipe.Serializer.INSTANCE);
 
     public static final RegistryObject<RecipeSerializer<ToolAssemblyRecipe>> TOOL_ASSEMBLY_SERIALIZER =
-            SERIALIZERS.register("crafting_special_toolassembly", () -> new SimpleCraftingRecipeSerializer<>(ToolAssemblyRecipe::new));
+            SERIALIZERS.register("crafting_special_toolassembly", () -> ToolAssemblyRecipe.Serializer.INSTANCE);
 
     public static void register(IEventBus eventBus) {
         SERIALIZERS.register(eventBus);

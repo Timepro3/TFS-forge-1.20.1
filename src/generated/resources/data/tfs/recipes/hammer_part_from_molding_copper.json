@@ -1,0 +1,14 @@
+{
+  "type": "tfs:removing_from_mold",
+  "ingredients": [
+    {
+      "amount": 900,
+      "fluid": "tfs:copper"
+    }
+  ],
+  "material": "tfs:copper",
+  "mold_type": "hammer",
+  "output": {
+    "item": "tfs:hammer_part"
+  }
+}

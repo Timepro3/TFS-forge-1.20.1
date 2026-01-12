@@ -1,0 +1,8 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "tfs:item/tools/bow_tool_pulling_0_rope",
+    "layer1": "tfs:item/tools/bow_tool_pulling_0_head",
+    "layer2": "tfs:item/tools/bow_tool_pulling_0_arrow"
+  }
+}

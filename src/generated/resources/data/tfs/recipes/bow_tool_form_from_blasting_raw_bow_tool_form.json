@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.25,
+  "group": "bow_form",
+  "ingredient": {
+    "item": "tfs:raw_bow_tool_form"
+  },
+  "result": "tfs:bow_tool_form"
+}

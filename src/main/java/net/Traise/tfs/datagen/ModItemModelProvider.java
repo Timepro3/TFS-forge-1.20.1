@@ -128,6 +128,7 @@ public class ModItemModelProvider extends ItemModelProvider {
             simpleItem(TFSItems.GEOLOGICAL_HAMMER_PART);
             simpleItem(TFSItems.BUILDER_WAND_PART);
             simpleItem(TFSItems.PAXEL_PART);
+            simpleItem(TFSItems.BOW_PART);
 
             simpleItem(TFSItems.RAW_INGOT_FORM);
             simpleItem(TFSItems.RAW_AXE_FORM);
@@ -146,6 +147,7 @@ public class ModItemModelProvider extends ItemModelProvider {
             simpleItem(TFSItems.RAW_PAXEL_FORM);
             simpleItem(TFSItems.RAW_STICK_FORM);
             simpleItem(TFSItems.RAW_STRING_FORM);
+            simpleItem(TFSItems.RAW_BOW_FORM);
 
             simpleItem(TFSItems.RICH_CUPRITE);
             simpleItem(TFSItems.CUPRITE);
@@ -238,7 +240,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         handheldItem(TFSItems.NETHERITE_SPADE);
         handheldItem(TFSItems.NETHERITE_SICKLE);}
 
-        {trimmedArmorItem(TFSItems.SILVER_HELMET);
+        {
+            trimmedArmorItem(TFSItems.SILVER_HELMET);
             trimmedArmorItem(TFSItems.SILVER_CHESTPLATE);
             trimmedArmorItem(TFSItems.SILVER_LEGGINGS);
             trimmedArmorItem(TFSItems.SILVER_BOOTS);
@@ -249,7 +252,13 @@ public class ModItemModelProvider extends ItemModelProvider {
             trimmedArmorItem(TFSItems.STEEL_HELMET);
             trimmedArmorItem(TFSItems.STEEL_CHESTPLATE);
             trimmedArmorItem(TFSItems.STEEL_LEGGINGS);
-            trimmedArmorItem(TFSItems.STEEL_BOOTS);}
+            trimmedArmorItem(TFSItems.STEEL_BOOTS);
+        }
+
+        toolTrimmedArmorItem(TFSItems.BOOTS);
+        toolTrimmedArmorItem(TFSItems.LEGGINGS);
+        toolTrimmedArmorItem(TFSItems.CHESTPLATE);
+        toolTrimmedArmorItem(TFSItems.HELMET);
     }
 
     // Shoutout to El_Redstoniano for making this
@@ -296,6 +305,54 @@ public class ModItemModelProvider extends ItemModelProvider {
                         .texture("layer0",
                                 new ResourceLocation(MOD_ID,
                                         "item/" + itemRegistryObject.getId().getPath()));
+            });
+        }
+    }
+
+    private void toolTrimmedArmorItem(RegistryObject<Item> itemRegistryObject) {
+        final String MOD_ID = tfs.MOD_ID; // Change this to your mod id
+
+        if (itemRegistryObject.get() instanceof ArmorItem armorItem) {
+            trimMaterials.entrySet().forEach(entry -> {
+
+                ResourceKey<TrimMaterial> trimMaterial = entry.getKey();
+                float trimValue = entry.getValue();
+
+                String armorType = switch (armorItem.getEquipmentSlot()) {
+                    case HEAD -> "helmet";
+                    case CHEST -> "chestplate";
+                    case LEGS -> "leggings";
+                    case FEET -> "boots";
+                    default -> "";
+                };
+
+                String armorItemPath = "item/" + armorItem;
+                String trimPath = "trims/items/" + armorType + "_trim_" + trimMaterial.location().getPath();
+                String currentTrimName = armorItemPath + "_" + trimMaterial.location().getPath() + "_trim";
+                ResourceLocation trimResLoc = new ResourceLocation(trimPath); // minecraft namespace
+                ResourceLocation trimNameResLoc = new ResourceLocation(MOD_ID, currentTrimName);
+
+                // This is used for making the ExistingFileHelper acknowledge that this texture exist, so this will
+                // avoid an IllegalArgumentException
+                existingFileHelper.trackGenerated(trimResLoc, PackType.CLIENT_RESOURCES, ".png", "textures");
+
+                // Trimmed armorItem files
+                getBuilder(currentTrimName)
+                        .parent(new ModelFile.UncheckedModelFile("item/generated"))
+                        .texture("layer0", new ResourceLocation(tfs.MOD_ID, "item/tools/" + armorType + "_r_part"))
+                        .texture("layer1", new ResourceLocation(tfs.MOD_ID, "item/tools/" + armorType + "_main_part"))
+                        .texture("layer2", new ResourceLocation(tfs.MOD_ID, "item/tools/" + armorType + "_l_part"))
+                        .texture("layer3", trimResLoc);
+
+                // Non-trimmed armorItem file (normal variant)
+                this.withExistingParent(itemRegistryObject.getId().getPath(),
+                                mcLoc("item/generated"))
+                        .override()
+                        .model(new ModelFile.UncheckedModelFile(trimNameResLoc))
+                        .predicate(mcLoc("trim_type"), trimValue).end()
+                        .texture("layer0", new ResourceLocation(tfs.MOD_ID, "item/tools/" + armorType + "_r_part"))
+                        .texture("layer1", new ResourceLocation(tfs.MOD_ID, "item/tools/" + armorType + "_main_part"))
+                        .texture("layer2", new ResourceLocation(tfs.MOD_ID, "item/tools/" + armorType + "_l_part"));
             });
         }
     }

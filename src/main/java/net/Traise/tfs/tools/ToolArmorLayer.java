@@ -1,0 +1,58 @@
+package net.Traise.tfs.tools;
+
+import com.jozufozu.flywheel.backend.RenderLayer;
+import com.mojang.blaze3d.vertex.PoseStack;
+import net.Traise.tfs.tools.toolItem.TFSArmorTool;
+import net.minecraft.client.model.PlayerModel;
+import net.minecraft.client.model.geom.LayerDefinitions;
+import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.block.model.BakedQuad;
+import net.minecraft.client.renderer.block.model.ItemOverrides;
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.client.resources.model.BakedModel;
+import net.minecraft.core.Direction;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
+
+public class ToolArmorLayer implements BakedModel {
+    @Override
+    public List<BakedQuad> getQuads(@Nullable BlockState pState, @Nullable Direction pDirection, RandomSource pRandom) {
+        return List.of();
+    }
+
+    @Override
+    public boolean useAmbientOcclusion() {
+        return false;
+    }
+
+    @Override
+    public boolean isGui3d() {
+        return false;
+    }
+
+    @Override
+    public boolean usesBlockLight() {
+        return false;
+    }
+
+    @Override
+    public boolean isCustomRenderer() {
+        return false;
+    }
+
+    @Override
+    public TextureAtlasSprite getParticleIcon() {
+        return null;
+    }
+
+    @Override
+    public ItemOverrides getOverrides() {
+        return null;
+    }
+}

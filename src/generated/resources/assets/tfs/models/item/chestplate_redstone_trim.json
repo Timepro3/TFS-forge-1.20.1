@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "tfs:item/tools/chestplate_r_part",
+    "layer1": "tfs:item/tools/chestplate_main_part",
+    "layer2": "tfs:item/tools/chestplate_l_part",
+    "layer3": "minecraft:trims/items/chestplate_trim_redstone"
+  }
+}

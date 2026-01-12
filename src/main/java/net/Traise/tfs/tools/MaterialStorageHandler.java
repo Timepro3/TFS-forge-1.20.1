@@ -44,7 +44,9 @@ public class MaterialStorageHandler {
     }
 
     public static int getMineLevel(ItemStack itemStack) {
-        return load(itemStack).get(1).mineLevel;
+        if (load(itemStack).size() > 1) {
+            return load(itemStack).get(1).mineLevel;
+        } else return load(itemStack).get(0).mineLevel;
     }
 
     public static int getAllDurability(ItemStack itemStack) {

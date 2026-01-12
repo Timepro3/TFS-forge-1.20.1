@@ -12,6 +12,7 @@ import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 import javax.annotation.Nullable;
@@ -119,7 +120,11 @@ public class ModItemTagGenerator extends ItemTagsProvider {
                             TFSItems.STEEL_HELMET.get(),
                             TFSItems.STEEL_CHESTPLATE.get(),
                             TFSItems.STEEL_LEGGINGS.get(),
-                            TFSItems.STEEL_BOOTS.get());
+                            TFSItems.STEEL_BOOTS.get(),
+                            TFSItems.HELMET.get(),
+                            TFSItems.CHESTPLATE.get(),
+                            TFSItems.LEGGINGS.get(),
+                            TFSItems.BOOTS.get());
 
             this.tag(ModTags.Items.KNIFE)
                     .add(TFSItems.ROCK_KNIFE.get(), TFSItems.PIK_ROCK_SPEAR.get(), TFSItems.IRON_KNIFE.get(),
@@ -146,6 +151,25 @@ public class ModItemTagGenerator extends ItemTagsProvider {
 
             this.tag(AllTags.forgeItemTag("stick"))
                     .add(Items.STICK);
+
+            this.tag(AllTags.forgeItemTag("helmet"))
+                    .add(TFSItems.HELMET.get());
+
+            this.tag(AllTags.forgeItemTag("chestplate"))
+                    .add(TFSItems.CHESTPLATE.get());
+
+            this.tag(AllTags.forgeItemTag("leggings"))
+                    .add(TFSItems.LEGGINGS.get());
+
+            this.tag(AllTags.forgeItemTag("boots"))
+                    .add(TFSItems.BOOTS.get());
+
+            this.tag(AllTags.forgeItemTag("armors"))
+                    .add(TFSItems.HELMET.get(), TFSItems.CHESTPLATE.get(),
+                            TFSItems.LEGGINGS.get(), TFSItems.BOOTS.get());
+
+
+            this.tag(Tags.Items.TOOLS_BOWS).add(TFSItems.BOW.get());
         }
     }
 }

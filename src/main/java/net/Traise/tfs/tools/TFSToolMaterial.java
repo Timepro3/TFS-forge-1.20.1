@@ -1,5 +1,6 @@
 package net.Traise.tfs.tools;
 
+import net.Traise.tfs.item.TFSArmorMaterials;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
@@ -41,7 +42,13 @@ public class TFSToolMaterial {
     }
 
     public static TFSToolMaterial load(CompoundTag pCompoundTag) {
-        return TFSRegistries.TOOL_MATERIAL.get().getValue(new ResourceLocation(pCompoundTag.getString("mat")));
+        if (pCompoundTag != null) {
+            TFSToolMaterial material = TFSRegistries.TOOL_MATERIAL.get().getValue(new ResourceLocation(pCompoundTag.getString("mat")));
+            if (material != null) {
+                return material;
+            }
+        }
+        return TFSToolMaterials.NONE.get();
     }
 
     public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {

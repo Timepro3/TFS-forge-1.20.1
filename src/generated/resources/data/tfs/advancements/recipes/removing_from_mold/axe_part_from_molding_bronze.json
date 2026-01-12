@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_axe_part": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "tfs:axe_part"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "tfs:axe_part_from_molding_bronze"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_axe_part",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "tfs:axe_part_from_molding_bronze"
+    ]
+  },
+  "sends_telemetry_event": false
+}

@@ -13,6 +13,7 @@ import net.Traise.tfs.tools.TFSToolMaterial;
 import net.Traise.tfs.util.ModTags;
 import net.Traise.tfs.util.MoldType;
 import net.minecraft.client.Minecraft;
+import net.minecraft.core.NonNullList;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
@@ -21,10 +22,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.AbstractCookingRecipe;
-import net.minecraft.world.item.crafting.CookingBookCategory;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
@@ -764,7 +762,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                                 (tfs.MOD_ID, "rich_" + c.getString())));
             }
 
-            if (i >= 2 && i <= 5) {
+            if (i >= 1 && i <= 7) {
                 moldMat(pWriter, MoldType.STRING, TFSItems.STRING_PART.get(),
                         ForgeRegistries.FLUIDS.getValue(new ResourceLocation(tfs.MOD_ID, material(i).getString())), 100,
                         TFSRegistries.TOOL_MATERIAL.get().getValue(new ResourceLocation("tfs:" + material(i).getString())));
@@ -881,6 +879,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             oreBlasting(pWriter, List.of(TFSItems.RAW_PAXEL_FORM.get()), RecipeCategory.MISC, TFSItems.PAXEL_FORM.get(), 0.25f, 200, "paxel_form");
             oreBlasting(pWriter, List.of(TFSItems.RAW_STICK_FORM.get()), RecipeCategory.MISC, TFSItems.STICK_FORM.get(), 0.25f, 200, "stick_form");
             oreBlasting(pWriter, List.of(TFSItems.RAW_STRING_FORM.get()), RecipeCategory.MISC, TFSItems.STRING_FORM.get(), 0.25f, 200, "string_form");
+            oreBlasting(pWriter, List.of(TFSItems.RAW_BOW_FORM.get()), RecipeCategory.MISC, TFSItems.BOW_FORM.get(), 0.25f, 200, "bow_form");
 
             CreateRecipe.SandPaperPolishing(Ingredient.of(TFSItems.RAW_DIAMOND.get()), RecipeCategory.DECORATIONS, Items.DIAMOND).unlockedBy("has_raw_diamond", has(TFSItems.RAW_DIAMOND.get())).save(pWriter, "diamond_in_raw_diamond");
             CreateRecipe.SandPaperPolishing(Ingredient.of(TFSItems.RAW_EMERALD.get()), RecipeCategory.DECORATIONS, Items.EMERALD).unlockedBy("has_raw_emerald", has(TFSItems.RAW_EMERALD.get())).save(pWriter, "emerald_in_raw_emerald");
@@ -1188,7 +1187,136 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                     .pattern("X    ")
                     .unlockedBy(getHasName(Items.CLAY_BALL), has(Items.CLAY_BALL))
                     .save(pWriter, tfs.MOD_ID + ":" + "clay_modeling_string_form");
+
+            ModelingRecipeBuilder.modeling(TFSItems.RAW_BOW_FORM.get(), 1, Items.CLAY_BALL, 5)
+                    .pattern("XXXXX")
+                    .pattern("X   X")
+                    .pattern("  X  ")
+                    .pattern(" XXX ")
+                    .pattern("XXXXX")
+                    .unlockedBy(getHasName(Items.CLAY_BALL), has(Items.CLAY_BALL))
+                    .save(pWriter, tfs.MOD_ID + ":" + "clay_modeling_bow_form");
         } //modeling
+
+        {
+            // Меч
+            ToolAssemblyRecipeBuilder.assembly(TFSItems.SWORD.get(), CraftingBookCategory.EQUIPMENT)
+                    .ingredient(ModTags.Items.TOOL_STICK, 0)
+                    .ingredient(TFSItems.SWORD_PART.get(), 1)
+                    .ingredient(ModTags.Items.TOOL_STRING, 2)
+                    .unlockedBy(getHasName(TFSItems.SWORD_PART.get()), has(TFSItems.SWORD_PART.get()))
+                    .save(pWriter, tfs.MOD_ID + ":tool_assembly_sword");
+
+// Топор
+            ToolAssemblyRecipeBuilder.assembly(TFSItems.AXE.get(), CraftingBookCategory.EQUIPMENT)
+                    .ingredient(ModTags.Items.TOOL_STICK, 0)
+                    .ingredient(TFSItems.AXE_PART.get(), 1)
+                    .ingredient(ModTags.Items.TOOL_STRING, 2)
+                    .unlockedBy(getHasName(TFSItems.AXE_PART.get()), has(TFSItems.AXE_PART.get()))
+                    .save(pWriter, tfs.MOD_ID + ":tool_assembly_axe");
+
+// Мотыга
+            ToolAssemblyRecipeBuilder.assembly(TFSItems.HOE.get(), CraftingBookCategory.EQUIPMENT)
+                    .ingredient(ModTags.Items.TOOL_STICK, 0)
+                    .ingredient(TFSItems.HOE_PART.get(), 1)
+                    .ingredient(ModTags.Items.TOOL_STRING, 2)
+                    .unlockedBy(getHasName(TFSItems.HOE_PART.get()), has(TFSItems.HOE_PART.get()))
+                    .save(pWriter, tfs.MOD_ID + ":tool_assembly_hoe");
+
+// Кирка
+            ToolAssemblyRecipeBuilder.assembly(TFSItems.PICKAXE.get(), CraftingBookCategory.EQUIPMENT)
+                    .ingredient(ModTags.Items.TOOL_STICK, 0)
+                    .ingredient(TFSItems.PICKAXE_PART.get(), 1)
+                    .ingredient(ModTags.Items.TOOL_STRING, 2)
+                    .unlockedBy(getHasName(TFSItems.PICKAXE_PART.get()), has(TFSItems.PICKAXE_PART.get()))
+                    .save(pWriter, tfs.MOD_ID + ":tool_assembly_pickaxe");
+
+// Лопата
+            ToolAssemblyRecipeBuilder.assembly(TFSItems.SHOVEL.get(), CraftingBookCategory.EQUIPMENT)
+                    .ingredient(ModTags.Items.TOOL_STICK, 0)
+                    .ingredient(TFSItems.SHOVEL_PART.get(), 1)
+                    .ingredient(ModTags.Items.TOOL_STRING, 2)
+                    .unlockedBy(getHasName(TFSItems.SHOVEL_PART.get()), has(TFSItems.SHOVEL_PART.get()))
+                    .save(pWriter, tfs.MOD_ID + ":tool_assembly_shovel");
+
+// Нож
+            ToolAssemblyRecipeBuilder.assembly(TFSItems.KNIFE.get(), CraftingBookCategory.EQUIPMENT)
+                    .ingredient(ModTags.Items.TOOL_STICK, 0)
+                    .ingredient(TFSItems.KNIFE_PART.get(), 1)
+                    .ingredient(ModTags.Items.TOOL_STRING, 2)
+                    .unlockedBy(getHasName(TFSItems.KNIFE_PART.get()), has(TFSItems.KNIFE_PART.get()))
+                    .save(pWriter, tfs.MOD_ID + ":tool_assembly_knife");
+
+// Копьё
+            ToolAssemblyRecipeBuilder.assembly(TFSItems.SPEAR.get(), CraftingBookCategory.EQUIPMENT)
+                    .ingredient(ModTags.Items.TOOL_STICK, 0)
+                    .ingredient(TFSItems.SPEAR_PART.get(), 1)
+                    .ingredient(ModTags.Items.TOOL_STRING, 2)
+                    .unlockedBy(getHasName(TFSItems.SPEAR_PART.get()), has(TFSItems.SPEAR_PART.get()))
+                    .save(pWriter, tfs.MOD_ID + ":tool_assembly_spear");
+
+// Молоток
+            ToolAssemblyRecipeBuilder.assembly(TFSItems.HAMMER.get(), CraftingBookCategory.EQUIPMENT)
+                    .ingredient(ModTags.Items.TOOL_STICK, 0)
+                    .ingredient(TFSItems.HAMMER_PART.get(), 1)
+                    .ingredient(ModTags.Items.TOOL_STRING, 2)
+                    .unlockedBy(getHasName(TFSItems.HAMMER_PART.get()), has(TFSItems.HAMMER_PART.get()))
+                    .save(pWriter, tfs.MOD_ID + ":tool_assembly_hammer");
+
+// Заступ
+            ToolAssemblyRecipeBuilder.assembly(TFSItems.SPADE.get(), CraftingBookCategory.EQUIPMENT)
+                    .ingredient(ModTags.Items.TOOL_STICK, 0)
+                    .ingredient(TFSItems.SPADE_PART.get(), 1)
+                    .ingredient(ModTags.Items.TOOL_STRING, 2)
+                    .unlockedBy(getHasName(TFSItems.SPADE_PART.get()), has(TFSItems.SPADE_PART.get()))
+                    .save(pWriter, tfs.MOD_ID + ":tool_assembly_spade");
+
+// Коса
+            ToolAssemblyRecipeBuilder.assembly(TFSItems.SICKLE.get(), CraftingBookCategory.EQUIPMENT)
+                    .ingredient(ModTags.Items.TOOL_STICK, 0)
+                    .ingredient(TFSItems.SICKLE_PART.get(), 1)
+                    .ingredient(ModTags.Items.TOOL_STRING, 2)
+                    .unlockedBy(getHasName(TFSItems.SICKLE_PART.get()), has(TFSItems.SICKLE_PART.get()))
+                    .save(pWriter, tfs.MOD_ID + ":tool_assembly_sickle");
+
+// Кельма
+            ToolAssemblyRecipeBuilder.assembly(TFSItems.TROWEL.get(), CraftingBookCategory.EQUIPMENT)
+                    .ingredient(ModTags.Items.TOOL_STICK, 0)
+                    .ingredient(TFSItems.TROWEL_PART.get(), 1)
+                    .ingredient(ModTags.Items.TOOL_STRING, 2)
+                    .unlockedBy(getHasName(TFSItems.TROWEL_PART.get()), has(TFSItems.TROWEL_PART.get()))
+                    .save(pWriter, tfs.MOD_ID + ":tool_assembly_trowel");
+
+// Киркопил
+            ToolAssemblyRecipeBuilder.assembly(TFSItems.PAXEL.get(), CraftingBookCategory.EQUIPMENT)
+                    .ingredient(ModTags.Items.TOOL_STICK, 0)
+                    .ingredient(TFSItems.PAXEL_PART.get(), 1)
+                    .ingredient(ModTags.Items.TOOL_STRING, 2)
+                    .unlockedBy(getHasName(TFSItems.PAXEL_PART.get()), has(TFSItems.PAXEL_PART.get()))
+                    .save(pWriter, tfs.MOD_ID + ":tool_assembly_paxel");
+
+// Геологический молот
+            ToolAssemblyRecipeBuilder.assembly(TFSItems.GEOLOGICAL_HAMMER.get(), CraftingBookCategory.EQUIPMENT)
+                    .ingredient(ModTags.Items.TOOL_STICK, 0)
+                    .ingredient(TFSItems.GEOLOGICAL_HAMMER_PART.get(), 1)
+                    .ingredient(ModTags.Items.TOOL_STRING, 2)
+                    .unlockedBy(getHasName(TFSItems.GEOLOGICAL_HAMMER_PART.get()), has(TFSItems.GEOLOGICAL_HAMMER_PART.get()))
+                    .save(pWriter, tfs.MOD_ID + ":tool_assembly_geological_hammer");
+
+            // Строительный посох
+            ToolAssemblyRecipeBuilder.assembly(TFSItems.BUILDER_WAND.get(), CraftingBookCategory.EQUIPMENT)
+                    .ingredient(ModTags.Items.TOOL_STICK, 0)
+                    .ingredient(TFSItems.BUILDER_WAND_PART.get(), 1)
+                    .ingredient(ModTags.Items.TOOL_STRING, 2)
+                    .unlockedBy(getHasName(TFSItems.BUILDER_WAND_PART.get()), has(TFSItems.BUILDER_WAND_PART.get()))
+                    .save(pWriter, tfs.MOD_ID + ":tool_assembly_builder_wand");
+
+            ToolAssemblyRecipeBuilder.assembly(TFSItems.BOW.get(), CraftingBookCategory.EQUIPMENT)
+                    .ingredient(ModTags.Items.TOOL_STRING, 0)
+                    .ingredient(TFSItems.BOW_PART.get(), 1)
+                    .unlockedBy(getHasName(TFSItems.BOW_PART.get()), has(TFSItems.BOW_PART.get()))
+                    .save(pWriter, tfs.MOD_ID + ":tool_assembly_bow");
+        }//assembly
     }
 
     private Component material(int index) {

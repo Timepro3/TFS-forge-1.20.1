@@ -1,4 +1,4 @@
-// 1.20.1	2025-12-12T17:51:46.3455614	Item Models: tfs
+// 1.20.1	2026-01-10T15:15:41.704829	Item Models: tfs
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/tfs/models/item/alise_spawn_egg.json
 161c948981edfeec6f98aee2edf69287d35d2ad6 assets/tfs/models/item/andesite_alloy_nugget.json
 5644888e173f3191bc9c4f3f6ea18636a166d2e8 assets/tfs/models/item/andesite_alloy_sheet.json
@@ -7,6 +7,18 @@ d04111fc70ff70f6b0bf50d8809d74a8a56cb914 assets/tfs/models/item/axe_part.json
 1ba4306ea7c4d1beb8044a1ec5d5527daf2f31f8 assets/tfs/models/item/blu.json
 e2be4d71361525fb695f1a6dbc963bfcd237441d assets/tfs/models/item/blue.json
 791252f16f06b8f7b8c620558f6b27119c8fd52a assets/tfs/models/item/blueberry.json
+f38b436c097bed1f0cc74ba8898a1ea02167828f assets/tfs/models/item/boots.json
+434db1ed7519f2cd087647b28331730a26523b4c assets/tfs/models/item/boots_amethyst_trim.json
+6a2847f49f4e42dc866ed8b70d267df5d4610c75 assets/tfs/models/item/boots_copper_trim.json
+1736dbed6e8db865260f835bbcc4c10b2192d643 assets/tfs/models/item/boots_diamond_trim.json
+af8fe339eb240e6302f3b03d58d087f8b64854e7 assets/tfs/models/item/boots_emerald_trim.json
+255454f3e6e3b28a4547079d05dc2ab216da8b12 assets/tfs/models/item/boots_gold_trim.json
+1ccec646059d056de912fda70821f73a4c9c5037 assets/tfs/models/item/boots_iron_trim.json
+ff5671c799711ab4ef1e27e276972a8a293ff0ad assets/tfs/models/item/boots_lapis_trim.json
+4083c6863b8f43d28f19846a104b777ad75e063e assets/tfs/models/item/boots_netherite_trim.json
+662ea14d0ee930403183eed7295d2120bb232186 assets/tfs/models/item/boots_quartz_trim.json
+5b4f53cbc1fd6d7ceb414f83a28850a2933fefb5 assets/tfs/models/item/boots_redstone_trim.json
+bb2a348e52c15376d0a6a09bbd2ada9df16f6486 assets/tfs/models/item/bow_tool_part.json
 34ba4001d818c2ea74f3dbd6c3f7f0c6d41c3253 assets/tfs/models/item/bronze_axe.json
 7fa8922c2b83aed676691456d5822b50ac83d9c2 assets/tfs/models/item/bronze_boots.json
 80269764a25de368de70852979fb2a8d9553c547 assets/tfs/models/item/bronze_boots_amethyst_trim.json
@@ -84,6 +96,17 @@ ece2e952d3b4f46eee1323f257152a62ed8ff617 assets/tfs/models/item/cartridge_steel_
 befda55c3b0990aac07fb83df54ce79548579cb5 assets/tfs/models/item/cast_iron_ingot.json
 2564d54ae685af439e5622fcbe002e83f13288cc assets/tfs/models/item/cast_iron_nugget.json
 367ea67636cd837e1d6322055bb5a140b0113741 assets/tfs/models/item/cast_iron_sheet.json
+32e35910cb3b16691cb6c9b3572fbe5001a5b474 assets/tfs/models/item/chestplate.json
+4074c47efa2c0c5bd0c849a9c0208a579e6ce688 assets/tfs/models/item/chestplate_amethyst_trim.json
+84bf96d5680414be2b9e7ef2087240d111fdf4cb assets/tfs/models/item/chestplate_copper_trim.json
+1a109eeee503b38ddfb96f17af519572f57f9d34 assets/tfs/models/item/chestplate_diamond_trim.json
+61ee735ee3d9c11e6f6d0ed6540aaa6719dc0e1f assets/tfs/models/item/chestplate_emerald_trim.json
+20e1d3bfe0afda6a6971e2b572924bb47da4abaa assets/tfs/models/item/chestplate_gold_trim.json
+bfed576c64a37df11bbbf59d7c437b199a422a7b assets/tfs/models/item/chestplate_iron_trim.json
+5fb2610110bd492c5dd889fe734a01e9f0850580 assets/tfs/models/item/chestplate_lapis_trim.json
+71474f3f0714e072dac50438821eabed32056928 assets/tfs/models/item/chestplate_netherite_trim.json
+f5a44f98fa56808e9bfa38198d5a1d4f02b15c89 assets/tfs/models/item/chestplate_quartz_trim.json
+89104a94c436ffc6e54fdf3638f1862f0d22b4de assets/tfs/models/item/chestplate_redstone_trim.json
 4a717e3fe8042208e1dd02cadc6270e1138967f8 assets/tfs/models/item/cinnabar.json
 ea8eba0fa3ea2a00d4b902c4278d7bcd9fa9112b assets/tfs/models/item/cinnabar_fragment.json
 ec5a8d9a761f4cf327e32974407fb3c8dbc78639 assets/tfs/models/item/coal_fragment.json
@@ -109,6 +132,17 @@ e8b27e1a84ef61715d7eb73dedc6e8563033894d assets/tfs/models/item/distorted_twig.j
 f16c987cd481b90740bdfd6a00698b6270aa31c4 assets/tfs/models/item/grass_rope.json
 0697ece99edab82414a9d915411006af673ca946 assets/tfs/models/item/hammer.json
 27a33f2cae90e1e6107d8ee866403066d1d6f8d5 assets/tfs/models/item/hammer_part.json
+8470d994760ee2725b831fe679dd014d5c150130 assets/tfs/models/item/helmet.json
+8e2bd68048b821313d6b1d603e2f30553ebd9f8b assets/tfs/models/item/helmet_amethyst_trim.json
+e21936018ef94e6c36e1c2488f886f344454c056 assets/tfs/models/item/helmet_copper_trim.json
+8a3b76fc29ed581f82c0c03b5ddb7743832b9073 assets/tfs/models/item/helmet_diamond_trim.json
+0b5f41550990a2496bd2a8178253102339a6ac7a assets/tfs/models/item/helmet_emerald_trim.json
+3da87af8726bf9986c3431e6f4a8d0179a0b7ce0 assets/tfs/models/item/helmet_gold_trim.json
+8b9b0fa257de0774ff031290c734ce28409f1810 assets/tfs/models/item/helmet_iron_trim.json
+2a2cc15e935e7060ef965b7b0a31e0275f9f08c4 assets/tfs/models/item/helmet_lapis_trim.json
+a523474db463b96a01503713d6de9e94be786094 assets/tfs/models/item/helmet_netherite_trim.json
+701736d4ebbb4d24462f8bf43c3cb78fbd848576 assets/tfs/models/item/helmet_quartz_trim.json
+ce41acc75f2457bb2c0242a3ab6a010c7ea9eb7e assets/tfs/models/item/helmet_redstone_trim.json
 ca467bae8dc4fda8873e3d75001ea6e4ce70fd77 assets/tfs/models/item/hoe.json
 a7e4afed71ec029ab2fc23a449bad958f19fd1a3 assets/tfs/models/item/hoe_part.json
 9163f1213e2a62eb28d748dfec25a60b8ddf6647 assets/tfs/models/item/iron_hammer.json
@@ -119,6 +153,17 @@ a5d9338a04594b71ca5a7ec85d88b4d2e4f08cd7 assets/tfs/models/item/knife.json
 d1a12821e9f16d036c052f8ff75cb29d62d3d6cd assets/tfs/models/item/knife_part.json
 d86cbb8a9c890c349a3f23eaf1eb96bcbcf19d2f assets/tfs/models/item/lazuli_dust.json
 bd299d03e7a4189cd489f6ab036d9dc02da23dc5 assets/tfs/models/item/lazuli_fragment.json
+2d545e181a8abf4a4387ca82b27b83c151ab3f19 assets/tfs/models/item/leggings.json
+864d27803294d4c9a59bfed76d3efd0b37b96041 assets/tfs/models/item/leggings_amethyst_trim.json
+652c298cc32dbf910cfdb12063da9c5fce677607 assets/tfs/models/item/leggings_copper_trim.json
+1b930e241e7ad040be06ef6a90be9e5e5b9289cf assets/tfs/models/item/leggings_diamond_trim.json
+c1178106c2ef36ea00fcb6e160a44f3c06302f32 assets/tfs/models/item/leggings_emerald_trim.json
+3ac6c8503e65e7a4806abdfd88326d84b1c8078f assets/tfs/models/item/leggings_gold_trim.json
+7cca1deb5ae439a802cee97f589aa83784ff514a assets/tfs/models/item/leggings_iron_trim.json
+f3ae9c42e196b8f27c73467fc37a01fde8badc93 assets/tfs/models/item/leggings_lapis_trim.json
+1f468059201b927ebc2f8fbc10a092594c6a197a assets/tfs/models/item/leggings_netherite_trim.json
+bd5f6ca0a6debfb6f3f0dc4d1027a224c0e278ac assets/tfs/models/item/leggings_quartz_trim.json
+525e17971870d260f8a6268c8f277e8a19855792 assets/tfs/models/item/leggings_redstone_trim.json
 79e0576183fc12ed1a60a3b9a07e3a765d1f2d5e assets/tfs/models/item/limonite.json
 a4cc387ab47684d898010704ebdc632f94b1783d assets/tfs/models/item/netherite_hammer.json
 888dd13bd481533f223712d68456df2d30e4de20 assets/tfs/models/item/netherite_knife.json
@@ -144,6 +189,7 @@ c1eb6d18ea3e98d5a834bd9f23748f7ee2d67215 assets/tfs/models/item/poor_silver.json
 5dba6337757b4e4f01f9b947688252792e403b7d assets/tfs/models/item/poor_tin.json
 9fd543cebd37b1fa0aa9aacc53bf5d7bf2f7ba4a assets/tfs/models/item/poor_zinc.json
 ad50aa1e68cff31e2924366e9b9d355c2acb174f assets/tfs/models/item/raw_axe_form.json
+56925447ce5040819ec9674eb8667bead07f6aea assets/tfs/models/item/raw_bow_tool_form.json
 e4491eb6f8417044332b6cde72c83cf617ecf550 assets/tfs/models/item/raw_builder_wand_form.json
 162d4d31967bca0283f7733771031ee2653965e5 assets/tfs/models/item/raw_diamond.json
 fa63a120109e2e183b58bc1273a76861a07ae586 assets/tfs/models/item/raw_emerald.json

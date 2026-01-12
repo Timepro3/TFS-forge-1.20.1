@@ -1,18 +1,27 @@
 {
-  "loader": "forge:separate_transforms",
+  "parent": "minecraft:item/handheld",
   "gui_light": "front",
-  "base": {
-    "parent": "tfs:item/spear_3d"
+  "textures": {
+    "layer0": "tfs:item/tools/spear_stick",
+    "layer1": "tfs:item/tools/spear_head",
+    "layer2": "tfs:item/tools/spear_rope"
   },
-  "perspectives": {
-    "gui": {
-      "parent": "tfs:item/spear_item"
+  "display": {
+    "firstperson_righthand": {
+      "rotation": [270, -90, -5],
+      "scale": [1.5, 1.5, 1]
     },
-    "fixed": {
-      "parent": "tfs:item/spear_item"
+    "firstperson_lefthand": {
+      "rotation": [270, 90, 5],
+      "scale": [1.5, 1.5, 1]
     },
-    "ground": {
-      "parent": "tfs:item/spear_item"
+    "thirdperson_righthand": {
+      "rotation": [-50, 270, -5],
+      "scale": [1.5, 1.5, 1]
+    },
+    "thirdperson_lefthand": {
+      "rotation":  [45, 270, 5],
+      "scale": [1.5, 1.5, 1]
     }
   },
   "overrides": [

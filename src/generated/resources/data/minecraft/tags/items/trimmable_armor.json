@@ -11,6 +11,10 @@
     "tfs:steel_helmet",
     "tfs:steel_chestplate",
     "tfs:steel_leggings",
-    "tfs:steel_boots"
+    "tfs:steel_boots",
+    "tfs:helmet",
+    "tfs:chestplate",
+    "tfs:leggings",
+    "tfs:boots"
   ]
 }

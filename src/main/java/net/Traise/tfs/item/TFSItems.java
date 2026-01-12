@@ -6,6 +6,7 @@ import net.Traise.tfs.fluid.TFSFluids;
 import net.Traise.tfs.item.custom.*;
 import net.Traise.tfs.tfs;
 import net.Traise.tfs.tools.TFSPartItem;
+import net.Traise.tfs.tools.toolItem.*;
 import net.Traise.tfs.util.MoldType;
 import net.minecraft.world.item.*;
 import net.minecraftforge.common.ForgeSpawnEggItem;
@@ -161,6 +162,8 @@ public class TFSItems {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> RAW_STRING_FORM = ITEMS.register("raw_string_form",
             () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> RAW_BOW_FORM = ITEMS.register("raw_bow_tool_form",
+            () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> INGOT_FORM = ITEMS.register( "ingot_form",
             () -> new TFSFormItem(MoldType.INGOT, new Item.Properties()));
@@ -196,6 +199,8 @@ public class TFSItems {
             () -> new TFSFormItem(MoldType.STICK, new Item.Properties()));
     public static final RegistryObject<Item> STRING_FORM = ITEMS.register("string_form",
             () -> new TFSFormItem(MoldType.STRING, new Item.Properties()));
+    public static final RegistryObject<Item> BOW_FORM = ITEMS.register("bow_tool_form",
+            () -> new TFSFormItem(MoldType.BOW, new Item.Properties()));
 
     public static final RegistryObject<Item> STEEL_INGOT= ITEMS.register( "steel_ingot",
             () -> new TFSItemTexts(36, new Item.Properties()));
@@ -276,33 +281,43 @@ public class TFSItems {
             () -> new ForgeSpawnEggItem(ModEntities.TATAR, -1, -1, new Item.Properties()));
 
     public static final RegistryObject<Item> SWORD = ITEMS.register( "sword",
-            () -> new TFSBaseItem(TFSBaseItem.TFSToolTypes.SWORD, new Item.Properties()));
+            () -> new TFSSwordTool(new Item.Properties()));
     public static final RegistryObject<Item> AXE = ITEMS.register( "axe",
-            () -> new TFSBaseItem(TFSBaseItem.TFSToolTypes.AXE, new Item.Properties()));
+            () -> new TFSAxeTool(new Item.Properties()));
     public static final RegistryObject<Item> HOE = ITEMS.register( "hoe",
-            () -> new TFSBaseItem(TFSBaseItem.TFSToolTypes.HOE, new Item.Properties()));
+            () -> new TFSHoeTool(new Item.Properties()));
     public static final RegistryObject<Item> PICKAXE = ITEMS.register( "pickaxe",
-            () -> new TFSBaseItem(TFSBaseItem.TFSToolTypes.PICKAXE, new Item.Properties()));
+            () -> new TFSPickaxeTool(new Item.Properties()));
     public static final RegistryObject<Item> SHOVEL = ITEMS.register( "shovel",
-            () -> new TFSBaseItem(TFSBaseItem.TFSToolTypes.SHOVEL, new Item.Properties()));
+            () -> new TFSShovelTool(new Item.Properties()));
     public static final RegistryObject<Item> KNIFE = ITEMS.register( "knife",
-            () -> new TFSBaseItem(TFSBaseItem.TFSToolTypes.KNIFE, new Item.Properties()));
+            () -> new TFSKnifeTool(new Item.Properties()));
     public static final RegistryObject<Item> SPEAR = ITEMS.register( "spear",
-            () -> new TFSBaseItem(TFSBaseItem.TFSToolTypes.SPEAR, new Item.Properties()));
+            () -> new TFSSpearTool(new Item.Properties()));
     public static final RegistryObject<Item> HAMMER = ITEMS.register( "hammer",
-            () -> new TFSBaseItem(TFSBaseItem.TFSToolTypes.HAMMER, new Item.Properties()));
+            () -> new TFSHammerTool(new Item.Properties()));
     public static final RegistryObject<Item> SPADE = ITEMS.register( "spade",
-            () -> new TFSBaseItem(TFSBaseItem.TFSToolTypes.SPADE, new Item.Properties()));
+            () -> new TFSSpadeTool(new Item.Properties()));
     public static final RegistryObject<Item> SICKLE = ITEMS.register( "sickle",
-            () -> new TFSBaseItem(TFSBaseItem.TFSToolTypes.SICKLE, new Item.Properties()));
+            () -> new TFSSickleTool(new Item.Properties()));
     public static final RegistryObject<Item> TROWEL = ITEMS.register( "trowel",
-            () -> new TFSBaseItem(TFSBaseItem.TFSToolTypes.TROWEL, new Item.Properties()));
+            () -> new TFSTrowelTool(new Item.Properties()));
     public static final RegistryObject<Item> PAXEL = ITEMS.register( "paxel",
-            () -> new TFSBaseItem(TFSBaseItem.TFSToolTypes.PAXEL, new Item.Properties()));
+            () -> new TFSPaxelTool(new Item.Properties()));
     public static final RegistryObject<Item> GEOLOGICAL_HAMMER = ITEMS.register( "geological_hammer",
-            () -> new TFSBaseItem(TFSBaseItem.TFSToolTypes.GEOLOGICAL_HAMMER, new Item.Properties()));
+            () -> new TFSGeologicalHammerTool(new Item.Properties()));
     public static final RegistryObject<Item> BUILDER_WAND = ITEMS.register( "builder_wand",
-            () -> new TFSBaseItem(TFSBaseItem.TFSToolTypes.BUILDER_WAND, new Item.Properties()));
+            () -> new TFSBuilderWandTool(new Item.Properties()));
+    public static final RegistryObject<Item> BOW = ITEMS.register( "bow_tool",
+            () -> new TFSBowTool(new Item.Properties()));
+    public static final RegistryObject<Item> HELMET = ITEMS.register( "helmet",
+            () -> new TFSArmorTool(ArmorItem.Type.HELMET, new Item.Properties()));
+    public static final RegistryObject<Item> CHESTPLATE = ITEMS.register( "chestplate",
+            () -> new TFSArmorTool(ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+    public static final RegistryObject<Item> LEGGINGS = ITEMS.register( "leggings",
+            () -> new TFSArmorTool(ArmorItem.Type.LEGGINGS, new Item.Properties()));
+    public static final RegistryObject<Item> BOOTS = ITEMS.register( "boots",
+            () -> new TFSArmorTool(ArmorItem.Type.BOOTS, new Item.Properties()));
 
     public static final RegistryObject<Item> STICK_PART = ITEMS.register( "stick_part",
             () -> new TFSPartItem(new Item.Properties()));
@@ -335,6 +350,8 @@ public class TFSItems {
     public static final RegistryObject<Item> BUILDER_WAND_PART = ITEMS.register("builder_wand_part",
             () -> new TFSPartItem(new Item.Properties()));
     public static final RegistryObject<Item> PAXEL_PART = ITEMS.register("paxel_part",
+            () -> new TFSPartItem(new Item.Properties()));
+    public static final RegistryObject<Item> BOW_PART = ITEMS.register("bow_tool_part",
             () -> new TFSPartItem(new Item.Properties()));
 
     public static final RegistryObject<Item> SILVER_HELMET = ITEMS.register("silver_helmet",

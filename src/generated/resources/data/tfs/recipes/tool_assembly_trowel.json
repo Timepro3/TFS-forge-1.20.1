@@ -1,0 +1,25 @@
+{
+  "type": "tfs:crafting_special_toolassembly",
+  "category": "equipment",
+  "key": {
+    "part_0": [
+      {
+        "tag": "tfs:tool_stick"
+      }
+    ],
+    "part_1": [
+      {
+        "item": "tfs:trowel_part"
+      }
+    ],
+    "part_2": [
+      {
+        "tag": "tfs:tool_string"
+      }
+    ]
+  },
+  "output": {
+    "count": 1,
+    "item": "tfs:trowel"
+  }
+}

@@ -66,6 +66,7 @@ public class JEITFSPlugin implements IModPlugin {
         registration.addRecipeCatalyst(new ItemStack(TFSBlocks.FOUNDRY.get()), AlloyCategory.ALLOY_TYPE);
         registration.addRecipeCatalyst(new ItemStack(TFSItems.ROCK.get()), CuttingCategory.CUTTING_TYPE);
         registration.addRecipeCatalyst(new ItemStack(Items.CLAY_BALL), ModelingCategory.MODELING_TYPE);
+
     }
 
     /* @Override

@@ -19,7 +19,8 @@ public enum MoldType {
     GEOLOGICAL_HAMMER("geological_hammer", 13, 100),
     BUILDER_WAND("builder_wand", 14, 100),
     PAXEL("paxel", 15, 900),
-    STICK("stick", 16, 100);
+    STICK("stick", 16, 100),
+    BOW("bow", 17, 100);
 
     private final String name;
     private final int number;

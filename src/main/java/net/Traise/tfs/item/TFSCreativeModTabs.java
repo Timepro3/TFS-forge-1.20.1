@@ -101,7 +101,7 @@ public class TFSCreativeModTabs {
                         pOutput.accept(TFSItems.BLU.get());
                         pOutput.accept(TFSItems.TIN_SWORD.get());
 
-                        pOutput.accept(TFSItems.SWORD.get());
+                        /*pOutput.accept(TFSItems.SWORD.get());
                         pOutput.accept(TFSItems.AXE.get());
                         pOutput.accept(TFSItems.HOE.get());
                         pOutput.accept(TFSItems.PICKAXE.get());
@@ -114,7 +114,7 @@ public class TFSCreativeModTabs {
                         pOutput.accept(TFSItems.PAXEL.get());
                         pOutput.accept(TFSItems.TROWEL.get());
                         pOutput.accept(TFSItems.GEOLOGICAL_HAMMER.get());
-                        pOutput.accept(TFSItems.BUILDER_WAND.get());
+                        pOutput.accept(TFSItems.BUILDER_WAND.get());*/
 
                         pOutput.accept(TFSItems.GRASS_CUT.get());
                         pOutput.accept(TFSItems.GRASS_ROPE.get());
@@ -178,6 +178,7 @@ public class TFSCreativeModTabs {
                         pOutput.accept(TFSItems.RAW_PAXEL_FORM.get());
                         pOutput.accept(TFSItems.RAW_STICK_FORM.get());
                         pOutput.accept(TFSItems.RAW_STRING_FORM.get());
+                        pOutput.accept(TFSItems.RAW_BOW_FORM.get());
 
                         pOutput.accept(TFSItems.INGOT_FORM.get());
                         pOutput.accept(TFSItems.AXE_FORM.get());
@@ -196,6 +197,7 @@ public class TFSCreativeModTabs {
                         pOutput.accept(TFSItems.PAXEL_FORM.get());
                         pOutput.accept(TFSItems.STICK_FORM.get());
                         pOutput.accept(TFSItems.STRING_FORM.get());
+                        pOutput.accept(TFSItems.BOW_FORM.get());
 
                         pOutput.accept(TFSItems.RAW_DIAMOND.get());
                         pOutput.accept(TFSItems.RAW_EMERALD.get());

@@ -7,10 +7,20 @@ import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.client.renderer.block.model.BakedQuad;
+import net.minecraft.client.renderer.block.model.ItemOverrides;
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.client.resources.model.BakedModel;
+import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.Nullable;
 
-public class SpearModel<T extends Entity> extends EntityModel<T> {
+import java.util.List;
+
+public class SpearModel<T extends Entity> extends EntityModel<T>  {
 	private final ModelPart bone;
 	public static final ModelLayerLocation SPEAR = new ModelLayerLocation(new ResourceLocation
 			("tfs", "spear"), "main");

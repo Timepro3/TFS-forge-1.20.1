@@ -1,0 +1,14 @@
+{
+  "type": "tfs:removing_from_mold",
+  "ingredients": [
+    {
+      "amount": 100,
+      "fluid": "tfs:brass"
+    }
+  ],
+  "material": "tfs:brass",
+  "mold_type": "trowel",
+  "output": {
+    "item": "tfs:trowel_part"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "type": "tfs:crafting_special_toolassembly",
+  "category": "equipment",
+  "key": {
+    "part_0": [
+      {
+        "tag": "tfs:tool_string"
+      }
+    ],
+    "part_1": [
+      {
+        "item": "tfs:bow_tool_part"
+      }
+    ]
+  },
+  "output": {
+    "count": 1,
+    "item": "tfs:bow_tool"
+  }
+}

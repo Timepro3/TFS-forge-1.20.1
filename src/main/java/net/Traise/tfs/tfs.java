@@ -13,6 +13,7 @@ import net.Traise.tfs.screen.*;
 import net.Traise.tfs.tools.TFSRegistries;
 import net.Traise.tfs.tools.TFSToolMaterials;
 import net.Traise.tfs.util.TFSAttributes;
+import net.Traise.tfs.util.TFSItemProperties;
 import net.Traise.tfs.worldgen.biome.ModTerrablender;
 import net.Traise.tfs.worldgen.biome.surface.ModSurfaceRules;
 import net.Traise.tfs.entity.renderer.*;
@@ -148,6 +149,8 @@ public class tfs {
             MenuScreens.register(TFSMenuTypes.CUTTING_MENU.get(), CuttingScreen::new);
             MenuScreens.register(TFSMenuTypes.FOUNDRY_MENU.get(), FoundryScreen::new);
             MenuScreens.register(TFSMenuTypes.REVOLVER_MENU.get(), RevolverScreen::new);
+
+            TFSItemProperties.addCustomItemProperties();
         }
     }
 }

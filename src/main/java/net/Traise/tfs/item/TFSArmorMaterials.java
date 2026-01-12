@@ -17,8 +17,10 @@ public enum TFSArmorMaterials implements ArmorMaterial {
     SoundEvents.ARMOR_EQUIP_GOLD, 0f, 0f, () -> Ingredient.of(TFSItems.BRONZE_INGOT.get())),
 
     STEEL("steel", 21, new int[]{ 3, 7, 5, 2}, 10,
-    SoundEvents.ARMOR_EQUIP_IRON, 1f, 0f, () -> Ingredient.of(TFSItems.STEEL_INGOT.get()));
+    SoundEvents.ARMOR_EQUIP_IRON, 1f, 0f, () -> Ingredient.of(TFSItems.STEEL_INGOT.get())),
 
+    NONE("none", 1, new int[]{ 1, 1, 1, 1}, 1,
+    SoundEvents.ARMOR_EQUIP_IRON, 0f, 0f, () -> Ingredient.of());
 
     private final String name;
     private final int durabilityMultiplier;

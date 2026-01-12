@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "tfs:item/tools/leggings_r_part",
+    "layer1": "tfs:item/tools/leggings_main_part",
+    "layer2": "tfs:item/tools/leggings_l_part",
+    "layer3": "minecraft:trims/items/leggings_trim_amethyst"
+  }
+}
