@@ -19,6 +19,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.MapItem;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
@@ -35,6 +36,8 @@ public class TFSAxeTool extends TFSBaseItem {
     public TFSAxeTool(Properties pProperties) {
         super(BlockTags.MINEABLE_WITH_AXE, 2, 8, -1.5f, ToolActions.DEFAULT_AXE_ACTIONS, pProperties);
     }
+
+
 
     @Override
     public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlot slot, ItemStack stack) {

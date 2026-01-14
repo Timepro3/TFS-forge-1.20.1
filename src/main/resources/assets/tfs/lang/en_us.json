@@ -368,15 +368,9 @@
   "gui.tfs.y_line": "Line at Y coordinate",
   "gui.tfs.z_line": "Line at Z coordinate",
 
-  "geological.tfs.warm": "Warm",
-  "geological.tfs.cold": "Cold",
-  "geological.tfs.colder": "Colder",
-  "geological.tfs.warmer": "Warmer",
-  "geological.tfs.heat": "Heat",
-  "geological.tfs.ore_recorded": "Ore recorded",
-  "geological.tfs.ore_found": "Ore found",
-  "geological.tfs.no_ore_found": "No ore found",
-  "geological.tfs.ore_not_recorded": "Ore not recorded, press SHIFT",
+  "geological.tfs.ore_recorder": "The ore is recorded",
+  "geological.tfs.ore_not_found": "Ore not found",
+  "geological.tfs.take_the_cart": "Take the card in your supporting hand for recording",
 
   "creativetab.tfs_tab": "TFS"
 }

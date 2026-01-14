@@ -372,15 +372,9 @@
   "gui.tfs.y_line": "Линия по координате Y",
   "gui.tfs.z_line": "Линия по координате Z",
 
-  "geological.tfs.warm": "Тепло",
-  "geological.tfs.cold": "Холодно",
-  "geological.tfs.colder": "Холоднее",
-  "geological.tfs.warmer": "Теплее",
-  "geological.tfs.heat": "Горячо",
-  "geological.tfs.ore_recorded": "Руда записана",
-  "geological.tfs.no_ore_found": "Руда не найдена",
-  "geological.tfs.ore_found": "Руда найдена",
-  "geological.tfs.ore_not_recorded": "Руда не записана, нажмите SHIFT",
+  "geological.tfs.ore_recorder": "Руда записана",
+  "geological.tfs.ore_not_found": "Руда не найдена",
+  "geological.tfs.take_the_cart": "Возьмите пустую карту в вспомогательную руку для записи",
 
   "creativetab.tfs_tab": "TFS"
 }
